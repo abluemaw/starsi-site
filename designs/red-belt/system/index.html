@@ -54,6 +54,8 @@
   --rim-chrome: conic-gradient(from 20deg,#f4f6fa,#aab4c6,#ffffff,#dfe4ec,#9aa4b4,#f4f6fa);
   --rim-gold: conic-gradient(from 20deg,#fff3b0,#b96a00,#ffe27a,#f2a100,#4d2a05,#fff3b0);
   --card-shadow: 0 10px 28px rgba(6,13,58,.28);
+  --button-gloss: rgba(255,255,255,.16);
+  --button-sweep: rgba(255,255,255,.55);
   /* typography */
   --font-display: 'Titillium Web', 'Arial Black', system-ui, sans-serif;
   --font-body: Roboto, system-ui, sans-serif;
@@ -86,6 +88,7 @@
   --ok-bg: rgba(79,214,160,.15);
   --nav-bg: rgba(7,11,28,.9);
   --hero-glow: #14275A;
+  --heading: #FFC61A;
   --headline-from: #FFC2C2;
   --headline-mid: #FF4D4D;
   --headline-to: #D10F1F;
@@ -107,6 +110,7 @@
     --ok-bg: rgba(11,122,85,.14);
     --nav-bg: rgba(243,245,250,.92);
     --hero-glow: #FFF1BF;
+    --heading: #FFC61A;
     --headline-from: #0A1130;
     --headline-mid: #0A1130;
     --headline-to: #0A1130;
@@ -128,6 +132,7 @@
   --ok-bg: rgba(11,122,85,.14);
   --nav-bg: rgba(243,245,250,.92);
   --hero-glow: #FFF1BF;
+  --heading: #FFC61A;
   --headline-from: #0A1130;
   --headline-mid: #0A1130;
   --headline-to: #0A1130;
@@ -193,8 +198,8 @@
   .si-btn:focus-visible { outline:3px solid var(--electric-300); outline-offset:3px; }
   .sm { padding:9px 15px; font-size:13px; } .md { padding:13px 23px; font-size:15px; } .lg { padding:17px 31px; font-size:17px; } .xl { padding:21px 41px; font-size:22px; }
   .gold { background:var(--gold-metal); color:var(--on-gold); box-shadow:var(--bevel-gold); }
-  .gold::before { content:""; position:absolute; inset:0 0 50% 0; background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0)); z-index:-1; pointer-events:none; }
-  .gold::after { content:""; position:absolute; top:-30%; bottom:-30%; left:-60%; width:36%; background:linear-gradient(105deg,transparent,rgba(255,255,255,.5),transparent); transform:skewX(-20deg); z-index:-1; pointer-events:none; animation:sweep 4.5s ease-in-out infinite; }
+  .gold::before { content:""; position:absolute; inset:0 0 50% 0; background:linear-gradient(180deg,var(--button-gloss),rgba(255,255,255,0)); z-index:-1; pointer-events:none; }
+  .gold::after { content:""; position:absolute; top:-30%; bottom:-30%; left:-60%; width:36%; background:linear-gradient(105deg,transparent,var(--button-sweep),transparent); transform:skewX(-20deg); z-index:-1; pointer-events:none; animation:sweep 4.5s ease-in-out infinite; }
   @keyframes sweep { 0%,55%{left:-60%} 100%{left:130%} }
   .chrome { background:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 1px,rgba(0,0,0,.05) 1px 2px), var(--chrome-metal); color:#0a1130; box-shadow:inset 0 -2px 0 var(--chrome-500), 0 2px 0 var(--chrome-700); }
   .electric { background:var(--electric-metal); color:#fff; box-shadow:inset 0 1px 0 var(--electric-300), 0 2px 0 var(--navy-900); }
@@ -348,10 +353,10 @@
   <div class="wrap">
     <div class="kicker">03 · Type</div>
     <h2>Type</h2>
-    <p class="lead">Titillium Web Bold for headlines, Roboto for everything you read. The font names come from DESIGN.md.</p>
-    <div class="type-card"><div class="label">Display · Titillium Web 700 · fluid sizes · leading 1.15</div><div class="spec-h1 metal-text">More Students</div></div>
-    <div class="type-card"><div class="label">Heading · Titillium Web 700</div><div class="spec-h2">Run the School You Always Pictured</div></div>
-    <div class="type-card"><div class="label">Body · Roboto 400 · 18px lead, 15 to 16px elsewhere · line height 1.5 to 1.6</div>
+    <p class="lead">Titillium Web for headlines, Roboto for everything you read. The font names come from the design file.</p>
+    <div class="type-card"><div class="label">Display · Titillium Web · fluid sizes · leading 1.15</div><div class="spec-h1 metal-text">More Students</div></div>
+    <div class="type-card"><div class="label">Heading · Titillium Web</div><div class="spec-h2">Run the School You Always Pictured</div></div>
+    <div class="type-card"><div class="label">Body · Roboto · 18px lead, 15 to 16px elsewhere · line height 1.5 to 1.6</div>
       <p class="spec-body">You opened a school to change lives on the mat, not to chase leads, payments, and paperwork. StarSI quietly handles the business side so you can get back to teaching.</p>
       <p class="spec-small" style="margin-top:12px">Small print and captions, 14px, muted.</p></div>
   </div>
@@ -507,7 +512,12 @@
   function fillHex() { document.querySelectorAll("[data-var]").forEach(function (el) { var v = getComputedStyle(root).getPropertyValue(el.getAttribute("data-var")).trim(); if (v) el.textContent = v.toUpperCase(); }); }
   if (true) { fillHex(); new MutationObserver(fillHex).observe(root, { attributes: true, attributeFilter: ["data-theme"] }); return; }
   var l = ""; try { var q = new URLSearchParams(location.search).get("design"); if (q) { localStorage.setItem("starsi-look", q); } l = localStorage.getItem("starsi-look") || ""; } catch (e) {}
-  if (l) root.setAttribute("data-look", l);
+  function setLookCss(slug) {
+    var link = document.getElementById("look-css");
+    if (slug) { if (!link) { link = document.createElement("link"); link.rel = "stylesheet"; link.id = "look-css"; document.head.appendChild(link); } link.href = "../../../designs/looks/" + slug + ".css"; link.onload = fillHex; }
+    else if (link) link.remove();
+  }
+  if (l && /^[a-z0-9_-]+$/i.test(l)) { root.setAttribute("data-look", l); setLookCss(l); }
   fetch("../../../designs/variants.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d || !d.variants || !d.variants.length) { fillHex(); return; }
     var o = document.createElement("option"); o.value = ""; o.textContent = "Live design"; sel.appendChild(o);
@@ -517,6 +527,7 @@
     sel.hidden = false; fillHex();
     sel.addEventListener("change", function () {
       if (sel.value) root.setAttribute("data-look", sel.value); else root.removeAttribute("data-look");
+      setLookCss(sel.value);
       try { if (sel.value) localStorage.setItem("starsi-look", sel.value); else localStorage.removeItem("starsi-look"); } catch (e) {}
       fillHex();
     });

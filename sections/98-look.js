@@ -14,7 +14,15 @@
     if (sel.value === "") root.removeAttribute("data-look");
     sel.hidden = false;
     sel.addEventListener("change", function () {
-      if (sel.value) { root.setAttribute("data-look", sel.value); } else { root.removeAttribute("data-look"); }
+      var link = document.getElementById("look-css");
+      if (sel.value) {
+        if (!link) { link = document.createElement("link"); link.rel = "stylesheet"; link.id = "look-css"; document.head.appendChild(link); }
+        link.href = "designs/looks/" + sel.value + ".css";
+        root.setAttribute("data-look", sel.value);
+      } else {
+        root.removeAttribute("data-look");
+        if (link) link.remove();
+      }
       try { if (sel.value) localStorage.setItem("starsi-look", sel.value); else localStorage.removeItem("starsi-look"); } catch (e) {}
     });
   }).catch(function () {});

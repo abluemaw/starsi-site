@@ -50,7 +50,7 @@ def build():
     if main_open:
         body += "</main>\n\n"
     js = "".join(read(p) for p in files("js"))
-    out = head + "<style>\n" + css + "</style>\n<link rel=\"stylesheet\" href=\"designs/looks.css\">\n</head>\n<body id=\"top\">\n\n" + body
+    out = head + "<style>\n" + css + "</style>\n</head>\n<body id=\"top\">\n\n" + body
     if js:
         out += "<script>\n" + js + "</script>\n"
     out += "\n</body>\n</html>\n"

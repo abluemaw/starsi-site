@@ -53,6 +53,8 @@ effects:
   rimChrome: "conic-gradient(from 20deg,#f4f6fa,#aab4c6,#ffffff,#dfe4ec,#9aa4b4,#f4f6fa)"
   rimGold: "conic-gradient(from 20deg,#fff3b0,#b96a00,#ffe27a,#f2a100,#4d2a05,#fff3b0)"
   cardShadow: "0 10px 28px rgba(6,13,58,.28)"
+  buttonGloss: "rgba(255,255,255,.16)"
+  buttonSweep: "rgba(255,255,255,.55)"
 typography:
   display:
     fontFamily: "'Titillium Web', 'Arial Black', system-ui, sans-serif"
@@ -95,6 +97,7 @@ themes:
     line: "rgba(255,255,255,.14)"
     link: "#7FB2FF"
     label: "#FFC61A"
+    heading: "#FFC61A"
     ok: "#4FD6A0"
     okBg: "rgba(79,214,160,.15)"
     navBg: "rgba(7,11,28,.9)"
@@ -111,6 +114,7 @@ themes:
     line: "#D5DBEA"
     link: "#1646D6"
     label: "#8A5200"
+    heading: "#FFC61A"
     ok: "#0B7A55"
     okBg: "rgba(11,122,85,.14)"
     navBg: "rgba(243,245,250,.92)"

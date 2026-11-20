@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@125,200..900&family=Geist:wght@400..700&family=Geist+Mono:wght@400..500&display=swap");
+/* GENERATED from designs/instrument.md. Do not edit. */
+/* look: instrument */
+:root[data-look="instrument"] {
+  /* colors */
+  --night: #0B0D14;
+  --navy-900: #080A10;
+  --panel: #12151F;
+  --panel-light: #12151F;
+  --surface: #FFFFFF;
+  --surface-soft: #F4F5F7;
+  --surface-muted: #E6E8EE;
+  --ink: #0B0D14;
+  --ink-muted: #4A5266;
+  --ink-on-dark: #F2F4F8;
+  --ink-on-dark-muted: #9AA3B8;
+  --gold-300: #DCFF85;
+  --gold-400: #C6FF3D;
+  --gold-500: #A8E022;
+  --gold-600: #6E9A00;
+  --gold-900: #2A3A00;
+  --on-gold: #0B0D14;
+  --chrome-100: #F4F5F7;
+  --chrome-300: #C9CED9;
+  --chrome-500: #7D869A;
+  --chrome-700: #3A4154;
+  --electric-300: #6ABFFC;
+  --electric-500: #6ABFFC;
+  --electric-700: #185E9C;
+  --link: #185E9C;
+  --border: #262B3B;
+  --border-strong: #3A4154;
+  --success: #0B7A55;
+  --success-bright: #4FD6A0;
+  --warning: #8A5200;
+  --danger: #C0152F;
+  --danger-bright: #FF8591;
+  /* effects */
+  --gold-metal: linear-gradient(180deg,#c6ff3d,#c6ff3d);
+  --chrome-metal: linear-gradient(180deg,#f4f5f7,#f4f5f7);
+  --electric-metal: linear-gradient(180deg,#6abffc,#6abffc);
+  --bevel-gold: 0 0 0 0 transparent;
+  --rim-chrome: linear-gradient(#262b3b,#262b3b);
+  --rim-gold: linear-gradient(#c6ff3d,#c6ff3d);
+  --card-shadow: none;
+  --button-gloss: rgba(255,255,255,0);
+  --button-sweep: rgba(255,255,255,0);
+  /* typography */
+  --font-display: 'Mona Sans', 'Arial Black', system-ui, sans-serif;
+  --font-body: Geist, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+  /* spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-xxxl: 64px;
+  /* rounded */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+}
+/* theme: dark (default) */
+:root[data-look="instrument"] {
+  --page-bg: #0B0D14;
+  --page-alt: #0F121B;
+  --page-ink: #F2F4F8;
+  --page-muted: #9AA3B8;
+  --card-bg: #12151F;
+  --line-soft: rgba(255,255,255,.10);
+  --link-page: #6ABFFC;
+  --kicker: #C6FF3D;
+  --ok-page: #4FD6A0;
+  --ok-bg: rgba(79,214,160,.14);
+  --nav-bg: rgba(11,13,20,.9);
+  --hero-glow: #0B0D14;
+  --heading: #F2F4F8;
+  --headline-from: #F2F4F8;
+  --headline-mid: #F2F4F8;
+  --headline-to: #F2F4F8;
+  --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
+  --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
+}
+/* theme: light (follows the visitor's device) */
+@media (prefers-color-scheme: light) {
+  :root[data-look="instrument"]:not([data-theme="dark"]) {
+    --page-bg: #F4F5F7;
+    --page-alt: #FFFFFF;
+    --page-ink: #0B0D14;
+    --page-muted: #4A5266;
+    --card-bg: #FFFFFF;
+    --line-soft: #D9DDE6;
+    --link-page: #185E9C;
+    --kicker: #185E9C;
+    --ok-page: #0B7A55;
+    --ok-bg: rgba(11,122,85,.14);
+    --nav-bg: rgba(244,245,247,.92);
+    --hero-glow: #F4F5F7;
+    --heading: #0B0D14;
+    --headline-from: #0B0D14;
+    --headline-mid: #0B0D14;
+    --headline-to: #0B0D14;
+    --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
+    --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
+  }
+}
+/* theme: light, forced */
+:root[data-look="instrument"][data-theme="light"] {
+  --page-bg: #F4F5F7;
+  --page-alt: #FFFFFF;
+  --page-ink: #0B0D14;
+  --page-muted: #4A5266;
+  --card-bg: #FFFFFF;
+  --line-soft: #D9DDE6;
+  --link-page: #185E9C;
+  --kicker: #185E9C;
+  --ok-page: #0B7A55;
+  --ok-bg: rgba(11,122,85,.14);
+  --nav-bg: rgba(244,245,247,.92);
+  --hero-glow: #F4F5F7;
+  --heading: #0B0D14;
+  --headline-from: #0B0D14;
+  --headline-mid: #0B0D14;
+  --headline-to: #0B0D14;
+  --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
+  --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
+}
+
+:root[data-look="instrument"] h1,:root[data-look="instrument"] h2,:root[data-look="instrument"] h3 { font-stretch: 125%; }

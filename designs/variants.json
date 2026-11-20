@@ -12,6 +12,16 @@
    ]
   },
   {
+   "slug": "instrument",
+   "name": "Instrument",
+   "description": "Based on the StarSi.ai design system: near-black instrument-panel ground, lime means a person acts, ice blue means StarSi acts. Flat surfaces with hairlines, no shadows or gradients. Mona Sans Expanded and Geist.",
+   "swatches": [
+    "#C6FF3D",
+    "#0B0D14",
+    "#6ABFFC"
+   ]
+  },
+  {
    "slug": "red-belt",
    "name": "Red belt",
    "description": "Bold red metal instead of gold. Same layout, same fonts.",

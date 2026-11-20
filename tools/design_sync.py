@@ -8,7 +8,7 @@ Commands
                                              (default: the commit before HEAD). DESIGN.md wins if both changed.
   python3 tools/design_sync.py to-css        DESIGN.md  -> sections/00-tokens.css
   python3 tools/design_sync.py from-css      sections/00-tokens.css -> DESIGN.md
-  python3 tools/design_sync.py page          rebuild design/index.html, designs/looks.css and designs/variants.json
+  python3 tools/design_sync.py page          rebuild design/index.html, designs/looks/*.css and designs/variants.json
   python3 tools/design_sync.py promote NAME  copy designs/NAME.md into DESIGN.md (make that look live)
 
 Only the "design values" are synced: colors, effects, typography fonts, spacing, rounded and themes.
@@ -29,7 +29,7 @@ ROLES = {
     "page": "--page-bg", "pageAlt": "--page-alt", "text": "--page-ink", "textMuted": "--page-muted",
     "cardFill": "--card-bg", "line": "--line-soft", "link": "--link-page", "label": "--kicker",
     "ok": "--ok-page", "okBg": "--ok-bg", "navBg": "--nav-bg", "heroGlow": "--hero-glow",
-    "headlineFrom": "--headline-from", "headlineMid": "--headline-mid", "headlineTo": "--headline-to",
+    "heading": "--heading", "headlineFrom": "--headline-from", "headlineMid": "--headline-mid", "headlineTo": "--headline-to",
 }
 FONTS = {"display": "--font-display", "body": "--font-body", "mono": "--font-mono"}
 
@@ -295,22 +295,39 @@ def meta(text, key):
 
 
 def build_looks():
-    """designs/*.md (only the values that differ) -> designs/looks.css + designs/variants.json"""
+    """designs/*.md (only the values that differ) -> designs/looks/<name>.css + designs/variants.json"""
     import json
     _, _, base = parse_md(read(MD))
     picker = meta(read(MD), "lookPicker").lower() != "off"
-    css, listing = ["/* GENERATED from designs/*.md. Do not edit. */"], []
+    listing = []
+    looks_dir = os.path.join(DESIGNS, "looks")
+    os.makedirs(looks_dir, exist_ok=True)
+    keep = set()
     for f in variant_files():
         slug = f[:-3]
         text = read(os.path.join(DESIGNS, f))
         _, _, over = parse_md(text)
         merged = merge_entries(base, over)
+        fonts, stretch = meta(text, "fontsUrl"), meta(text, "headingStretch")
+        css = []
+        if fonts:
+            css.append('@import url("%s");' % fonts)
+        css.append("/* GENERATED from designs/%s.md. Do not edit. */" % slug)
         css.append(gen_css(merged, scope=slug))
+        if stretch:
+            sel = ",".join(':root[data-look="%s"] %s' % (slug, t) for t in ("h1", "h2", "h3"))
+            css.append("%s { font-stretch: %s; }" % (sel, stretch))
+        write(os.path.join(looks_dir, slug + ".css"), "\n".join(css) + "\n")
+        keep.add(slug + ".css")
         col = {e["path"][1]: e["value"] for e in merged if e["path"][0] == "colors"}
         listing.append({"slug": slug, "name": meta(text, "name") or slug, "description": meta(text, "description"),
                         "swatches": [col.get("gold400", ""), col.get("night", ""), col.get("electric500", "")]})
-    os.makedirs(DESIGNS, exist_ok=True)
-    write(os.path.join(DESIGNS, "looks.css"), "\n".join(css) + "\n")
+    for f in os.listdir(looks_dir):
+        if f.endswith(".css") and f not in keep:
+            os.remove(os.path.join(looks_dir, f))
+    old = os.path.join(DESIGNS, "looks.css")
+    if os.path.exists(old):
+        os.remove(old)
     write(os.path.join(DESIGNS, "variants.json"), json.dumps({"picker": picker, "variants": listing}, indent=1) + "\n")
     return len(listing)
 
@@ -355,7 +372,7 @@ def build_design_pages():
         a = page.find("var q=new URLSearchParams")
         b = page.find("}catch(e){}</script>", a)
         if a != -1 and b != -1:
-            page = page[:a] + 'r.setAttribute("data-look","%s")' % slug + page[b:]
+            page = page[:a] + 'r.setAttribute("data-look","%s");var k=document.createElement("link");k.rel="stylesheet";k.href="designs/looks/%s.css";document.head.appendChild(k)' % (slug, slug) + page[b:]
         page = re.sub(r"<title>(.*?)</title>", lambda m: "<title>%s | %s</title>" % (m.group(1), H.escape(name)), page, 1)
         page = page.replace("</head>", "<style>.look-picker{display:none!important}.look-badge{position:fixed;left:16px;bottom:16px;z-index:40;font:600 13px var(--font-body);color:var(--page-ink);background:var(--card-bg);border:1px solid var(--line-soft);border-radius:var(--radius-md);padding:8px 12px;box-shadow:var(--card-shadow)}.look-badge:hover{border-color:var(--page-muted)}</style>\n</head>", 1)
         page = page.replace("</body>", '<a class="look-badge" href="../">Design: %s &middot; all designs</a>\n</body>' % H.escape(name), 1)
@@ -407,7 +424,9 @@ def swatches(entries):
 
 def render_page(entries, icons):
     css = gen_css(entries)
-    return (read(TEMPLATE).replace("/*TOKENS*/", css).replace("<!--SWATCHES-->", swatches(entries))
+    fam = {e["path"][1]: e["value"].split(",")[0].strip().strip("'\"") for e in entries if e["path"][0] == "typography"}
+    return (read(TEMPLATE).replace("<!--FONT-DISPLAY-->", fam.get("display", "")).replace("<!--FONT-BODY-->", fam.get("body", ""))
+            .replace("/*TOKENS*/", css).replace("<!--SWATCHES-->", swatches(entries))
             .replace("<!--ICONS-->", icon_html(icons)).replace("<!--ICON-SPRITE-->", icon_sprite_inline(icons)))
 
 
@@ -437,7 +456,11 @@ def build_variant_system_pages():
         _, _, over = parse_md(text)
         page = render_page(merge_entries(base, over), icons)
         page = page.replace("/*FIXED*/false", "true")
-        page = re.sub(r'<link rel="stylesheet" href="\.\./designs/looks\.css">\n?', "", page)
+        fonts, stretch = meta(text, "fontsUrl"), meta(text, "headingStretch")
+        if fonts:
+            page = page.replace("</head>", '<link rel="stylesheet" href="%s">\n</head>' % fonts, 1)
+        if stretch:
+            page = page.replace("</head>", "<style>h1,h2,h3{font-stretch:%s}</style>\n</head>" % stretch, 1)
         page = page.replace("<title>StarSI Gold | Design system</title>", "<title>%s | Design system</title>" % H.escape(name))
         page = page.replace('<div class="kicker">Design system</div>\n    <h1 class="metal-text">StarSI Gold</h1>',
                             '<div class="kicker">Design system &middot; a variant of the live design</div>\n    <h1 class="metal-text">%s</h1>' % H.escape(name))

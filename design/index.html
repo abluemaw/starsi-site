@@ -54,6 +54,8 @@
   --rim-chrome: conic-gradient(from 20deg,#f4f6fa,#aab4c6,#ffffff,#dfe4ec,#9aa4b4,#f4f6fa);
   --rim-gold: conic-gradient(from 20deg,#fff3b0,#b96a00,#ffe27a,#f2a100,#4d2a05,#fff3b0);
   --card-shadow: 0 10px 28px rgba(6,13,58,.28);
+  --button-gloss: rgba(255,255,255,.16);
+  --button-sweep: rgba(255,255,255,.55);
   /* typography */
   --font-display: 'Titillium Web', 'Arial Black', system-ui, sans-serif;
   --font-body: Roboto, system-ui, sans-serif;
@@ -86,6 +88,7 @@
   --ok-bg: rgba(79,214,160,.15);
   --nav-bg: rgba(7,11,28,.9);
   --hero-glow: #14275A;
+  --heading: #FFC61A;
   --headline-from: #FFF3B0;
   --headline-mid: #FFC61A;
   --headline-to: #F2A100;
@@ -107,6 +110,7 @@
     --ok-bg: rgba(11,122,85,.14);
     --nav-bg: rgba(243,245,250,.92);
     --hero-glow: #FFF1BF;
+    --heading: #FFC61A;
     --headline-from: #0A1130;
     --headline-mid: #0A1130;
     --headline-to: #0A1130;
@@ -128,6 +132,7 @@
   --ok-bg: rgba(11,122,85,.14);
   --nav-bg: rgba(243,245,250,.92);
   --hero-glow: #FFF1BF;
+  --heading: #FFC61A;
   --headline-from: #0A1130;
   --headline-mid: #0A1130;
   --headline-to: #0A1130;
@@ -193,8 +198,8 @@
   .si-btn:focus-visible { outline:3px solid var(--electric-300); outline-offset:3px; }
   .sm { padding:9px 15px; font-size:13px; } .md { padding:13px 23px; font-size:15px; } .lg { padding:17px 31px; font-size:17px; } .xl { padding:21px 41px; font-size:22px; }
   .gold { background:var(--gold-metal); color:var(--on-gold); box-shadow:var(--bevel-gold); }
-  .gold::before { content:""; position:absolute; inset:0 0 50% 0; background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0)); z-index:-1; pointer-events:none; }
-  .gold::after { content:""; position:absolute; top:-30%; bottom:-30%; left:-60%; width:36%; background:linear-gradient(105deg,transparent,rgba(255,255,255,.5),transparent); transform:skewX(-20deg); z-index:-1; pointer-events:none; animation:sweep 4.5s ease-in-out infinite; }
+  .gold::before { content:""; position:absolute; inset:0 0 50% 0; background:linear-gradient(180deg,var(--button-gloss),rgba(255,255,255,0)); z-index:-1; pointer-events:none; }
+  .gold::after { content:""; position:absolute; top:-30%; bottom:-30%; left:-60%; width:36%; background:linear-gradient(105deg,transparent,var(--button-sweep),transparent); transform:skewX(-20deg); z-index:-1; pointer-events:none; animation:sweep 4.5s ease-in-out infinite; }
   @keyframes sweep { 0%,55%{left:-60%} 100%{left:130%} }
   .chrome { background:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 1px,rgba(0,0,0,.05) 1px 2px), var(--chrome-metal); color:#0a1130; box-shadow:inset 0 -2px 0 var(--chrome-500), 0 2px 0 var(--chrome-700); }
   .electric { background:var(--electric-metal); color:#fff; box-shadow:inset 0 1px 0 var(--electric-300), 0 2px 0 var(--navy-900); }
@@ -250,7 +255,6 @@
   @media (prefers-reduced-motion:reduce) { .gold::after { animation:none; } html { scroll-behavior:auto; } }
   @media (max-width:600px) { section { padding:40px 0; } .btns { gap:14px; } }
 </style>
-<link rel="stylesheet" href="../designs/looks.css">
 </head>
 <body id="top">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="icon-attendance" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 13l2 2 4-4"/></symbol><symbol id="icon-backpack" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6V4.5a2 2 0 014 0V6"/><rect x="5" y="6" width="14" height="15" rx="4"/><path d="M8 15h8v4H8z"/></symbol><symbol id="icon-belt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9h20v4H2z"/><rect x="9" y="7" width="6" height="8" rx="1"/><path d="M10.5 15l-2 6M13.5 15l2 6"/></symbol><symbol id="icon-billing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/></symbol><symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15.5" r="1.5"/></symbol><symbol id="icon-certificate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M7 8h10M7 11h6"/><circle cx="17" cy="14" r="2.6"/><path d="M16 16.4V21l1-1 1 1v-4.6"/></symbol><symbol id="icon-check-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 12l2.5 2.5L16 10M11 18h2"/></symbol><symbol id="icon-class-time" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="icon-dojo-gate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5c3.5 1.7 15.5 1.7 19 0"/><path d="M5 10h14M7 7v14M17 7v14M12 8v2"/></symbol><symbol id="icon-family" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><circle cx="12" cy="13" r="2"/><path d="M3 20v-2a4 4 0 014-4h2M21 20v-2a4 4 0 00-4-4h-2M8.5 20v-.5a3.5 3.5 0 017 0v.5"/></symbol><symbol id="icon-fist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h13v4a6 6 0 01-6 6h-1a6 6 0 01-6-6z"/><path d="M6 11V8a1.6 1.6 0 013.2 0v3M9.2 11V6.5a1.6 1.6 0 013.2 0V11M12.4 11V7a1.6 1.6 0 013.2 0v4M15.6 11V8.5a1.6 1.6 0 013.2 0V11"/></symbol><symbol id="icon-gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3L3 6l2 5 3-1v11h8V10l3 1 2-5-5-3"/><path d="M8 3l4 6 4-6M8 15h8"/></symbol><symbol id="icon-glove" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V6a3 3 0 016 0v1h3a3 3 0 013 3v4a6 6 0 01-6 6h-2a5 5 0 01-5-5z"/><path d="M8 17h9M13 7v4"/></symbol><symbol id="icon-gong" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18M7 3l3 5M17 3l-3 5"/><circle cx="12" cy="14" r="6"/><circle cx="12" cy="14" r="2"/><path d="M6 21l2-3M18 21l-2-3"/></symbol><symbol id="icon-homework" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 19a2 2 0 012-2h13"/></symbol><symbol id="icon-instructor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="3"/><path d="M4 21v-3a6 6 0 0112 0v3"/><path d="M19 3.5l.9 1.8 2 .3-1.4 1.4.3 2-1.8-1-1.8 1 .3-2-1.4-1.4 2-.3z"/></symbol><symbol id="icon-lesson-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4.5-2.5z"/></symbol><symbol id="icon-location" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 00-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol><symbol id="icon-mat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M3 12h4.5M16.5 12H21"/></symbol><symbol id="icon-medal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l4 7M16 2l-4 7"/><circle cx="12" cy="15" r="6"/><path d="M12 12l1 2 2.2.3-1.6 1.6.4 2.2-2-1-2 1 .4-2.2-1.6-1.6 2.2-.3z"/></symbol><symbol id="icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 011 1v10a1 1 0 01-1 1H10l-5 4v-4H4a1 1 0 01-1-1V6a1 1 0 011-1z"/><path d="M8 10h8M8 13h5"/></symbol><symbol id="icon-pro-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l1 13H4z"/><path d="M9 8V6a3 3 0 016 0v2"/></symbol><symbol id="icon-report" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20v-7M11 20V6M16 20v-10"/></symbol><symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5L16 9"/></symbol><symbol id="icon-snack" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-2-1.5-7-1-7 5 0 5 3 9 5 9 1 0 1.5-.5 2-.5s1 .5 2 .5c2 0 5-4 5-9 0-6-5-6.5-7-5z"/><path d="M12 7c0-2 1-3.5 3-4"/></symbol><symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></symbol><symbol id="icon-student" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><path d="M6 21v-3a6 6 0 0112 0v3M9 17.5h6"/></symbol><symbol id="icon-trial-lesson" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 012-2h14a2 2 0 012 2v2a2 2 0 000 4v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 000-4z"/><path d="M14 7v10" stroke-dasharray="2 2"/></symbol><symbol id="icon-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 01-10 0z"/><path d="M7 6H4v2a3 3 0 003 3M17 6h3v2a3 3 0 01-3 3M12 14v4M9 18h6M8 21h8"/></symbol></svg>
@@ -349,10 +353,10 @@
   <div class="wrap">
     <div class="kicker">03 · Type</div>
     <h2>Type</h2>
-    <p class="lead">Titillium Web Bold for headlines, Roboto for everything you read. The font names come from DESIGN.md.</p>
-    <div class="type-card"><div class="label">Display · Titillium Web 700 · fluid sizes · leading 1.15</div><div class="spec-h1 metal-text">More Students</div></div>
-    <div class="type-card"><div class="label">Heading · Titillium Web 700</div><div class="spec-h2">Run the School You Always Pictured</div></div>
-    <div class="type-card"><div class="label">Body · Roboto 400 · 18px lead, 15 to 16px elsewhere · line height 1.5 to 1.6</div>
+    <p class="lead">Titillium Web for headlines, Roboto for everything you read. The font names come from the design file.</p>
+    <div class="type-card"><div class="label">Display · Titillium Web · fluid sizes · leading 1.15</div><div class="spec-h1 metal-text">More Students</div></div>
+    <div class="type-card"><div class="label">Heading · Titillium Web</div><div class="spec-h2">Run the School You Always Pictured</div></div>
+    <div class="type-card"><div class="label">Body · Roboto · 18px lead, 15 to 16px elsewhere · line height 1.5 to 1.6</div>
       <p class="spec-body">You opened a school to change lives on the mat, not to chase leads, payments, and paperwork. StarSI quietly handles the business side so you can get back to teaching.</p>
       <p class="spec-small" style="margin-top:12px">Small print and captions, 14px, muted.</p></div>
   </div>
@@ -508,7 +512,12 @@
   function fillHex() { document.querySelectorAll("[data-var]").forEach(function (el) { var v = getComputedStyle(root).getPropertyValue(el.getAttribute("data-var")).trim(); if (v) el.textContent = v.toUpperCase(); }); }
   if (/*FIXED*/false) { fillHex(); new MutationObserver(fillHex).observe(root, { attributes: true, attributeFilter: ["data-theme"] }); return; }
   var l = ""; try { var q = new URLSearchParams(location.search).get("design"); if (q) { localStorage.setItem("starsi-look", q); } l = localStorage.getItem("starsi-look") || ""; } catch (e) {}
-  if (l) root.setAttribute("data-look", l);
+  function setLookCss(slug) {
+    var link = document.getElementById("look-css");
+    if (slug) { if (!link) { link = document.createElement("link"); link.rel = "stylesheet"; link.id = "look-css"; document.head.appendChild(link); } link.href = "../designs/looks/" + slug + ".css"; link.onload = fillHex; }
+    else if (link) link.remove();
+  }
+  if (l && /^[a-z0-9_-]+$/i.test(l)) { root.setAttribute("data-look", l); setLookCss(l); }
   fetch("../designs/variants.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d || !d.variants || !d.variants.length) { fillHex(); return; }
     var o = document.createElement("option"); o.value = ""; o.textContent = "Live design"; sel.appendChild(o);
@@ -518,6 +527,7 @@
     sel.hidden = false; fillHex();
     sel.addEventListener("change", function () {
       if (sel.value) root.setAttribute("data-look", sel.value); else root.removeAttribute("data-look");
+      setLookCss(sel.value);
       try { if (sel.value) localStorage.setItem("starsi-look", sel.value); else localStorage.removeItem("starsi-look"); } catch (e) {}
       fillHex();
     });
