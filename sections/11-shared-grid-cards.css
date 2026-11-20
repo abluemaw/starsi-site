@@ -10,3 +10,5 @@
   .card:hover { background: linear-gradient(180deg, var(--panel-light), var(--panel)) padding-box, var(--rim-gold) border-box; transform: translateY(-2px); }
   .card h3 { color: var(--ink-on-dark); }
   .card p { color: var(--ink-on-dark); opacity: .88; }
+  /* Picture at the top of a card (fills the width of the card, text sits below it, never over a face) */
+  .card .card-img { display: block; width: calc(100% + 52px); max-width: none; height: auto; aspect-ratio: 16 / 10; object-fit: cover; margin: -26px -26px 18px; border-radius: calc(var(--radius-lg) - 3px) calc(var(--radius-lg) - 3px) 0 0; }
