@@ -70,6 +70,13 @@
   "message": "Refine skin texture and tones in the hero image (#4)"
  },
  {
+  "sha": "4b51e4053912f638003b6999cce42cfb9ff90881",
+  "short": "4b51e40",
+  "date": "2026-11-20T16:01:07-05:00",
+  "author": "abluemaw",
+  "message": "Add back-to-top button; link the design page and DESIGN.md for the team"
+ },
+ {
   "sha": "c379b9a26c82a27301626c8dbf115d5d678dd825",
   "short": "c379b9a",
   "date": "2026-11-20T15:58:55-05:00",
