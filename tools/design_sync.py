@@ -334,6 +334,56 @@ def do_promote(name):
     do_to_css()
     return 0
 
+
+# ---------- design pages (gallery + one full page per design) ----------
+def rebase(html, up):
+    return re.sub(r'(["\'(])(images|fonts|designs|icons)/', lambda m: m.group(1) + up + m.group(2) + "/", html)
+
+
+def build_design_pages():
+    """designs/index.html (gallery) and designs/<name>/index.html (the full site wearing that look)."""
+    import html as H, json
+    idx = os.path.join(ROOT, "index.html")
+    if not os.path.exists(idx):
+        return 0
+    site = read(idx)
+    data = json.load(open(os.path.join(DESIGNS, "variants.json")))
+    # one page per design
+    for v in data["variants"]:
+        slug, name = v["slug"], v["name"]
+        page = site.replace('<html lang="en">', '<html lang="en" data-look="%s">' % slug, 1)
+        a = page.find("var q=new URLSearchParams")
+        b = page.find("}catch(e){}</script>", a)
+        if a != -1 and b != -1:
+            page = page[:a] + 'r.setAttribute("data-look","%s")' % slug + page[b:]
+        page = re.sub(r"<title>(.*?)</title>", lambda m: "<title>%s | %s</title>" % (m.group(1), H.escape(name)), page, 1)
+        page = page.replace("</head>", "<style>.look-picker{display:none!important}.look-badge{position:fixed;left:16px;bottom:16px;z-index:40;font:600 13px var(--font-body);color:var(--page-ink);background:var(--card-bg);border:1px solid var(--line-soft);border-radius:var(--radius-md);padding:8px 12px;box-shadow:var(--card-shadow)}.look-badge:hover{border-color:var(--page-muted)}</style>\n</head>", 1)
+        page = page.replace("</body>", '<a class="look-badge" href="../">Design: %s &middot; all designs</a>\n</body>' % H.escape(name), 1)
+        page = rebase(page, "../../")
+        out = os.path.join(DESIGNS, slug)
+        os.makedirs(out, exist_ok=True)
+        write(os.path.join(out, "index.html"), page)
+    # gallery
+    tpl = os.path.join(ROOT, "design", "gallery-template.html")
+    if os.path.exists(tpl):
+        _, _, entries = parse_md(read(MD))
+        col = {e["path"][1]: e["value"] for e in entries if e["path"][0] == "colors"}
+        cards = []
+
+        def card(slug, name, desc, dots, page, shot, live=False):
+            d = "".join('<i style="background:%s"></i>' % c for c in dots if c)
+            tag = '<span class="tag">Live design</span>' if live else ""
+            return ('    <div class="card%s"><a class="shot" href="%s"><img src="img/%s.jpg" alt="The site in %s" loading="lazy" onerror="this.remove()"></a>'
+                    '<div class="body">%s<h2>%s</h2><div class="dots">%s</div><p>%s</p>'
+                    '<div class="row"><a class="go" href="%s">Open page</a><a href="../?design=%s">Try on the site</a></div></div></div>'
+                    % (" live" if live else "", page, shot, H.escape(name), tag, H.escape(name), d, H.escape(desc), page, slug if not live else "live"))
+        cards.append(card("live", "Live design", "The shared design in DESIGN.md that everyone sees right now.", [col.get("gold400"), col.get("night"), col.get("electric500")], "../", "live", True))
+        for v in data["variants"]:
+            cards.append(card(v["slug"], v["name"], v.get("description", ""), v.get("swatches", []), v["slug"] + "/", v["slug"]))
+        html = read(tpl).replace("/*TOKENS*/", gen_css(entries)).replace("<!--CARDS-->", "\n".join(cards))
+        write(os.path.join(DESIGNS, "index.html"), html)
+    return len(data["variants"])
+
 # ---------- design page ----------
 def swatches(entries):
     groups, order = {}, []

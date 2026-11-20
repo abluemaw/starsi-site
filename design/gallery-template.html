@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StarSI | Designs</title>
+<meta name="description" content="Every StarSI look in one place. Open a design as its own page.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  @font-face { font-family:"Titillium Web"; font-weight:700; font-display:swap; src:url("../fonts/titillium-web-700.ttf") format("truetype"); }
+  @font-face { font-family:"Roboto"; font-weight:400; font-display:swap; src:url("../fonts/roboto-400.ttf") format("truetype"); }
+  @font-face { font-family:"Roboto"; font-weight:700; font-display:swap; src:url("../fonts/roboto-700.ttf") format("truetype"); }
+/*TOKENS*/
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:var(--font-body); background:var(--page-bg); color:var(--page-ink); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  a { color:var(--link-page); }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
+  header { border-bottom:1px solid var(--line-soft); background:var(--nav-bg); }
+  header .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; height:60px; font-size:14px; }
+  header b { font-family:var(--font-display); font-size:20px; }
+  header nav { display:flex; gap:20px; }
+  header nav a { color:var(--page-muted); text-decoration:none; }
+  header nav a:hover { color:var(--page-ink); }
+  .intro { padding:48px 0 24px; }
+  .intro h1 { font-family:var(--font-display); font-size:clamp(34px,6vw,56px); line-height:1.1; }
+  .intro p { color:var(--page-muted); max-width:640px; margin-top:10px; font-size:18px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:22px; padding:16px 0 64px; }
+  .card { background:var(--card-bg); border:1px solid var(--line-soft); border-radius:var(--radius-lg); overflow:hidden; display:flex; flex-direction:column; }
+  .card.live { border:2px solid var(--gold-400); }
+  .shot { display:block; aspect-ratio:480/330; background:linear-gradient(180deg,var(--panel-light),var(--panel)); }
+  .shot img { display:block; width:100%; height:100%; object-fit:cover; }
+  .body { padding:16px 18px 18px; display:flex; flex-direction:column; gap:8px; flex:1; }
+  .body h2 { font-family:var(--font-display); font-size:22px; }
+  .body p { color:var(--page-muted); font-size:15px; flex:1; }
+  .dots { display:flex; gap:6px; }
+  .dots i { width:18px; height:18px; border-radius:50%; border:1px solid var(--line-soft); display:block; }
+  .tag { font-size:12px; font-weight:700; color:var(--on-gold); background:var(--gold-metal); border-radius:6px; padding:3px 8px; align-self:flex-start; }
+  .row { display:flex; gap:10px; margin-top:6px; flex-wrap:wrap; }
+  .row a { flex:1; text-align:center; text-decoration:none; font-weight:700; font-size:14px; padding:10px 12px; border-radius:var(--radius-md); border:1px solid var(--line-soft); color:var(--page-ink); white-space:nowrap; }
+  .row a.go { background:var(--gold-metal); color:var(--on-gold); border-color:transparent; box-shadow:var(--bevel-gold); }
+  footer { padding:28px 0 60px; text-align:center; color:var(--page-muted); font-size:14px; border-top:1px solid var(--line-soft); }
+</style>
+</head>
+<body>
+<header><div class="wrap"><b>StarSI Designs</b><nav><a href="../">The site</a><a href="../design/">Design system</a><a href="../versions/">Version history</a></nav></div></header>
+<main class="wrap">
+  <div class="intro">
+    <h1>Designs</h1>
+    <p>Every look in one place. Open a design as its own page, or try it on the live site with the dropdown. Each design is a small file in the <b>designs</b> folder.</p>
+  </div>
+  <div class="grid">
+<!--CARDS-->
+  </div>
+</main>
+<footer><div class="wrap">To add your own, ask ChatGPT for "a design variant called &lt;name&gt; with &lt;changes&gt;". To make one live for everybody, use Actions &rarr; Make a design live.</div></footer>
+</body>
+</html>

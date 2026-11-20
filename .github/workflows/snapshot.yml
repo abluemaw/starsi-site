@@ -47,9 +47,12 @@ jobs:
             LIST="$HEAD_SHA"
           fi
           python3 tools/snapshot.py $LIST
+      - name: Take pictures of every design
+        run: |
+          if [ -f designs/variants.json ]; then python3 tools/design_shots.py; fi
       - name: Save the history
         run: |
-          git add versions
+          git add versions designs/img
           if git diff --cached --quiet; then
             echo "Nothing new."
             exit 0

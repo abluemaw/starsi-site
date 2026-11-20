@@ -63,3 +63,11 @@ if __name__ == "__main__":
     with open(target, "w", encoding="utf-8") as f:
         f.write(out)
     print("Built index.html (%d bytes)" % len(out.encode("utf-8")))
+    sys.path.insert(0, os.path.join(HERE, "tools"))
+    try:
+        import design_sync
+        design_sync.build_looks()
+        n = design_sync.build_design_pages()
+        print("Built the designs gallery and %d design page(s)" % n)
+    except Exception as e:  # never block the site build on the extras
+        print("Design pages skipped:", e)
