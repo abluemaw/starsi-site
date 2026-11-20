@@ -77,6 +77,13 @@
   "message": "Refine skin texture and tones in the hero image (#4)"
  },
  {
+  "sha": "623b2c600429d0545c49754cfd2b9bf353f22aa3",
+  "short": "623b2c6",
+  "date": "2026-11-20T16:20:27-05:00",
+  "author": "abluemaw",
+  "message": "Fix gold button gloss in light mode"
+ },
+ {
   "sha": "e30dbaa024fd0c236bb1a24ad86fdaa8f75eb25c",
   "short": "e30dbaa",
   "date": "2026-11-20T16:13:08-05:00",
