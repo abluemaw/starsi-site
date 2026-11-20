@@ -30,7 +30,7 @@ jobs:
             echo "Could not find '$VERSION'. Check the spelling against https://github.com/${{ github.repository }}/tags"
             exit 1
           fi
-          git restore --source="$VERSION" --staged --worktree -- . ':!.github'
+          git restore --source="$VERSION" --staged --worktree -- . ':!.github' ':!versions' ':!tools'
           if git diff --cached --quiet; then
             echo "The site is already at that version. Nothing to do."
             exit 0

@@ -1,0 +1,68 @@
+name: Save a picture of the site
+# After every publish, takes a picture of the site and adds it to the version history page.
+# History page: https://abluemaw.github.io/starsi-site/versions/
+# Manual use: Actions > "Save a picture of the site" > Run workflow, type commit codes or saved names (space between).
+on:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      commits:
+        description: "Commit codes or saved names to add (separate with spaces)"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: history
+  cancel-in-progress: false
+
+jobs:
+  snap:
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the picture-taker
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Take the picture
+        env:
+          COMMITS: ${{ inputs.commits }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -e
+          if [ -n "$COMMITS" ]; then
+            LIST="$COMMITS"
+          else
+            if git log -1 --format=%s "$HEAD_SHA" | grep -q '^History:'; then
+              echo "This publish was only the history itself. Nothing to do."
+              exit 0
+            fi
+            LIST="$HEAD_SHA"
+          fi
+          python3 tools/snapshot.py $LIST
+      - name: Save the history
+        run: |
+          git add versions
+          if git diff --cached --quiet; then
+            echo "Nothing new."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "History: add pictures"
+          for i in 1 2 3 4; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          exit 1

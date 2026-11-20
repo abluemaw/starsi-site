@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StarSI | Version history</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root { --bg:#F5F7FA; --card:#fff; --ink:#1F2937; --muted:#5F6368; --line:#E2E8F0; --primary:#1A73E8; --primary-dark:#1557B0; --green-bg:#E6F4EA; --green:#137333; --pill:#E8F0FE; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 30px; letter-spacing: -.02em; }
+  .sub { color: var(--muted); margin: 8px 0 24px; max-width: 680px; }
+  .sub a { color: var(--primary); }
+  .note { background: var(--pill); border-radius: 12px; padding: 14px 16px; margin-bottom: 24px; font-size: 15px; display: none; }
+  .note.show { display: block; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(0,0,0,.05); }
+  .card.live { border: 2px solid var(--green); }
+  .thumb { display: block; background: #0b1220; }
+  .thumb img { display: block; width: 100%; height: auto; }
+  .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .when { font-weight: 700; font-size: 15px; }
+  .who { color: var(--muted); font-size: 14px; }
+  .msg { font-size: 14px; flex: 1; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; }
+  .badge { font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: var(--pill); color: var(--primary-dark); }
+  .badge.live { background: var(--green-bg); color: var(--green); }
+  .row { display: flex; gap: 8px; margin-top: 8px; }
+  .row a, .row button { flex: 1; text-align: center; font: inherit; font-size: 14px; font-weight: 700; padding: 9px 10px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink); cursor: pointer; text-decoration: none; }
+  .row button { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .row button:hover { background: var(--primary-dark); }
+  .empty { color: var(--muted); padding: 40px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Version history</h1>
+  <p class="sub">A picture of the site after every change, newest first. Click a picture to see the whole page. To go back to one, click <b>Restore this version</b>. <a href="../">Back to the site</a></p>
+  <div class="note" id="note"></div>
+  <div class="grid" id="grid"><p class="empty">Loading…</p></div>
+</div>
+<script>
+(function () {
+  var REPO = "abluemaw/starsi-site";
+  var RESTORE = "https://github.com/" + REPO + "/actions/workflows/restore.yml";
+  var grid = document.getElementById("grid"), note = document.getElementById("note");
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function fmt(iso) {
+    try { return new Date(iso).toLocaleString(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }); } catch (e) { return iso; }
+  }
+  function show(list, names) {
+    grid.textContent = "";
+    if (!list.length) { grid.appendChild(el("p", "empty", "No versions yet. The first picture appears after the next change.")); return; }
+    list.forEach(function (v, i) {
+      var card = el("div", "card" + (i === 0 ? " live" : ""));
+      var a = el("a", "thumb"); a.href = "img/" + v.short + ".jpg"; a.target = "_blank"; a.rel = "noopener";
+      var img = el("img"); img.src = "img/" + v.short + "-thumb.jpg"; img.loading = "lazy"; img.alt = "The site on " + fmt(v.date); a.appendChild(img);
+      var body = el("div", "body");
+      var badges = el("div", "badges");
+      if (i === 0) badges.appendChild(el("span", "badge live", "Live now"));
+      (names[v.sha] || []).forEach(function (n) { badges.appendChild(el("span", "badge", n.replace(/^saved-/, "Saved: "))); });
+      if (badges.children.length) body.appendChild(badges);
+      body.appendChild(el("div", "when", fmt(v.date)));
+      body.appendChild(el("div", "who", "Changed by " + (v.author || "someone")));
+      body.appendChild(el("div", "msg", v.message || ""));
+      var row = el("div", "row");
+      var view = el("a", null, "View page"); view.href = "img/" + v.short + ".jpg"; view.target = "_blank"; view.rel = "noopener"; row.appendChild(view);
+      if (i > 0) {
+        var btn = el("button", null, "Restore this version");
+        btn.type = "button";
+        btn.addEventListener("click", function () {
+          var code = (names[v.sha] && names[v.sha][0]) || v.short;
+          try { navigator.clipboard.writeText(code); } catch (e) {}
+          note.textContent = "Version code “" + code + "” copied. On the GitHub page that just opened: click Run workflow, paste the code in the box, then click the green Run workflow button. The site goes back in about a minute.";
+          note.className = "note show"; window.scrollTo({ top: 0, behavior: "smooth" });
+          window.open(RESTORE, "_blank", "noopener");
+        });
+        row.appendChild(btn);
+      }
+      body.appendChild(row);
+      card.appendChild(a); card.appendChild(body); grid.appendChild(card);
+    });
+  }
+  fetch("versions.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }).then(function (list) {
+    fetch("https://api.github.com/repos/" + REPO + "/tags?per_page=100").then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }).then(function (tags) {
+      var names = {};
+      (tags || []).forEach(function (t) { if (/^saved-/.test(t.name) && t.commit) (names[t.commit.sha] = names[t.commit.sha] || []).push(t.name); });
+      show(list, names);
+    });
+  });
+})();
+</script>
+</body>
+</html>
