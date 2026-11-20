@@ -1,0 +1,23 @@
+[
+ {
+  "sha": "a813aff4dc077a5ccfab5854c2988e10a902e646",
+  "short": "a813aff",
+  "date": "2026-11-20T19:59:03Z",
+  "author": "erinams",
+  "message": "Refine skin texture and tones in the hero image (#4)"
+ },
+ {
+  "sha": "961802df75894c3ea18f7c5705ce067931bd55bc",
+  "short": "961802d",
+  "date": "2026-11-20T15:03:35-05:00",
+  "author": "abluemaw",
+  "message": "Remove test comment"
+ },
+ {
+  "sha": "9e2c1cfdec11e88f028347625850ef00577d55cb",
+  "short": "9e2c1cf",
+  "date": "2026-11-20T14:53:17-05:00",
+  "author": "abluemaw",
+  "message": "Add restore and save-version buttons"
+ }
+]
