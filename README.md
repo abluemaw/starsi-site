@@ -1,7 +1,7 @@
 # StarSI website (live)
 
 Live: https://abluemaw.github.io/starsi-site/ (GitHub Pages, updates about a minute after every push to `main`)
-Design system page: https://abluemaw.github.io/starsi-site/design/ · Version history: https://abluemaw.github.io/starsi-site/versions/ · Design file: [DESIGN.md](DESIGN.md)
+Designs gallery: https://abluemaw.github.io/starsi-site/designs/ (each design also has its own page at `designs/<name>/`) · Design system page: https://abluemaw.github.io/starsi-site/design/ · Version history: https://abluemaw.github.io/starsi-site/versions/ · Design file: [DESIGN.md](DESIGN.md)
 The page is built from small files in `sections/` (one per section) by `build.py`; `index.html` is generated, never edited by hand. Anyone on the team can change it with ChatGPT, and the live site updates by itself.
 
 ## For coworkers (using ChatGPT)
