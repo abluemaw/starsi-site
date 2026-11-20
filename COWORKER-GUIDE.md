@@ -1,6 +1,9 @@
 # How to change the StarSI website with ChatGPT
 
 **The live site:** https://abluemaw.github.io/starsi-site/
+**The design system (colours, fonts, buttons, light and dark):** https://abluemaw.github.io/starsi-site/design/
+**Version history (pictures of every change, with restore):** https://abluemaw.github.io/starsi-site/versions/
+**The design file ChatGPT edits for design changes:** https://github.com/abluemaw/starsi-site/blob/main/DESIGN.md
 **You ask ChatGPT for a change. It goes live about a minute later. Nobody has to approve it.**
 
 ---

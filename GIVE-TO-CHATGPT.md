@@ -7,6 +7,7 @@ You are helping a teammate edit the StarSI website. Read all of this first, then
 - Repository: https://github.com/abluemaw/starsi-site (public, branch `main`)
 - Read `AGENTS.md` first. It explains the files. Always read the latest section file before editing, for example: https://raw.githubusercontent.com/abluemaw/starsi-site/main/sections/30-benefits.html
 - Live site: https://abluemaw.github.io/starsi-site/
+- Design system (read before any design change): https://raw.githubusercontent.com/abluemaw/starsi-site/main/DESIGN.md and the page https://abluemaw.github.io/starsi-site/design/
 - If you cannot open those links, ask the teammate to paste the current section file. Never edit from memory of an older version.
 
 ## Rules
