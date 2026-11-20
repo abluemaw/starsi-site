@@ -12,5 +12,5 @@ This is a plain static website. The page is `index.html`. There is no build step
 7. Make small, clear changes and describe them in the commit message ("Change hero headline").
 
 ## How changes go live
-Every push to the `main` branch publishes the live site automatically (about 30 seconds). There is no approval step, so double-check before you push, and pull the latest first (`git pull`) so you do not overwrite a teammate's change.
-Undo a mistake: `git revert HEAD` then `git push`.
+Open a pull request against `main` (or commit straight to `main` if you can). Pull requests are merged automatically within about a minute, with no review, and the live site (GitHub Pages) rebuilds by itself. Always start from the latest `main` so you do not overwrite a teammate's change.
+Undo a mistake: open a pull request that reverts the bad commit.

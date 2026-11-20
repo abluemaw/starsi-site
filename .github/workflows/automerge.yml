@@ -1,0 +1,24 @@
+# Any pull request opened against main (for example by ChatGPT/Codex) is merged
+# right away with no review, and the live site is rebuilt.
+name: Auto-merge pull requests
+on:
+  pull_request_target:
+    types: [opened, reopened, ready_for_review, synchronize]
+permissions:
+  contents: write
+  pull-requests: write
+  pages: write
+jobs:
+  merge:
+    # Only PRs from branches inside this repo (people with Write access), never forks.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge the pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge "${{ github.event.pull_request.number }}" --squash --delete-branch --repo "${{ github.repository }}"
+      - name: Rebuild the live site
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
