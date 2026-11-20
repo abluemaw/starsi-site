@@ -304,6 +304,11 @@
   #benefits .wrap { isolation: isolate; }
   #benefits .center { position: relative; }
   #benefits .center::before { content: ""; position: absolute; inset: -34px -90px -20px; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at center, color-mix(in srgb, var(--navy-900) 72%, transparent) 0%, color-mix(in srgb, var(--navy-900) 40%, transparent) 45%, transparent 72%); }
+  /* ghosted cards: translucent frosted glass so the picture shows through */
+  #benefits .card { background: linear-gradient(180deg, color-mix(in srgb, var(--panel-light) 62%, transparent), color-mix(in srgb, var(--panel) 72%, transparent));
+    border: 1.5px solid color-mix(in srgb, var(--chrome-100) 60%, transparent); box-shadow: 0 8px 30px rgba(6, 13, 58, .22);
+    -webkit-backdrop-filter: blur(9px) saturate(1.15); backdrop-filter: blur(9px) saturate(1.15); }
+  #benefits .card:hover { background: linear-gradient(180deg, color-mix(in srgb, var(--panel-light) 62%, transparent), color-mix(in srgb, var(--panel) 72%, transparent)); border-color: var(--gold-300); }
   /* SECTION 4: BEFORE VS AFTER */
   .ba .label { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
   .before .label { color: var(--danger-bright); }
