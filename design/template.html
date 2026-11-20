@@ -308,6 +308,7 @@
 (function () {
   var root = document.documentElement, sel = document.getElementById("look");
   function fillHex() { document.querySelectorAll("[data-var]").forEach(function (el) { var v = getComputedStyle(root).getPropertyValue(el.getAttribute("data-var")).trim(); if (v) el.textContent = v.toUpperCase(); }); }
+  if (/*FIXED*/false) { fillHex(); new MutationObserver(fillHex).observe(root, { attributes: true, attributeFilter: ["data-theme"] }); return; }
   var l = ""; try { var q = new URLSearchParams(location.search).get("design"); if (q) { localStorage.setItem("starsi-look", q); } l = localStorage.getItem("starsi-look") || ""; } catch (e) {}
   if (l) root.setAttribute("data-look", l);
   fetch("../designs/variants.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {

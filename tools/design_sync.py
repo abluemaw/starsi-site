@@ -375,8 +375,8 @@ def build_design_pages():
             tag = '<span class="tag">Live design</span>' if live else ""
             return ('    <div class="card%s"><a class="shot" href="%s"><img src="img/%s.jpg" alt="The site in %s" loading="lazy" onerror="this.remove()"></a>'
                     '<div class="body">%s<h2>%s</h2><div class="dots">%s</div><p>%s</p>'
-                    '<div class="row"><a class="go" href="%s">Open page</a><a href="../?design=%s">Try on the site</a></div></div></div>'
-                    % (" live" if live else "", page, shot, H.escape(name), tag, H.escape(name), d, H.escape(desc), page, slug if not live else "live"))
+                    '<div class="row"><a class="go" href="%s">Open page</a><a href="%s">Design system</a><a href="../?design=%s">Try on the site</a></div></div></div>'
+                    % (" live" if live else "", page, shot, H.escape(name), tag, H.escape(name), d, H.escape(desc), page, ("../design/" if live else slug + "/system/"), slug if not live else "live"))
         cards.append(card("live", "Live design", "The shared design in DESIGN.md that everyone sees right now.", [col.get("gold400"), col.get("night"), col.get("electric500")], "../", "live", True))
         for v in data["variants"]:
             cards.append(card(v["slug"], v["name"], v.get("description", ""), v.get("swatches", []), v["slug"] + "/", v["slug"]))
@@ -405,18 +405,53 @@ def swatches(entries):
     return "\n".join(html)
 
 
+def render_page(entries, icons):
+    css = gen_css(entries)
+    return (read(TEMPLATE).replace("/*TOKENS*/", css).replace("<!--SWATCHES-->", swatches(entries))
+            .replace("<!--ICONS-->", icon_html(icons)).replace("<!--ICON-SPRITE-->", icon_sprite_inline(icons)))
+
+
 def build_page():
     build_looks()
     if not os.path.exists(TEMPLATE):
         return False
     _, _, entries = parse_md(read(MD))
-    css = gen_css(entries)
     icons = load_icons()
     write_sprite(icons)
-    page = (read(TEMPLATE).replace("/*TOKENS*/", css).replace("<!--SWATCHES-->", swatches(entries))
-            .replace("<!--ICONS-->", icon_html(icons)).replace("<!--ICON-SPRITE-->", icon_sprite_inline(icons)))
-    write(PAGE, page)
+    write(PAGE, render_page(entries, icons))
     return True
+
+
+def build_variant_system_pages():
+    """designs/<name>/system/index.html: the design system page for each variant, built from its merged values."""
+    import html as H, json
+    if not os.path.exists(TEMPLATE) or not os.path.isdir(DESIGNS):
+        return 0
+    _, _, base = parse_md(read(MD))
+    icons = load_icons()
+    n = 0
+    for f in variant_files():
+        slug = f[:-3]
+        text = read(os.path.join(DESIGNS, f))
+        name = meta(text, "name") or slug
+        _, _, over = parse_md(text)
+        page = render_page(merge_entries(base, over), icons)
+        page = page.replace("/*FIXED*/false", "true")
+        page = re.sub(r'<link rel="stylesheet" href="\.\./designs/looks\.css">\n?', "", page)
+        page = page.replace("<title>StarSI Gold | Design system</title>", "<title>%s | Design system</title>" % H.escape(name))
+        page = page.replace('<div class="kicker">Design system</div>\n    <h1 class="metal-text">StarSI Gold</h1>',
+                            '<div class="kicker">Design system &middot; a variant of the live design</div>\n    <h1 class="metal-text">%s</h1>' % H.escape(name))
+        page = page.replace("StarSI Gold · built from DESIGN.md", "%s · built from designs/%s.md on top of DESIGN.md" % (H.escape(name), slug))
+        page = page.replace("Everything on this page comes from <b>DESIGN.md</b>.", "Everything on this page comes from <b>designs/%s.md</b>, on top of the live <b>DESIGN.md</b>." % slug)
+        page = page.replace('<a href="https://github.com/abluemaw/starsi-site/blob/main/DESIGN.md">Open DESIGN.md</a>',
+                            '<a href="https://github.com/abluemaw/starsi-site/blob/main/designs/%s.md">Open %s.md</a>' % (slug, slug))
+        page = re.sub(r'(["\'(])\.\./', lambda m: m.group(1) + "../../../", page)
+        page = page.replace('<a href="../../../">The site</a>', '<a href="../">This design on the site</a> &middot; <a href="../../../">The live site</a>')
+        out = os.path.join(DESIGNS, slug, "system")
+        os.makedirs(out, exist_ok=True)
+        write(os.path.join(out, "index.html"), page)
+        n += 1
+    return n
 
 
 # ---------- commands ----------

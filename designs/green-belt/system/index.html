@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green belt | Design system</title>
+<meta name="description" content="The StarSI Gold design system: colours, type, buttons, cards and rules.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  @font-face { font-family:"Titillium Web"; font-weight:700; font-display:swap; src:url("../../../fonts/titillium-web-700.ttf") format("truetype"); }
+  @font-face { font-family:"Roboto"; font-weight:400; font-display:swap; src:url("../../../fonts/roboto-400.ttf") format("truetype"); }
+  @font-face { font-family:"Roboto"; font-weight:700; font-display:swap; src:url("../../../fonts/roboto-700.ttf") format("truetype"); }
+  /* ===== TOKENS: generated from DESIGN.md, do not edit here ===== */
+/* GENERATED from DESIGN.md. Edit DESIGN.md, or edit a value here: the sync copies it back to DESIGN.md. */
+:root {
+  /* colors */
+  --night: #070B1C;
+  --navy-900: #060D3A;
+  --panel: #0E1E60;
+  --panel-light: #2040AA;
+  --surface: #FFFFFF;
+  --surface-soft: #F3F5FA;
+  --surface-muted: #E3E8F3;
+  --ink: #0A1130;
+  --ink-muted: #465178;
+  --ink-on-dark: #F4F6FF;
+  --ink-on-dark-muted: #A9B3D6;
+  --gold-300: #B6F2C9;
+  --gold-400: #2FBF71;
+  --gold-500: #1E9A57;
+  --gold-600: #0F6A39;
+  --gold-900: #06331B;
+  --on-gold: #04210F;
+  --chrome-100: #F4F6FA;
+  --chrome-300: #C5CCD8;
+  --chrome-500: #8892A3;
+  --chrome-700: #4A5365;
+  --electric-300: #7FB2FF;
+  --electric-500: #1F5CFF;
+  --electric-700: #0B2FB0;
+  --link: #1646D6;
+  --border: #C3CBE0;
+  --border-strong: #66719B;
+  --success: #0B7A55;
+  --success-bright: #4FD6A0;
+  --warning: #8A5200;
+  --danger: #C0152F;
+  --danger-bright: #FF8591;
+  /* effects */
+  --gold-metal: linear-gradient(180deg,#d4fbe0 0%,#6fe3a0 28%,#1e9a57 49%,#2fbf71 52%,#9cf0bf 100%);
+  --chrome-metal: linear-gradient(180deg,#ffffff 0%,#dfe4ec 45%,#9aa4b4 50%,#cfd6e0 52%,#f4f6fa 100%);
+  --electric-metal: linear-gradient(180deg,#1f5cff 0%,#0b2fb0 100%);
+  --bevel-gold: inset 0 2px 0 #d8fbe5, inset 0 -3px 0 #0f6a39, 0 3px 0 #06331b;
+  --rim-chrome: conic-gradient(from 20deg,#f4f6fa,#aab4c6,#ffffff,#dfe4ec,#9aa4b4,#f4f6fa);
+  --rim-gold: conic-gradient(from 20deg,#fff3b0,#b96a00,#ffe27a,#f2a100,#4d2a05,#fff3b0);
+  --card-shadow: 0 10px 28px rgba(6,13,58,.28);
+  /* typography */
+  --font-display: 'Titillium Web', 'Arial Black', system-ui, sans-serif;
+  --font-body: Roboto, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  /* spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-xxxl: 64px;
+  /* rounded */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+}
+/* theme: dark (default) */
+:root {
+  --page-bg: #070B1C;
+  --page-alt: #0B1230;
+  --page-ink: #F4F6FF;
+  --page-muted: #A9B3D6;
+  --card-bg: #0B1230;
+  --line-soft: rgba(255,255,255,.14);
+  --link-page: #7FB2FF;
+  --kicker: #6FE3A0;
+  --ok-page: #4FD6A0;
+  --ok-bg: rgba(79,214,160,.15);
+  --nav-bg: rgba(7,11,28,.9);
+  --hero-glow: #14275A;
+  --headline-from: #D4FBE0;
+  --headline-mid: #6FE3A0;
+  --headline-to: #1E9A57;
+  --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
+  --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
+}
+/* theme: light (follows the visitor's device) */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --page-bg: #F3F5FA;
+    --page-alt: #FFFFFF;
+    --page-ink: #0A1130;
+    --page-muted: #465178;
+    --card-bg: #FFFFFF;
+    --line-soft: #D5DBEA;
+    --link-page: #1646D6;
+    --kicker: #8A5200;
+    --ok-page: #0B7A55;
+    --ok-bg: rgba(11,122,85,.14);
+    --nav-bg: rgba(243,245,250,.92);
+    --hero-glow: #FFF1BF;
+    --headline-from: #0A1130;
+    --headline-mid: #0A1130;
+    --headline-to: #0A1130;
+    --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
+    --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
+  }
+}
+/* theme: light, forced */
+:root[data-theme="light"] {
+  --page-bg: #F3F5FA;
+  --page-alt: #FFFFFF;
+  --page-ink: #0A1130;
+  --page-muted: #465178;
+  --card-bg: #FFFFFF;
+  --line-soft: #D5DBEA;
+  --link-page: #1646D6;
+  --kicker: #8A5200;
+  --ok-page: #0B7A55;
+  --ok-bg: rgba(11,122,85,.14);
+  --nav-bg: rgba(243,245,250,.92);
+  --hero-glow: #FFF1BF;
+  --headline-from: #0A1130;
+  --headline-mid: #0A1130;
+  --headline-to: #0A1130;
+  --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
+  --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
+}
+:root { color-scheme: dark; } :root[data-theme="light"] { color-scheme: light; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { color-scheme: light; } }
+
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { font-family:var(--font-body); background:var(--page-bg); color:var(--page-ink); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  a { color:var(--link-page); }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
+  section { padding:56px 0; border-top:1px solid var(--line-soft); }
+  .kicker { font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--kicker); margin-bottom:10px; }
+  h1,h2,h3 { font-family:var(--font-display); font-weight:900; line-height:1; letter-spacing:-.01em; }
+  h2 { font-size:clamp(30px,4.5vw,48px); margin-bottom:12px; }
+  h3 { font-size:20px; margin-bottom:10px; }
+  .lead { color:var(--page-muted); max-width:680px; font-size:18px; margin-bottom:28px; }
+  .metal-text { background:var(--text-metal); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+
+  /* top nav */
+  .top { position:sticky; top:0; z-index:20; background:var(--nav-bg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line-soft); }
+  .top .wrap { display:flex; align-items:center; justify-content:space-between; gap:16px; height:60px; }
+  .top b { font-family:var(--font-display); font-weight:900; font-size:20px; }
+  .theme { font:600 13px var(--font-body); color:var(--page-ink); background:transparent; border:1px solid var(--line-soft); border-radius:999px; padding:7px 14px; cursor:pointer; white-space:nowrap; }
+  .theme:hover { border-color:var(--page-muted); }
+  .theme:focus-visible { outline:3px solid var(--electric-500); outline-offset:2px; }
+  .top nav { display:flex; gap:20px; font-size:14px; overflow-x:auto; }
+  .top nav a { color:var(--page-muted); text-decoration:none; white-space:nowrap; }
+  .top nav a:hover { color:var(--page-ink); }
+  .hero { padding:72px 0 56px; text-align:center; background:var(--hero-bg); border:0; }
+  .hero h1 { font-size:clamp(48px,9vw,120px); margin-bottom:16px; }
+  .hero p { color:var(--page-muted); max-width:620px; margin:0 auto 28px; font-size:18px; }
+
+  /* swatches */
+  .sw-group { margin-bottom:28px; }
+  .sw-group h3 { font-size:16px; font-family:var(--font-body); font-style:normal; font-weight:700; color:var(--page-muted); letter-spacing:.06em; text-transform:uppercase; }
+  .sw-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
+  .sw { border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--line-soft); background:var(--card-bg); }
+  .sw .chip { height:84px; box-shadow:inset 0 -1px 0 var(--line-soft); }
+  .sw .meta { padding:10px 12px; font-size:13px; }
+  .sw .meta b { display:block; font-size:14px; }
+  .sw .meta span { color:var(--page-muted); font-family:ui-monospace,Menlo,monospace; font-size:12px; }
+  .metal-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:6px; }
+  .metal { height:70px; border-radius:var(--radius-md); display:grid; place-items:center; font-weight:700; font-size:13px; color:#1a0f00; }
+
+  /* type */
+  .type-card { background:var(--card-bg); border:1px solid var(--line-soft); border-radius:var(--radius-lg); padding:28px; margin-bottom:16px; }
+  .type-card .label { font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--page-muted); margin-bottom:10px; }
+  .spec-h1 { font-family:var(--font-display); font-weight:900; font-size:clamp(44px,8vw,104px); line-height:.9; }
+  .spec-h2 { font-family:var(--font-display); font-weight:900; font-size:clamp(30px,5vw,56px); line-height:1; }
+  .spec-body { font-size:18px; color:var(--page-ink); max-width:640px; }
+  .spec-small { font-size:14px; color:var(--page-muted); }
+
+  /* buttons (slanted, bevelled) */
+  .btns { display:flex; flex-wrap:wrap; gap:18px; align-items:center; margin-bottom:22px; }
+  .si-btn { position:relative; overflow:hidden; isolation:isolate; display:inline-flex; align-items:center; justify-content:center; border:0; border-radius:var(--radius-md); font-family:var(--font-body); font-weight:700; line-height:1; cursor:pointer; transform:skewX(-8deg); transition:filter .15s, transform .15s; text-decoration:none; }
+  .si-btn span { display:inline-block; transform:skewX(8deg); }
+  .si-btn:hover { filter:brightness(1.07); }
+  .si-btn:active { transform:skewX(-8deg) translateY(2px); }
+  .si-btn:focus-visible { outline:3px solid var(--electric-300); outline-offset:3px; }
+  .sm { padding:9px 15px; font-size:13px; } .md { padding:13px 23px; font-size:15px; } .lg { padding:17px 31px; font-size:17px; } .xl { padding:21px 41px; font-size:22px; }
+  .gold { background:var(--gold-metal); color:var(--on-gold); box-shadow:var(--bevel-gold); }
+  .gold::before { content:""; position:absolute; inset:0 0 50% 0; background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0)); z-index:-1; pointer-events:none; }
+  .gold::after { content:""; position:absolute; top:-30%; bottom:-30%; left:-60%; width:36%; background:linear-gradient(105deg,transparent,rgba(255,255,255,.5),transparent); transform:skewX(-20deg); z-index:-1; pointer-events:none; animation:sweep 4.5s ease-in-out infinite; }
+  @keyframes sweep { 0%,55%{left:-60%} 100%{left:130%} }
+  .chrome { background:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 1px,rgba(0,0,0,.05) 1px 2px), var(--chrome-metal); color:#0a1130; box-shadow:inset 0 -2px 0 var(--chrome-500), 0 2px 0 var(--chrome-700); }
+  .electric { background:var(--electric-metal); color:#fff; box-shadow:inset 0 1px 0 var(--electric-300), 0 2px 0 var(--navy-900); }
+  .ghost { background:transparent; color:var(--page-ink); box-shadow:inset 0 0 0 2px var(--border-strong); }
+  .si-btn:disabled { opacity:.45; cursor:not-allowed; }
+  .caption { font-size:13px; color:var(--page-muted); }
+
+  /* cards, badges, fields */
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+  .si-card { border:3px solid transparent; border-radius:var(--radius-lg); padding:24px; background:linear-gradient(180deg,rgba(32,64,170,.96),rgba(14,30,96,.96)) padding-box, var(--rim-chrome) border-box; }
+  .si-card.gold-rim { background:linear-gradient(180deg,rgba(32,64,170,.96),rgba(14,30,96,.96)) padding-box, var(--rim-gold) border-box; }
+  .si-card h3 { color:var(--ink-on-dark); }
+  .si-card p { color:#d9e3ff; font-size:15px; }
+  .badges { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  .si-badge { white-space:nowrap; font-size:13px; font-weight:700; padding:7px 14px; border-radius:var(--radius-pill); }
+  .b-gold { background:var(--gold-metal); color:var(--on-gold); box-shadow:var(--bevel-gold); }
+  .b-blue { background:rgba(31,92,255,.14); color:var(--link-page); box-shadow:inset 0 0 0 1px var(--electric-500); }
+  .b-ok { background:rgba(11,122,85,.14); color:var(--ok-page); }
+  .field { display:flex; flex-direction:column; gap:6px; max-width:360px; }
+  .field label { font-size:14px; font-weight:600; }
+  .field input { font:400 15px/24px var(--font-body); color:var(--ink); background:var(--surface-soft); border:2px solid var(--border-strong); border-radius:var(--radius-md); padding:12px 16px; }
+  .field input:focus-visible { outline:3px solid var(--gold-400); outline-offset:3px; }
+  .light-demo { box-shadow:0 0 0 1px var(--line-soft); background:var(--surface); color:var(--ink); border-radius:var(--radius-lg); padding:24px; margin-top:16px; }
+  .light-demo p { color:var(--ink-muted); }
+
+
+  /* icons */
+  .ic { width:1em; height:1em; display:inline-block; vertical-align:middle; stroke:currentColor; fill:none; }
+  .icon-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:14px; }
+  .icon-tile { background:var(--card-bg); border:1px solid var(--line-soft); border-radius:var(--radius-lg); padding:18px 10px 12px; text-align:center; }
+  .icon-tile .ic { font-size:40px; color:var(--page-ink); }
+  .icon-tile.gold .ic { color:var(--gold-400); }
+  .icon-tile b { display:block; margin-top:10px; font-size:13px; }
+  .icon-sizes { display:flex; flex-wrap:wrap; gap:22px; align-items:flex-end; margin:18px 0 26px; color:var(--page-ink); }
+  .icon-sizes div { text-align:center; font-size:12px; color:var(--page-muted); }
+  .icon-chip { display:inline-grid; place-items:center; width:64px; height:64px; border-radius:18px; background:var(--gold-metal); color:var(--on-gold); box-shadow:var(--bevel-gold); font-size:34px; }
+  .icon-chip.blue { background:linear-gradient(180deg,var(--panel-light),var(--panel)); color:var(--gold-300); box-shadow:none; border:2px solid var(--chrome-300); }
+
+  /* spacing + radius */
+  .scale { display:flex; flex-wrap:wrap; gap:18px; align-items:flex-end; }
+  .scale div { text-align:center; font-size:12px; color:var(--page-muted); }
+  .scale i { display:block; background:var(--gold-metal); margin:0 auto 6px; }
+  .radii { display:flex; flex-wrap:wrap; gap:18px; }
+  .radii div { width:96px; height:70px; background:var(--panel); border:2px solid var(--chrome-300); display:grid; place-items:center; font-size:12px; }
+
+  /* do / don't */
+  .dd { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+  .dd .box { border-radius:var(--radius-lg); padding:22px; background:var(--card-bg); border:1px solid var(--line-soft); }
+  .dd .do { border-top:4px solid var(--ok-page); } .dd .dont { border-top:4px solid #e0526a; }
+  .dd ul { margin:10px 0 0 18px; color:var(--page-ink); font-size:15px; }
+  .dd li { margin-bottom:8px; }
+  footer { padding:40px 0 64px; color:var(--page-muted); font-size:14px; text-align:center; border-top:1px solid var(--line-soft); }
+  @media (prefers-reduced-motion:reduce) { .gold::after { animation:none; } html { scroll-behavior:auto; } }
+  @media (max-width:600px) { section { padding:40px 0; } .btns { gap:14px; } }
+</style>
+</head>
+<body id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="icon-attendance" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 13l2 2 4-4"/></symbol><symbol id="icon-backpack" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6V4.5a2 2 0 014 0V6"/><rect x="5" y="6" width="14" height="15" rx="4"/><path d="M8 15h8v4H8z"/></symbol><symbol id="icon-belt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9h20v4H2z"/><rect x="9" y="7" width="6" height="8" rx="1"/><path d="M10.5 15l-2 6M13.5 15l2 6"/></symbol><symbol id="icon-billing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/></symbol><symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15.5" r="1.5"/></symbol><symbol id="icon-certificate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M7 8h10M7 11h6"/><circle cx="17" cy="14" r="2.6"/><path d="M16 16.4V21l1-1 1 1v-4.6"/></symbol><symbol id="icon-check-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 12l2.5 2.5L16 10M11 18h2"/></symbol><symbol id="icon-class-time" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="icon-dojo-gate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5c3.5 1.7 15.5 1.7 19 0"/><path d="M5 10h14M7 7v14M17 7v14M12 8v2"/></symbol><symbol id="icon-family" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><circle cx="12" cy="13" r="2"/><path d="M3 20v-2a4 4 0 014-4h2M21 20v-2a4 4 0 00-4-4h-2M8.5 20v-.5a3.5 3.5 0 017 0v.5"/></symbol><symbol id="icon-fist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h13v4a6 6 0 01-6 6h-1a6 6 0 01-6-6z"/><path d="M6 11V8a1.6 1.6 0 013.2 0v3M9.2 11V6.5a1.6 1.6 0 013.2 0V11M12.4 11V7a1.6 1.6 0 013.2 0v4M15.6 11V8.5a1.6 1.6 0 013.2 0V11"/></symbol><symbol id="icon-gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3L3 6l2 5 3-1v11h8V10l3 1 2-5-5-3"/><path d="M8 3l4 6 4-6M8 15h8"/></symbol><symbol id="icon-glove" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V6a3 3 0 016 0v1h3a3 3 0 013 3v4a6 6 0 01-6 6h-2a5 5 0 01-5-5z"/><path d="M8 17h9M13 7v4"/></symbol><symbol id="icon-gong" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18M7 3l3 5M17 3l-3 5"/><circle cx="12" cy="14" r="6"/><circle cx="12" cy="14" r="2"/><path d="M6 21l2-3M18 21l-2-3"/></symbol><symbol id="icon-homework" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 19a2 2 0 012-2h13"/></symbol><symbol id="icon-instructor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="3"/><path d="M4 21v-3a6 6 0 0112 0v3"/><path d="M19 3.5l.9 1.8 2 .3-1.4 1.4.3 2-1.8-1-1.8 1 .3-2-1.4-1.4 2-.3z"/></symbol><symbol id="icon-lesson-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4.5-2.5z"/></symbol><symbol id="icon-location" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 00-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol><symbol id="icon-mat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M3 12h4.5M16.5 12H21"/></symbol><symbol id="icon-medal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l4 7M16 2l-4 7"/><circle cx="12" cy="15" r="6"/><path d="M12 12l1 2 2.2.3-1.6 1.6.4 2.2-2-1-2 1 .4-2.2-1.6-1.6 2.2-.3z"/></symbol><symbol id="icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 011 1v10a1 1 0 01-1 1H10l-5 4v-4H4a1 1 0 01-1-1V6a1 1 0 011-1z"/><path d="M8 10h8M8 13h5"/></symbol><symbol id="icon-pro-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l1 13H4z"/><path d="M9 8V6a3 3 0 016 0v2"/></symbol><symbol id="icon-report" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20v-7M11 20V6M16 20v-10"/></symbol><symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5L16 9"/></symbol><symbol id="icon-snack" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-2-1.5-7-1-7 5 0 5 3 9 5 9 1 0 1.5-.5 2-.5s1 .5 2 .5c2 0 5-4 5-9 0-6-5-6.5-7-5z"/><path d="M12 7c0-2 1-3.5 3-4"/></symbol><symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></symbol><symbol id="icon-student" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><path d="M6 21v-3a6 6 0 0112 0v3M9 17.5h6"/></symbol><symbol id="icon-trial-lesson" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 012-2h14a2 2 0 012 2v2a2 2 0 000 4v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 000-4z"/><path d="M14 7v10" stroke-dasharray="2 2"/></symbol><symbol id="icon-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 01-10 0z"/><path d="M7 6H4v2a3 3 0 003 3M17 6h3v2a3 3 0 01-3 3M12 14v4M9 18h6M8 21h8"/></symbol></svg>
+
+<header class="top">
+  <div class="wrap">
+    <b><span class="metal-text">StarSI</span> Design</b>
+    <nav>
+      <a href="#color">Colour</a><a href="#metal">Metal</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#icons">Icons</a><a href="#cards">Cards</a><a href="#scale">Spacing</a><a href="#rules">Rules</a>
+    </nav>
+    <select class="theme" id="look" aria-label="Choose a look" hidden></select>
+    <button class="theme" id="theme" type="button" aria-label="Switch between light and dark mode">Light mode</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">Design system &middot; a variant of the live design</div>
+    <h1 class="metal-text">Green belt</h1>
+    <p>Bold, a little over the top, on purpose. A deep navy night sky, gold for the action, chrome for frames, electric blue for the AI. Everything on this page comes from <b>designs/green-belt.md</b>, on top of the live <b>DESIGN.md</b>.</p>
+    <a class="si-btn gold xl" href="#buttons"><span>See the buttons</span></a>
+  </div>
+</section>
+
+<section id="color">
+  <div class="wrap">
+    <div class="kicker">01 · Colour</div>
+    <h2>Colour</h2>
+    <p class="lead">Gold means action. Electric blue means AI and focus. Chrome is for structure. White text on dark, deep navy on light.</p>
+
+    <div class="sw-group"><h3>Ground and panels</h3><div class="sw-row">
+      <div class="sw"><div class="chip" style="background:var(--night)"></div><div class="meta"><b>night</b><span data-var="--night">#070B1C</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--navy-900)"></div><div class="meta"><b>navy900</b><span data-var="--navy-900">#060D3A</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--panel)"></div><div class="meta"><b>panel</b><span data-var="--panel">#0E1E60</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--panel-light)"></div><div class="meta"><b>panelLight</b><span data-var="--panel-light">#2040AA</span></div></div>
+    </div></div>
+    <div class="sw-group"><h3>Light surfaces</h3><div class="sw-row">
+      <div class="sw"><div class="chip" style="background:var(--surface)"></div><div class="meta"><b>surface</b><span data-var="--surface">#FFFFFF</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--surface-soft)"></div><div class="meta"><b>surfaceSoft</b><span data-var="--surface-soft">#F3F5FA</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--surface-muted)"></div><div class="meta"><b>surfaceMuted</b><span data-var="--surface-muted">#E3E8F3</span></div></div>
+    </div></div>
+    <div class="sw-group"><h3>Text</h3><div class="sw-row">
+      <div class="sw"><div class="chip" style="background:var(--ink)"></div><div class="meta"><b>ink</b><span data-var="--ink">#0A1130</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--ink-muted)"></div><div class="meta"><b>inkMuted</b><span data-var="--ink-muted">#465178</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--ink-on-dark)"></div><div class="meta"><b>inkOnDark</b><span data-var="--ink-on-dark">#F4F6FF</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--ink-on-dark-muted)"></div><div class="meta"><b>inkOnDarkMuted</b><span data-var="--ink-on-dark-muted">#A9B3D6</span></div></div>
+    </div></div>
+    <div class="sw-group"><h3>Gold: primary action, buttons, headline metal</h3><div class="sw-row">
+      <div class="sw"><div class="chip" style="background:var(--gold-300)"></div><div class="meta"><b>gold300</b><span data-var="--gold-300">#B6F2C9</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--gold-400)"></div><div class="meta"><b>gold400</b><span data-var="--gold-400">#2FBF71</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--gold-500)"></div><div class="meta"><b>gold500</b><span data-var="--gold-500">#1E9A57</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--gold-600)"></div><div class="meta"><b>gold600</b><span data-var="--gold-600">#0F6A39</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--gold-900)"></div><div class="meta"><b>gold900</b><span data-var="--gold-900">#06331B</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--on-gold)"></div><div class="meta"><b>onGold</b><span data-var="--on-gold">#04210F</span></div></div>
+    </div></div>
+    <div class="sw-group"><h3>Chrome: frames, rims, secondary buttons</h3><div class="sw-row">
+      <div class="sw"><div class="chip" style="background:var(--chrome-100)"></div><div class="meta"><b>chrome100</b><span data-var="--chrome-100">#F4F6FA</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--chrome-300)"></div><div class="meta"><b>chrome300</b><span data-var="--chrome-300">#C5CCD8</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--chrome-500)"></div><div class="meta"><b>chrome500</b><span data-var="--chrome-500">#8892A3</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--chrome-700)"></div><div class="meta"><b>chrome700</b><span data-var="--chrome-700">#4A5365</span></div></div>
+    </div></div>
+    <div class="sw-group"><h3>Electric blue: AI, links, focus</h3><div class="sw-row">
+      <div class="sw"><div class="chip" style="background:var(--electric-300)"></div><div class="meta"><b>electric300</b><span data-var="--electric-300">#7FB2FF</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--electric-500)"></div><div class="meta"><b>electric500</b><span data-var="--electric-500">#1F5CFF</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--electric-700)"></div><div class="meta"><b>electric700</b><span data-var="--electric-700">#0B2FB0</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--link)"></div><div class="meta"><b>link</b><span data-var="--link">#1646D6</span></div></div>
+    </div></div>
+    <div class="sw-group"><h3>Lines and status</h3><div class="sw-row">
+      <div class="sw"><div class="chip" style="background:var(--border)"></div><div class="meta"><b>border</b><span data-var="--border">#C3CBE0</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--border-strong)"></div><div class="meta"><b>borderStrong</b><span data-var="--border-strong">#66719B</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--success)"></div><div class="meta"><b>success</b><span data-var="--success">#0B7A55</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--success-bright)"></div><div class="meta"><b>successBright</b><span data-var="--success-bright">#4FD6A0</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--warning)"></div><div class="meta"><b>warning</b><span data-var="--warning">#8A5200</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--danger)"></div><div class="meta"><b>danger</b><span data-var="--danger">#C0152F</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--danger-bright)"></div><div class="meta"><b>dangerBright</b><span data-var="--danger-bright">#FF8591</span></div></div>
+    </div></div>
+  </div>
+</section>
+
+<section id="metal">
+  <div class="wrap">
+    <div class="kicker">02 · Metal finish</div>
+    <h2>Metal</h2>
+    <p class="lead">Gold, chrome and electric are drawn as metal: light on top, a hard horizon line in the middle, light again underneath.</p>
+    <div class="metal-row">
+      <div class="metal" style="background:var(--gold-metal)">Gold metal</div>
+      <div class="metal" style="background:var(--chrome-metal)">Chrome metal</div>
+      <div class="metal" style="background:var(--electric-metal);color:#fff">Electric metal</div>
+      <div class="metal" style="background:var(--rim-chrome);color:#0a1130">Chrome rim</div>
+      <div class="metal" style="background:var(--rim-gold)">Gold rim</div>
+    </div>
+  </div>
+</section>
+
+<section id="type">
+  <div class="wrap">
+    <div class="kicker">03 · Type</div>
+    <h2>Type</h2>
+    <p class="lead">Titillium Web Bold for headlines, Roboto for everything you read. The font names come from DESIGN.md.</p>
+    <div class="type-card"><div class="label">Display · Titillium Web 700 · fluid sizes · leading 1.15</div><div class="spec-h1 metal-text">More Students</div></div>
+    <div class="type-card"><div class="label">Heading · Titillium Web 700</div><div class="spec-h2">Run the School You Always Pictured</div></div>
+    <div class="type-card"><div class="label">Body · Roboto 400 · 18px lead, 15 to 16px elsewhere · line height 1.5 to 1.6</div>
+      <p class="spec-body">You opened a school to change lives on the mat, not to chase leads, payments, and paperwork. StarSI quietly handles the business side so you can get back to teaching.</p>
+      <p class="spec-small" style="margin-top:12px">Small print and captions, 14px, muted.</p></div>
+  </div>
+</section>
+
+<section id="buttons">
+  <div class="wrap">
+    <div class="kicker">04 · Buttons</div>
+    <h2>Buttons</h2>
+    <p class="lead">Slanted and bevelled like a trophy. The label is slanted back so the words stay upright. One gold button per view.</p>
+
+    <h3>Gold · the action</h3>
+    <div class="btns">
+      <a class="si-btn gold sm" href="#buttons"><span>Small</span></a>
+      <a class="si-btn gold md" href="#buttons"><span>Medium</span></a>
+      <a class="si-btn gold lg" href="#buttons"><span>Large</span></a>
+      <a class="si-btn gold xl" href="#buttons"><span>Book My Free Demo</span></a>
+    </div>
+    <h3>Other styles</h3>
+    <div class="btns">
+      <button class="si-btn chrome md"><span>Chrome</span></button>
+      <button class="si-btn electric md"><span>Electric</span></button>
+      <button class="si-btn ghost md"><span>Ghost</span></button>
+      <button class="si-btn gold md" disabled><span>Disabled</span></button>
+    </div>
+    <p class="caption">Gold: horizon-band gradient, dark label, bevel shadow, glossy top half, slow light sweep. Hover brightens. Press moves it down 2px. Focus shows a blue ring.</p>
+  </div>
+</section>
+
+<section id="cards">
+  <div class="wrap">
+    <div class="kicker">05 · Cards, badges, fields</div>
+    <h2>Cards and more</h2>
+    <p class="lead">Blue glass panels with a metal rim. The rim turns gold on hover or for a featured card.</p>
+    <div class="cards">
+      <div class="si-card"><h3>Fill Your Mats</h3><p>Every interested family hears back right away, even mid-class. More trial lessons, more students.</p></div>
+      <div class="si-card gold-rim"><h3>Featured card</h3><p>The gold rim marks the one card that matters most in a group.</p></div>
+      <div class="si-card"><h3>Keep Students Longer</h3><p>Know who is slipping before they quit, so you can reach out while it still matters.</p></div>
+    </div>
+    <div class="badges">
+      <span class="si-badge b-gold">No Hidden Fees</span><span class="si-badge b-blue">AI Powered</span><span class="si-badge b-ok">✓ 40+ Years of School Success</span>
+    </div>
+    <div class="light-demo">
+      <h3 style="color:var(--ink)">On light ground</h3>
+      <p>Light sections use white or soft grey with deep navy text. Fields use a soft fill and a 2px border.</p>
+      <div class="field" style="margin-top:14px"><label for="demo-name">School name</label><input id="demo-name" placeholder="Your school"></div>
+    </div>
+  </div>
+</section>
+
+<section id="icons">
+  <div class="wrap">
+    <div class="kicker">06 · Icons</div>
+    <h2>Icons</h2>
+    <p class="lead">One drawing style: 24px grid, 2px rounded line, no fills. They take the colour of the text around them, so they work in light and dark mode. To add one, save an SVG in the <b>icons</b> folder and it shows up here.</p>
+    <div class="icon-sizes">
+      <div><svg class="ic" style="font-size:24px"><use href="#icon-belt"/></svg><br>24</div>
+      <div><svg class="ic" style="font-size:32px"><use href="#icon-belt"/></svg><br>32</div>
+      <div><svg class="ic" style="font-size:48px"><use href="#icon-belt"/></svg><br>48</div>
+      <div><span class="icon-chip"><svg class="ic"><use href="#icon-trophy"/></svg></span><br>on gold</div>
+      <div><span class="icon-chip blue"><svg class="ic"><use href="#icon-star"/></svg></span><br>on blue glass</div>
+    </div>
+    <div class="icon-grid">
+      <div class="icon-tile"><svg class="ic"><use href="#icon-attendance"/></svg><b>attendance</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-backpack"/></svg><b>backpack</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-belt"/></svg><b>belt</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-billing"/></svg><b>billing</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-calendar"/></svg><b>calendar</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-certificate"/></svg><b>certificate</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-check-in"/></svg><b>check in</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-class-time"/></svg><b>class time</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-dojo-gate"/></svg><b>dojo gate</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-family"/></svg><b>family</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-fist"/></svg><b>fist</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-gi"/></svg><b>gi</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-glove"/></svg><b>glove</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-gong"/></svg><b>gong</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-homework"/></svg><b>homework</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-instructor"/></svg><b>instructor</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-lesson-video"/></svg><b>lesson video</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-location"/></svg><b>location</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-mat"/></svg><b>mat</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-medal"/></svg><b>medal</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-message"/></svg><b>message</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-pro-shop"/></svg><b>pro shop</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-report"/></svg><b>report</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-shield"/></svg><b>shield</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-snack"/></svg><b>snack</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-star"/></svg><b>star</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-student"/></svg><b>student</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-trial-lesson"/></svg><b>trial lesson</b></div>
+      <div class="icon-tile"><svg class="ic"><use href="#icon-trophy"/></svg><b>trophy</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="scale">
+  <div class="wrap">
+    <div class="kicker">07 · Spacing and corners</div>
+    <h2>Spacing and corners</h2>
+    <p class="lead">Spacing steps are 4, 8, 16, 24, 32, 48 and 64. Buttons and fields use an 8px corner, cards 14px, badges are pills.</p>
+    <div class="scale">
+      <div><i style="width:4px;height:4px"></i>4</div><div><i style="width:8px;height:8px"></i>8</div><div><i style="width:16px;height:16px"></i>16</div><div><i style="width:24px;height:24px"></i>24</div><div><i style="width:32px;height:32px"></i>32</div><div><i style="width:48px;height:48px"></i>48</div><div><i style="width:64px;height:64px"></i>64</div>
+    </div>
+    <div class="radii" style="margin-top:28px">
+      <div style="border-radius:4px">4 small</div><div style="border-radius:8px">8 buttons</div><div style="border-radius:14px">14 cards</div><div style="border-radius:999px">pill</div>
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap">
+    <div class="kicker">08 · Rules</div>
+    <h2>Do and don't</h2>
+    <div class="dd">
+      <div class="box do"><h3>Do</h3><ul>
+        <li>Use one gold button per view. It is the action.</li>
+        <li>Keep all copy exactly as written.</li>
+        <li>Use white text on dark and deep navy on light. Body text must pass 4.5 to 1.</li>
+        <li>Give every image real alt text.</li>
+        <li>Keep the reduced-motion fallbacks.</li>
+      </ul></div>
+      <div class="box dont"><h3>Don't</h3><ul>
+        <li>Put text over a face in a photo.</li>
+        <li>Use gold for body text. Gold text is for large headlines on dark only.</li>
+        <li>Put two gold buttons side by side.</li>
+        <li>Mix in the lime and ice-blue brand or the Clean White (red and navy) style.</li>
+        <li>Paste images into code as text. Save them in the images folder.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Green belt · built from designs/green-belt.md on top of DESIGN.md · <a href="https://github.com/abluemaw/starsi-site/blob/main/designs/green-belt.md">Open green-belt.md</a> · <a href="../../../designs/">All designs</a> · <a href="../../../versions/">Version history</a> · <a href="../">This design on the site</a> &middot; <a href="../../../">The live site</a> · <a href="#top">Back to top</a></div></footer>
+
+<script>
+(function () {
+  var root = document.documentElement, btn = document.getElementById("theme");
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)") : null;
+  var saved = null; try { saved = localStorage.getItem("starsi-design-theme"); } catch (e) {}
+  function apply(t) { root.setAttribute("data-theme", t); btn.textContent = t === "light" ? "Dark mode" : "Light mode"; }
+  apply(saved || (mq && mq.matches ? "light" : "dark"));
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    apply(next); try { localStorage.setItem("starsi-design-theme", next); } catch (e) {}
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var root = document.documentElement, sel = document.getElementById("look");
+  function fillHex() { document.querySelectorAll("[data-var]").forEach(function (el) { var v = getComputedStyle(root).getPropertyValue(el.getAttribute("data-var")).trim(); if (v) el.textContent = v.toUpperCase(); }); }
+  if (true) { fillHex(); new MutationObserver(fillHex).observe(root, { attributes: true, attributeFilter: ["data-theme"] }); return; }
+  var l = ""; try { var q = new URLSearchParams(location.search).get("design"); if (q) { localStorage.setItem("starsi-look", q); } l = localStorage.getItem("starsi-look") || ""; } catch (e) {}
+  if (l) root.setAttribute("data-look", l);
+  fetch("../../../designs/variants.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+    if (!d || !d.variants || !d.variants.length) { fillHex(); return; }
+    var o = document.createElement("option"); o.value = ""; o.textContent = "Live design"; sel.appendChild(o);
+    d.variants.forEach(function (v) { var x = document.createElement("option"); x.value = v.slug; x.textContent = v.name; sel.appendChild(x); });
+    sel.value = d.variants.some(function (v) { return v.slug === l; }) ? l : "";
+    if (!sel.value) root.removeAttribute("data-look");
+    sel.hidden = false; fillHex();
+    sel.addEventListener("change", function () {
+      if (sel.value) root.setAttribute("data-look", sel.value); else root.removeAttribute("data-look");
+      try { if (sel.value) localStorage.setItem("starsi-look", sel.value); else localStorage.removeItem("starsi-look"); } catch (e) {}
+      fillHex();
+    });
+  }).catch(fillHex);
+  new MutationObserver(fillHex).observe(root, { attributes: true, attributeFilter: ["data-theme", "data-look"] });
+})();
+</script>
+</body>
+</html>

@@ -68,6 +68,7 @@ if __name__ == "__main__":
         import design_sync
         design_sync.build_looks()
         n = design_sync.build_design_pages()
+        design_sync.build_variant_system_pages()
         print("Built the designs gallery and %d design page(s)" % n)
     except Exception as e:  # never block the site build on the extras
         print("Design pages skipped:", e)
