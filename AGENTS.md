@@ -1,16 +1,25 @@
 # StarSI website: instructions for ChatGPT / Codex / any AI helper
 
-This is a plain static website. The page is `index.html`. There is no build step.
+This is a plain static website. The page is built from small files in the `sections/` folder. There is no framework.
+
+## Where things are
+- `sections/NN-name.html`: the words and layout of one section (`10-hero`, `20-pain`, `30-benefits`, `40-before-after`, `50-testimonials`, `60-proof`, `70-demo`, `80-final-cta`, plus `01-header` and `90-footer`).
+- `sections/NN-name.css`: the styling for that same section.
+- `sections/00-head.html`: page title and description. `sections/00-base.css`: colours, fonts and spacing variables (`:root { ... }`).
+- `images/`: pictures (for example `images/hero.webp`). Reference them as `images/name.webp`.
+- `index.html` is GENERATED from those files by `build.py`. NEVER edit `index.html`: any change to it is thrown away at the next build.
+- To add a section: create `sections/NN-name.html` (and `.css`) with a number between 10 and 89 to set its position. Numbers 10 to 89 sit inside `<main>`.
 
 ## Rules
-1. Edit `index.html` only (add new `.html` pages next to it if asked). Keep it plain HTML and CSS, no frameworks.
+1. Edit only the section file(s) the change needs. Leave everything else exactly as it is.
 2. Use the copy the owner gives you exactly. Do not rewrite, "improve" or shorten wording unless asked.
-3. Keep section comments (`SECTION 3: BENEFITS` etc.) so others can find things.
-4. Colors and fonts live in `:root { ... }` at the top of the `<style>` block. Change those, not hundreds of lines.
+3. Keep the section comment at the top of each `.html` file (`SECTION 3: BENEFITS` etc.) and the existing class names.
+4. Site-wide colours and fonts live in `:root` in `sections/00-base.css`. Change those, not hundreds of lines.
 5. The page must work on phones. Check narrow widths.
 6. Do not add tracking scripts, forms that collect data, or external services without asking.
-7. Make small, clear changes and describe them in the commit message ("Change hero headline").
+7. Never put images inline as base64 text. Save the image file in `images/` and link to it.
+8. Make small, clear changes and describe them in the commit message ("Change hero headline").
 
 ## How changes go live
-Open a pull request against `main` (or commit straight to `main` if you can). Pull requests are merged automatically within about a minute, with no review, and the live site (GitHub Pages) rebuilds by itself. Always start from the latest `main` so you do not overwrite a teammate's change.
-Undo a mistake: open a pull request that reverts the bad commit.
+Open a pull request against `main` from a branch in this repository. Pull requests are merged automatically within about a minute, with no review. GitHub then rebuilds `index.html` and publishes the site by itself. Always start from the latest `main` so you do not overwrite a teammate's change.
+Undo a mistake: open a pull request that reverts the bad commit, or use the "Restore the site" button in the Actions tab.

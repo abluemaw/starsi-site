@@ -1,0 +1,8 @@
+  /* SECTION 4: BEFORE VS AFTER */
+  .ba .card.before { border-top: 4px solid #E57373; }
+  .ba .card.after { border-top: 4px solid #34A853; }
+  .ba .label { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
+  .before .label { color: #C62828; }
+  .after .label { color: var(--green); }
+  .ba p { font-size: 17px; color: var(--ink); }
+

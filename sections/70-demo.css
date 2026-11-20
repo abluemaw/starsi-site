@@ -1,0 +1,7 @@
+  /* SECTION 7: FREE DEMO OFFER */
+  #demo .box { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 48px; box-shadow: var(--shadow); max-width: 820px; margin: 0 auto; }
+  #demo ul { list-style: none; margin: 18px 0 30px; display: grid; gap: 10px; }
+  #demo li { background: var(--green-bg); color: var(--green); font-weight: 600; padding: 12px 16px; border-radius: 12px; }
+  #demo li::before { content: "✓  "; }
+  @media (max-width: 600px) { #demo .box { padding: 28px 22px; } }
+

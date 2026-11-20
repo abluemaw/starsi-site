@@ -56,7 +56,8 @@ Still stuck? Message Amen. Nothing is ever lost, because every version is saved.
 
 ## Plan B: if Codex isn't available (copy and paste)
 
-1. Open the file: https://github.com/abluemaw/starsi-site/blob/main/index.html
+1. Open the sections folder: https://github.com/abluemaw/starsi-site/tree/main/sections
+   Each section of the page is its own file (for example `30-benefits.html` is the Benefits cards). Click the one you want. Do not use `index.html`: it is built automatically and your change would be lost.
 2. Click the **pencil icon** (top right of the file) to edit.
 3. Press **Ctrl+F** (or **Cmd+F** on a Mac) and search for a few words from the part you want to change.
 4. Change the words, or paste in new text from ChatGPT. Only change the words, not the symbols like `<` and `>`.
@@ -66,6 +67,7 @@ Still stuck? Message Amen. Nothing is ever lost, because every version is saved.
 ---
 
 ## Rules of the road
+- Never edit `index.html` yourself. Each section has its own file in the `sections` folder.
 - Keep the owner's wording exactly as given.
 - Don't add trackers, sign-up forms, or outside services without asking Amen.
 - The testimonials and the "[BONUS GIFT]" line are still waiting for Amen's confirmation. Leave those as they are unless Amen says otherwise.

@@ -1,7 +1,7 @@
 # StarSI website (live)
 
 Live: https://abluemaw.github.io/starsi-site/ (GitHub Pages, updates about a minute after every push to `main`)
-The whole page is `index.html`. Anyone on the team can change it with ChatGPT, and the live site updates by itself.
+The page is built from small files in `sections/` (one per section) by `build.py`; `index.html` is generated, never edited by hand. Anyone on the team can change it with ChatGPT, and the live site updates by itself.
 
 ## For coworkers (using ChatGPT)
 1. Get a free GitHub account and ask Amen to add you to the repo.
@@ -14,3 +14,5 @@ The whole page is `index.html`. Anyone on the team can change it with ChatGPT, a
 ## Set up (done)
 - Repo is public (required for free GitHub Pages). Pages publishes the `main` branch.
 - Add coworkers: repo Settings > Collaborators > Add people, Write access.
+- Buttons in the repo's Actions tab: "Save this version" (name the current site) and "Restore the site" (go back to a saved name or commit).
+- After a change, GitHub rebuilds `index.html` itself (auto-merge and `build.yml`).
