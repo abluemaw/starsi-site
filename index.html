@@ -43,7 +43,7 @@
   a { color: inherit; text-decoration: none; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
   section { padding: 72px 0; }
-  .eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--kicker); margin-bottom: 12px; }
+  .eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--electric-metal); box-shadow: inset 0 1px 0 var(--electric-300), 0 2px 0 var(--navy-900); padding: 7px 16px; border-radius: var(--radius-pill); margin-bottom: 16px; }
   h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; }
   p { font-family: var(--font-body); }
   h1, h2, h3 { line-height: 1.15; letter-spacing: -.02em; }
@@ -161,9 +161,9 @@
     --ok-bg: rgba(11,122,85,.14);
     --nav-bg: rgba(243,245,250,.92);
     --hero-glow: #FFF1BF;
-    --headline-from: #E09200;
-    --headline-mid: #B96A00;
-    --headline-to: #7A4500;
+    --headline-from: #0A1130;
+    --headline-mid: #0A1130;
+    --headline-to: #0A1130;
     --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
     --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
   }
@@ -182,9 +182,9 @@
   --ok-bg: rgba(11,122,85,.14);
   --nav-bg: rgba(243,245,250,.92);
   --hero-glow: #FFF1BF;
-  --headline-from: #E09200;
-  --headline-mid: #B96A00;
-  --headline-to: #7A4500;
+  --headline-from: #0A1130;
+  --headline-mid: #0A1130;
+  --headline-to: #0A1130;
   --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
   --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
 }
@@ -234,7 +234,6 @@
     gap: 280px;
   }
   .hero-heading, .hero-details { width: 100%; }
-  .hero .eyebrow { color: var(--electric-300); }
   .hero h1 { max-width: 1000px; margin: 0 auto; font-size: clamp(36px, 4.7vw, 64px); text-shadow: 0 2px 12px rgba(0,0,0,.55); }
   .hero .lead {
     max-width: 790px;
@@ -289,7 +288,6 @@
   .todo { font-size: 13px; color: var(--kicker); background: rgba(255,198,26,.14); border: 1px dashed var(--gold-500); display: inline-block; padding: 6px 12px; border-radius: 8px; margin-top: 14px; }
   /* SECTION 6: PROOF STRIP (always dark) */
   .proof { background: var(--navy-900); color: var(--ink-on-dark); }
-  .proof .eyebrow { color: var(--gold-400); }
   .proof h2, #contact h2 { background: var(--gold-metal); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
   .proof .lead { color: var(--ink-on-dark-muted); }
   .stat { text-align: center; padding: 8px; }

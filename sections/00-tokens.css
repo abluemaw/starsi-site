@@ -94,9 +94,9 @@
     --ok-bg: rgba(11,122,85,.14);
     --nav-bg: rgba(243,245,250,.92);
     --hero-glow: #FFF1BF;
-    --headline-from: #E09200;
-    --headline-mid: #B96A00;
-    --headline-to: #7A4500;
+    --headline-from: #0A1130;
+    --headline-mid: #0A1130;
+    --headline-to: #0A1130;
     --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
     --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
   }
@@ -115,9 +115,9 @@
   --ok-bg: rgba(11,122,85,.14);
   --nav-bg: rgba(243,245,250,.92);
   --hero-glow: #FFF1BF;
-  --headline-from: #E09200;
-  --headline-mid: #B96A00;
-  --headline-to: #7A4500;
+  --headline-from: #0A1130;
+  --headline-mid: #0A1130;
+  --headline-to: #0A1130;
   --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
   --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
 }

@@ -78,6 +78,7 @@ rounded:
   pill: "999px"
 components:
   buttons: "Primary: gold metal. Vertical horizon-band gradient (#FFF3B0 > #FFD23F > #F0A000 > #FFC61A > #FFE27A), dark label #1A0F00, Roboto 700, 8px radius, slanted -8deg with the label slanted back so text stays upright. Bevel shadow: inset 0 2px 0 #FFF0A8, inset 0 -3px 0 #B96A00, 0 3px 0 #4D2A05. A glossy top half and a slow light sweep. Sizes: small 13px, medium 15px, large 17px, extra large 22px for the hero. Secondary: chrome (white to grey metal, brushed). Accent: electric blue gradient with white label. Ghost: transparent with a 2px strong border. One gold button per view is the action."
+  eyebrows: "The small label above a headline is an electric blue metal pill (999px radius, uppercase, wide tracking, white label), so it is clearly different from the headline and from the gold buttons."
   cards: "Blue glass panel: vertical gradient from #2040AA to #0E1E60 (96% opaque), 14px radius, with a metal rim (chrome conic gradient) that gets a slow light sweep. On hover or for featured cards the rim turns gold."
   badges: "Pills (999px), never wrap, 12px on phones."
   forms: "Fields: soft surface fill, 2px strong border, 8px radius. Focus shows a 3px electric blue ring (gold on dark)."
@@ -112,9 +113,9 @@ themes:
     okBg: "rgba(11,122,85,.14)"
     navBg: "rgba(243,245,250,.92)"
     heroGlow: "#FFF1BF"
-    headlineFrom: "#E09200"
-    headlineMid: "#B96A00"
-    headlineTo: "#7A4500"
+    headlineFrom: "#0A1130"
+    headlineMid: "#0A1130"
+    headlineTo: "#0A1130"
 dials:
   variance: 0.9
   density: 0.6
@@ -134,7 +135,7 @@ Big, bold and a little over the top, on purpose. The page sits on a deep navy ni
 Both are first-class. The page follows the visitor's device setting and offers a switch.
 
 - **Dark (default look):** deep navy ground, white text, bright gold headline metal.
-- **Light:** soft grey-white ground (#F3F5FA), deep navy text, white cards, deeper gold for headlines and small labels so they stay readable (#B96A00 and darker, never the bright yellow on white).
+- **Light:** soft grey-white ground, deep navy text and headlines, white cards. Headlines are solid navy in light mode (gold text is for dark ground only); the gold stays on buttons and icons.
 - **What never changes:** the gold, chrome and electric buttons, the blue glass cards with their metal rims, the spacing and corner radii. Cards keep white text in both modes.
 - **Rule:** nothing is hard-coded to one mode. Use the theme roles (page, text, textMuted, cardFill, line, link, label), not raw colours.
 
