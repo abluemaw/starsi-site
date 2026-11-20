@@ -1,5 +1,12 @@
 [
  {
+  "sha": "06c85dd4ff6340d861fa0f881b7213f946f137a2",
+  "short": "06c85dd",
+  "date": "2026-11-20T20:21:06Z",
+  "author": "erinams",
+  "message": "Soften pixel-like skin texture in the hero image (#9)"
+ },
+ {
   "sha": "37d35c6536b8e9bb42d26d1ead458dad25cfd470",
   "short": "37d35c6",
   "date": "2026-11-20T20:15:17Z",
