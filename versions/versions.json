@@ -1,5 +1,12 @@
 [
  {
+  "sha": "536a0cac8d9f90b43f8c1eda756bd50314b017ef",
+  "short": "536a0ca",
+  "date": "2026-11-20T20:54:26Z",
+  "author": "erinams",
+  "message": "Show a StarSI dashboard and emphasize the hero paragraph (#12)"
+ },
+ {
   "sha": "9ef180eef7de20f28585de07d28e05ca8746c014",
   "short": "9ef180e",
   "date": "2026-11-20T20:50:06Z",
