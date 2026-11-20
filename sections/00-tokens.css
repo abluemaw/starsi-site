@@ -33,7 +33,7 @@
   --warning: #8A5200;
   --danger: #C0152F;
   --danger-bright: #FF8591;
-  --test-pink: #FF00FF;
+  --test-pink: #00FFFF;
   /* effects */
   --gold-metal: linear-gradient(180deg,#fff3b0 0%,#ffd23f 28%,#f0a000 49%,#ffc61a 52%,#ffe27a 100%);
   --chrome-metal: linear-gradient(180deg,#ffffff 0%,#dfe4ec 45%,#9aa4b4 50%,#cfd6e0 52%,#f4f6fa 100%);
