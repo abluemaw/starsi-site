@@ -20,6 +20,7 @@ MD = os.path.join(ROOT, "DESIGN.md")
 CSS = os.path.join(ROOT, "sections", "00-tokens.css")
 TEMPLATE = os.path.join(ROOT, "design", "template.html")
 PAGE = os.path.join(ROOT, "design", "index.html")
+ICONS = os.path.join(ROOT, "icons")
 
 SECTIONS = ["colors", "effects", "typography", "spacing", "rounded", "themes"]
 # theme role -> css variable
@@ -230,6 +231,34 @@ def css_to_md(md_text, css_text):
     return "\n".join(lines), changes
 
 
+
+# ---------- icons ----------
+def load_icons():
+    """Returns [(name, inner_svg)] from icons/*.svg (sorted)."""
+    out = []
+    if not os.path.isdir(ICONS):
+        return out
+    for f in sorted(os.listdir(ICONS)):
+        if f.endswith(".svg") and f != "sprite.svg":
+            m = re.search(r"<svg[^>]*>(.*)</svg>", read(os.path.join(ICONS, f)), re.S)
+            if m:
+                out.append((f[:-4], m.group(1).strip()))
+    return out
+
+
+def write_sprite(icons):
+    syms = "".join('<symbol id="%s" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">%s</symbol>' % (n, b) for n, b in icons)
+    write(os.path.join(ICONS, "sprite.svg"), '<svg xmlns="http://www.w3.org/2000/svg">%s</svg>\n' % syms)
+
+
+def icon_html(icons):
+    return "\n".join('      <div class="icon-tile"><svg class="ic"><use href="#icon-%s"/></svg><b>%s</b></div>' % (n, n.replace("-", " ")) for n, _ in icons)
+
+
+def icon_sprite_inline(icons):
+    syms = "".join('<symbol id="icon-%s" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">%s</symbol>' % (n, b) for n, b in icons)
+    return '<svg width="0" height="0" style="position:absolute" aria-hidden="true">%s</svg>' % syms
+
 # ---------- design page ----------
 def swatches(entries):
     groups, order = {}, []
@@ -256,7 +285,10 @@ def build_page():
         return False
     _, _, entries = parse_md(read(MD))
     css = gen_css(entries)
-    page = read(TEMPLATE).replace("/*TOKENS*/", css).replace("<!--SWATCHES-->", swatches(entries))
+    icons = load_icons()
+    write_sprite(icons)
+    page = (read(TEMPLATE).replace("/*TOKENS*/", css).replace("<!--SWATCHES-->", swatches(entries))
+            .replace("<!--ICONS-->", icon_html(icons)).replace("<!--ICON-SPRITE-->", icon_sprite_inline(icons)))
     write(PAGE, page)
     return True
 

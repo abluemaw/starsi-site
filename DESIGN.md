@@ -166,6 +166,14 @@ The values themselves are never repeated in this text, so there is only one plac
 - **Body:** Roboto 400, 17 to 18px for lead paragraphs, 15 to 16px elsewhere, line height 1.5 to 1.6.
 - Fonts are files in the `fonts` folder (loaded in `sections/00-base.css`). Keep a safe fallback.
 
+## Icons
+
+- **Style:** 24px grid, 2px rounded line, no fills, one colour (it follows the text colour, so it works in light and dark).
+- **Where they live:** one SVG per icon in the `icons` folder. `icons/sprite.svg` and the Icons section of the design page are generated from that folder, so adding a file adds an icon everywhere.
+- **Use:** gold (`gold400`) for the one icon you want noticed, ink or text colour for the rest. On gold buttons and chips use `onGold`. On blue glass use `gold300` or `inkOnDark`.
+- **First set:** belt, gi, fist, dojo gate, trophy, medal, star, glove, mat, gong, certificate, shield.
+- **Rules:** keep to martial arts and school life (belts, ranks, classes, families). No weapons, no violence.
+
 ## Layout and spacing
 
 - Steps: 4, 8, 16, 24, 32, 48, 64. Section padding 64 to 112px.

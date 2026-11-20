@@ -95,6 +95,19 @@
   .light-demo { box-shadow:0 0 0 1px var(--line-soft); background:var(--surface); color:var(--ink); border-radius:var(--radius-lg); padding:24px; margin-top:16px; }
   .light-demo p { color:var(--ink-muted); }
 
+
+  /* icons */
+  .ic { width:1em; height:1em; display:inline-block; vertical-align:middle; stroke:currentColor; fill:none; }
+  .icon-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:14px; }
+  .icon-tile { background:var(--card-bg); border:1px solid var(--line-soft); border-radius:var(--radius-lg); padding:18px 10px 12px; text-align:center; }
+  .icon-tile .ic { font-size:40px; color:var(--page-ink); }
+  .icon-tile.gold .ic { color:var(--gold-400); }
+  .icon-tile b { display:block; margin-top:10px; font-size:13px; }
+  .icon-sizes { display:flex; flex-wrap:wrap; gap:22px; align-items:flex-end; margin:18px 0 26px; color:var(--page-ink); }
+  .icon-sizes div { text-align:center; font-size:12px; color:var(--page-muted); }
+  .icon-chip { display:inline-grid; place-items:center; width:64px; height:64px; border-radius:18px; background:var(--gold-metal); color:var(--on-gold); box-shadow:var(--bevel-gold); font-size:34px; }
+  .icon-chip.blue { background:linear-gradient(180deg,var(--panel-light),var(--panel)); color:var(--gold-300); box-shadow:none; border:2px solid var(--chrome-300); }
+
   /* spacing + radius */
   .scale { display:flex; flex-wrap:wrap; gap:18px; align-items:flex-end; }
   .scale div { text-align:center; font-size:12px; color:var(--page-muted); }
@@ -114,12 +127,13 @@
 </style>
 </head>
 <body id="top">
+<!--ICON-SPRITE-->
 
 <header class="top">
   <div class="wrap">
     <b><span class="metal-text">StarSI</span> Design</b>
     <nav>
-      <a href="#color">Colour</a><a href="#metal">Metal</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#cards">Cards</a><a href="#scale">Spacing</a><a href="#rules">Rules</a>
+      <a href="#color">Colour</a><a href="#metal">Metal</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#icons">Icons</a><a href="#cards">Cards</a><a href="#scale">Spacing</a><a href="#rules">Rules</a>
     </nav>
     <button class="theme" id="theme" type="button" aria-label="Switch between light and dark mode">Light mode</button>
   </div>
@@ -217,9 +231,27 @@
   </div>
 </section>
 
+<section id="icons">
+  <div class="wrap">
+    <div class="kicker">06 · Icons</div>
+    <h2>Martial arts icons</h2>
+    <p class="lead">One drawing style: 24px grid, 2px rounded line, no fills. They take the colour of the text around them, so they work in light and dark mode. To add one, save an SVG in the <b>icons</b> folder and it shows up here.</p>
+    <div class="icon-sizes">
+      <div><svg class="ic" style="font-size:24px"><use href="#icon-belt"/></svg><br>24</div>
+      <div><svg class="ic" style="font-size:32px"><use href="#icon-belt"/></svg><br>32</div>
+      <div><svg class="ic" style="font-size:48px"><use href="#icon-belt"/></svg><br>48</div>
+      <div><span class="icon-chip"><svg class="ic"><use href="#icon-trophy"/></svg></span><br>on gold</div>
+      <div><span class="icon-chip blue"><svg class="ic"><use href="#icon-star"/></svg></span><br>on blue glass</div>
+    </div>
+    <div class="icon-grid">
+<!--ICONS-->
+    </div>
+  </div>
+</section>
+
 <section id="scale">
   <div class="wrap">
-    <div class="kicker">06 · Spacing and corners</div>
+    <div class="kicker">07 · Spacing and corners</div>
     <h2>Spacing and corners</h2>
     <p class="lead">Spacing steps are 4, 8, 16, 24, 32, 48 and 64. Buttons and fields use an 8px corner, cards 14px, badges are pills.</p>
     <div class="scale">
@@ -233,7 +265,7 @@
 
 <section id="rules">
   <div class="wrap">
-    <div class="kicker">07 · Rules</div>
+    <div class="kicker">08 · Rules</div>
     <h2>Do and don't</h2>
     <div class="dd">
       <div class="box do"><h3>Do</h3><ul>
