@@ -84,6 +84,13 @@
   "message": "Refine skin texture and tones in the hero image (#4)"
  },
  {
+  "sha": "4d99015dd8d5262ddaea82c73362cd843ceb2b2d",
+  "short": "4d99015",
+  "date": "2026-11-20T16:45:53-05:00",
+  "author": "abluemaw",
+  "message": "Look picker: design variants in designs/, dropdown on site and design page, make-a-design-live button"
+ },
+ {
   "sha": "623b2c600429d0545c49754cfd2b9bf353f22aa3",
   "short": "623b2c6",
   "date": "2026-11-20T16:20:27-05:00",
