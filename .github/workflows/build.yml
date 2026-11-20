@@ -7,6 +7,9 @@ on:
     paths:
       - "sections/**"
       - "build.py"
+      - "DESIGN.md"
+      - "tools/design_sync.py"
+      - "design/template.html"
       - "images/**"
 
 permissions:
@@ -21,19 +24,22 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Rebuild index.html
+          fetch-depth: 0
+      - name: Sync the design and rebuild index.html
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BEFORE: ${{ github.event.before }}
         run: |
+          python3 tools/design_sync.py auto "${BEFORE:-HEAD~1}"
           python3 build.py
-          if git diff --quiet index.html; then
-            echo "index.html is already up to date."
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Everything is already up to date."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
-          git commit -m "Rebuild index.html from sections"
+          git add -A
+          git commit -m "Sync design and rebuild index.html"
           git push origin HEAD:main
           gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
       - name: Add a picture to the version history

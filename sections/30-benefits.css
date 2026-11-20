@@ -1,5 +1,2 @@
   /* SECTION 3: BENEFITS */
-  #benefits { background: #fff; }
-  #benefits .card { background: var(--bg); box-shadow: none; }
-  #benefits .card h3 { color: var(--primary-dark); }
-
+  #benefits { background: var(--page-alt); }

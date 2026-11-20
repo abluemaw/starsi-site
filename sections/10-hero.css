@@ -5,9 +5,9 @@
     padding: 40px 0 32px;
     min-height: clamp(760px, 56.25vw, 1080px);
     display: flex;
-    color: #fff;
+    color: var(--ink-on-dark);
     text-align: center;
-    background-color: #071427;
+    background-color: var(--night);
     background-image: linear-gradient(180deg, rgba(3, 12, 27, .78) 0%, rgba(3, 12, 27, .12) 30%, rgba(3, 12, 27, .06) 54%, rgba(3, 12, 27, .88) 82%, rgba(3, 12, 27, .96) 100%), url("images/hero.webp");
     background-size: cover;
     background-position: center;
@@ -21,7 +21,7 @@
     gap: 280px;
   }
   .hero-heading, .hero-details { width: 100%; }
-  .hero .eyebrow { color: #C8DFFF; }
+  .hero .eyebrow { color: var(--electric-300); }
   .hero h1 { max-width: 1000px; margin: 0 auto; font-size: clamp(36px, 4.7vw, 64px); text-shadow: 0 2px 12px rgba(0,0,0,.55); }
   .hero .lead {
     max-width: 790px;
@@ -42,6 +42,6 @@
     .hero .tags { gap: 8px; }
   }
   .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
-  .tag { background: var(--green-bg); color: var(--green); font-weight: 600; font-size: 14px; padding: 7px 14px; border-radius: 999px; }
+  .tag { background: var(--ok-bg); color: var(--ok-page); font-weight: 600; font-size: 14px; padding: 7px 14px; border-radius: 999px; }
   .tag::before { content: "✓ "; }
 

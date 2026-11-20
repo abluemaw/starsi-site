@@ -67,6 +67,7 @@ Still stuck? Message Amen. Nothing is ever lost, because every version is saved.
 ---
 
 ## Rules of the road
+- To change the look (colours, fonts, spacing), ask ChatGPT to change the value in `DESIGN.md`. The site and the design page at /design/ update together.
 - Never edit `index.html` yourself. Each section has its own file in the `sections` folder.
 - Keep the owner's wording exactly as given.
 - Don't add trackers, sign-up forms, or outside services without asking Amen.

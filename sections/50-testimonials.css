@@ -1,7 +1,6 @@
   /* SECTION 5: TESTIMONIALS */
-  #stories { background: #fff; }
-  .quote { background: var(--bg); border-radius: var(--radius); padding: 26px; }
+  #stories { background: var(--page-alt); }
+  .quote { background: var(--card-bg); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); padding: 26px; }
   .quote blockquote { font-size: 20px; font-weight: 600; line-height: 1.4; margin-bottom: 16px; }
-  .quote cite { font-style: normal; font-size: 14px; color: var(--muted); font-weight: 600; }
-  .todo { font-size: 13px; color: #B06000; background: #FEF7E0; border: 1px dashed #FDE293; display: inline-block; padding: 6px 12px; border-radius: 8px; margin-top: 14px; }
-
+  .quote cite { font-style: normal; font-size: 14px; color: var(--page-muted); font-weight: 600; }
+  .todo { font-size: 13px; color: var(--kicker); background: rgba(255,198,26,.14); border: 1px dashed var(--gold-500); display: inline-block; padding: 6px 12px; border-radius: 8px; margin-top: 14px; }

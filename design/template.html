@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StarSI Gold | Design system</title>
+<meta name="description" content="The StarSI Gold design system: colours, type, buttons, cards and rules.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  @font-face { font-family:"Titillium Web"; font-weight:700; font-display:swap; src:url("../fonts/titillium-web-700.ttf") format("truetype"); }
+  @font-face { font-family:"Roboto"; font-weight:400; font-display:swap; src:url("../fonts/roboto-400.ttf") format("truetype"); }
+  @font-face { font-family:"Roboto"; font-weight:700; font-display:swap; src:url("../fonts/roboto-700.ttf") format("truetype"); }
+  /* ===== TOKENS: generated from DESIGN.md, do not edit here ===== */
+/*TOKENS*/
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { font-family:var(--font-body); background:var(--page-bg); color:var(--page-ink); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  a { color:var(--link-page); }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
+  section { padding:56px 0; border-top:1px solid var(--line-soft); }
+  .kicker { font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--kicker); margin-bottom:10px; }
+  h1,h2,h3 { font-family:var(--font-display); font-weight:900; line-height:1; letter-spacing:-.01em; }
+  h2 { font-size:clamp(30px,4.5vw,48px); margin-bottom:12px; }
+  h3 { font-size:20px; margin-bottom:10px; }
+  .lead { color:var(--page-muted); max-width:680px; font-size:18px; margin-bottom:28px; }
+  .metal-text { background:var(--text-metal); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+
+  /* top nav */
+  .top { position:sticky; top:0; z-index:20; background:var(--nav-bg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line-soft); }
+  .top .wrap { display:flex; align-items:center; justify-content:space-between; gap:16px; height:60px; }
+  .top b { font-family:var(--font-display); font-weight:900; font-size:20px; }
+  .theme { font:600 13px var(--font-body); color:var(--page-ink); background:transparent; border:1px solid var(--line-soft); border-radius:999px; padding:7px 14px; cursor:pointer; white-space:nowrap; }
+  .theme:hover { border-color:var(--page-muted); }
+  .theme:focus-visible { outline:3px solid var(--electric-500); outline-offset:2px; }
+  .top nav { display:flex; gap:20px; font-size:14px; overflow-x:auto; }
+  .top nav a { color:var(--page-muted); text-decoration:none; white-space:nowrap; }
+  .top nav a:hover { color:var(--page-ink); }
+  .hero { padding:72px 0 56px; text-align:center; background:var(--hero-bg); border:0; }
+  .hero h1 { font-size:clamp(48px,9vw,120px); margin-bottom:16px; }
+  .hero p { color:var(--page-muted); max-width:620px; margin:0 auto 28px; font-size:18px; }
+
+  /* swatches */
+  .sw-group { margin-bottom:28px; }
+  .sw-group h3 { font-size:16px; font-family:var(--font-body); font-style:normal; font-weight:700; color:var(--page-muted); letter-spacing:.06em; text-transform:uppercase; }
+  .sw-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
+  .sw { border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--line-soft); background:var(--card-bg); }
+  .sw .chip { height:84px; box-shadow:inset 0 -1px 0 var(--line-soft); }
+  .sw .meta { padding:10px 12px; font-size:13px; }
+  .sw .meta b { display:block; font-size:14px; }
+  .sw .meta span { color:var(--page-muted); font-family:ui-monospace,Menlo,monospace; font-size:12px; }
+  .metal-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:6px; }
+  .metal { height:70px; border-radius:var(--radius-md); display:grid; place-items:center; font-weight:700; font-size:13px; color:#1a0f00; }
+
+  /* type */
+  .type-card { background:var(--card-bg); border:1px solid var(--line-soft); border-radius:var(--radius-lg); padding:28px; margin-bottom:16px; }
+  .type-card .label { font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--page-muted); margin-bottom:10px; }
+  .spec-h1 { font-family:var(--font-display); font-weight:900; font-size:clamp(44px,8vw,104px); line-height:.9; }
+  .spec-h2 { font-family:var(--font-display); font-weight:900; font-size:clamp(30px,5vw,56px); line-height:1; }
+  .spec-body { font-size:18px; color:var(--page-ink); max-width:640px; }
+  .spec-small { font-size:14px; color:var(--page-muted); }
+
+  /* buttons (slanted, bevelled) */
+  .btns { display:flex; flex-wrap:wrap; gap:18px; align-items:center; margin-bottom:22px; }
+  .si-btn { position:relative; overflow:hidden; isolation:isolate; display:inline-flex; align-items:center; justify-content:center; border:0; border-radius:var(--radius-md); font-family:var(--font-body); font-weight:700; line-height:1; cursor:pointer; transform:skewX(-8deg); transition:filter .15s, transform .15s; text-decoration:none; }
+  .si-btn span { display:inline-block; transform:skewX(8deg); }
+  .si-btn:hover { filter:brightness(1.07); }
+  .si-btn:active { transform:skewX(-8deg) translateY(2px); }
+  .si-btn:focus-visible { outline:3px solid var(--electric-300); outline-offset:3px; }
+  .sm { padding:9px 15px; font-size:13px; } .md { padding:13px 23px; font-size:15px; } .lg { padding:17px 31px; font-size:17px; } .xl { padding:21px 41px; font-size:22px; }
+  .gold { background:var(--gold-metal); color:var(--on-gold); box-shadow:var(--bevel-gold); }
+  .gold::before { content:""; position:absolute; inset:0 0 50% 0; background:linear-gradient(180deg,rgba(255,255,255,.55),var(--line-soft)); z-index:-1; pointer-events:none; }
+  .gold::after { content:""; position:absolute; top:-30%; bottom:-30%; left:-60%; width:36%; background:linear-gradient(105deg,transparent,rgba(255,255,255,.8),transparent); transform:skewX(-20deg); z-index:-1; pointer-events:none; animation:sweep 4.5s ease-in-out infinite; }
+  @keyframes sweep { 0%,55%{left:-60%} 100%{left:130%} }
+  .chrome { background:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 1px,rgba(0,0,0,.05) 1px 2px), var(--chrome-metal); color:#0a1130; box-shadow:inset 0 -2px 0 var(--chrome-500), 0 2px 0 var(--chrome-700); }
+  .electric { background:var(--electric-metal); color:#fff; box-shadow:inset 0 1px 0 var(--electric-300), 0 2px 0 var(--navy-900); }
+  .ghost { background:transparent; color:var(--page-ink); box-shadow:inset 0 0 0 2px var(--border-strong); }
+  .si-btn:disabled { opacity:.45; cursor:not-allowed; }
+  .caption { font-size:13px; color:var(--page-muted); }
+
+  /* cards, badges, fields */
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+  .si-card { border:3px solid transparent; border-radius:var(--radius-lg); padding:24px; background:linear-gradient(180deg,rgba(32,64,170,.96),rgba(14,30,96,.96)) padding-box, var(--rim-chrome) border-box; }
+  .si-card.gold-rim { background:linear-gradient(180deg,rgba(32,64,170,.96),rgba(14,30,96,.96)) padding-box, var(--rim-gold) border-box; }
+  .si-card h3 { color:var(--ink-on-dark); }
+  .si-card p { color:#d9e3ff; font-size:15px; }
+  .badges { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  .si-badge { white-space:nowrap; font-size:13px; font-weight:700; padding:7px 14px; border-radius:var(--radius-pill); }
+  .b-gold { background:var(--gold-metal); color:var(--on-gold); box-shadow:var(--bevel-gold); }
+  .b-blue { background:rgba(31,92,255,.14); color:var(--link-page); box-shadow:inset 0 0 0 1px var(--electric-500); }
+  .b-ok { background:rgba(11,122,85,.14); color:var(--ok-page); }
+  .field { display:flex; flex-direction:column; gap:6px; max-width:360px; }
+  .field label { font-size:14px; font-weight:600; }
+  .field input { font:400 15px/24px var(--font-body); color:var(--ink); background:var(--surface-soft); border:2px solid var(--border-strong); border-radius:var(--radius-md); padding:12px 16px; }
+  .field input:focus-visible { outline:3px solid var(--gold-400); outline-offset:3px; }
+  .light-demo { box-shadow:0 0 0 1px var(--line-soft); background:var(--surface); color:var(--ink); border-radius:var(--radius-lg); padding:24px; margin-top:16px; }
+  .light-demo p { color:var(--ink-muted); }
+
+  /* spacing + radius */
+  .scale { display:flex; flex-wrap:wrap; gap:18px; align-items:flex-end; }
+  .scale div { text-align:center; font-size:12px; color:var(--page-muted); }
+  .scale i { display:block; background:var(--gold-metal); margin:0 auto 6px; }
+  .radii { display:flex; flex-wrap:wrap; gap:18px; }
+  .radii div { width:96px; height:70px; background:var(--panel); border:2px solid var(--chrome-300); display:grid; place-items:center; font-size:12px; }
+
+  /* do / don't */
+  .dd { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+  .dd .box { border-radius:var(--radius-lg); padding:22px; background:var(--card-bg); border:1px solid var(--line-soft); }
+  .dd .do { border-top:4px solid var(--ok-page); } .dd .dont { border-top:4px solid #e0526a; }
+  .dd ul { margin:10px 0 0 18px; color:var(--page-ink); font-size:15px; }
+  .dd li { margin-bottom:8px; }
+  footer { padding:40px 0 64px; color:var(--page-muted); font-size:14px; text-align:center; border-top:1px solid var(--line-soft); }
+  @media (prefers-reduced-motion:reduce) { .gold::after { animation:none; } html { scroll-behavior:auto; } }
+  @media (max-width:600px) { section { padding:40px 0; } .btns { gap:14px; } }
+</style>
+</head>
+<body id="top">
+
+<header class="top">
+  <div class="wrap">
+    <b><span class="metal-text">StarSI</span> Design</b>
+    <nav>
+      <a href="#color">Colour</a><a href="#metal">Metal</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#cards">Cards</a><a href="#scale">Spacing</a><a href="#rules">Rules</a>
+    </nav>
+    <button class="theme" id="theme" type="button" aria-label="Switch between light and dark mode">Light mode</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">Design system</div>
+    <h1 class="metal-text">StarSI Gold</h1>
+    <p>Bold, a little over the top, on purpose. A deep navy night sky, gold for the action, chrome for frames, electric blue for the AI. Everything on this page comes from <b>DESIGN.md</b>.</p>
+    <a class="si-btn gold xl" href="#buttons"><span>See the buttons</span></a>
+  </div>
+</section>
+
+<section id="color">
+  <div class="wrap">
+    <div class="kicker">01 · Colour</div>
+    <h2>Colour</h2>
+    <p class="lead">Gold means action. Electric blue means AI and focus. Chrome is for structure. White text on dark, deep navy on light.</p>
+
+<!--SWATCHES-->
+  </div>
+</section>
+
+<section id="metal">
+  <div class="wrap">
+    <div class="kicker">02 · Metal finish</div>
+    <h2>Metal</h2>
+    <p class="lead">Gold, chrome and electric are drawn as metal: light on top, a hard horizon line in the middle, light again underneath.</p>
+    <div class="metal-row">
+      <div class="metal" style="background:var(--gold-metal)">Gold metal</div>
+      <div class="metal" style="background:var(--chrome-metal)">Chrome metal</div>
+      <div class="metal" style="background:var(--electric-metal);color:#fff">Electric metal</div>
+      <div class="metal" style="background:var(--rim-chrome);color:#0a1130">Chrome rim</div>
+      <div class="metal" style="background:var(--rim-gold)">Gold rim</div>
+    </div>
+  </div>
+</section>
+
+<section id="type">
+  <div class="wrap">
+    <div class="kicker">03 · Type</div>
+    <h2>Type</h2>
+    <p class="lead">Titillium Web Bold for headlines, Roboto for everything you read. The font names come from DESIGN.md.</p>
+    <div class="type-card"><div class="label">Display · Titillium Web 700 · fluid sizes · leading 1.15</div><div class="spec-h1 metal-text">More Students</div></div>
+    <div class="type-card"><div class="label">Heading · Titillium Web 700</div><div class="spec-h2">Run the School You Always Pictured</div></div>
+    <div class="type-card"><div class="label">Body · Roboto 400 · 18px lead, 15 to 16px elsewhere · line height 1.5 to 1.6</div>
+      <p class="spec-body">You opened a school to change lives on the mat, not to chase leads, payments, and paperwork. StarSI quietly handles the business side so you can get back to teaching.</p>
+      <p class="spec-small" style="margin-top:12px">Small print and captions, 14px, muted.</p></div>
+  </div>
+</section>
+
+<section id="buttons">
+  <div class="wrap">
+    <div class="kicker">04 · Buttons</div>
+    <h2>Buttons</h2>
+    <p class="lead">Slanted and bevelled like a trophy. The label is slanted back so the words stay upright. One gold button per view.</p>
+
+    <h3>Gold · the action</h3>
+    <div class="btns">
+      <a class="si-btn gold sm" href="#buttons"><span>Small</span></a>
+      <a class="si-btn gold md" href="#buttons"><span>Medium</span></a>
+      <a class="si-btn gold lg" href="#buttons"><span>Large</span></a>
+      <a class="si-btn gold xl" href="#buttons"><span>Book My Free Demo</span></a>
+    </div>
+    <h3>Other styles</h3>
+    <div class="btns">
+      <button class="si-btn chrome md"><span>Chrome</span></button>
+      <button class="si-btn electric md"><span>Electric</span></button>
+      <button class="si-btn ghost md"><span>Ghost</span></button>
+      <button class="si-btn gold md" disabled><span>Disabled</span></button>
+    </div>
+    <p class="caption">Gold: horizon-band gradient, dark label, bevel shadow, glossy top half, slow light sweep. Hover brightens. Press moves it down 2px. Focus shows a blue ring.</p>
+  </div>
+</section>
+
+<section id="cards">
+  <div class="wrap">
+    <div class="kicker">05 · Cards, badges, fields</div>
+    <h2>Cards and more</h2>
+    <p class="lead">Blue glass panels with a metal rim. The rim turns gold on hover or for a featured card.</p>
+    <div class="cards">
+      <div class="si-card"><h3>Fill Your Mats</h3><p>Every interested family hears back right away, even mid-class. More trial lessons, more students.</p></div>
+      <div class="si-card gold-rim"><h3>Featured card</h3><p>The gold rim marks the one card that matters most in a group.</p></div>
+      <div class="si-card"><h3>Keep Students Longer</h3><p>Know who is slipping before they quit, so you can reach out while it still matters.</p></div>
+    </div>
+    <div class="badges">
+      <span class="si-badge b-gold">No Hidden Fees</span><span class="si-badge b-blue">AI Powered</span><span class="si-badge b-ok">✓ 40+ Years of School Success</span>
+    </div>
+    <div class="light-demo">
+      <h3 style="color:var(--ink)">On light ground</h3>
+      <p>Light sections use white or soft grey with deep navy text. Fields use a soft fill and a 2px border.</p>
+      <div class="field" style="margin-top:14px"><label for="demo-name">School name</label><input id="demo-name" placeholder="Your school"></div>
+    </div>
+  </div>
+</section>
+
+<section id="scale">
+  <div class="wrap">
+    <div class="kicker">06 · Spacing and corners</div>
+    <h2>Spacing and corners</h2>
+    <p class="lead">Spacing steps are 4, 8, 16, 24, 32, 48 and 64. Buttons and fields use an 8px corner, cards 14px, badges are pills.</p>
+    <div class="scale">
+      <div><i style="width:4px;height:4px"></i>4</div><div><i style="width:8px;height:8px"></i>8</div><div><i style="width:16px;height:16px"></i>16</div><div><i style="width:24px;height:24px"></i>24</div><div><i style="width:32px;height:32px"></i>32</div><div><i style="width:48px;height:48px"></i>48</div><div><i style="width:64px;height:64px"></i>64</div>
+    </div>
+    <div class="radii" style="margin-top:28px">
+      <div style="border-radius:4px">4 small</div><div style="border-radius:8px">8 buttons</div><div style="border-radius:14px">14 cards</div><div style="border-radius:999px">pill</div>
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap">
+    <div class="kicker">07 · Rules</div>
+    <h2>Do and don't</h2>
+    <div class="dd">
+      <div class="box do"><h3>Do</h3><ul>
+        <li>Use one gold button per view. It is the action.</li>
+        <li>Keep all copy exactly as written.</li>
+        <li>Use white text on dark and deep navy on light. Body text must pass 4.5 to 1.</li>
+        <li>Give every image real alt text.</li>
+        <li>Keep the reduced-motion fallbacks.</li>
+      </ul></div>
+      <div class="box dont"><h3>Don't</h3><ul>
+        <li>Put text over a face in a photo.</li>
+        <li>Use gold for body text. Gold text is for large headlines on dark only.</li>
+        <li>Put two gold buttons side by side.</li>
+        <li>Mix in the lime and ice-blue brand or the Clean White (red and navy) style.</li>
+        <li>Paste images into code as text. Save them in the images folder.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">StarSI Gold · built from DESIGN.md · <a href="#top">Back to top</a></div></footer>
+
+<script>
+(function () {
+  var root = document.documentElement, btn = document.getElementById("theme");
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)") : null;
+  var saved = null; try { saved = localStorage.getItem("starsi-design-theme"); } catch (e) {}
+  function apply(t) { root.setAttribute("data-theme", t); btn.textContent = t === "light" ? "Dark mode" : "Light mode"; }
+  apply(saved || (mq && mq.matches ? "light" : "dark"));
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    apply(next); try { localStorage.setItem("starsi-design-theme", next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

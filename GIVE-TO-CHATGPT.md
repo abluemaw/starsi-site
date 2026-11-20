@@ -13,7 +13,7 @@ You are helping a teammate edit the StarSI website. Read all of this first, then
 1. Make only the change the teammate asked for. Leave everything else exactly as it is.
 2. Use the teammate's wording exactly. Do not rewrite, shorten or "improve" copy unless asked.
 3. Keep the section comment at the top of each section file and the existing class names.
-4. Colors, fonts and spacing are the variables in `:root { ... }` in `sections/00-base.css`. Change those for site-wide changes instead of editing many lines.
+4. Colors, fonts, spacing and corners are values at the top of `DESIGN.md` (the design system). For a design change like "make the gold deeper" or "use rounder buttons", edit that value in `DESIGN.md` and nothing else; the site and the design page rebuild by themselves. In section CSS use the variables only (for example `var(--gold-400)`), never raw colours. Never edit `design/index.html`.
 5. It must look right on a phone. Keep the existing responsive rules.
 6. No tracking scripts, no forms that collect data, no new outside services or libraries.
 7. The page has two placeholders waiting on the owner: `[Confirm each quote is OK to reuse under the StarSI name]` and `[BONUS GIFT: name it here]`. Do not remove or fill them in unless the teammate says the owner approved.

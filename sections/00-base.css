@@ -19,41 +19,32 @@
     font-display: swap;
     src: url("fonts/roboto-700.ttf") format("truetype");
   }
-  :root {
-    --bg: #F5F7FA;
-    --card: #FFFFFF;
-    --ink: #1F2937;
-    --muted: #5F6368;
-    --line: #E2E8F0;
-    --primary: #1A73E8;
-    --primary-dark: #1557B0;
-    --pill: #E8F0FE;
-    --green-bg: #E6F4EA;
-    --green: #137333;
-    --dark: #111827;
-    --radius: 16px;
-    --shadow: 0 4px 12px rgba(0,0,0,.06);
-    --font-heading: "Titillium Web", sans-serif;
-    --font-paragraph: "Roboto", sans-serif;
-    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
+  /* Design values (colours, fonts, spacing) come from DESIGN.md via 00-tokens.css. Use var(--...) names, never raw colours. */
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-body); background: var(--page-bg); color: var(--page-ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
   a { color: inherit; text-decoration: none; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
   section { padding: 72px 0; }
-  .eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; }
-  h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; }
-  p { font-family: var(--font-paragraph); }
+  .eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--kicker); margin-bottom: 12px; }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; }
+  p { font-family: var(--font-body); }
   h1, h2, h3 { line-height: 1.15; letter-spacing: -.02em; }
   h1 { font-size: clamp(38px, 6vw, 64px); font-weight: 700; }
-  h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; }
+  h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; background: var(--text-metal); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
   h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-  .lead { font-size: 18px; color: var(--muted); max-width: 640px; }
+  .lead { font-size: 18px; color: var(--page-muted); max-width: 640px; }
   .center { text-align: center; }
   .center .lead { margin-left: auto; margin-right: auto; }
-  .btn { display: inline-block; background: var(--primary); color: #fff; font-weight: 700; padding: 14px 26px; border-radius: 999px; transition: background .15s, transform .15s; }
-  .btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
-  .btn.small { padding: 9px 18px; font-size: 14px; }
-
+  /* Gold metal button: slanted shape, upright label, bevel, gloss, slow light sweep */
+  .btn { position: relative; isolation: isolate; display: inline-block; color: var(--on-gold); font-family: var(--font-body); font-weight: 700; padding: 15px 30px; transition: transform .15s; }
+  .btn::before { content: ""; position: absolute; inset: 0; z-index: -1; transform: skewX(-8deg); border-radius: var(--radius-md); box-shadow: var(--bevel-gold);
+    background-image: linear-gradient(105deg, transparent 42%, rgba(255,255,255,.85) 50%, transparent 58%), linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,0) 50%), var(--gold-metal);
+    background-size: 300% 100%, 100% 100%, 100% 100%; background-repeat: no-repeat; background-position: 130% 0, 0 0, 0 0; animation: btn-sweep 4.5s ease-in-out infinite; transition: filter .15s; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:hover::before { filter: brightness(1.08); }
+  .btn:active { transform: translateY(2px); }
+  .btn:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 4px; }
+  .btn.small { padding: 10px 20px; font-size: 14px; }
+  @keyframes btn-sweep { 0%, 55% { background-position: 130% 0, 0 0, 0 0; } 100% { background-position: -30% 0, 0 0, 0 0; } }
+  @media (prefers-reduced-motion: reduce) { .btn::before { animation: none; } html { scroll-behavior: auto; } }

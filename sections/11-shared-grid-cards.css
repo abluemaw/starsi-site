@@ -4,6 +4,9 @@
   .g4 { grid-template-columns: repeat(4, 1fr); }
   @media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
-  .card p { color: var(--muted); }
-
+  /* Blue glass card with a chrome metal rim (rim turns gold on hover) */
+  .card { border: 3px solid transparent; border-radius: var(--radius-lg); padding: 26px; color: var(--ink-on-dark); box-shadow: var(--card-shadow);
+    background: linear-gradient(180deg, var(--panel-light), var(--panel)) padding-box, var(--rim-chrome) border-box; transition: transform .2s; }
+  .card:hover { background: linear-gradient(180deg, var(--panel-light), var(--panel)) padding-box, var(--rim-gold) border-box; transform: translateY(-2px); }
+  .card h3 { color: var(--ink-on-dark); }
+  .card p { color: var(--ink-on-dark); opacity: .88; }
