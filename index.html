@@ -295,11 +295,15 @@
   /* SECTION 3: BENEFITS (picture behind the cards; a navy overlay keeps the text readable, no faces in the picture) */
   #benefits { color: var(--ink-on-dark);
     background-color: var(--navy-900);
-    background-image: linear-gradient(180deg, color-mix(in srgb, var(--navy-900) 60%, transparent) 0%, color-mix(in srgb, var(--navy-900) 22%, transparent) 50%, color-mix(in srgb, var(--navy-900) 58%, transparent) 100%), url("images/benefits-bg.webp");
+    background-image: linear-gradient(180deg, color-mix(in srgb, var(--navy-900) 34%, transparent) 0%, color-mix(in srgb, var(--navy-900) 4%, transparent) 50%, color-mix(in srgb, var(--navy-900) 26%, transparent) 100%), url("images/benefits-bg.webp");
     background-size: cover; background-position: center; background-repeat: no-repeat; }
-  #benefits h2 { color: var(--heading-on-dark); text-shadow: 0 2px 14px rgba(6,13,58,.7); }
-  #benefits .eyebrow { color: var(--electric-300); }
-  #benefits .lead { color: var(--ink-on-dark); text-shadow: 0 1px 10px rgba(6,13,58,.8); }
+  #benefits h2 { color: var(--heading-on-dark); text-shadow: 0 2px 4px rgba(6,13,58,.55), 0 4px 22px rgba(6,13,58,.85); }
+  #benefits .eyebrow { color: var(--ink-on-dark); text-shadow: 0 1px 3px rgba(6,13,58,.7), 0 2px 14px rgba(6,13,58,.85); }
+  #benefits .lead { color: var(--ink-on-dark); text-shadow: 0 1px 3px rgba(6,13,58,.7), 0 2px 16px rgba(6,13,58,.9); }
+  /* soft dark glow behind the headline block so it reads over the bright windows */
+  #benefits .wrap { isolation: isolate; }
+  #benefits .center { position: relative; }
+  #benefits .center::before { content: ""; position: absolute; inset: -34px -90px -20px; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at center, color-mix(in srgb, var(--navy-900) 72%, transparent) 0%, color-mix(in srgb, var(--navy-900) 40%, transparent) 45%, transparent 72%); }
   /* SECTION 4: BEFORE VS AFTER */
   .ba .label { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
   .before .label { color: var(--danger-bright); }
