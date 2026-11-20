@@ -63,6 +63,13 @@
   "message": "Refine skin texture and tones in the hero image (#4)"
  },
  {
+  "sha": "0b2d0832ce59f2da356e8373ecb617ed54506244",
+  "short": "0b2d083",
+  "date": "2026-11-20T15:56:09-05:00",
+  "author": "abluemaw",
+  "message": "Gold design system: DESIGN.md, two-way design sync, restyled sections, design page"
+ },
+ {
   "sha": "21fdd7486357d5c58a9d47a06d42ba8b6c93c1d1",
   "short": "21fdd74",
   "date": "2026-11-20T15:12:01-05:00",
