@@ -43,7 +43,6 @@ colors:
   warning: "#8A5200"
   danger: "#C0152F"
   dangerBright: "#FF8591"
-  testPink: "#00FFFF"
 effects:
   goldMetal: "linear-gradient(180deg,#fff3b0 0%,#ffd23f 28%,#f0a000 49%,#ffc61a 52%,#ffe27a 100%)"
   chromeMetal: "linear-gradient(180deg,#ffffff 0%,#dfe4ec 45%,#9aa4b4 50%,#cfd6e0 52%,#f4f6fa 100%)"
