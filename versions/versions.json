@@ -70,6 +70,13 @@
   "message": "Refine skin texture and tones in the hero image (#4)"
  },
  {
+  "sha": "df56b2b9bfa5c962376cb99f4ed6a856a0125264",
+  "short": "df56b2b",
+  "date": "2026-11-20T16:12:13-05:00",
+  "author": "abluemaw",
+  "message": "Eyebrows: plain blue text with gold bars, no pill"
+ },
+ {
   "sha": "d6ddc5c55c9029f191d7e2dce27a789e9059198d",
   "short": "d6ddc5c",
   "date": "2026-11-20T16:10:46-05:00",
