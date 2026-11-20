@@ -1,0 +1,42 @@
+name: Restore the site
+# A button: Actions tab > "Restore the site" > Run workflow.
+# Puts the site back to a saved version (or any older commit code). History is kept, so a restore can be undone too.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Saved name (like saved-hero-stars-ok) or a commit code from the history page"
+        required: true
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Put the site back
+        env:
+          VERSION: ${{ inputs.version }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          if ! git rev-parse --verify --quiet "$VERSION^{commit}" >/dev/null; then
+            echo "Could not find '$VERSION'. Check the spelling against https://github.com/${{ github.repository }}/tags"
+            exit 1
+          fi
+          git restore --source="$VERSION" --staged --worktree -- . ':!.github'
+          if git diff --cached --quiet; then
+            echo "The site is already at that version. Nothing to do."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Restore site to $VERSION"
+          git push origin HEAD:main
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
