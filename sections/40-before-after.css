@@ -1,6 +1,4 @@
   /* SECTION 4: BEFORE VS AFTER */
-  .ba .card.before { box-shadow: inset 0 4px 0 var(--danger-bright), var(--card-shadow); }
-  .ba .card.after { box-shadow: inset 0 4px 0 var(--success-bright), var(--card-shadow); }
   .ba .label { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
   .before .label { color: var(--danger-bright); }
   .after .label { color: var(--success-bright); }

@@ -1,2 +1,2 @@
   /* SECTION 2: PAIN POINTS */
-  .pain .card { box-shadow: inset 0 4px 0 var(--danger-bright), var(--card-shadow); }
+  .pain .card { box-shadow: var(--card-shadow); }
