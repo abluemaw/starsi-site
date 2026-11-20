@@ -172,6 +172,7 @@ The values themselves are never repeated in this text, so there is only one plac
 - **Where they live:** one SVG per icon in the `icons` folder. `icons/sprite.svg` and the Icons section of the design page are generated from that folder, so adding a file adds an icon everywhere.
 - **Use:** gold (`gold400`) for the one icon you want noticed, ink or text colour for the rest. On gold buttons and chips use `onGold`. On blue glass use `gold300` or `inkOnDark`.
 - **First set:** belt, gi, fist, dojo gate, trophy, medal, star, glove, mat, gong, certificate, shield.
+- **Second set (class and school life):** attendance, family, calendar, pro shop, billing, check-in, trial lesson, student, instructor, message, report, location, class time, backpack, snack, lesson video, homework.
 - **Rules:** keep to martial arts and school life (belts, ranks, classes, families). No weapons, no violence.
 
 ## Layout and spacing
