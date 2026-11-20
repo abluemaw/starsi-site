@@ -96,6 +96,15 @@
   .light-demo p { color:var(--ink-muted); }
 
 
+
+  /* logo */
+  .logo-panels { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+  .logo-panel { border-radius:var(--radius-lg); padding:40px 24px 18px; text-align:center; border:1px solid var(--line-soft); }
+  .logo-panel img { display:block; max-width:min(100%,320px); max-height:90px; height:auto; margin:0 auto 18px; }
+  .logo-panel span { font-size:12px; letter-spacing:.1em; text-transform:uppercase; }
+  .logo-panel.dark { background:#0B0D14; color:#9AA3B8; }
+  .logo-panel.light { background:#FFFFFF; color:#465178; }
+
   /* icons */
   .ic { width:1em; height:1em; display:inline-block; vertical-align:middle; stroke:currentColor; fill:none; }
   .icon-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:14px; }
@@ -133,7 +142,7 @@
   <div class="wrap">
     <b><span class="metal-text">StarSI</span> Design</b>
     <nav>
-      <a href="#color">Colour</a><a href="#metal">Metal</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#icons">Icons</a><a href="#cards">Cards</a><a href="#scale">Spacing</a><a href="#rules">Rules</a>
+      <a href="#logo">Logo</a><a href="#color">Colour</a><a href="#metal">Metal</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#icons">Icons</a><a href="#cards">Cards</a><a href="#scale">Spacing</a><a href="#rules">Rules</a>
     </nav>
     <select class="theme" id="look" aria-label="Choose a look" hidden></select>
     <button class="theme" id="theme" type="button" aria-label="Switch between light and dark mode">Light mode</button>
@@ -149,6 +158,7 @@
   </div>
 </section>
 
+<!--LOGO-->
 <section id="color">
   <div class="wrap">
     <div class="kicker">01 · Colour</div>

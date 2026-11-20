@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-look="instrument">
+<html lang="en" data-look="instrument" data-logo-light>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,6 +80,7 @@
   --ink-muted: #465178;
   --ink-on-dark: #F4F6FF;
   --ink-on-dark-muted: #A9B3D6;
+  --heading-on-dark: var(--gold-400);
   --gold-300: #FFE680;
   --gold-400: #FFC61A;
   --gold-500: #F2A100;
@@ -143,7 +144,7 @@
   --ok-bg: rgba(79,214,160,.15);
   --nav-bg: rgba(7,11,28,.9);
   --hero-glow: #14275A;
-  --heading: #FFC61A;
+  --heading: var(--gold-400);
   --headline-from: #FFF3B0;
   --headline-mid: #FFC61A;
   --headline-to: #F2A100;
@@ -165,7 +166,7 @@
     --ok-bg: rgba(11,122,85,.14);
     --nav-bg: rgba(243,245,250,.92);
     --hero-glow: #FFF1BF;
-    --heading: #FFC61A;
+    --heading: var(--gold-400);
     --headline-from: #0A1130;
     --headline-mid: #0A1130;
     --headline-to: #0A1130;
@@ -187,7 +188,7 @@
   --ok-bg: rgba(11,122,85,.14);
   --nav-bg: rgba(243,245,250,.92);
   --hero-glow: #FFF1BF;
-  --heading: #FFC61A;
+  --heading: var(--gold-400);
   --headline-from: #0A1130;
   --headline-mid: #0A1130;
   --headline-to: #0A1130;
@@ -196,6 +197,7 @@
 }
 :root { color-scheme: dark; } :root[data-theme="light"] { color-scheme: light; }
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { color-scheme: light; } }
+@media (min-width: 601px) { .nav-logo { width: 220px; } }
   /* HEADER (shared on all pages) */
   header { position: sticky; top: 0; z-index: 10; background: var(--nav-bg); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line-soft); }
   .nav { display: flex; align-items: center; justify-content: space-between; height: 66px; gap: 16px; }
@@ -206,7 +208,11 @@
   @media (max-width: 820px) { .links a.plain { display: none; } }
 
   .nav .brand { flex-shrink: 0; }
-  .nav-logo { display: block; width: 220px; height: auto; }
+  .nav-logo { display: block; height: auto; }
+  .nav-logo.logo-light { display: none; }
+  @media (prefers-color-scheme: light) { :root[data-logo-light]:not([data-theme="dark"]) .logo-dark { display: none; } :root[data-logo-light]:not([data-theme="dark"]) .logo-light { display: block; } }
+  :root[data-logo-light][data-theme="light"] .logo-dark { display: none; }
+  :root[data-logo-light][data-theme="light"] .logo-light { display: block; }
   @media (max-width: 600px) {
     .nav { gap: 10px; }
     .nav-logo { width: clamp(84px, 26vw, 140px); }
@@ -299,6 +305,8 @@
   .todo { font-size: 13px; color: var(--kicker); background: rgba(255,198,26,.14); border: 1px dashed var(--gold-500); display: inline-block; padding: 6px 12px; border-radius: 8px; margin-top: 14px; }
   /* SECTION 6: PROOF STRIP (always dark) */
   .proof { background: var(--navy-900); color: var(--ink-on-dark); }
+  .proof h2, #contact h2 { color: var(--heading-on-dark); }
+  .proof .eyebrow, #contact .eyebrow { color: var(--electric-300); }
   .proof .lead { color: var(--ink-on-dark-muted); }
   .stat { text-align: center; padding: 8px; }
   .stat .big { font-family: var(--font-display); font-size: 44px; font-weight: 700; line-height: 1.1; background: var(--gold-metal); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
@@ -333,6 +341,7 @@
   @media (max-width: 600px) { .to-top { right: 16px; bottom: 16px; width: 50px; height: 50px; } }
   @media (prefers-reduced-motion: reduce) { .to-top { transition: opacity .2s; } }
 </style>
+<script>window.SITE_ROOT="../../";</script>
 <style>.look-picker{display:none!important}.look-badge{position:fixed;left:16px;bottom:16px;z-index:40;font:600 13px var(--font-body);color:var(--page-ink);background:var(--card-bg);border:1px solid var(--line-soft);border-radius:var(--radius-md);padding:8px 12px;box-shadow:var(--card-shadow)}.look-badge:hover{border-color:var(--page-muted)}</style>
 </head>
 <body id="top">
@@ -340,7 +349,8 @@
 <!-- HEADER (shared on all pages) -->
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="StarSI AI home"><img class="nav-logo" src="../../images/starsi-ai-logo.webp" alt="StarSI AI" width="994" height="197"></a>
+    <a class="brand" href="#top" aria-label="StarSI AI home"><img class="nav-logo logo-dark" src="../../images/starsi-logo-on-dark.svg" alt="StarSI AI" width="994" height="197">
+      <img class="nav-logo logo-light" src="../../images/starsi-logo-on-light.svg" alt="StarSI AI"></a>
     <nav class="links">
       <a class="plain" href="#top">Home</a>
       <a class="plain" href="#benefits">Benefits</a>
@@ -534,6 +544,16 @@
   var root = document.documentElement;
   fetch("../../designs/variants.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d || d.picker === false || !d.variants || !d.variants.length) return;
+    var darkImg = document.querySelector(".logo-dark"), lightImg = document.querySelector(".logo-light");
+    var base = window.SITE_ROOT || "";
+    var liveLogo = (d.live && d.live.logo) || (darkImg && darkImg.getAttribute("src"));
+    function setLogo(slug) {
+      if (!darkImg) return;
+      var v = d.variants.filter(function (x) { return x.slug === slug; })[0];
+      var dark = (v && v.logo) || liveLogo, light = (v && v.logoLight) || (!v && d.live && d.live.logoLight) || "";
+      if (dark && darkImg.getAttribute("src") !== base + dark) darkImg.setAttribute("src", base + dark);
+      if (lightImg) { if (light) { lightImg.setAttribute("src", base + light); lightImg.removeAttribute("hidden"); root.setAttribute("data-logo-light", ""); } else { root.removeAttribute("data-logo-light"); } }
+    }
     var saved = root.getAttribute("data-look") || "";
     var first = document.createElement("option"); first.value = ""; first.textContent = "Live design"; sel.appendChild(first);
     d.variants.forEach(function (v) {
@@ -542,6 +562,7 @@
     sel.value = d.variants.some(function (v) { return v.slug === saved; }) ? saved : "";
     if (sel.value === "") root.removeAttribute("data-look");
     sel.hidden = false;
+    setLogo(sel.value);
     sel.addEventListener("change", function () {
       var link = document.getElementById("look-css");
       if (sel.value) {
@@ -552,6 +573,7 @@
         root.removeAttribute("data-look");
         if (link) link.remove();
       }
+      setLogo(sel.value);
       try { if (sel.value) localStorage.setItem("starsi-look", sel.value); else localStorage.removeItem("starsi-look"); } catch (e) {}
     });
   }).catch(function () {});

@@ -107,7 +107,7 @@ def var_for(path):
 
 
 # ---------- md -> css ----------
-def gen_css(entries, scope=None):
+def gen_css(entries, scope=None, extras=None):
     blocks = {"colors": [], "effects": [], "typography": [], "spacing": [], "rounded": []}
     themes = {"dark": {}, "light": {}}
     page = {}
@@ -153,6 +153,12 @@ def gen_css(entries, scope=None):
     if not scope:
         out.append(':root { color-scheme: dark; } :root[data-theme="light"] { color-scheme: light; }')
         out.append("@media (prefers-color-scheme: light) { :root:not([data-theme=\"dark\"]) { color-scheme: light; } }")
+    extras = extras or {}
+    pre = (root + " ") if scope else ""
+    if extras.get("logoWidth"):
+        out.append("@media (min-width: 601px) { %s.nav-logo { width: %spx; } }" % (pre, extras["logoWidth"]))
+    if extras.get("headingStretch"):
+        out.append("%sh1, %sh2, %sh3 { font-stretch: %s; }" % (pre, pre, pre, extras["headingStretch"]))
     return "\n".join(out) + "\n"
 
 
@@ -294,12 +300,48 @@ def meta(text, key):
     return m.group(1) if m else ""
 
 
+META_KEYS = ("logo", "logoLight", "logoWidth", "fontsUrl", "headingStretch")
+
+
+def site_meta(text):
+    return {k: meta(text, k) for k in META_KEYS}
+
+
+def set_meta(md_text, key, value):
+    line = '%s: "%s"' % (key, value)
+    if re.search(r"^%s:.*$" % key, md_text, re.M):
+        return re.sub(r"^%s:.*$" % key, lambda m: line, md_text, count=1, flags=re.M)
+    return md_text.replace("\n---\n", "\n" + line + "\n---\n", 1)
+
+
+def logo_section(m, prefix="../"):
+    dark = m.get("logo") or ""
+    light = m.get("logoLight") or dark
+    if not dark:
+        return ""
+    return """<section id="logo">
+  <div class="wrap">
+    <div class="kicker">Logo</div>
+    <h2>Logo</h2>
+    <p class="lead">The logo files for this design. Always use the files, never retype the name. Keep clear space around it at least as tall as its first letter.</p>
+    <div class="logo-panels">
+      <div class="logo-panel dark"><img src="%s%s" alt="Logo on dark"><span>On dark</span></div>
+      <div class="logo-panel light"><img src="%s%s" alt="Logo on light"><span>On light</span></div>
+    </div>
+    <p class="caption" style="margin-top:14px">Files: <code>%s</code>%s. Header size on desktop: %spx wide.</p>
+  </div>
+</section>
+
+""" % (prefix, dark, prefix, light, dark, (" and <code>%s</code>" % light) if m.get("logoLight") else "", m.get("logoWidth") or "220")
+
+
 def build_looks():
     """designs/*.md (only the values that differ) -> designs/looks/<name>.css + designs/variants.json"""
     import json
     _, _, base = parse_md(read(MD))
     picker = meta(read(MD), "lookPicker").lower() != "off"
     listing = []
+    bm = site_meta(read(MD))
     looks_dir = os.path.join(DESIGNS, "looks")
     os.makedirs(looks_dir, exist_ok=True)
     keep = set()
@@ -308,19 +350,18 @@ def build_looks():
         text = read(os.path.join(DESIGNS, f))
         _, _, over = parse_md(text)
         merged = merge_entries(base, over)
-        fonts, stretch = meta(text, "fontsUrl"), meta(text, "headingStretch")
+        vm = site_meta(text)
+        fonts = vm["fontsUrl"]
         css = []
         if fonts:
             css.append('@import url("%s");' % fonts)
         css.append("/* GENERATED from designs/%s.md. Do not edit. */" % slug)
-        css.append(gen_css(merged, scope=slug))
-        if stretch:
-            sel = ",".join(':root[data-look="%s"] %s' % (slug, t) for t in ("h1", "h2", "h3"))
-            css.append("%s { font-stretch: %s; }" % (sel, stretch))
+        css.append(gen_css(merged, scope=slug, extras={k: v for k, v in vm.items() if v}))
         write(os.path.join(looks_dir, slug + ".css"), "\n".join(css) + "\n")
         keep.add(slug + ".css")
         col = {e["path"][1]: e["value"] for e in merged if e["path"][0] == "colors"}
         listing.append({"slug": slug, "name": meta(text, "name") or slug, "description": meta(text, "description"),
+                        "logo": vm["logo"] or bm["logo"], "logoLight": vm["logoLight"] if vm["logo"] else bm["logoLight"],
                         "swatches": [col.get("gold400", ""), col.get("night", ""), col.get("electric500", "")]})
     for f in os.listdir(looks_dir):
         if f.endswith(".css") and f not in keep:
@@ -328,7 +369,7 @@ def build_looks():
     old = os.path.join(DESIGNS, "looks.css")
     if os.path.exists(old):
         os.remove(old)
-    write(os.path.join(DESIGNS, "variants.json"), json.dumps({"picker": picker, "variants": listing}, indent=1) + "\n")
+    write(os.path.join(DESIGNS, "variants.json"), json.dumps({"picker": picker, "live": {"logo": bm["logo"], "logoLight": bm["logoLight"]}, "variants": listing}, indent=1) + "\n")
     return len(listing)
 
 
@@ -340,7 +381,12 @@ def do_promote(name):
         return 1
     _, _, base = parse_md(read(MD))
     _, _, over = parse_md(read(path))
+    vm = site_meta(read(path))
     new_md, changes = css_to_md(read(MD), gen_css(merge_entries(base, over)))
+    for k, v in vm.items():
+        if v and meta(new_md, k) != v:
+            new_md = set_meta(new_md, k, v)
+            changes.append("%s: %s" % (k, v))
     if not changes:
         print("DESIGN.md already matches '%s'." % slug)
     else:
@@ -368,12 +414,19 @@ def build_design_pages():
     # one page per design
     for v in data["variants"]:
         slug, name = v["slug"], v["name"]
-        page = site.replace('<html lang="en">', '<html lang="en" data-look="%s">' % slug, 1)
+        page = re.sub(r'<html lang="en"([^>]*)>', lambda m: '<html lang="en" data-look="%s"%s>' % (slug, m.group(1)), site, 1)
         a = page.find("var q=new URLSearchParams")
         b = page.find("}catch(e){}</script>", a)
         if a != -1 and b != -1:
             page = page[:a] + 'r.setAttribute("data-look","%s");var k=document.createElement("link");k.rel="stylesheet";k.href="designs/looks/%s.css";document.head.appendChild(k)' % (slug, slug) + page[b:]
+        if v.get("logo"):
+            page = re.sub(r'(<img class="nav-logo logo-dark" src=")[^"]*(")', lambda m: m.group(1) + v["logo"] + m.group(2), page, 1)
+        if v.get("logoLight"):
+            page = page.replace('<img class="nav-logo logo-light" src="" alt="" hidden>', '<img class="nav-logo logo-light" src="%s" alt="StarSI AI">' % v["logoLight"], 1)
+            if "data-logo-light" not in page[:200]:
+                page = page.replace('<html lang="en" data-look="%s"' % slug, '<html lang="en" data-look="%s" data-logo-light' % slug, 1)
         page = re.sub(r"<title>(.*?)</title>", lambda m: "<title>%s | %s</title>" % (m.group(1), H.escape(name)), page, 1)
+        page = page.replace("</head>", '<script>window.SITE_ROOT="../../";</script>\n</head>', 1)
         page = page.replace("</head>", "<style>.look-picker{display:none!important}.look-badge{position:fixed;left:16px;bottom:16px;z-index:40;font:600 13px var(--font-body);color:var(--page-ink);background:var(--card-bg);border:1px solid var(--line-soft);border-radius:var(--radius-md);padding:8px 12px;box-shadow:var(--card-shadow)}.look-badge:hover{border-color:var(--page-muted)}</style>\n</head>", 1)
         page = page.replace("</body>", '<a class="look-badge" href="../">Design: %s &middot; all designs</a>\n</body>' % H.escape(name), 1)
         page = rebase(page, "../../")
@@ -397,7 +450,7 @@ def build_design_pages():
         cards.append(card("live", "Live design", "The shared design in DESIGN.md that everyone sees right now.", [col.get("gold400"), col.get("night"), col.get("electric500")], "../", "live", True))
         for v in data["variants"]:
             cards.append(card(v["slug"], v["name"], v.get("description", ""), v.get("swatches", []), v["slug"] + "/", v["slug"]))
-        html = read(tpl).replace("/*TOKENS*/", gen_css(entries)).replace("<!--CARDS-->", "\n".join(cards))
+        html = read(tpl).replace("/*TOKENS*/", gen_css(entries, extras=site_meta(read(MD)))).replace("<!--CARDS-->", "\n".join(cards))
         write(os.path.join(DESIGNS, "index.html"), html)
     return len(data["variants"])
 
@@ -422,11 +475,12 @@ def swatches(entries):
     return "\n".join(html)
 
 
-def render_page(entries, icons):
-    css = gen_css(entries)
+def render_page(entries, icons, m=None):
+    m = m or site_meta(read(MD))
+    css = gen_css(entries, extras=m)
     fam = {e["path"][1]: e["value"].split(",")[0].strip().strip("'\"") for e in entries if e["path"][0] == "typography"}
     return (read(TEMPLATE).replace("<!--FONT-DISPLAY-->", fam.get("display", "")).replace("<!--FONT-BODY-->", fam.get("body", ""))
-            .replace("/*TOKENS*/", css).replace("<!--SWATCHES-->", swatches(entries))
+            .replace("/*TOKENS*/", css).replace("<!--LOGO-->", logo_section(m)).replace("<!--SWATCHES-->", swatches(entries))
             .replace("<!--ICONS-->", icon_html(icons)).replace("<!--ICON-SPRITE-->", icon_sprite_inline(icons)))
 
 
@@ -454,13 +508,15 @@ def build_variant_system_pages():
         text = read(os.path.join(DESIGNS, f))
         name = meta(text, "name") or slug
         _, _, over = parse_md(text)
-        page = render_page(merge_entries(base, over), icons)
+        bm = site_meta(read(MD))
+        vm = {k: (site_meta(text)[k] or bm[k]) for k in META_KEYS}
+        if site_meta(text)["logo"] and not site_meta(text)["logoLight"]:
+            vm["logoLight"] = ""
+        page = render_page(merge_entries(base, over), icons, vm)
         page = page.replace("/*FIXED*/false", "true")
-        fonts, stretch = meta(text, "fontsUrl"), meta(text, "headingStretch")
+        fonts = vm["fontsUrl"]
         if fonts:
             page = page.replace("</head>", '<link rel="stylesheet" href="%s">\n</head>' % fonts, 1)
-        if stretch:
-            page = page.replace("</head>", "<style>h1,h2,h3{font-stretch:%s}</style>\n</head>" % stretch, 1)
         page = page.replace("<title>StarSI Gold | Design system</title>", "<title>%s | Design system</title>" % H.escape(name))
         page = page.replace('<div class="kicker">Design system</div>\n    <h1 class="metal-text">StarSI Gold</h1>',
                             '<div class="kicker">Design system &middot; a variant of the live design</div>\n    <h1 class="metal-text">%s</h1>' % H.escape(name))
@@ -488,7 +544,7 @@ def changed_files(base):
 
 def do_to_css():
     _, _, entries = parse_md(read(MD))
-    new = gen_css(entries)
+    new = gen_css(entries, extras=site_meta(read(MD)))
     old = read(CSS) if os.path.exists(CSS) else ""
     if new != old:
         write(CSS, new)

@@ -3,6 +3,13 @@ name: "StarSI Gold"
 description: "Bold StarSI.AI look: deep navy night ground, gold metal buttons and headlines, chrome and electric blue accents, blue glass cards with metal rims. Titillium Web headlines, Roboto body. Works in light and dark."
 # Show the "Look" dropdown in the site header? on / off
 lookPicker: "on"
+# Logo files (paths inside the repo). logoLight is optional: used on light pages. logoWidth is the header size in px on desktop.
+logo: "images/starsi-ai-logo.webp"
+logoLight: ""
+logoWidth: "220"
+# Optional: a Google Fonts stylesheet link and a heading width (for example "125%")
+fontsUrl: ""
+headingStretch: ""
 # HOW THIS FILE WORKS: every value below becomes a CSS variable on the site (sections/00-tokens.css).
 # Change a value here and the site follows. Change a value in sections/00-tokens.css and it is copied back here.
 colors:
@@ -20,6 +27,7 @@ colors:
   inkMuted: "#465178"
   inkOnDark: "#F4F6FF"
   inkOnDarkMuted: "#A9B3D6"
+  headingOnDark: "var(--gold-400)"
   # Gold: primary action, buttons, headline metal
   gold300: "#FFE680"
   gold400: "#FFC61A"
@@ -97,7 +105,7 @@ themes:
     line: "rgba(255,255,255,.14)"
     link: "#7FB2FF"
     label: "#FFC61A"
-    heading: "#FFC61A"
+    heading: "var(--gold-400)"
     ok: "#4FD6A0"
     okBg: "rgba(79,214,160,.15)"
     navBg: "rgba(7,11,28,.9)"
@@ -114,7 +122,7 @@ themes:
     line: "#D5DBEA"
     link: "#1646D6"
     label: "#8A5200"
-    heading: "#FFC61A"
+    heading: "var(--gold-400)"
     ok: "#0B7A55"
     okBg: "rgba(11,122,85,.14)"
     navBg: "rgba(243,245,250,.92)"
@@ -181,6 +189,13 @@ The values themselves are never repeated in this text, so there is only one plac
 - **First set:** belt, gi, fist, dojo gate, trophy, medal, star, glove, mat, gong, certificate, shield.
 - **Second set (class and school life):** attendance, family, calendar, pro shop, billing, check-in, trial lesson, student, instructor, message, report, location, class time, backpack, snack, lesson video, homework.
 - **Rules:** keep to martial arts and school life (belts, ranks, classes, families). No weapons, no violence.
+
+## Logo
+
+- The logo files are set at the top of this file (`logo`, `logoLight`, `logoWidth`) and shown in the Logo section of the design page.
+- The site header uses `logo`. If `logoLight` is set, light pages use that one instead.
+- Use the files, never retype the name. Keep clear space around it at least as tall as its first letter.
+- A design variant can bring its own logo the same way. Put the files in the `images` folder.
 
 ## Layout and spacing
 

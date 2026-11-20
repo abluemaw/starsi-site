@@ -25,6 +25,7 @@
   --ink-muted: #4A5266;
   --ink-on-dark: #F2F4F8;
   --ink-on-dark-muted: #9AA3B8;
+  --heading-on-dark: #F2F4F8;
   --gold-300: #DCFF85;
   --gold-400: #C6FF3D;
   --gold-500: #A8E022;
@@ -141,6 +142,8 @@
 }
 :root { color-scheme: dark; } :root[data-theme="light"] { color-scheme: light; }
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { color-scheme: light; } }
+@media (min-width: 601px) { .nav-logo { width: 170px; } }
+h1, h2, h3 { font-stretch: 125%; }
 
   * { box-sizing:border-box; margin:0; padding:0; }
   html { scroll-behavior:smooth; }
@@ -226,6 +229,15 @@
   .light-demo p { color:var(--ink-muted); }
 
 
+
+  /* logo */
+  .logo-panels { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+  .logo-panel { border-radius:var(--radius-lg); padding:40px 24px 18px; text-align:center; border:1px solid var(--line-soft); }
+  .logo-panel img { display:block; max-width:min(100%,320px); max-height:90px; height:auto; margin:0 auto 18px; }
+  .logo-panel span { font-size:12px; letter-spacing:.1em; text-transform:uppercase; }
+  .logo-panel.dark { background:#0B0D14; color:#9AA3B8; }
+  .logo-panel.light { background:#FFFFFF; color:#465178; }
+
   /* icons */
   .ic { width:1em; height:1em; display:inline-block; vertical-align:middle; stroke:currentColor; fill:none; }
   .icon-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:14px; }
@@ -256,7 +268,6 @@
   @media (max-width:600px) { section { padding:40px 0; } .btns { gap:14px; } }
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@125,200..900&family=Geist:wght@400..700&family=Geist+Mono:wght@400..500&display=swap">
-<style>h1,h2,h3{font-stretch:125%}</style>
 </head>
 <body id="top">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="icon-attendance" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 13l2 2 4-4"/></symbol><symbol id="icon-backpack" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6V4.5a2 2 0 014 0V6"/><rect x="5" y="6" width="14" height="15" rx="4"/><path d="M8 15h8v4H8z"/></symbol><symbol id="icon-belt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9h20v4H2z"/><rect x="9" y="7" width="6" height="8" rx="1"/><path d="M10.5 15l-2 6M13.5 15l2 6"/></symbol><symbol id="icon-billing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/></symbol><symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15.5" r="1.5"/></symbol><symbol id="icon-certificate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M7 8h10M7 11h6"/><circle cx="17" cy="14" r="2.6"/><path d="M16 16.4V21l1-1 1 1v-4.6"/></symbol><symbol id="icon-check-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 12l2.5 2.5L16 10M11 18h2"/></symbol><symbol id="icon-class-time" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="icon-dojo-gate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5c3.5 1.7 15.5 1.7 19 0"/><path d="M5 10h14M7 7v14M17 7v14M12 8v2"/></symbol><symbol id="icon-family" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><circle cx="12" cy="13" r="2"/><path d="M3 20v-2a4 4 0 014-4h2M21 20v-2a4 4 0 00-4-4h-2M8.5 20v-.5a3.5 3.5 0 017 0v.5"/></symbol><symbol id="icon-fist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h13v4a6 6 0 01-6 6h-1a6 6 0 01-6-6z"/><path d="M6 11V8a1.6 1.6 0 013.2 0v3M9.2 11V6.5a1.6 1.6 0 013.2 0V11M12.4 11V7a1.6 1.6 0 013.2 0v4M15.6 11V8.5a1.6 1.6 0 013.2 0V11"/></symbol><symbol id="icon-gi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3L3 6l2 5 3-1v11h8V10l3 1 2-5-5-3"/><path d="M8 3l4 6 4-6M8 15h8"/></symbol><symbol id="icon-glove" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V6a3 3 0 016 0v1h3a3 3 0 013 3v4a6 6 0 01-6 6h-2a5 5 0 01-5-5z"/><path d="M8 17h9M13 7v4"/></symbol><symbol id="icon-gong" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18M7 3l3 5M17 3l-3 5"/><circle cx="12" cy="14" r="6"/><circle cx="12" cy="14" r="2"/><path d="M6 21l2-3M18 21l-2-3"/></symbol><symbol id="icon-homework" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 19a2 2 0 012-2h13"/></symbol><symbol id="icon-instructor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="3"/><path d="M4 21v-3a6 6 0 0112 0v3"/><path d="M19 3.5l.9 1.8 2 .3-1.4 1.4.3 2-1.8-1-1.8 1 .3-2-1.4-1.4 2-.3z"/></symbol><symbol id="icon-lesson-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4.5-2.5z"/></symbol><symbol id="icon-location" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 00-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol><symbol id="icon-mat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M3 12h4.5M16.5 12H21"/></symbol><symbol id="icon-medal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l4 7M16 2l-4 7"/><circle cx="12" cy="15" r="6"/><path d="M12 12l1 2 2.2.3-1.6 1.6.4 2.2-2-1-2 1 .4-2.2-1.6-1.6 2.2-.3z"/></symbol><symbol id="icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 011 1v10a1 1 0 01-1 1H10l-5 4v-4H4a1 1 0 01-1-1V6a1 1 0 011-1z"/><path d="M8 10h8M8 13h5"/></symbol><symbol id="icon-pro-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l1 13H4z"/><path d="M9 8V6a3 3 0 016 0v2"/></symbol><symbol id="icon-report" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20v-7M11 20V6M16 20v-10"/></symbol><symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5L16 9"/></symbol><symbol id="icon-snack" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7c-2-1.5-7-1-7 5 0 5 3 9 5 9 1 0 1.5-.5 2-.5s1 .5 2 .5c2 0 5-4 5-9 0-6-5-6.5-7-5z"/><path d="M12 7c0-2 1-3.5 3-4"/></symbol><symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></symbol><symbol id="icon-student" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><path d="M6 21v-3a6 6 0 0112 0v3M9 17.5h6"/></symbol><symbol id="icon-trial-lesson" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 012-2h14a2 2 0 012 2v2a2 2 0 000 4v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 000-4z"/><path d="M14 7v10" stroke-dasharray="2 2"/></symbol><symbol id="icon-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 01-10 0z"/><path d="M7 6H4v2a3 3 0 003 3M17 6h3v2a3 3 0 01-3 3M12 14v4M9 18h6M8 21h8"/></symbol></svg>
@@ -265,7 +276,7 @@
   <div class="wrap">
     <b><span class="metal-text">StarSI</span> Design</b>
     <nav>
-      <a href="#color">Colour</a><a href="#metal">Metal</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#icons">Icons</a><a href="#cards">Cards</a><a href="#scale">Spacing</a><a href="#rules">Rules</a>
+      <a href="#logo">Logo</a><a href="#color">Colour</a><a href="#metal">Metal</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#icons">Icons</a><a href="#cards">Cards</a><a href="#scale">Spacing</a><a href="#rules">Rules</a>
     </nav>
     <select class="theme" id="look" aria-label="Choose a look" hidden></select>
     <button class="theme" id="theme" type="button" aria-label="Switch between light and dark mode">Light mode</button>
@@ -280,6 +291,20 @@
     <a class="si-btn gold xl" href="#buttons"><span>See the buttons</span></a>
   </div>
 </section>
+
+<section id="logo">
+  <div class="wrap">
+    <div class="kicker">Logo</div>
+    <h2>Logo</h2>
+    <p class="lead">The logo files for this design. Always use the files, never retype the name. Keep clear space around it at least as tall as its first letter.</p>
+    <div class="logo-panels">
+      <div class="logo-panel dark"><img src="../../../images/starsi-logo-on-dark.svg" alt="Logo on dark"><span>On dark</span></div>
+      <div class="logo-panel light"><img src="../../../images/starsi-logo-on-light.svg" alt="Logo on light"><span>On light</span></div>
+    </div>
+    <p class="caption" style="margin-top:14px">Files: <code>images/starsi-logo-on-dark.svg</code> and <code>images/starsi-logo-on-light.svg</code>. Header size on desktop: 170px wide.</p>
+  </div>
+</section>
+
 
 <section id="color">
   <div class="wrap">
@@ -303,6 +328,7 @@
       <div class="sw"><div class="chip" style="background:var(--ink-muted)"></div><div class="meta"><b>inkMuted</b><span data-var="--ink-muted">#4A5266</span></div></div>
       <div class="sw"><div class="chip" style="background:var(--ink-on-dark)"></div><div class="meta"><b>inkOnDark</b><span data-var="--ink-on-dark">#F2F4F8</span></div></div>
       <div class="sw"><div class="chip" style="background:var(--ink-on-dark-muted)"></div><div class="meta"><b>inkOnDarkMuted</b><span data-var="--ink-on-dark-muted">#9AA3B8</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--heading-on-dark)"></div><div class="meta"><b>headingOnDark</b><span data-var="--heading-on-dark">#F2F4F8</span></div></div>
     </div></div>
     <div class="sw-group"><h3>Gold: primary action, buttons, headline metal</h3><div class="sw-row">
       <div class="sw"><div class="chip" style="background:var(--gold-300)"></div><div class="meta"><b>gold300</b><span data-var="--gold-300">#DCFF85</span></div></div>

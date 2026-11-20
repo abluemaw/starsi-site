@@ -3,6 +3,9 @@ name: "Instrument"
 description: "Based on the StarSi.ai design system: near-black instrument-panel ground, lime means a person acts, ice blue means StarSi acts. Flat surfaces with hairlines, no shadows or gradients. Mona Sans Expanded and Geist."
 fontsUrl: "https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@125,200..900&family=Geist:wght@400..700&family=Geist+Mono:wght@400..500&display=swap"
 headingStretch: "125%"
+logo: "images/starsi-logo-on-dark.svg"
+logoLight: "images/starsi-logo-on-light.svg"
+logoWidth: "170"
 colors:
   night: "#0B0D14"
   navy900: "#080A10"
@@ -14,6 +17,7 @@ colors:
   inkMuted: "#4A5266"
   inkOnDark: "#F2F4F8"
   inkOnDarkMuted: "#9AA3B8"
+  headingOnDark: "#F2F4F8"
   gold300: "#DCFF85"
   gold400: "#C6FF3D"
   gold500: "#A8E022"
@@ -87,4 +91,5 @@ Based on the StarSi.ai design system. The core rule: **lime means a person acts,
 
 Notes for people editing this file:
 - Fonts load from Google Fonts only while this design is on (`fontsUrl`).
+- Logo: the StarSi logo, light text on dark pages and dark text on light pages (`logo`, `logoLight`).
 - Dark is the default look. The light theme is for reading and print.

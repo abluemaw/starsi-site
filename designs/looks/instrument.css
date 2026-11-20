@@ -14,6 +14,7 @@
   --ink-muted: #4A5266;
   --ink-on-dark: #F2F4F8;
   --ink-on-dark-muted: #9AA3B8;
+  --heading-on-dark: #F2F4F8;
   --gold-300: #DCFF85;
   --gold-400: #C6FF3D;
   --gold-500: #A8E022;
@@ -128,5 +129,6 @@
   --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
   --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
 }
+@media (min-width: 601px) { :root[data-look="instrument"] .nav-logo { width: 170px; } }
+:root[data-look="instrument"] h1, :root[data-look="instrument"] h2, :root[data-look="instrument"] h3 { font-stretch: 125%; }
 
-:root[data-look="instrument"] h1,:root[data-look="instrument"] h2,:root[data-look="instrument"] h3 { font-stretch: 125%; }

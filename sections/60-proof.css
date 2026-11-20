@@ -1,5 +1,7 @@
   /* SECTION 6: PROOF STRIP (always dark) */
   .proof { background: var(--navy-900); color: var(--ink-on-dark); }
+  .proof h2, #contact h2 { color: var(--heading-on-dark); }
+  .proof .eyebrow, #contact .eyebrow { color: var(--electric-300); }
   .proof .lead { color: var(--ink-on-dark-muted); }
   .stat { text-align: center; padding: 8px; }
   .stat .big { font-family: var(--font-display); font-size: 44px; font-weight: 700; line-height: 1.1; background: var(--gold-metal); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }

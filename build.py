@@ -50,7 +50,30 @@ def build():
     if main_open:
         body += "</main>\n\n"
     js = "".join(read(p) for p in files("js"))
-    out = head + "<style>\n" + css + "</style>\n</head>\n<body id=\"top\">\n\n" + body
+    fonts_link = ""
+    try:
+        import re as _re
+        m = _re.search(r'^fontsUrl:\s*"?(.*?)"?\s*$', read(os.path.join(HERE, "DESIGN.md")), _re.M)
+        if m and m.group(1):
+            fonts_link = '<link rel="stylesheet" href="%s">\n' % m.group(1)
+    except Exception:
+        pass
+    out = head + "<style>\n" + css + "</style>\n" + fonts_link + "</head>\n<body id=\"top\">\n\n" + body
+    # header logo comes from DESIGN.md (logo / logoLight)
+    try:
+        import re as _re2
+        md = read(os.path.join(HERE, "DESIGN.md"))
+        def _m(k):
+            m = _re2.search(r'^%s:\s*"?(.*?)"?\s*$' % k, md, _re2.M)
+            return m.group(1) if m else ""
+        logo, logo_light = _m("logo"), _m("logoLight")
+        if logo:
+            out = _re2.sub(r'(<img class="nav-logo logo-dark" src=")[^"]*(")', lambda m: m.group(1) + logo + m.group(2), out, 1)
+        if logo and logo_light:
+            out = out.replace('<img class="nav-logo logo-light" src="" alt="" hidden>', '<img class="nav-logo logo-light" src="%s" alt="StarSI AI">' % logo_light, 1)
+            out = out.replace('<html lang="en">', '<html lang="en" data-logo-light>', 1)
+    except Exception:
+        pass
     if js:
         out += "<script>\n" + js + "</script>\n"
     out += "\n</body>\n</html>\n"

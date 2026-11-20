@@ -9,3 +9,4 @@ Each file here is one person's (or one idea's) version of the look. It lists ONL
 - `looks/` and `variants.json` in this folder are generated. Do not edit them.
 - Every design also gets its own page, `designs/<name>/`, and the gallery of all designs is `designs/` (pictures are taken automatically). Both are generated; do not edit them.
 - Optional lines in a variant's front matter: `fontsUrl:` (a Google Fonts stylesheet link, loaded only when that design is on) and `headingStretch:` (for example `"125%"` for wide headings).
+- A design can also set `logo`, `logoLight` and `logoWidth` (files in `images/`), the same keys as DESIGN.md.

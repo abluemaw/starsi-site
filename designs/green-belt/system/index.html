@@ -25,6 +25,7 @@
   --ink-muted: #465178;
   --ink-on-dark: #F4F6FF;
   --ink-on-dark-muted: #A9B3D6;
+  --heading-on-dark: var(--gold-400);
   --gold-300: #B6F2C9;
   --gold-400: #2FBF71;
   --gold-500: #1E9A57;
@@ -88,7 +89,7 @@
   --ok-bg: rgba(79,214,160,.15);
   --nav-bg: rgba(7,11,28,.9);
   --hero-glow: #14275A;
-  --heading: #FFC61A;
+  --heading: var(--gold-400);
   --headline-from: #D4FBE0;
   --headline-mid: #6FE3A0;
   --headline-to: #1E9A57;
@@ -110,7 +111,7 @@
     --ok-bg: rgba(11,122,85,.14);
     --nav-bg: rgba(243,245,250,.92);
     --hero-glow: #FFF1BF;
-    --heading: #FFC61A;
+    --heading: var(--gold-400);
     --headline-from: #0A1130;
     --headline-mid: #0A1130;
     --headline-to: #0A1130;
@@ -132,7 +133,7 @@
   --ok-bg: rgba(11,122,85,.14);
   --nav-bg: rgba(243,245,250,.92);
   --hero-glow: #FFF1BF;
-  --heading: #FFC61A;
+  --heading: var(--gold-400);
   --headline-from: #0A1130;
   --headline-mid: #0A1130;
   --headline-to: #0A1130;
@@ -141,6 +142,7 @@
 }
 :root { color-scheme: dark; } :root[data-theme="light"] { color-scheme: light; }
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { color-scheme: light; } }
+@media (min-width: 601px) { .nav-logo { width: 220px; } }
 
   * { box-sizing:border-box; margin:0; padding:0; }
   html { scroll-behavior:smooth; }
@@ -226,6 +228,15 @@
   .light-demo p { color:var(--ink-muted); }
 
 
+
+  /* logo */
+  .logo-panels { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+  .logo-panel { border-radius:var(--radius-lg); padding:40px 24px 18px; text-align:center; border:1px solid var(--line-soft); }
+  .logo-panel img { display:block; max-width:min(100%,320px); max-height:90px; height:auto; margin:0 auto 18px; }
+  .logo-panel span { font-size:12px; letter-spacing:.1em; text-transform:uppercase; }
+  .logo-panel.dark { background:#0B0D14; color:#9AA3B8; }
+  .logo-panel.light { background:#FFFFFF; color:#465178; }
+
   /* icons */
   .ic { width:1em; height:1em; display:inline-block; vertical-align:middle; stroke:currentColor; fill:none; }
   .icon-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:14px; }
@@ -263,7 +274,7 @@
   <div class="wrap">
     <b><span class="metal-text">StarSI</span> Design</b>
     <nav>
-      <a href="#color">Colour</a><a href="#metal">Metal</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#icons">Icons</a><a href="#cards">Cards</a><a href="#scale">Spacing</a><a href="#rules">Rules</a>
+      <a href="#logo">Logo</a><a href="#color">Colour</a><a href="#metal">Metal</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#icons">Icons</a><a href="#cards">Cards</a><a href="#scale">Spacing</a><a href="#rules">Rules</a>
     </nav>
     <select class="theme" id="look" aria-label="Choose a look" hidden></select>
     <button class="theme" id="theme" type="button" aria-label="Switch between light and dark mode">Light mode</button>
@@ -278,6 +289,20 @@
     <a class="si-btn gold xl" href="#buttons"><span>See the buttons</span></a>
   </div>
 </section>
+
+<section id="logo">
+  <div class="wrap">
+    <div class="kicker">Logo</div>
+    <h2>Logo</h2>
+    <p class="lead">The logo files for this design. Always use the files, never retype the name. Keep clear space around it at least as tall as its first letter.</p>
+    <div class="logo-panels">
+      <div class="logo-panel dark"><img src="../../../images/starsi-ai-logo.webp" alt="Logo on dark"><span>On dark</span></div>
+      <div class="logo-panel light"><img src="../../../images/starsi-ai-logo.webp" alt="Logo on light"><span>On light</span></div>
+    </div>
+    <p class="caption" style="margin-top:14px">Files: <code>images/starsi-ai-logo.webp</code>. Header size on desktop: 220px wide.</p>
+  </div>
+</section>
+
 
 <section id="color">
   <div class="wrap">
@@ -301,6 +326,7 @@
       <div class="sw"><div class="chip" style="background:var(--ink-muted)"></div><div class="meta"><b>inkMuted</b><span data-var="--ink-muted">#465178</span></div></div>
       <div class="sw"><div class="chip" style="background:var(--ink-on-dark)"></div><div class="meta"><b>inkOnDark</b><span data-var="--ink-on-dark">#F4F6FF</span></div></div>
       <div class="sw"><div class="chip" style="background:var(--ink-on-dark-muted)"></div><div class="meta"><b>inkOnDarkMuted</b><span data-var="--ink-on-dark-muted">#A9B3D6</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--heading-on-dark)"></div><div class="meta"><b>headingOnDark</b><span data-var="--heading-on-dark">var(--gold-400)</span></div></div>
     </div></div>
     <div class="sw-group"><h3>Gold: primary action, buttons, headline metal</h3><div class="sw-row">
       <div class="sw"><div class="chip" style="background:var(--gold-300)"></div><div class="meta"><b>gold300</b><span data-var="--gold-300">#B6F2C9</span></div></div>
