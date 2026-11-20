@@ -58,9 +58,12 @@
   @media (max-width: 820px) { .links a.plain { display: none; } }
 
   /* SECTION 1: HERO */
-  .hero { padding: 88px 0 72px; background: linear-gradient(180deg, #fff, var(--bg)); }
-  .hero .lead { margin: 22px 0 32px; }
+  .hero { position: relative; overflow: hidden; padding: 88px 0 72px; background: radial-gradient(ellipse at 50% 45%, #14275a, #070b1c 75%); color: #fff; }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero .eyebrow { color: #8DB8FF; }
+  .hero .lead { margin: 22px 0 32px; color: #D6E2F7; }
   .hero h1 { max-width: 820px; }
+  #warp { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
   .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
   .tag { background: var(--green-bg); color: var(--green); font-weight: 600; font-size: 14px; padding: 7px 14px; border-radius: 999px; }
   .tag::before { content: "✓ "; }
@@ -150,6 +153,7 @@
 
 <!-- SECTION 1: HERO — BENEFITS -->
 <section class="hero">
+  <canvas id="warp" aria-hidden="true"></canvas>
   <div class="wrap">
     <span class="eyebrow">✦ For Martial Arts School Owners</span>
     <h1>More Students More Income Less Office Work.</h1>
@@ -308,6 +312,32 @@
   </div>
 </footer>
 
+<script>
+/* HERO WARP-SPEED STARS (decorative, hero only, stops for reduced-motion) */
+(function(){
+  var c=document.getElementById('warp'); if(!c) return;
+  var hero=c.parentNode, x=c.getContext('2d'), W, H, dpr=Math.min(2,window.devicePixelRatio||1), stars=[], on=true;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){ W=hero.clientWidth; H=hero.clientHeight; c.width=W*dpr; c.height=H*dpr; x.setTransform(dpr,0,0,dpr,0,0); }
+  size(); addEventListener('resize',size);
+  function mk(far){ return {x:Math.random()*2-1,y:Math.random()*2-1,z:far?.3+Math.random()*.7:Math.random(),t:Math.random()*6}; }
+  for(var i=0;i<(innerWidth<700?110:260);i++) stars.push(mk(false));
+  function draw(t){
+    x.clearRect(0,0,W,H);
+    var cx=W/2, cy=H*.5, f=Math.max(W,H)*.55, sp=reduce?0:.006, trail=reduce?0:.05;
+    for(var i=0;i<stars.length;i++){ var s=stars[i];
+      s.z-=sp; if(s.z<=.02){ s.x=Math.random()*2-1; s.y=Math.random()*2-1; s.z=1; }
+      var z2=Math.min(1.2,s.z+trail), x1=cx+s.x*f/s.z, y1=cy+s.y*f/s.z, x2=cx+s.x*f/z2, y2=cy+s.y*f/z2;
+      if(x1<-50||x1>W+50||y1<-50||y1>H+50) continue;
+      var near=1-s.z, al=Math.min(1,.15+near*1.1)*(.7+.3*Math.sin(t*.003+s.t));
+      x.strokeStyle=(i%9===0?'rgba(255,214,90,':(i%5===0?'rgba(127,178,255,':'rgba(235,242,255,'))+al+')';
+      x.lineWidth=.4+near*2.2; x.lineCap='round'; x.beginPath(); x.moveTo(x2,y2); x.lineTo(x1,y1); x.stroke(); }
+    if(on && !reduce) requestAnimationFrame(draw);
+  }
+  if('IntersectionObserver' in window) new IntersectionObserver(function(e){ var v=e[0].isIntersecting; if(v&&!on){ on=true; requestAnimationFrame(draw);} on=v; }).observe(hero);
+  requestAnimationFrame(draw);
+})();
+</script>
 </body>
 </html>
-<!-- automerge test -->
+
