@@ -13,6 +13,7 @@
   - Page title and description: sections/00-head.html. Colours, fonts and spacing variables: sections/00-base.css.
   - Booking link: every "Book My Free Demo" button points to #contact. Replace with the real booking URL when there is one.
 -->
+<script>try{var t=localStorage.getItem("starsi-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <style>
   @font-face {
     font-family: "Titillium Web";
@@ -205,6 +206,11 @@
     .nav-logo { width: clamp(96px, 34vw, 150px); }
     .nav .btn.small { padding: 9px 12px; font-size: 13px; }
   }
+  /* Light / dark switch (follows the device until someone clicks it) */
+  .theme-toggle { flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line-soft); background: transparent; color: var(--page-ink); font-size: 17px; line-height: 1; cursor: pointer; display: grid; place-items: center; }
+  .theme-toggle:hover { border-color: var(--page-muted); }
+  .theme-toggle:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 3px; }
+  @media (max-width: 600px) { .links { gap: 10px; } .theme-toggle { width: 34px; height: 34px; } }
   /* SECTION 1: HERO */
   .hero {
     position: relative;
@@ -322,6 +328,7 @@
       <a class="plain" href="#benefits">Benefits</a>
       <a class="plain" href="#stories">Success Stories</a>
       <a class="plain" href="#contact">Contact</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark mode"></button>
       <a class="btn small" href="#contact">Book My Free Demo</a>
     </nav>
   </div>
@@ -489,6 +496,25 @@
 </footer>
 
 
+<script>
+/* Light / dark switch: remembers the choice, starts from the device setting */
+(function () {
+  var btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+  var root = document.documentElement;
+  var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)") : null;
+  function current() { return root.getAttribute("data-theme") || (mq && mq.matches ? "light" : "dark"); }
+  function paint() { var t = current(); btn.textContent = t === "light" ? "\u263E" : "\u2600"; btn.setAttribute("title", t === "light" ? "Switch to dark mode" : "Switch to light mode"); }
+  btn.addEventListener("click", function () {
+    var next = current() === "light" ? "dark" : "light";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("starsi-theme", next); } catch (e) {}
+    paint();
+  });
+  if (mq && mq.addEventListener) mq.addEventListener("change", paint);
+  paint();
+})();
+</script>
 
 </body>
 </html>
