@@ -70,6 +70,13 @@
   "message": "Refine skin texture and tones in the hero image (#4)"
  },
  {
+  "sha": "e30dbaa024fd0c236bb1a24ad86fdaa8f75eb25c",
+  "short": "e30dbaa",
+  "date": "2026-11-20T16:13:08-05:00",
+  "author": "abluemaw",
+  "message": "Cards: remove pink accent bars, lighten chrome rim"
+ },
+ {
   "sha": "df56b2b9bfa5c962376cb99f4ed6a856a0125264",
   "short": "df56b2b",
   "date": "2026-11-20T16:12:13-05:00",
