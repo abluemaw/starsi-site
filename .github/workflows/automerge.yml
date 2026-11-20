@@ -6,6 +6,7 @@ on:
     types: [opened, reopened, ready_for_review, synchronize]
 permissions:
   contents: write
+  actions: write
   pull-requests: write
   pages: write
 jobs:
@@ -36,3 +37,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
+      - name: Add a picture to the version history
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run snapshot.yml --repo "${{ github.repository }}" -f commits="$(git rev-parse HEAD)" || true
