@@ -125,6 +125,7 @@
   @media (prefers-reduced-motion:reduce) { .gold::after { animation:none; } html { scroll-behavior:auto; } }
   @media (max-width:600px) { section { padding:40px 0; } .btns { gap:14px; } }
 </style>
+<link rel="stylesheet" href="../designs/looks.css">
 </head>
 <body id="top">
 <!--ICON-SPRITE-->
@@ -135,6 +136,7 @@
     <nav>
       <a href="#color">Colour</a><a href="#metal">Metal</a><a href="#type">Type</a><a href="#buttons">Buttons</a><a href="#icons">Icons</a><a href="#cards">Cards</a><a href="#scale">Spacing</a><a href="#rules">Rules</a>
     </nav>
+    <select class="theme" id="look" aria-label="Choose a look" hidden></select>
     <button class="theme" id="theme" type="button" aria-label="Switch between light and dark mode">Light mode</button>
   </div>
 </header>
@@ -299,6 +301,29 @@
     var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
     apply(next); try { localStorage.setItem("starsi-design-theme", next); } catch (e) {}
   });
+})();
+</script>
+
+<script>
+(function () {
+  var root = document.documentElement, sel = document.getElementById("look");
+  function fillHex() { document.querySelectorAll("[data-var]").forEach(function (el) { var v = getComputedStyle(root).getPropertyValue(el.getAttribute("data-var")).trim(); if (v) el.textContent = v.toUpperCase(); }); }
+  var l = ""; try { var q = new URLSearchParams(location.search).get("design"); if (q) { localStorage.setItem("starsi-look", q); } l = localStorage.getItem("starsi-look") || ""; } catch (e) {}
+  if (l) root.setAttribute("data-look", l);
+  fetch("../designs/variants.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+    if (!d || !d.variants || !d.variants.length) { fillHex(); return; }
+    var o = document.createElement("option"); o.value = ""; o.textContent = "Live design"; sel.appendChild(o);
+    d.variants.forEach(function (v) { var x = document.createElement("option"); x.value = v.slug; x.textContent = v.name; sel.appendChild(x); });
+    sel.value = d.variants.some(function (v) { return v.slug === l; }) ? l : "";
+    if (!sel.value) root.removeAttribute("data-look");
+    sel.hidden = false; fillHex();
+    sel.addEventListener("change", function () {
+      if (sel.value) root.setAttribute("data-look", sel.value); else root.removeAttribute("data-look");
+      try { if (sel.value) localStorage.setItem("starsi-look", sel.value); else localStorage.removeItem("starsi-look"); } catch (e) {}
+      fillHex();
+    });
+  }).catch(fillHex);
+  new MutationObserver(fillHex).observe(root, { attributes: true, attributeFilter: ["data-theme", "data-look"] });
 })();
 </script>
 </body>

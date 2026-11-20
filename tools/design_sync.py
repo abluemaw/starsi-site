@@ -8,7 +8,8 @@ Commands
                                              (default: the commit before HEAD). DESIGN.md wins if both changed.
   python3 tools/design_sync.py to-css        DESIGN.md  -> sections/00-tokens.css
   python3 tools/design_sync.py from-css      sections/00-tokens.css -> DESIGN.md
-  python3 tools/design_sync.py page          rebuild design/index.html from DESIGN.md
+  python3 tools/design_sync.py page          rebuild design/index.html, designs/looks.css and designs/variants.json
+  python3 tools/design_sync.py promote NAME  copy designs/NAME.md into DESIGN.md (make that look live)
 
 Only the "design values" are synced: colors, effects, typography fonts, spacing, rounded and themes.
 The long written parts of DESIGN.md are never touched.
@@ -106,7 +107,7 @@ def var_for(path):
 
 
 # ---------- md -> css ----------
-def gen_css(entries):
+def gen_css(entries, scope=None):
     blocks = {"colors": [], "effects": [], "typography": [], "spacing": [], "rounded": []}
     themes = {"dark": {}, "light": {}}
     page = {}
@@ -120,8 +121,12 @@ def gen_css(entries):
             v = var_for(p)
             if v:
                 blocks[p[0]].append("  %s: %s;" % (v, e["value"]))
-    out = ["/* GENERATED from DESIGN.md. Edit DESIGN.md, or edit a value here: the sync copies it back to DESIGN.md. */"]
-    out.append(":root {")
+    root = ":root" if not scope else ':root[data-look="%s"]' % scope
+    if scope:
+        out = ["/* look: %s */" % scope]
+    else:
+        out = ["/* GENERATED from DESIGN.md. Edit DESIGN.md, or edit a value here: the sync copies it back to DESIGN.md. */"]
+    out.append(root + " {")
     for name in ("colors", "effects", "typography", "spacing", "rounded"):
         out.append("  /* %s */" % name)
         out.extend(blocks[name])
@@ -138,15 +143,16 @@ def gen_css(entries):
         return lines
 
     out.append("/* theme: dark (default) */")
-    out += theme_block(":root", themes["dark"])
+    out += theme_block(root, themes["dark"])
     out.append("/* theme: light (follows the visitor's device) */")
     out.append("@media (prefers-color-scheme: light) {")
-    out += theme_block(':root:not([data-theme="dark"])', themes["light"], "  ")
+    out += theme_block(root + ':not([data-theme="dark"])', themes["light"], "  ")
     out.append("}")
     out.append("/* theme: light, forced */")
-    out += theme_block(':root[data-theme="light"]', themes["light"])
-    out.append(':root { color-scheme: dark; } :root[data-theme="light"] { color-scheme: light; }')
-    out.append("@media (prefers-color-scheme: light) { :root:not([data-theme=\"dark\"]) { color-scheme: light; } }")
+    out += theme_block(root + '[data-theme="light"]', themes["light"])
+    if not scope:
+        out.append(':root { color-scheme: dark; } :root[data-theme="light"] { color-scheme: light; }')
+        out.append("@media (prefers-color-scheme: light) { :root:not([data-theme=\"dark\"]) { color-scheme: light; } }")
     return "\n".join(out) + "\n"
 
 
@@ -259,6 +265,75 @@ def icon_sprite_inline(icons):
     syms = "".join('<symbol id="icon-%s" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">%s</symbol>' % (n, b) for n, b in icons)
     return '<svg width="0" height="0" style="position:absolute" aria-hidden="true">%s</svg>' % syms
 
+
+# ---------- design variants ----------
+DESIGNS = os.path.join(ROOT, "designs")
+
+
+def variant_files():
+    if not os.path.isdir(DESIGNS):
+        return []
+    return sorted(f for f in os.listdir(DESIGNS) if f.endswith(".md") and f.lower() != "readme.md")
+
+
+def merge_entries(base, over):
+    merged = [dict(e) for e in base]
+    index = {e["path"]: e for e in merged}
+    for o in over:
+        if o["path"] in index:
+            index[o["path"]]["value"] = o["value"]
+        elif o["path"][0] == "colors":
+            n = dict(o)
+            merged.append(n)
+            index[n["path"]] = n
+    return merged
+
+
+def meta(text, key):
+    m = re.search(r'^%s:\s*"?(.*?)"?\s*$' % key, text, re.M)
+    return m.group(1) if m else ""
+
+
+def build_looks():
+    """designs/*.md (only the values that differ) -> designs/looks.css + designs/variants.json"""
+    import json
+    _, _, base = parse_md(read(MD))
+    picker = meta(read(MD), "lookPicker").lower() != "off"
+    css, listing = ["/* GENERATED from designs/*.md. Do not edit. */"], []
+    for f in variant_files():
+        slug = f[:-3]
+        text = read(os.path.join(DESIGNS, f))
+        _, _, over = parse_md(text)
+        merged = merge_entries(base, over)
+        css.append(gen_css(merged, scope=slug))
+        col = {e["path"][1]: e["value"] for e in merged if e["path"][0] == "colors"}
+        listing.append({"slug": slug, "name": meta(text, "name") or slug, "description": meta(text, "description"),
+                        "swatches": [col.get("gold400", ""), col.get("night", ""), col.get("electric500", "")]})
+    os.makedirs(DESIGNS, exist_ok=True)
+    write(os.path.join(DESIGNS, "looks.css"), "\n".join(css) + "\n")
+    write(os.path.join(DESIGNS, "variants.json"), json.dumps({"picker": picker, "variants": listing}, indent=1) + "\n")
+    return len(listing)
+
+
+def do_promote(name):
+    slug = name[:-3] if name.endswith(".md") else name
+    path = os.path.join(DESIGNS, slug + ".md")
+    if not os.path.exists(path):
+        print("No design called '%s' in designs/." % slug)
+        return 1
+    _, _, base = parse_md(read(MD))
+    _, _, over = parse_md(read(path))
+    new_md, changes = css_to_md(read(MD), gen_css(merge_entries(base, over)))
+    if not changes:
+        print("DESIGN.md already matches '%s'." % slug)
+    else:
+        write(MD, new_md)
+        print("Made '%s' the live design:" % slug)
+        for c in changes:
+            print("  " + c)
+    do_to_css()
+    return 0
+
 # ---------- design page ----------
 def swatches(entries):
     groups, order = {}, []
@@ -274,13 +349,14 @@ def swatches(entries):
     for g in order:
         html.append('    <div class="sw-group"><h3>%s</h3><div class="sw-row">' % g)
         for e in groups[g]:
-            html.append('      <div class="sw"><div class="chip" style="background:%s"></div><div class="meta"><b>%s</b><span>%s</span></div></div>'
-                        % (e["value"], e["path"][1], e["value"]))
+            html.append('      <div class="sw"><div class="chip" style="background:var(--%s)"></div><div class="meta"><b>%s</b><span data-var="--%s">%s</span></div></div>'
+                        % (kebab(e["path"][1]), e["path"][1], kebab(e["path"][1]), e["value"]))
         html.append("    </div></div>")
     return "\n".join(html)
 
 
 def build_page():
+    build_looks()
     if not os.path.exists(TEMPLATE):
         return False
     _, _, entries = parse_md(read(MD))
@@ -335,6 +411,13 @@ def main(argv):
         do_from_css()
     elif cmd == "page":
         pass
+    elif cmd == "promote":
+        if len(argv) < 3:
+            print("Usage: design_sync.py promote <name>")
+            return 1
+        rc = do_promote(argv[2])
+        if rc:
+            return rc
     elif cmd == "auto":
         base = argv[2] if len(argv) > 2 else "HEAD~1"
         files = changed_files(base)

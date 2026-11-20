@@ -8,6 +8,7 @@ on:
       - "sections/**"
       - "build.py"
       - "DESIGN.md"
+      - "designs/**"
       - "tools/design_sync.py"
       - "design/template.html"
       - "images/**"

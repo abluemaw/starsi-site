@@ -13,4 +13,4 @@
   - Page title and description: sections/00-head.html. Colours, fonts and spacing variables: sections/00-base.css.
   - Booking link: every "Book My Free Demo" button points to #contact. Replace with the real booking URL when there is one.
 -->
-<script>try{var t=localStorage.getItem("starsi-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<script>try{var r=document.documentElement,t=localStorage.getItem("starsi-theme");if(t)r.setAttribute("data-theme",t);var q=new URLSearchParams(location.search).get("design");if(q!==null){if(q&&q!=="live")localStorage.setItem("starsi-look",q);else localStorage.removeItem("starsi-look")}var l=localStorage.getItem("starsi-look");if(l)r.setAttribute("data-look",l)}catch(e){}</script>

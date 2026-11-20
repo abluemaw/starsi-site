@@ -1,6 +1,8 @@
 ---
 name: "StarSI Gold"
 description: "Bold StarSI.AI look: deep navy night ground, gold metal buttons and headlines, chrome and electric blue accents, blue glass cards with metal rims. Titillium Web headlines, Roboto body. Works in light and dark."
+# Show the "Look" dropdown in the site header? on / off
+lookPicker: "on"
 # HOW THIS FILE WORKS: every value below becomes a CSS variable on the site (sections/00-tokens.css).
 # Change a value here and the site follows. Change a value in sections/00-tokens.css and it is copied back here.
 colors:

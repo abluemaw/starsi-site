@@ -1,0 +1,25 @@
+{
+ "picker": true,
+ "variants": [
+  {
+   "slug": "green-belt",
+   "name": "Green belt",
+   "description": "Fresh green metal instead of gold. Same layout, same fonts.",
+   "swatches": [
+    "#2FBF71",
+    "#070B1C",
+    "#1F5CFF"
+   ]
+  },
+  {
+   "slug": "red-belt",
+   "name": "Red belt",
+   "description": "Bold red metal instead of gold. Same layout, same fonts.",
+   "swatches": [
+    "#F0262F",
+    "#070B1C",
+    "#1F5CFF"
+   ]
+  }
+ ]
+}

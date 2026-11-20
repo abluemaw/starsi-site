@@ -1,0 +1,46 @@
+name: Make a design live
+# A button: Actions > "Make a design live" > Run workflow > type the name of a file in the designs folder (for example red-belt).
+# Copies that design's values into DESIGN.md, so the whole site wears it. The old look stays in the version history.
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Design name, like red-belt (the file name in the designs folder, without .md)"
+        required: true
+
+permissions:
+  contents: write
+  pages: write
+  actions: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Make it live
+        env:
+          NAME: ${{ inputs.name }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          if ! echo "$NAME" | grep -Eq '^[A-Za-z0-9][A-Za-z0-9_-]{0,60}$'; then
+            echo "Use only letters, numbers, dashes and underscores."
+            exit 1
+          fi
+          python3 tools/design_sync.py promote "$NAME"
+          python3 build.py
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nothing to change. That design is already live."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Make the '$NAME' design live"
+          git push origin HEAD:main
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" || true
+          gh workflow run snapshot.yml --repo "${{ github.repository }}" -f commits="$(git rev-parse HEAD)" || true

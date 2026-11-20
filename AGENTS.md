@@ -7,6 +7,7 @@ This is a plain static website. The page is built from small files in the `secti
 - `sections/NN-name.css`: the styling for that same section.
 - `sections/00-head.html`: page title and description. `sections/00-base.css`: colours, fonts and spacing variables (`:root { ... }`).
 - `DESIGN.md`: the design system (colours, fonts, spacing, corners, light and dark). It is kept in step with `sections/00-tokens.css` automatically in both directions, and the page `design/index.html` is generated from it.
+- `designs/`: personal design variants. One file per variant (for example `designs/erin.md`) listing ONLY the values that differ from `DESIGN.md`. People try a variant with the "Look" dropdown or `?design=name`. For a personal try-out, create or edit a file in `designs/` and leave `DESIGN.md` alone. Never edit `designs/looks.css` or `designs/variants.json` (generated). See `designs/README.md`.
 - `images/`: pictures (for example `images/hero.webp`). Reference them as `images/name.webp`.
 - `index.html` is GENERATED from those files by `build.py`. NEVER edit `index.html`: any change to it is thrown away at the next build.
 - To add a section: create `sections/NN-name.html` (and `.css`) with a number between 10 and 89 to set its position. Numbers 10 to 89 sit inside `<main>`.

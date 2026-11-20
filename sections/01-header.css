@@ -11,7 +11,7 @@
   .nav-logo { display: block; width: 220px; height: auto; }
   @media (max-width: 600px) {
     .nav { gap: 10px; }
-    .nav-logo { width: clamp(96px, 34vw, 150px); }
+    .nav-logo { width: clamp(84px, 26vw, 140px); }
     .nav .btn.small { padding: 9px 12px; font-size: 13px; }
   }
   /* Light / dark switch (follows the device until someone clicks it) */
@@ -19,3 +19,10 @@
   .theme-toggle:hover { border-color: var(--page-muted); }
   .theme-toggle:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 3px; }
   @media (max-width: 600px) { .links { gap: 10px; } .theme-toggle { width: 34px; height: 34px; } }
+  /* Look picker (design variants) */
+  .look-picker { flex-shrink: 0; max-width: 150px; font: 600 13px var(--font-body); color: var(--page-ink); background: transparent; border: 1px solid var(--line-soft); border-radius: var(--radius-md); padding: 8px 10px; cursor: pointer; }
+  .look-picker:hover { border-color: var(--page-muted); }
+  .look-picker:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 3px; }
+  .look-picker option { color: #0A1130; background: #fff; }
+  .nav .btn.small { white-space: nowrap; }
+  @media (max-width: 600px) { .nav { height: auto; min-height: 66px; padding-top: 8px; padding-bottom: 8px; } .links { flex-wrap: wrap; justify-content: flex-end; row-gap: 8px; min-width: 0; } .look-picker { order: 3; flex: 1 0 100%; max-width: none; padding: 7px 10px; font-size: 13px; } }

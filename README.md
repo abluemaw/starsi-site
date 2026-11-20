@@ -17,4 +17,5 @@ The page is built from small files in `sections/` (one per section) by `build.py
 - Add coworkers: repo Settings > Collaborators > Add people, Write access.
 - Buttons in the repo's Actions tab: "Save this version" (name the current site) and "Restore the site" (go back to a saved name or commit).
 - `DESIGN.md` is the design system. It syncs with `sections/00-tokens.css` in both directions (if both change at once, DESIGN.md wins) and generates the page at `/design/`.
+- Design variants live in `designs/` (one small file each). The "Look" dropdown in the site header and the design page previews them; Actions > "Make a design live" promotes one into `DESIGN.md`. Set `lookPicker: "off"` in `DESIGN.md` to hide the dropdown.
 - After a change, GitHub rebuilds `index.html` itself (auto-merge and `build.yml`).

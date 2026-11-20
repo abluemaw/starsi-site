@@ -1,0 +1,249 @@
+/* GENERATED from designs/*.md. Do not edit. */
+/* look: green-belt */
+:root[data-look="green-belt"] {
+  /* colors */
+  --night: #070B1C;
+  --navy-900: #060D3A;
+  --panel: #0E1E60;
+  --panel-light: #2040AA;
+  --surface: #FFFFFF;
+  --surface-soft: #F3F5FA;
+  --surface-muted: #E3E8F3;
+  --ink: #0A1130;
+  --ink-muted: #465178;
+  --ink-on-dark: #F4F6FF;
+  --ink-on-dark-muted: #A9B3D6;
+  --gold-300: #B6F2C9;
+  --gold-400: #2FBF71;
+  --gold-500: #1E9A57;
+  --gold-600: #0F6A39;
+  --gold-900: #06331B;
+  --on-gold: #04210F;
+  --chrome-100: #F4F6FA;
+  --chrome-300: #C5CCD8;
+  --chrome-500: #8892A3;
+  --chrome-700: #4A5365;
+  --electric-300: #7FB2FF;
+  --electric-500: #1F5CFF;
+  --electric-700: #0B2FB0;
+  --link: #1646D6;
+  --border: #C3CBE0;
+  --border-strong: #66719B;
+  --success: #0B7A55;
+  --success-bright: #4FD6A0;
+  --warning: #8A5200;
+  --danger: #C0152F;
+  --danger-bright: #FF8591;
+  /* effects */
+  --gold-metal: linear-gradient(180deg,#d4fbe0 0%,#6fe3a0 28%,#1e9a57 49%,#2fbf71 52%,#9cf0bf 100%);
+  --chrome-metal: linear-gradient(180deg,#ffffff 0%,#dfe4ec 45%,#9aa4b4 50%,#cfd6e0 52%,#f4f6fa 100%);
+  --electric-metal: linear-gradient(180deg,#1f5cff 0%,#0b2fb0 100%);
+  --bevel-gold: inset 0 2px 0 #d8fbe5, inset 0 -3px 0 #0f6a39, 0 3px 0 #06331b;
+  --rim-chrome: conic-gradient(from 20deg,#f4f6fa,#aab4c6,#ffffff,#dfe4ec,#9aa4b4,#f4f6fa);
+  --rim-gold: conic-gradient(from 20deg,#fff3b0,#b96a00,#ffe27a,#f2a100,#4d2a05,#fff3b0);
+  --card-shadow: 0 10px 28px rgba(6,13,58,.28);
+  /* typography */
+  --font-display: 'Titillium Web', 'Arial Black', system-ui, sans-serif;
+  --font-body: Roboto, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  /* spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-xxxl: 64px;
+  /* rounded */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+}
+/* theme: dark (default) */
+:root[data-look="green-belt"] {
+  --page-bg: #070B1C;
+  --page-alt: #0B1230;
+  --page-ink: #F4F6FF;
+  --page-muted: #A9B3D6;
+  --card-bg: #0B1230;
+  --line-soft: rgba(255,255,255,.14);
+  --link-page: #7FB2FF;
+  --kicker: #6FE3A0;
+  --ok-page: #4FD6A0;
+  --ok-bg: rgba(79,214,160,.15);
+  --nav-bg: rgba(7,11,28,.9);
+  --hero-glow: #14275A;
+  --headline-from: #D4FBE0;
+  --headline-mid: #6FE3A0;
+  --headline-to: #1E9A57;
+  --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
+  --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
+}
+/* theme: light (follows the visitor's device) */
+@media (prefers-color-scheme: light) {
+  :root[data-look="green-belt"]:not([data-theme="dark"]) {
+    --page-bg: #F3F5FA;
+    --page-alt: #FFFFFF;
+    --page-ink: #0A1130;
+    --page-muted: #465178;
+    --card-bg: #FFFFFF;
+    --line-soft: #D5DBEA;
+    --link-page: #1646D6;
+    --kicker: #8A5200;
+    --ok-page: #0B7A55;
+    --ok-bg: rgba(11,122,85,.14);
+    --nav-bg: rgba(243,245,250,.92);
+    --hero-glow: #FFF1BF;
+    --headline-from: #0A1130;
+    --headline-mid: #0A1130;
+    --headline-to: #0A1130;
+    --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
+    --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
+  }
+}
+/* theme: light, forced */
+:root[data-look="green-belt"][data-theme="light"] {
+  --page-bg: #F3F5FA;
+  --page-alt: #FFFFFF;
+  --page-ink: #0A1130;
+  --page-muted: #465178;
+  --card-bg: #FFFFFF;
+  --line-soft: #D5DBEA;
+  --link-page: #1646D6;
+  --kicker: #8A5200;
+  --ok-page: #0B7A55;
+  --ok-bg: rgba(11,122,85,.14);
+  --nav-bg: rgba(243,245,250,.92);
+  --hero-glow: #FFF1BF;
+  --headline-from: #0A1130;
+  --headline-mid: #0A1130;
+  --headline-to: #0A1130;
+  --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
+  --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
+}
+
+/* look: red-belt */
+:root[data-look="red-belt"] {
+  /* colors */
+  --night: #070B1C;
+  --navy-900: #060D3A;
+  --panel: #0E1E60;
+  --panel-light: #2040AA;
+  --surface: #FFFFFF;
+  --surface-soft: #F3F5FA;
+  --surface-muted: #E3E8F3;
+  --ink: #0A1130;
+  --ink-muted: #465178;
+  --ink-on-dark: #F4F6FF;
+  --ink-on-dark-muted: #A9B3D6;
+  --gold-300: #FF9A9A;
+  --gold-400: #F0262F;
+  --gold-500: #D10F1F;
+  --gold-600: #8A0A14;
+  --gold-900: #3D0509;
+  --on-gold: #FFFFFF;
+  --chrome-100: #F4F6FA;
+  --chrome-300: #C5CCD8;
+  --chrome-500: #8892A3;
+  --chrome-700: #4A5365;
+  --electric-300: #7FB2FF;
+  --electric-500: #1F5CFF;
+  --electric-700: #0B2FB0;
+  --link: #1646D6;
+  --border: #C3CBE0;
+  --border-strong: #66719B;
+  --success: #0B7A55;
+  --success-bright: #4FD6A0;
+  --warning: #8A5200;
+  --danger: #C0152F;
+  --danger-bright: #FF8591;
+  /* effects */
+  --gold-metal: linear-gradient(180deg,#ff9a9a 0%,#ff4d4d 28%,#d10f1f 49%,#f0262f 52%,#ff7a7a 100%);
+  --chrome-metal: linear-gradient(180deg,#ffffff 0%,#dfe4ec 45%,#9aa4b4 50%,#cfd6e0 52%,#f4f6fa 100%);
+  --electric-metal: linear-gradient(180deg,#1f5cff 0%,#0b2fb0 100%);
+  --bevel-gold: inset 0 2px 0 #ffc2c2, inset 0 -3px 0 #7a0a14, 0 3px 0 #3d0509;
+  --rim-chrome: conic-gradient(from 20deg,#f4f6fa,#aab4c6,#ffffff,#dfe4ec,#9aa4b4,#f4f6fa);
+  --rim-gold: conic-gradient(from 20deg,#fff3b0,#b96a00,#ffe27a,#f2a100,#4d2a05,#fff3b0);
+  --card-shadow: 0 10px 28px rgba(6,13,58,.28);
+  /* typography */
+  --font-display: 'Titillium Web', 'Arial Black', system-ui, sans-serif;
+  --font-body: Roboto, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  /* spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-xxxl: 64px;
+  /* rounded */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+}
+/* theme: dark (default) */
+:root[data-look="red-belt"] {
+  --page-bg: #070B1C;
+  --page-alt: #0B1230;
+  --page-ink: #F4F6FF;
+  --page-muted: #A9B3D6;
+  --card-bg: #0B1230;
+  --line-soft: rgba(255,255,255,.14);
+  --link-page: #7FB2FF;
+  --kicker: #FF8A8A;
+  --ok-page: #4FD6A0;
+  --ok-bg: rgba(79,214,160,.15);
+  --nav-bg: rgba(7,11,28,.9);
+  --hero-glow: #14275A;
+  --headline-from: #FFC2C2;
+  --headline-mid: #FF4D4D;
+  --headline-to: #D10F1F;
+  --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
+  --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
+}
+/* theme: light (follows the visitor's device) */
+@media (prefers-color-scheme: light) {
+  :root[data-look="red-belt"]:not([data-theme="dark"]) {
+    --page-bg: #F3F5FA;
+    --page-alt: #FFFFFF;
+    --page-ink: #0A1130;
+    --page-muted: #465178;
+    --card-bg: #FFFFFF;
+    --line-soft: #D5DBEA;
+    --link-page: #1646D6;
+    --kicker: #8A5200;
+    --ok-page: #0B7A55;
+    --ok-bg: rgba(11,122,85,.14);
+    --nav-bg: rgba(243,245,250,.92);
+    --hero-glow: #FFF1BF;
+    --headline-from: #0A1130;
+    --headline-mid: #0A1130;
+    --headline-to: #0A1130;
+    --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
+    --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
+  }
+}
+/* theme: light, forced */
+:root[data-look="red-belt"][data-theme="light"] {
+  --page-bg: #F3F5FA;
+  --page-alt: #FFFFFF;
+  --page-ink: #0A1130;
+  --page-muted: #465178;
+  --card-bg: #FFFFFF;
+  --line-soft: #D5DBEA;
+  --link-page: #1646D6;
+  --kicker: #8A5200;
+  --ok-page: #0B7A55;
+  --ok-bg: rgba(11,122,85,.14);
+  --nav-bg: rgba(243,245,250,.92);
+  --hero-glow: #FFF1BF;
+  --headline-from: #0A1130;
+  --headline-mid: #0A1130;
+  --headline-to: #0A1130;
+  --text-metal: linear-gradient(180deg, var(--headline-from) 0%, var(--headline-mid) 55%, var(--headline-to) 100%);
+  --hero-bg: radial-gradient(ellipse at 50% 0%, var(--hero-glow), var(--page-bg) 70%);
+}
+
