@@ -112,6 +112,13 @@
   "message": "Refine skin texture and tones in the hero image (#4)"
  },
  {
+  "sha": "f5c8a4ad6dbc0414fc9823bf26791e743b425e66",
+  "short": "f5c8a4a",
+  "date": "2026-11-20T17:02:46-05:00",
+  "author": "abluemaw",
+  "message": "Add the Instrument design (based on StarSi.ai system); per-design CSS and fonts load only when used"
+ },
+ {
   "sha": "1205eb9d1e7dc1de41a963370695e01edd66cd43",
   "short": "1205eb9",
   "date": "2026-11-20T16:50:14-05:00",
