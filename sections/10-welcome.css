@@ -1,7 +1,7 @@
   /* SECTION 1: WELCOME BANNER */
   .welcome { padding: 0; }
   .welcome-art { display: block; width: 100%; height: auto; }
-  .reference-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; padding: 16px 12px; background: linear-gradient(90deg, var(--electric-700), var(--panel-light), var(--electric-700)); }
+  .reference-actions-band { background: linear-gradient(90deg, var(--electric-700), var(--panel-light), var(--electric-700)); }
   .benefit-ribbon { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; padding: 26px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
   .benefit-ribbon a { display: block; text-decoration: none; transition: transform .2s; }
   .benefit-ribbon a:hover { transform: translateY(-3px); }

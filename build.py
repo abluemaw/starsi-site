@@ -74,6 +74,15 @@ def build():
             out = out.replace('<html lang="en">', '<html lang="en" data-logo-light>', 1)
     except Exception:
         pass
+    # version the icon sheet's address so a changed sheet is never served from an old cache
+    try:
+        import hashlib
+        sp = os.path.join(HERE, "icons", "sprite.svg")
+        if os.path.exists(sp):
+            v = hashlib.md5(open(sp, "rb").read()).hexdigest()[:8]
+            out = out.replace("icons/sprite.svg#", "icons/sprite.svg?v=%s#" % v)
+    except Exception:
+        pass
     if js:
         out += "<script>\n" + js + "</script>\n"
     out += "\n</body>\n</html>\n"
