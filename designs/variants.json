@@ -1,7 +1,7 @@
 {
  "picker": true,
  "live": {
-  "logo": "images/starsi-ai-logo.webp",
+  "logo": "images/starsi-navbar-star-logo.webp",
   "logoLight": ""
  },
  "variants": [
@@ -9,7 +9,7 @@
    "slug": "green-belt",
    "name": "Green belt",
    "description": "Fresh green metal instead of gold. Same layout, same fonts.",
-   "logo": "images/starsi-ai-logo.webp",
+   "logo": "images/starsi-navbar-star-logo.webp",
    "logoLight": "",
    "swatches": [
     "#2FBF71",
@@ -33,7 +33,7 @@
    "slug": "red-belt",
    "name": "Red belt",
    "description": "Bold red metal instead of gold. Same layout, same fonts.",
-   "logo": "images/starsi-ai-logo.webp",
+   "logo": "images/starsi-navbar-star-logo.webp",
    "logoLight": "",
    "swatches": [
     "#F0262F",
