@@ -90,7 +90,7 @@ rounded:
   pill: "999px"
 components:
   buttons: "Primary: gold metal. Vertical horizon-band gradient (#FFF3B0 > #FFD23F > #F0A000 > #FFC61A > #FFE27A), dark label #1A0F00, Roboto 700, 8px radius, slanted -8deg with the label slanted back so text stays upright. Bevel shadow: inset 0 2px 0 #FFF0A8, inset 0 -3px 0 #B96A00, 0 3px 0 #4D2A05. A glossy top half and a slow light sweep. Sizes: small 13px, medium 15px, large 17px, extra large 22px for the hero. Secondary: chrome (white to grey metal, brushed). Accent: electric blue gradient with white label. Ghost: transparent with a 2px strong border. One gold button per view is the action."
-  eyebrows: "The small label above a headline is plain text, not a button: uppercase, bold, wide tracking, electric blue (link colour for the current mode), with a short gold bar on each side. No background, no border, no pill, so it never looks clickable."
+  eyebrows: "The small label above a headline is plain text, not a button: uppercase, bold, wide tracking, electric blue (the link colour for the current mode). No background, no border, no pill and no line, so it never looks clickable."
   cards: "Blue glass panel: vertical gradient from #2040AA to #0E1E60 (96% opaque), 14px radius, with a metal rim (chrome conic gradient) that gets a slow light sweep. On hover or for featured cards the rim turns gold."
   badges: "Pills (999px), never wrap, 12px on phones."
   forms: "Fields: soft surface fill, 2px strong border, 8px radius. Focus shows a 3px electric blue ring (gold on dark)."
