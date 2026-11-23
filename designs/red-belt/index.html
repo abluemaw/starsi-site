@@ -277,61 +277,25 @@
   .links a { white-space: nowrap; }
   /* SECTION 1: WELCOME BANNER */
   .welcome { padding: 0; background: var(--night); }
-  .welcome-banner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, min(39%, 430px));
-    align-items: center;
-    gap: clamp(var(--space-lg), 3vw, var(--space-xxl));
-    --welcome-inset: clamp(var(--space-lg), 4vw, var(--space-xxxl));
-    padding-inline-end: max(var(--welcome-inset), calc((100% - 1440px) / 2 + var(--welcome-inset)));
-    color: var(--ink-on-dark);
-  }
-  .welcome-art {
-    grid-column: 1;
-    grid-row: 1;
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: left bottom;
-    mask-image: linear-gradient(to left, transparent, var(--night) 9%);
-  }
-  .welcome-copy { grid-column: 2; grid-row: 1; width: 100%; padding: var(--space-xl) 0; }
-  .welcome-copy h1 { max-width: 9em; font-size: clamp(40px, 4.7vw, 76px); }
-  .welcome-heading-intro { font-size: clamp(22px, 2.6vw, 34px); }
-  .welcome-heading-logo { display: block; width: 100%; height: auto; margin-top: var(--space-sm); }
-  .welcome-copy p { max-width: 34ch; }
+  .welcome-banner { display: flex; flex-direction: column; align-items: center; color: var(--ink-on-dark); }
+  .welcome-copy { width: 100%; padding-block: var(--space-xl) var(--space-lg); text-align: center; }
+  .welcome-copy h1 { display: flex; align-items: center; justify-content: center; gap: var(--space-md); max-width: none; font-size: clamp(40px, 4.7vw, 76px); }
+  .welcome-heading-intro { flex: none; white-space: nowrap; font-size: clamp(22px, 2.6vw, 34px); }
+  .welcome-heading-logo { display: block; width: clamp(140px, 32vw, 430px); max-width: 55%; height: auto; }
   .welcome-lead { margin-top: var(--space-md); font-size: clamp(19px, 2vw, 25px); font-weight: 700; line-height: 1.28; }
-  .welcome-benefits {
-    display: grid;
-    width: fit-content;
-    max-width: 100%;
-    gap: var(--space-xs);
-    margin: var(--space-md) 0;
-    list-style: none;
-    font-size: clamp(21px, 2.2vw, 28px);
-    font-weight: 700;
-    line-height: 1.2;
-  }
-  .welcome-benefits li {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-xs) var(--space-md);
-    border-inline-start: 3px solid var(--gold-400);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--panel-light) 60%, var(--night));
-  }
-  .welcome-benefits .ic { color: var(--gold-300); font-size: 1.15em; }
-  .welcome-promise { font-size: clamp(18px, 1.5vw, 21px); font-weight: 700; line-height: 1.4; }
+  .welcome-benefits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(var(--space-xs), 3vw, var(--space-xl)); width: 100%; max-width: 1100px; margin: var(--space-md) auto 0; list-style: none; font-size: clamp(14px, 1.8vw, 24px); font-weight: 700; line-height: 1.2; }
+  .welcome-benefits li { display: flex; align-items: center; justify-content: center; gap: var(--space-sm); padding: var(--space-xs) var(--space-md); border-inline-start: 3px solid var(--gold-400); border-radius: var(--radius-md); background: color-mix(in srgb, var(--panel-light) 60%, var(--night)); }
+  .welcome-benefits .ic { flex-shrink: 0; color: var(--gold-300); font-size: 1.15em; }
+  .welcome-art { display: block; width: 100%; max-width: 1440px; height: auto; }
+  .welcome-closing { padding-block: var(--space-lg) var(--space-xl); text-align: center; }
+  .welcome-promise { max-width: none; font-size: clamp(18px, 1.5vw, 21px); font-weight: 700; line-height: 1.4; }
   .welcome-promise strong { color: var(--gold-300); }
-  .welcome-copy .reference-actions { display: flex; justify-content: flex-start; align-items: flex-start; margin: var(--space-lg) 0 0; padding: 0; }
-  .welcome-copy .reference-actions .btn { flex: none; text-align: left; width: auto; max-width: 100%; white-space: normal; }
-  @media (max-width: 920px) {
-    .welcome-banner { grid-template-columns: minmax(0, 1fr); gap: var(--space-lg); padding-inline: 0; }
-    .welcome-copy { grid-column: 1; grid-row: 1; padding: var(--space-xl) var(--welcome-inset) 0; }
-    .welcome-copy p { max-width: 40ch; }
-    .welcome-art { grid-column: 1; grid-row: 2; height: auto; mask-image: none; }
+  .welcome-closing .reference-actions { display: flex; justify-content: center; margin: var(--space-lg) 0 0; padding: 0; }
+  .welcome-closing .reference-actions .btn { flex: none; text-align: center; width: auto; max-width: 100%; white-space: normal; }
+  @media (max-width: 600px) {
+    .welcome-copy h1 { gap: var(--space-sm); }
+    .welcome-benefits { font-size: 12px; gap: var(--space-xs); }
+    .welcome-benefits li { flex-direction: column; gap: var(--space-xs); padding: var(--space-sm) var(--space-xs); }
   }
   .benefit-ribbon { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; padding: 26px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
   .benefit-ribbon a { display: block; text-decoration: none; transition: transform .2s; }
@@ -533,12 +497,14 @@
         <li><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=b062c847#billing"/></svg>More Revenue</li>
         <li><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=b062c847#class-time"/></svg>A Stronger Reputation</li>
       </ul>
+    </div>
+    <img class="welcome-art" src="../../images/dojo-command-center.webp" alt="Martial arts school owner viewing the StarSI.AI business command center while students train" width="1672" height="941" fetchpriority="high">
+    <div class="wrap welcome-closing">
       <p class="welcome-promise">Turn Your Martial Arts School Into a <strong>High-Enrollment, High-Income Business</strong></p>
       <div class="reference-actions">
         <a class="btn" href="#sales">Discover Your School’s Full Potential</a>
       </div>
     </div>
-    <img class="welcome-art" src="../../images/welcome-dashboard-left.webp" alt="" width="1240" height="941" fetchpriority="high">
   </div>
   <div class="section-break" aria-hidden="true"><span class="sb-star"></span></div>
   <div class="benefit-ribbon">
