@@ -2,3 +2,4 @@
   details { padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
   summary { cursor: pointer; font-weight: 700; font-size: 18px; }
   details p { margin-top: 10px; color: var(--page-muted); max-width: 760px; }
+  #faq::before { background-image: url("images/bg-faq.webp"); }

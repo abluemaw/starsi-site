@@ -78,6 +78,10 @@
     background-size: 300% 100%, 100% 100%, 100% 100%, 100% 100%; background-position: 130% 0, 0 0, 0 0, 0 0; background-repeat: no-repeat;
     animation-name: btn-sweep-silver; }
   @keyframes btn-sweep-silver { 0%, 55% { background-position: 130% 0, 0 0, 0 0, 0 0; } 100% { background-position: -30% 0, 0 0, 0 0, 0 0; } }
+  /* Soft photo background for a panel: the picture is blurred and faded back so it reads as a light wash of colour (never sharp faces behind text).
+     Add class "photo-bg" to a section and set its picture in that section's css: #id::before { background-image: url("../../images/name.webp"); } */
+  .photo-bg { position: relative; isolation: isolate; overflow: hidden; }
+  .photo-bg::before { content: ""; position: absolute; inset: -30px; z-index: -1; pointer-events: none; background-size: cover; background-position: center; background-repeat: no-repeat; filter: blur(10px) saturate(1.1); opacity: .26; }
 /* GENERATED from DESIGN.md. Edit DESIGN.md, or edit a value here: the sync copies it back to DESIGN.md. */
 :root {
   /* colors */
@@ -295,6 +299,7 @@
   .story p { font-size: 18px; margin-bottom: 18px; }
   .story h3 { font-size: clamp(26px, 3vw, 38px); }
   @media (max-width: 760px) { .story { grid-template-columns: 1fr; gap: 18px; } }
+  #growth::before { background-image: url("../../images/bg-growth.webp"); }
   /* SECTION 4: INCOME CALCULATOR (form field look is shared with the enrollment form) */
   .calc { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 28px 0 30px; align-items: start; }
   label { display: block; font-weight: 700; margin: 14px 0 6px; }
@@ -310,6 +315,7 @@
   details { padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
   summary { cursor: pointer; font-weight: 700; font-size: 18px; }
   details p { margin-top: 10px; color: var(--page-muted); max-width: 760px; }
+  #faq::before { background-image: url("../../images/bg-faq.webp"); }
   /* SECTION 7: ENROLL */
   .notice { border-left: 4px solid var(--gold-500); padding: 12px 14px; background: rgba(255, 198, 26, .16); color: var(--page-ink); font-size: 14px; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 16px 0; }
   .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
@@ -318,6 +324,7 @@
   #enroll form button.btn { border: 0; font-size: 16px; cursor: pointer; }
   #result { margin-top: 14px; font-weight: 700; }
   @media (max-width: 760px) { .fields { grid-template-columns: 1fr; } }
+  #enroll::before { background-image: url("../../images/bg-class.webp"); }
   /* SECTIONS 8-11: THE FOUR PAGES (Features, Benefits, Pricing, Success stories) share these */
   .subhero { background: var(--hero-bg); padding: 64px 0; }
   .subhero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
@@ -435,7 +442,7 @@
 </div>
 
 <!-- SECTION 3: GROW YOUR PROFITS -->
-<section class="alt" id="growth">
+<section class="alt photo-bg" id="growth">
   <div class="wrap">
     <div class="eyebrow">Built around your business</div>
     <h2>Grow Your Profits<br>Not Your Workload</h2>
@@ -497,7 +504,7 @@
 </section>
 
 <!-- SECTION 6: FAQ -->
-<section id="faq">
+<section class="photo-bg" id="faq">
   <div class="wrap">
     <h2>Make Your Decision With Confidence</h2>
     <details><summary>What will StarSI cost?</summary><p>Review the official subscription price, payment processing fees and any setup charges before signing. The planned special offer is $195/month; final fees and terms require confirmation.</p></details>
@@ -508,7 +515,7 @@
 </section>
 
 <!-- SECTION 7: ENROLL (preview form: nothing is sent anywhere) -->
-<section class="alt" id="enroll">
+<section class="alt photo-bg" id="enroll">
   <div class="wrap">
     <div class="eyebrow">Your next move</div>
     <h2>Your Next Level Starts Here</h2>
@@ -542,7 +549,7 @@
       <p class="lead">Discover the technology designed around the business of martial arts.</p>
       <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
     </div>
-    <img src="../../images/features-hero.webp" alt="Martial arts students and instructors practicing in a bright academy" width="1000" height="563" loading="lazy">
+    <img src="../../images/features-hero.webp" alt="A martial arts student launching a flying kick in a busy dojo" width="1000" height="563" loading="lazy">
   </div>
 </section>
 <section class="alt">
@@ -577,7 +584,7 @@
       <p class="lead">Put your passion back at the center of your business. StarSI is designed to help you operate efficiently and grow.</p>
       <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
     </div>
-    <img src="../../images/benefits-hero.webp" alt="Instructors, families and students in a martial arts school" width="1000" height="667" loading="lazy">
+    <img src="../../images/benefits-hero.webp" alt="Students of every age punching together in a bright dojo" width="1000" height="563" loading="lazy">
   </div>
 </section>
 <section class="alt">
@@ -654,7 +661,7 @@
       <p class="lead">Explore the opportunities StarSI is designed to support.</p>
       <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
     </div>
-    <img src="../../images/stories-hero.webp" alt="Martial arts instructors, parents and students at a school" width="1000" height="563" loading="lazy">
+    <img src="../../images/stories-hero.webp" alt="Two martial artists throwing focused punches with classmates behind them" width="1000" height="563" loading="lazy">
   </div>
 </section>
 <section class="alt">

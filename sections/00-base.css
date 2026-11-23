@@ -61,3 +61,7 @@
     background-size: 300% 100%, 100% 100%, 100% 100%, 100% 100%; background-position: 130% 0, 0 0, 0 0, 0 0; background-repeat: no-repeat;
     animation-name: btn-sweep-silver; }
   @keyframes btn-sweep-silver { 0%, 55% { background-position: 130% 0, 0 0, 0 0, 0 0; } 100% { background-position: -30% 0, 0 0, 0 0, 0 0; } }
+  /* Soft photo background for a panel: the picture is blurred and faded back so it reads as a light wash of colour (never sharp faces behind text).
+     Add class "photo-bg" to a section and set its picture in that section's css: #id::before { background-image: url("images/name.webp"); } */
+  .photo-bg { position: relative; isolation: isolate; overflow: hidden; }
+  .photo-bg::before { content: ""; position: absolute; inset: -30px; z-index: -1; pointer-events: none; background-size: cover; background-position: center; background-repeat: no-repeat; filter: blur(10px) saturate(1.1); opacity: .26; }
