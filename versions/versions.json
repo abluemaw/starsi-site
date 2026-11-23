@@ -1,5 +1,12 @@
 [
  {
+  "sha": "f9d30495f5ec2eecf8a54bcb819d05f11c5d024b",
+  "short": "f9d3049",
+  "date": "2026-11-23T19:11:12Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "dc14b27bfd49066fa0a08033cc1646754c3a7a2f",
   "short": "dc14b27",
   "date": "2026-11-23T19:08:43Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T16:20:27-05:00",
   "author": "abluemaw",
   "message": "Fix gold button gloss in light mode"
- },
- {
-  "sha": "e30dbaa024fd0c236bb1a24ad86fdaa8f75eb25c",
-  "short": "e30dbaa",
-  "date": "2026-11-20T16:13:08-05:00",
-  "author": "abluemaw",
-  "message": "Cards: remove pink accent bars, lighten chrome rim"
  }
 ]
