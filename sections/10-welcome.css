@@ -5,24 +5,25 @@
     isolation: isolate;
     min-height: clamp(540px, 44vw, 760px);
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr) minmax(0, min(39%, 430px));
     align-items: center;
+    gap: clamp(var(--space-lg), 3vw, var(--space-xxl));
     --welcome-inset: clamp(var(--space-lg), 4vw, var(--space-xxxl));
+    padding-inline-end: max(var(--welcome-inset), calc((100% - 1440px) / 2 + var(--welcome-inset)));
     color: var(--ink-on-dark);
   }
   .welcome-art {
     position: absolute;
-    inset: 50% auto auto 0;
-    transform: translateY(-50%);
+    inset: 0 auto 0 0;
     z-index: -1;
     display: block;
-    width: 50%;
-    height: auto;
-    mask-image: linear-gradient(to right, var(--night) 68%, transparent),
-      linear-gradient(to bottom, transparent, var(--night) 9%, var(--night) 91%, transparent);
-    mask-composite: intersect;
+    width: 70%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    mask-image: linear-gradient(to right, var(--night) 52%, color-mix(in srgb, var(--night) 36%, transparent) 75%, transparent 91%);
   }
-  .welcome-copy { grid-column: 2; grid-row: 1; width: 100%; max-width: 590px; padding: var(--space-xl) var(--welcome-inset); }
+  .welcome-copy { grid-column: 2; grid-row: 1; width: 100%; padding: var(--space-xl) 0; padding-inline-start: clamp(var(--space-sm), 1.5vw, var(--space-lg)); }
   .welcome-copy h1 { max-width: 9em; font-size: clamp(40px, 4.7vw, 76px); }
   .welcome-heading-intro { font-size: clamp(22px, 2.6vw, 34px); }
   .welcome-heading-logo { display: block; width: 100%; height: auto; margin-top: var(--space-sm); }
@@ -54,10 +55,10 @@
   .welcome-copy .reference-actions { display: flex; justify-content: flex-start; align-items: flex-start; margin: var(--space-lg) 0 0; padding: 0; }
   .welcome-copy .reference-actions .btn { flex: none; text-align: left; width: auto; max-width: 100%; white-space: normal; }
   @media (max-width: 920px) {
-    .welcome-banner { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); min-height: 0; }
-    .welcome-copy { grid-column: 1; grid-row: 1; max-width: none; padding: var(--space-xl) var(--welcome-inset) 0; }
+    .welcome-banner { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); min-height: 0; padding-inline: 0; }
+    .welcome-copy { grid-column: 1; grid-row: 1; padding: var(--space-xl) var(--welcome-inset) 0; }
     .welcome-copy p { max-width: 40ch; }
-    .welcome-art { position: static; grid-column: 1; grid-row: 2; width: 100%; transform: none; mask-image: none; }
+    .welcome-art { position: static; grid-column: 1; grid-row: 2; width: 100%; height: auto; mask-image: none; }
   }
   .benefit-ribbon { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; padding: 26px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
   .benefit-ribbon a { display: block; text-decoration: none; transition: transform .2s; }
