@@ -9,7 +9,7 @@
     background: var(--night);
     color: var(--ink-on-dark);
   }
-  .welcome-art { position: absolute; inset: 0; z-index: -2; display: block; width: 100%; height: 100%; object-fit: cover; object-position: right 18%; }
+  .welcome-art { position: absolute; inset: 0; z-index: -2; display: block; width: 100%; height: 100%; object-fit: contain; object-position: right 18%; }
   .welcome-banner::after {
     content: "";
     position: absolute;
