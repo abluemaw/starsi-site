@@ -1,5 +1,12 @@
 [
  {
+  "sha": "e6eab560c825f6dfcc94bf427655ac1f7c0d24e3",
+  "short": "e6eab56",
+  "date": "2026-11-23T18:59:08Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "3bb6113d492ff069056a14c9e633a1c2ff5d5a61",
   "short": "3bb6113",
   "date": "2026-11-23T18:58:00Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T15:58:55-05:00",
   "author": "abluemaw",
   "message": "Add light and dark switch to the header"
- },
- {
-  "sha": "1f552a8befab5480da5eb90f47eda349d6e59d56",
-  "short": "1f552a8",
-  "date": "2026-11-20T15:57:48-05:00",
-  "author": "abluemaw",
-  "message": "Remove sync test colour"
  }
 ]
