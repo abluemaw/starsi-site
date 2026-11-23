@@ -1,5 +1,12 @@
 [
  {
+  "sha": "0d5f2a024eb197a902b6709931cd89629a93e2ae",
+  "short": "0d5f2a0",
+  "date": "2026-11-23T19:33:10Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "1ba24c6f00fcba2a32c0a6d3d6babd6f690360fb",
   "short": "1ba24c6",
   "date": "2026-11-23T19:31:22Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T20:15:17Z",
   "author": "MAWnews",
   "message": "Add headline periods and break before Less Office Work (#8)"
- },
- {
-  "sha": "6e6846c5aaaa7d14b9962f51efa89aa4195023c6",
-  "short": "6e6846c",
-  "date": "2026-11-20T20:10:10Z",
-  "author": "abluemaw",
-  "message": "Test: history picture after merge (#7)"
  }
 ]
