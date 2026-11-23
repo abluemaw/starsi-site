@@ -25,8 +25,8 @@
   .welcome-lead { margin-top: var(--space-md); font-size: clamp(19px, 2vw, 25px); font-weight: 700; line-height: 1.28; }
   .welcome-benefits { margin: var(--space-md) 0; padding-inline-start: var(--space-lg); font-weight: 700; }
   .welcome-benefits li::marker { color: var(--gold-300); }
-  .welcome-copy .reference-actions { display: flex; justify-content: flex-start; margin-top: var(--space-lg); padding: 0; }
-  .welcome-copy .reference-actions .btn { width: auto; max-width: 100%; white-space: normal; }
+  .welcome-copy .reference-actions { display: flex; justify-content: flex-start; align-items: flex-start; margin-top: var(--space-lg); padding: 0; }
+  .welcome-copy .reference-actions .btn { flex: none; width: auto; max-width: 100%; white-space: normal; }
   @media (max-width: 920px) {
     .welcome-banner { min-height: 0; }
     .welcome-banner::after { content: none; }

@@ -78,15 +78,20 @@
      Add class "photo-bg" to a section and set its picture in that section's css: #id::before { background-image: url("../../images/name.webp"); } */
   .photo-bg { position: relative; isolation: isolate; overflow: hidden; }
   .photo-bg::before { content: ""; position: absolute; inset: -30px; z-index: -1; pointer-events: none; background-color: var(--photo-tint, var(--panel-light)); background-size: cover; background-position: center; background-repeat: no-repeat; background-blend-mode: multiply; filter: blur(8px) saturate(1.15); opacity: .5; }
-  /* On phones, buttons that sit in a pair or a row are full width, stacked, with the label on one line */
-  @media (max-width: 760px) {
-    .reference-actions { flex-direction: column; align-items: stretch; gap: 16px; padding: 18px 18px 20px; }
-    .reference-actions .btn, .subhero .btn, .page-end .btn { display: block; width: 100%; text-align: center; white-space: nowrap; font-size: clamp(13px, 3.9vw, 16px); padding: 15px 8px; }
-    .subhero .btn, .page-end .btn { margin: 14px 0 0; }
-  }
+  /* Every main button is full width of its column, bigger text that scales down so the label stays on one line.
+     Small buttons (header, bottom bar) stay compact. */
+  .btn:not(.small) { display: block; width: 100%; text-align: center; white-space: nowrap; margin: 0; padding: 17px 12px; font-size: clamp(14px, 3.9vw, 20px); }
+  .subhero .btn, .page-end .btn { margin-top: 14px; }
+  .subhero .btn:first-of-type, .page-end h2 + .btn { margin-top: 18px; }
+  .page-end .wrap { max-width: 620px; }
+  .reference-actions { display: flex; flex-wrap: nowrap; gap: 16px; max-width: 1100px; margin: 0 auto; padding: 18px 20px; }
+  .reference-actions .btn { flex: 1; min-width: 0; font-size: clamp(14px, 2vw, 20px); }
+  @media (max-width: 760px) { .reference-actions { flex-direction: column; } .reference-actions .btn { font-size: clamp(14px, 3.9vw, 20px); } }
   /* lighter photo wash in light mode */
   @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .photo-bg::before { opacity: .3; } }
   :root[data-theme="light"] .photo-bg::before { opacity: .3; }
+  /* kick icon at the end of a button label (replaces the old arrow) */
+  .btn .btn-ic { font-size: 1.3em; margin-left: 8px; vertical-align: -0.2em; }
 /* GENERATED from DESIGN.md. Edit DESIGN.md, or edit a value here: the sync copies it back to DESIGN.md. */
 :root {
   /* colors */
@@ -255,7 +260,7 @@
   /* SECTION 1: WELCOME BANNER */
   .welcome { padding: 0; }
   .welcome-art { display: block; width: 100%; height: auto; }
-  .reference-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; padding: 16px 12px; background: linear-gradient(90deg, var(--electric-700), var(--panel-light), var(--electric-700)); }
+  .reference-actions-band { background: linear-gradient(90deg, var(--electric-700), var(--panel-light), var(--electric-700)); }
   .benefit-ribbon { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; padding: 26px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
   .benefit-ribbon a { display: block; text-decoration: none; transition: transform .2s; }
   .benefit-ribbon a:hover { transform: translateY(-3px); }
@@ -413,14 +418,14 @@
 <!-- SECTION 1: WELCOME BANNER -->
 <section class="welcome" id="welcome" aria-label="Welcome to StarSI">
   <img class="welcome-art" src="../../images/welcome-art.webp" alt="StarSI welcome design: energetic martial artists, gold branding and growth dashboard" width="1536" height="495">
-  <div class="reference-actions"><a class="btn" href="#sales">Discover Your School’s Full Potential →</a><a class="btn silver" href="#enroll">Enroll Now →</a></div>
+  <div class="reference-actions-band"><div class="reference-actions"><a class="btn" href="#sales">Discover Your School’s Full Potential <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a><a class="btn silver" href="#enroll">Enroll Now <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a></div></div>
   <div class="benefit-ribbon">
-    <a href="#growth"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg#billing"/></svg><span>Increase Your Income</span></a>
-    <a href="#enroll"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg#student"/></svg><span>Enroll More Students</span></a>
-    <a href="#features"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg#attendance"/></svg><span>Automate Daily Tasks</span></a>
-    <a href="#benefits"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg#shield"/></svg><span>Retain More Students</span></a>
-    <a href="#potential"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg#report"/></svg><span>Know Your Numbers</span></a>
-    <a href="#passion"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg#class-time"/></svg><span>Reclaim Your Time</span></a>
+    <a href="#growth"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#billing"/></svg><span>Increase Your Income</span></a>
+    <a href="#enroll"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#student"/></svg><span>Enroll More Students</span></a>
+    <a href="#features"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#attendance"/></svg><span>Automate Daily Tasks</span></a>
+    <a href="#benefits"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#shield"/></svg><span>Retain More Students</span></a>
+    <a href="#potential"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#report"/></svg><span>Know Your Numbers</span></a>
+    <a href="#passion"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#class-time"/></svg><span>Reclaim Your Time</span></a>
   </div>
 </section>
 
@@ -431,7 +436,7 @@
       <div class="eyebrow">Super intelligence for martial arts schools</div>
       <h1>Unleash Your School’s<br><span class="accent">Full Earning Potential</span></h1>
       <p class="lead">Stop letting missed inquiries, unpaid tuition and office work stand between you and the school you want. StarSI brings your business together so you can focus on growing it.</p>
-      <a class="btn" href="#enroll">Put StarSI to Work for Me →</a>
+      <a class="btn" href="#enroll">Put StarSI to Work for Me <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a>
       <p class="small muted-text">Built for martial arts school owners. Start your enrollment online.</p>
     </div>
     <div class="hero-visual">
@@ -563,7 +568,7 @@
       <div class="eyebrow">POWER YOUR AMBITION</div>
       <h1>Nine Ways to Transform Your School</h1>
       <p class="lead">Discover the technology designed around the business of martial arts.</p>
-      <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
+      <a class="btn" href="#pricing">Explore the $195 Offer <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a> <a class="btn silver" href="#enroll">Start My Enrollment <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a>
     </div>
     <img src="../../images/features-hero.webp" alt="A martial arts student launching a flying kick in a busy dojo" width="1000" height="563" loading="lazy">
   </div>
@@ -587,7 +592,7 @@
 <section class="page-end">
   <div class="wrap">
     <h2>Make Your Next Move Your Best Move</h2>
-    <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
+    <a class="btn" href="#pricing">Explore the $195 Offer <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a> <a class="btn silver" href="#enroll">Start My Enrollment <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a>
   </div>
 </section>
 
@@ -598,7 +603,7 @@
       <div class="eyebrow">BUILD THE BUSINESS YOU WANT</div>
       <h1>Grow Your Income Not Your Workload</h1>
       <p class="lead">Put your passion back at the center of your business. StarSI is designed to help you operate efficiently and grow.</p>
-      <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
+      <a class="btn" href="#pricing">Explore the $195 Offer <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a> <a class="btn silver" href="#enroll">Start My Enrollment <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a>
     </div>
     <img src="../../images/benefits-hero.webp" alt="Students of every age punching together in a bright dojo" width="1000" height="563" loading="lazy">
   </div>
@@ -618,7 +623,7 @@
 <section class="page-end">
   <div class="wrap">
     <h2>Make Your Next Move Your Best Move</h2>
-    <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
+    <a class="btn" href="#pricing">Explore the $195 Offer <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a> <a class="btn silver" href="#enroll">Start My Enrollment <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a>
   </div>
 </section>
 
@@ -629,7 +634,7 @@
       <div class="eyebrow">MORE VALUE FOR YOUR SCHOOL</div>
       <h1>Super Intelligence. Exceptional Value.</h1>
       <p class="lead">Explore the planned StarSI special offer and choose the services that fit your school.</p>
-      <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
+      <a class="btn" href="#pricing">Explore the $195 Offer <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a> <a class="btn silver" href="#enroll">Start My Enrollment <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a>
     </div>
   </div>
 </section>
@@ -641,7 +646,7 @@
         <h2>Big Business Potential. Small Monthly Investment.</h2>
         <div class="price">$195<small>/month</small></div>
         <p>Six core capabilities with a stated estimated combined value of $2,700/month.</p>
-        <a class="btn" href="#enroll">Start My Enrollment →</a>
+        <a class="btn" href="#enroll">Start My Enrollment <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a>
       </div>
       <div>
         <h3>Core value breakdown</h3>
@@ -664,7 +669,7 @@
 <section class="page-end">
   <div class="wrap">
     <h2>Make Your Next Move Your Best Move</h2>
-    <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
+    <a class="btn" href="#pricing">Explore the $195 Offer <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a> <a class="btn silver" href="#enroll">Start My Enrollment <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a>
   </div>
 </section>
 
@@ -675,7 +680,7 @@
       <div class="eyebrow">REAL SCHOOLS. REAL AMBITION.</div>
       <h1>Your Success Is the Next Chapter</h1>
       <p class="lead">Explore the opportunities StarSI is designed to support.</p>
-      <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
+      <a class="btn" href="#pricing">Explore the $195 Offer <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a> <a class="btn silver" href="#enroll">Start My Enrollment <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a>
     </div>
     <img src="../../images/stories-hero.webp" alt="Two martial artists throwing focused punches with classmates behind them" width="1000" height="563" loading="lazy">
   </div>
@@ -694,7 +699,7 @@
 <section class="page-end">
   <div class="wrap">
     <h2>Make Your Next Move Your Best Move</h2>
-    <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
+    <a class="btn" href="#pricing">Explore the $195 Offer <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a> <a class="btn silver" href="#enroll">Start My Enrollment <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a>
   </div>
 </section>
 
@@ -712,7 +717,7 @@
 <a class="to-top" id="to-top" href="#top" aria-label="Back to top">&#8593;</a>
 
 <!-- STICKY CALL-TO-ACTION BAR (hidden while the welcome banner is on screen) -->
-<div class="sticky"><span>Make your next move toward a stronger school.</span><a class="btn small" href="#enroll">Get Started Today →</a></div>
+<div class="sticky"><span>Make your next move toward a stronger school.</span><a class="btn small" href="#enroll">Get Started Today <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a></div>
 
 <script>
 /* Hide the sticky call-to-action bar while the welcome banner is on screen */
