@@ -1,5 +1,12 @@
 [
  {
+  "sha": "ef164088524bf616f25091a3e35690600c143c51",
+  "short": "ef16408",
+  "date": "2026-11-23T19:12:35Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "e79fd10a7e22fd57ce0d8ead0cc1c6ab2d86c357",
   "short": "e79fd10",
   "date": "2026-11-23T19:11:37Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T16:50:14-05:00",
   "author": "abluemaw",
   "message": "Designs gallery and a full page for every design"
- },
- {
-  "sha": "4d99015dd8d5262ddaea82c73362cd843ceb2b2d",
-  "short": "4d99015",
-  "date": "2026-11-20T16:45:53-05:00",
-  "author": "abluemaw",
-  "message": "Look picker: design variants in designs/, dropdown on site and design page, make-a-design-live button"
  }
 ]
