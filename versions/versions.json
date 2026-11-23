@@ -1,5 +1,12 @@
 [
  {
+  "sha": "eaa0ff1b76cf8fa0b7b5075bfd54fd8b91d2c02e",
+  "short": "eaa0ff1",
+  "date": "2026-11-23T19:37:28Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "69a2f524f27a3be1cf4989aadffc4835eca55697",
   "short": "69a2f52",
   "date": "2026-11-23T19:37:07Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T20:54:26Z",
   "author": "erinams",
   "message": "Show a StarSI dashboard and emphasize the hero paragraph (#12)"
- },
- {
-  "sha": "9ef180eef7de20f28585de07d28e05ca8746c014",
-  "short": "9ef180e",
-  "date": "2026-11-20T20:50:06Z",
-  "author": "MAWnews",
-  "message": "Use Titillium Web Bold 700 headlines and Roboto paragraphs (#11)"
  }
 ]
