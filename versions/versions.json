@@ -1,5 +1,12 @@
 [
  {
+  "sha": "c83a7ef534256e2c7987fb26686d20c4591ccbae",
+  "short": "c83a7ef",
+  "date": "2026-11-23T19:05:02Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "e7738f2476f4cc4c58ea016f5df408a11eb884fd",
   "short": "e7738f2",
   "date": "2026-11-23T19:02:25Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T16:02:56-05:00",
   "author": "abluemaw",
   "message": "Add first martial arts icon set to the design system"
- },
- {
-  "sha": "4b51e4053912f638003b6999cce42cfb9ff90881",
-  "short": "4b51e40",
-  "date": "2026-11-20T16:01:07-05:00",
-  "author": "abluemaw",
-  "message": "Add back-to-top button; link the design page and DESIGN.md for the team"
  }
 ]
