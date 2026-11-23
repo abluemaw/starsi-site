@@ -1,5 +1,12 @@
 [
  {
+  "sha": "05266f1123996200e1f47933a25ff87530f1352f",
+  "short": "05266f1",
+  "date": "2026-11-23T18:47:43Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "b1fdad9ed885e0332d6d52ecf7e9b0e11e7c8e5d",
   "short": "b1fdad9",
   "date": "2026-11-23T17:02:58Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T15:03:35-05:00",
   "author": "abluemaw",
   "message": "Remove test comment"
- },
- {
-  "sha": "9e2c1cfdec11e88f028347625850ef00577d55cb",
-  "short": "9e2c1cf",
-  "date": "2026-11-20T14:53:17-05:00",
-  "author": "abluemaw",
-  "message": "Add restore and save-version buttons"
  }
 ]
