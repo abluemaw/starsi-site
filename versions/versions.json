@@ -1,5 +1,12 @@
 [
  {
+  "sha": "b6d4181bd25e12067870fc1fbec1fa36a4d00e36",
+  "short": "b6d4181",
+  "date": "2026-11-23T19:05:20Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "c83a7ef534256e2c7987fb26686d20c4591ccbae",
   "short": "c83a7ef",
   "date": "2026-11-23T19:05:02Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T16:05:13-05:00",
   "author": "abluemaw",
   "message": "Add class and school icons (second set)"
- },
- {
-  "sha": "2d9d531e7ce66f4ae041fc6d50b4ac218884d6ef",
-  "short": "2d9d531",
-  "date": "2026-11-20T16:02:56-05:00",
-  "author": "abluemaw",
-  "message": "Add first martial arts icon set to the design system"
  }
 ]
