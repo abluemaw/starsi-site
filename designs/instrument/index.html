@@ -390,7 +390,8 @@
   .demo-value h3 { margin-bottom: var(--space-xs); }
   .demo-value strong { font-size: clamp(22px, 3vw, 32px); }
   .demo-value-note { margin: var(--space-sm) 0 var(--space-lg); color: var(--page-muted); }
-  .demo-scenarios { align-items: start; margin-top: var(--space-lg); }
+  .demo-scenarios { align-items: stretch; margin-top: var(--space-lg); }
+  .demo-scenarios:not(:has(> details[open])) { grid-auto-rows: 1fr; }
   .demo-scenarios details { padding: var(--space-lg); }
   .demo-scenarios summary { color: var(--ink-on-dark); }
   .demo-scenarios summary::marker, .demo-scenarios .ic { color: var(--gold-300); }
@@ -632,7 +633,7 @@
     <h3>Key Benefits</h3>
     <p class="lead">Open each scenario to see how it could work in your school.</p>
     <div class="grid g3 demo-scenarios">
-      <details class="card" open>
+      <details class="card">
         <summary><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=b062c847#student"/></svg> More Students</summary>
         <p>When a parent asks about classes, StarSI helps you follow up with the next step. An online agreement gives the family a simpler way to enroll when they’re ready.</p>
       </details>
