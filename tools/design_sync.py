@@ -267,7 +267,31 @@ def write_sprite(icons):
 
 
 def icon_html(icons):
-    return "\n".join('      <div class="icon-tile"><svg class="ic"><use href="#icon-%s"/></svg><b>%s</b></div>' % (n, n.replace("-", " ")) for n, _, _ in icons)
+    import json, html as H
+    names = [n for n, _, _ in icons]
+    gpath = os.path.join(ICONS, "groups.json")
+    groups = []
+    if os.path.exists(gpath):
+        g = json.load(open(gpath, encoding="utf-8"))
+        used = set()
+        for grp in g.get("groups", []):
+            mine = [n for n in grp["icons"] if n in names]
+            used.update(mine)
+            if mine:
+                groups.append((grp["title"], mine))
+        rest = [n for n in names if n not in used]
+        if rest:
+            groups.append((g.get("other", "Other"), rest))
+    else:
+        groups = [("Icons", names)]
+    out = []
+    for title, ns in groups:
+        out.append('    <h3 class="icon-group">%s <span>%d</span></h3>' % (H.escape(title), len(ns)))
+        out.append('    <div class="icon-grid">')
+        for n in ns:
+            out.append('      <div class="icon-tile"><svg class="ic"><use href="#icon-%s"/></svg><b>%s</b></div>' % (n, n.replace("-", " ")))
+        out.append("    </div>")
+    return "\n".join(out)
 
 
 def icon_sprite_inline(icons):
