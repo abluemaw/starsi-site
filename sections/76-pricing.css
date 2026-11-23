@@ -8,3 +8,4 @@
   .offer .small { color: var(--page-muted); }
   h2.spaced { margin-top: 44px; }
   @media (max-width: 760px) { .offer { grid-template-columns: 1fr; padding: 22px; gap: 22px; } td, th { padding: 8px; font-size: 13px; } }
+  #specialized::before { background-image: url("images/bg-class.webp"); }
