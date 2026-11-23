@@ -21,6 +21,7 @@
   }
   .welcome-copy { grid-column: 2; grid-row: 1; width: 100%; padding: var(--space-xl) 0; }
   .welcome-copy h1 { max-width: 9em; font-size: clamp(40px, 4.7vw, 76px); }
+  .welcome-heading-intro { font-size: .8em; }
   .welcome-heading-logo { display: block; width: 100%; height: auto; margin-top: var(--space-sm); }
   .welcome-copy p { max-width: 34ch; }
   .welcome-lead { margin-top: var(--space-md); font-size: clamp(19px, 2vw, 25px); font-weight: 700; line-height: 1.28; }
