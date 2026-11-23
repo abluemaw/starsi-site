@@ -40,6 +40,7 @@
   --gold-metal: linear-gradient(180deg,#c6ff3d,#c6ff3d);
   --chrome-metal: linear-gradient(180deg,#f4f5f7,#f4f5f7);
   --electric-metal: linear-gradient(180deg,#6abffc,#6abffc);
+  --bevel-electric: inset 0 2px 0 #aecdff, inset 0 -3px 0 #001a6b, 0 3px 0 #000d38;
   --bevel-gold: 0 0 0 0 transparent;
   --rim-chrome: linear-gradient(#262b3b,#262b3b);
   --rim-gold: linear-gradient(#c6ff3d,#c6ff3d);

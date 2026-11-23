@@ -51,6 +51,7 @@
   --gold-metal: linear-gradient(180deg,#c6ff3d,#c6ff3d);
   --chrome-metal: linear-gradient(180deg,#f4f5f7,#f4f5f7);
   --electric-metal: linear-gradient(180deg,#6abffc,#6abffc);
+  --bevel-electric: inset 0 2px 0 #aecdff, inset 0 -3px 0 #001a6b, 0 3px 0 #000d38;
   --bevel-gold: 0 0 0 0 transparent;
   --rim-chrome: linear-gradient(#262b3b,#262b3b);
   --rim-gold: linear-gradient(#c6ff3d,#c6ff3d);
@@ -205,7 +206,9 @@ h1, h2, h3 { font-stretch: 125%; }
   .gold::after { content:""; position:absolute; top:-30%; bottom:-30%; left:-60%; width:36%; background:linear-gradient(105deg,transparent,var(--button-sweep),transparent); transform:skewX(-20deg); z-index:-1; pointer-events:none; animation:sweep 4.5s ease-in-out infinite; }
   @keyframes sweep { 0%,55%{left:-60%} 100%{left:130%} }
   .chrome { background:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 1px,rgba(0,0,0,.05) 1px 2px), var(--chrome-metal); color:#0a1130; box-shadow:inset 0 -2px 0 var(--chrome-500), 0 2px 0 var(--chrome-700); }
-  .electric { background:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 1px,rgba(0,0,0,.05) 1px 2px), var(--electric-metal); color:var(--navy-900); box-shadow:inset 0 0 0 2px var(--electric-500), inset 0 -3px 0 var(--electric-700), 0 3px 0 var(--navy-900), 0 0 14px rgba(31,92,255,.55); }
+  .electric { background:var(--electric-metal); color:#fff; box-shadow:var(--bevel-electric); text-shadow:0 1px 0 rgba(0,13,56,.6); }
+  .electric::before { content:""; position:absolute; inset:0 0 50% 0; background:linear-gradient(180deg,var(--button-gloss),rgba(255,255,255,0)); z-index:-1; pointer-events:none; }
+  .electric::after { content:""; position:absolute; top:-30%; bottom:-30%; left:-60%; width:36%; background:linear-gradient(105deg,transparent,var(--button-sweep),transparent); transform:skewX(-20deg); z-index:-1; pointer-events:none; animation:sweep 4.5s ease-in-out infinite; }
   .ghost { background:transparent; color:var(--page-ink); box-shadow:inset 0 0 0 2px var(--border-strong); }
   .si-btn:disabled { opacity:.45; cursor:not-allowed; }
   .caption { font-size:13px; color:var(--page-muted); }
@@ -372,7 +375,7 @@ h1, h2, h3 { font-stretch: 125%; }
     <div class="metal-row">
       <div class="metal" style="background:var(--gold-metal)">Gold metal</div>
       <div class="metal" style="background:var(--chrome-metal)">Chrome metal</div>
-      <div class="metal" style="background:var(--electric-metal);color:#0a1130;box-shadow:inset 0 0 0 3px var(--electric-500)">Electric metal</div>
+      <div class="metal" style="background:var(--electric-metal);color:#fff">Electric metal</div>
       <div class="metal" style="background:var(--rim-chrome);color:#0a1130">Chrome rim</div>
       <div class="metal" style="background:var(--rim-gold)">Gold rim</div>
     </div>
