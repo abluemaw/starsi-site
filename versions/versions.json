@@ -1,5 +1,12 @@
 [
  {
+  "sha": "bedfe811e0ed34adf4a252e9c58b817c2a7e1c2f",
+  "short": "bedfe81",
+  "date": "2026-11-23T19:21:43Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "4606ab057edcc6a7d7309b1e6e481fb908190afa",
   "short": "4606ab0",
   "date": "2026-11-23T19:15:36Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T19:59:03Z",
   "author": "erinams",
   "message": "Refine skin texture and tones in the hero image (#4)"
- },
- {
-  "sha": "f455d6e2bd7754ca24dfba7e44c2530ce3486aaa",
-  "short": "f455d6e",
-  "date": "2026-11-20T17:10:05-05:00",
-  "author": "abluemaw",
-  "message": "Fix dark-strip headings in light mode; logos are part of the design system and follow the look"
  }
 ]
