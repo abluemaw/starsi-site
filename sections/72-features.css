@@ -13,3 +13,4 @@
   .card .eyebrow { color: var(--electric-300); margin-bottom: 8px; }
   .subhero-grid.flip img { order: -1; }
   @media (max-width: 760px) { .subhero-grid { grid-template-columns: 1fr; } .subhero-grid.flip img { order: 0; } }
+  #benefits::before { background-image: url("images/benefits-hero.webp"); }
