@@ -1,5 +1,12 @@
 [
  {
+  "sha": "7444365d14eff34fd2045f4540f382c7d7e58643",
+  "short": "7444365",
+  "date": "2026-11-23T19:06:49Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "b6d4181bd25e12067870fc1fbec1fa36a4d00e36",
   "short": "b6d4181",
   "date": "2026-11-23T19:05:20Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T16:10:46-05:00",
   "author": "abluemaw",
   "message": "Light mode: navy headlines; eyebrows become blue pills"
- },
- {
-  "sha": "6c41e29d84895d8697b6757166c98200c3941999",
-  "short": "6c41e29",
-  "date": "2026-11-20T16:05:13-05:00",
-  "author": "abluemaw",
-  "message": "Add class and school icons (second set)"
  }
 ]
