@@ -269,6 +269,11 @@
   .dd .do { border-top:4px solid var(--ok-page); } .dd .dont { border-top:4px solid #e0526a; }
   .dd ul { margin:10px 0 0 18px; color:var(--page-ink); font-size:15px; }
   .dd li { margin-bottom:8px; }
+  .foot-note { margin-bottom:18px; font-size:15px; }
+  .foot-links { display:flex; flex-wrap:wrap; justify-content:center; gap:14px; }
+  .foot-links a { display:inline-flex; align-items:center; justify-content:center; padding:14px 26px; min-height:48px; border-radius:var(--radius-md); font-weight:700; font-size:17px; text-decoration:none; color:var(--on-gold); background:var(--gold-metal); box-shadow:var(--bevel-gold); text-shadow:none; transition:filter .15s, transform .15s; }
+  .foot-links a:hover { filter:brightness(1.07); transform:translateY(-2px); }
+  .foot-links a:focus-visible { outline:3px solid var(--electric-300); outline-offset:3px; }
   footer { padding:40px 0 64px; color:var(--page-muted); font-size:14px; text-align:center; border-top:1px solid var(--line-soft); }
   @media (prefers-reduced-motion:reduce) { .gold::after { animation:none; } html { scroll-behavior:auto; } }
   @media (max-width:600px) { section { padding:40px 0; } .btns { gap:14px; } }
@@ -599,7 +604,7 @@
   </div>
 </section>
 
-<footer><div class="wrap">Red belt · built from designs/red-belt.md on top of DESIGN.md · <a href="https://github.com/abluemaw/starsi-site/blob/main/designs/red-belt.md">Open red-belt.md</a> · <a href="../../../designs/">All designs</a> · <a href="../../../versions/">Version history</a> · <a href="../">This design on the site</a> &middot; <a href="../../../">The live site</a> · <a href="#top">Back to top</a></div></footer>
+<footer><div class="wrap"><p class="foot-note">Red belt · built from designs/red-belt.md on top of DESIGN.md</p><nav class="foot-links"><a href="https://github.com/abluemaw/starsi-site/blob/main/designs/red-belt.md">Open red-belt.md</a> <a href="../../../designs/">All designs</a> <a href="../../../versions/">Version history</a> <a href="../">This design on the site</a> &middot; <a href="../../../">The live site</a> <a href="#top">Back to top</a></nav></div></footer>
 
 <script>
 (function () {
