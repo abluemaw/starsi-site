@@ -74,7 +74,10 @@
   /* Silver (chrome) button: the second of two buttons side by side. Gold stays the main action. */
   .btn.silver { color: var(--ink); }
   .btn.silver::before { box-shadow: inset 0 -2px 0 var(--chrome-500), 0 3px 0 var(--chrome-700);
-    background-image: linear-gradient(105deg, transparent 42%, var(--button-sweep) 50%, transparent 58%), linear-gradient(180deg, var(--button-gloss), rgba(255,255,255,0) 50%), repeating-linear-gradient(90deg, rgba(255,255,255,.28) 0 1px, rgba(0,0,0,.04) 1px 2px), var(--chrome-metal); }
+    background-image: linear-gradient(105deg, transparent 42%, var(--button-sweep) 50%, transparent 58%), linear-gradient(180deg, var(--button-gloss), rgba(255,255,255,0) 50%), repeating-linear-gradient(90deg, rgba(255,255,255,.28) 0 1px, rgba(0,0,0,.04) 1px 2px), var(--chrome-metal);
+    background-size: 300% 100%, 100% 100%, 100% 100%, 100% 100%; background-position: 130% 0, 0 0, 0 0, 0 0; background-repeat: no-repeat;
+    animation-name: btn-sweep-silver; }
+  @keyframes btn-sweep-silver { 0%, 55% { background-position: 130% 0, 0 0, 0 0, 0 0; } 100% { background-position: -30% 0, 0 0, 0 0, 0 0; } }
 /* GENERATED from DESIGN.md. Edit DESIGN.md, or edit a value here: the sync copies it back to DESIGN.md. */
 :root {
   /* colors */
@@ -244,8 +247,12 @@
   .welcome { padding: 0; }
   .welcome-art { display: block; width: 100%; height: auto; }
   .reference-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; padding: 16px 12px; background: linear-gradient(90deg, var(--electric-700), var(--panel-light), var(--electric-700)); }
-  .benefit-ribbon { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding: 22px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
-  .benefit-ribbon .ic { display: block; margin: 0 auto 6px; font-size: 34px; color: var(--link-page); }
+  .benefit-ribbon { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; padding: 26px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
+  .benefit-ribbon a { display: block; text-decoration: none; transition: transform .2s; }
+  .benefit-ribbon a:hover { transform: translateY(-3px); }
+  .benefit-ribbon a:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 4px; border-radius: 16px; }
+  /* gold icon button: gold metal chip, dark icon */
+  .benefit-ribbon .ic { box-sizing: content-box; display: block; margin: 0 auto 10px; width: 1em; height: 1em; font-size: 30px; padding: 16px; border-radius: 18px; background: var(--gold-metal); color: var(--on-gold); box-shadow: var(--bevel-gold), var(--card-shadow); }
   .benefit-ribbon span { font-weight: 700; font-size: clamp(12px, 1.4vw, 18px); line-height: 1.25; display: block; }
   @media (max-width: 760px) { .benefit-ribbon { grid-template-columns: repeat(3, 1fr); } }
   .grid { display: grid; gap: 20px; margin-top: 40px; }
@@ -384,12 +391,12 @@
   <img class="welcome-art" src="images/welcome-art.webp" alt="StarSI welcome design: energetic martial artists, gold branding and growth dashboard" width="1536" height="495">
   <div class="reference-actions"><a class="btn" href="#sales">Discover Your School’s Full Potential →</a><a class="btn silver" href="#enroll">Enroll Now →</a></div>
   <div class="benefit-ribbon">
-    <div><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg#billing"/></svg><span>Increase Your Income</span></div>
-    <div><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg#student"/></svg><span>Enroll More Students</span></div>
-    <div><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg#attendance"/></svg><span>Automate Daily Tasks</span></div>
-    <div><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg#shield"/></svg><span>Retain More Students</span></div>
-    <div><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg#report"/></svg><span>Know Your Numbers</span></div>
-    <div><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg#class-time"/></svg><span>Reclaim Your Time</span></div>
+    <a href="#growth"><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg#billing"/></svg><span>Increase Your Income</span></a>
+    <a href="#enroll"><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg#student"/></svg><span>Enroll More Students</span></a>
+    <a href="#features"><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg#attendance"/></svg><span>Automate Daily Tasks</span></a>
+    <a href="#benefits"><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg#shield"/></svg><span>Retain More Students</span></a>
+    <a href="#potential"><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg#report"/></svg><span>Know Your Numbers</span></a>
+    <a href="#passion"><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg#class-time"/></svg><span>Reclaim Your Time</span></a>
   </div>
 </section>
 

@@ -2,7 +2,11 @@
   .welcome { padding: 0; }
   .welcome-art { display: block; width: 100%; height: auto; }
   .reference-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; padding: 16px 12px; background: linear-gradient(90deg, var(--electric-700), var(--panel-light), var(--electric-700)); }
-  .benefit-ribbon { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding: 22px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
-  .benefit-ribbon .ic { display: block; margin: 0 auto 6px; font-size: 34px; color: var(--link-page); }
+  .benefit-ribbon { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; padding: 26px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
+  .benefit-ribbon a { display: block; text-decoration: none; transition: transform .2s; }
+  .benefit-ribbon a:hover { transform: translateY(-3px); }
+  .benefit-ribbon a:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 4px; border-radius: 16px; }
+  /* gold icon button: gold metal chip, dark icon */
+  .benefit-ribbon .ic { box-sizing: content-box; display: block; margin: 0 auto 10px; width: 1em; height: 1em; font-size: 30px; padding: 16px; border-radius: 18px; background: var(--gold-metal); color: var(--on-gold); box-shadow: var(--bevel-gold), var(--card-shadow); }
   .benefit-ribbon span { font-weight: 700; font-size: clamp(12px, 1.4vw, 18px); line-height: 1.25; display: block; }
   @media (max-width: 760px) { .benefit-ribbon { grid-template-columns: repeat(3, 1fr); } }
