@@ -259,8 +259,39 @@
   .links a { white-space: nowrap; }
   /* SECTION 1: WELCOME BANNER */
   .welcome { padding: 0; }
-  .welcome-art { display: block; width: 100%; height: auto; }
-  .reference-actions-band { background: linear-gradient(90deg, var(--electric-700), var(--panel-light), var(--electric-700)); }
+  .welcome-banner {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    align-items: center;
+    min-height: clamp(520px, 43vw, 700px);
+    background: var(--night);
+    color: var(--ink-on-dark);
+  }
+  .welcome-art { position: absolute; inset: 0; z-index: -2; display: block; width: 100%; height: 100%; object-fit: cover; object-position: right 18%; }
+  .welcome-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(90deg, var(--night) 0%, color-mix(in srgb, var(--night) 92%, transparent) 32%, transparent 63%);
+  }
+  .welcome-copy { width: 100%; max-width: 1440px; padding-inline: clamp(var(--space-lg), 5vw, var(--space-xxxl)); padding-block: clamp(var(--space-xl), 5vw, var(--space-xxxl)); }
+  .welcome-copy h1 { max-width: 9em; font-size: clamp(40px, 4.7vw, 76px); }
+  .welcome-copy h1 span { display: block; color: var(--gold-300); }
+  .welcome-copy p { max-width: 34ch; }
+  .welcome-lead { margin-top: var(--space-md); font-size: clamp(19px, 2vw, 25px); font-weight: 700; line-height: 1.28; }
+  .welcome-benefits { margin: var(--space-md) 0; padding-inline-start: var(--space-lg); font-weight: 700; }
+  .welcome-benefits li::marker { color: var(--gold-300); }
+  .welcome-copy .reference-actions { display: flex; justify-content: flex-start; align-items: flex-start; margin-top: var(--space-lg); padding: 0; }
+  .welcome-copy .reference-actions .btn { flex: none; width: auto; max-width: 100%; white-space: normal; }
+  @media (max-width: 920px) {
+    .welcome-banner { min-height: 0; }
+    .welcome-banner::after { content: none; }
+    .welcome-copy p { max-width: 40ch; }
+    .welcome-art { position: static; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+  }
   .benefit-ribbon { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; padding: 26px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
   .benefit-ribbon a { display: block; text-decoration: none; transition: transform .2s; }
   .benefit-ribbon a:hover { transform: translateY(-3px); }
@@ -417,8 +448,22 @@
 
 <!-- SECTION 1: WELCOME BANNER -->
 <section class="welcome" id="welcome" aria-label="Welcome to StarSI">
-  <img class="welcome-art" src="../../images/welcome-art.webp" alt="StarSI welcome design: energetic martial artists, gold branding and growth dashboard" width="1536" height="495">
-  <div class="reference-actions-band"><div class="reference-actions"><a class="btn" href="#sales">Discover Your School’s Full Potential <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a><a class="btn silver" href="#enroll">Enroll Now <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a></div></div>
+  <div class="welcome-banner">
+    <div class="wrap welcome-copy">
+      <h1>Welcome to <span>StarSI.AI</span></h1>
+      <p class="welcome-lead">Super Intelligence for Martial Arts School Growth</p>
+      <ul class="welcome-benefits">
+        <li>More Students</li>
+        <li>More Income</li>
+        <li>Less Work</li>
+      </ul>
+      <p>Turn Your Martial Arts School Into a High-Enrollment, High-Income Business</p>
+      <div class="reference-actions">
+        <a class="btn" href="#sales">Discover Your School’s Full Potential <svg class="ic btn-ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#kick"/></svg></a>
+      </div>
+    </div>
+    <img class="welcome-art" src="../../images/welcome-class.webp" alt="" width="1672" height="941" fetchpriority="high">
+  </div>
   <div class="benefit-ribbon">
     <a href="#growth"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#billing"/></svg><span>Increase Your Income</span></a>
     <a href="#enroll"><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=0ab17a35#student"/></svg><span>Enroll More Students</span></a>
