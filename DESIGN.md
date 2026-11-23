@@ -56,7 +56,7 @@ colors:
 effects:
   goldMetal: "linear-gradient(180deg,#fff3b0 0%,#ffd23f 28%,#f0a000 49%,#ffc61a 52%,#ffe27a 100%)"
   chromeMetal: "linear-gradient(180deg,#ffffff 0%,#dfe4ec 45%,#9aa4b4 50%,#cfd6e0 52%,#f4f6fa 100%)"
-  electricMetal: "linear-gradient(180deg,#1f5cff 0%,#0b2fb0 100%)"
+  electricMetal: "linear-gradient(180deg,#ffffff 0%,#cdd9f0 42%,#6f8fd6 50%,#b9cdf2 54%,#eef3fc 100%)"
   bevelGold: "inset 0 2px 0 #fff0a8, inset 0 -3px 0 #b96a00, 0 3px 0 #4d2a05"
   rimChrome: "conic-gradient(from 20deg,#f4f6fa,#aab4c6,#ffffff,#dfe4ec,#9aa4b4,#f4f6fa)"
   rimGold: "conic-gradient(from 20deg,#fff3b0,#b96a00,#ffe27a,#f2a100,#4d2a05,#fff3b0)"
@@ -89,7 +89,7 @@ rounded:
   lg: "14px"
   pill: "999px"
 components:
-  buttons: "Primary: gold metal. Vertical horizon-band gradient (#FFF3B0 > #FFD23F > #F0A000 > #FFC61A > #FFE27A), dark label #1A0F00, Roboto 700, 8px radius, slanted -8deg with the label slanted back so text stays upright. Bevel shadow: inset 0 2px 0 #FFF0A8, inset 0 -3px 0 #B96A00, 0 3px 0 #4D2A05. A glossy top half and a slow light sweep. Sizes: small 13px, medium 15px, large 17px, extra large 22px for the hero. Secondary: chrome (white to grey metal, brushed). Accent: electric blue gradient with white label. Ghost: transparent with a 2px strong border. One gold button per view is the action."
+  buttons: "Primary: gold metal. Vertical horizon-band gradient (#FFF3B0 > #FFD23F > #F0A000 > #FFC61A > #FFE27A), dark label #1A0F00, Roboto 700, 8px radius, slanted -8deg with the label slanted back so text stays upright. Bevel shadow: inset 0 2px 0 #FFF0A8, inset 0 -3px 0 #B96A00, 0 3px 0 #4D2A05. A glossy top half and a slow light sweep. Sizes: small 13px, medium 15px, large 17px, extra large 22px for the hero. Secondary: chrome (white to grey metal, brushed). Accent: electric metal like the SI in the logo: bright silver face with a hard blue horizon band, an electric blue rim and glow, deep navy label. Ghost: transparent with a 2px strong border. One gold button per view is the action."
   eyebrows: "The small label above a headline is plain text, not a button: uppercase, bold, wide tracking, electric blue (the link colour for the current mode). No background, no border, no pill and no line, so it never looks clickable."
   cards: "Blue glass panel: vertical gradient from #2040AA to #0E1E60 (96% opaque), 14px radius, with a metal rim (chrome conic gradient) that gets a slow light sweep. On hover or for featured cards the rim turns gold."
   badges: "Pills (999px), never wrap, 12px on phones."
