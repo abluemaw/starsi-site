@@ -1,5 +1,12 @@
 [
  {
+  "sha": "69a2f524f27a3be1cf4989aadffc4835eca55697",
+  "short": "69a2f52",
+  "date": "2026-11-23T19:37:07Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "e4f552f49c5815a9c983ba28f23f17decbb9a1c8",
   "short": "e4f552f",
   "date": "2026-11-23T19:36:22Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T20:50:06Z",
   "author": "MAWnews",
   "message": "Use Titillium Web Bold 700 headlines and Roboto paragraphs (#11)"
- },
- {
-  "sha": "d95f908d0883b73d018ed9f1e6f306579cb19e9a",
-  "short": "d95f908",
-  "date": "2026-11-20T20:31:13Z",
-  "author": "MAWnews",
-  "message": "Remove rolled-up belt from hero image (#10)"
  }
 ]
