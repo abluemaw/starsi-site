@@ -1,5 +1,12 @@
 [
  {
+  "sha": "4606ab057edcc6a7d7309b1e6e481fb908190afa",
+  "short": "4606ab0",
+  "date": "2026-11-23T19:15:36Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "22ee029e582cffff052db5da73e5fdfd2de00375",
   "short": "22ee029",
   "date": "2026-11-23T19:14:59Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T17:10:05-05:00",
   "author": "abluemaw",
   "message": "Fix dark-strip headings in light mode; logos are part of the design system and follow the look"
- },
- {
-  "sha": "f5c8a4ad6dbc0414fc9823bf26791e743b425e66",
-  "short": "f5c8a4a",
-  "date": "2026-11-20T17:02:46-05:00",
-  "author": "abluemaw",
-  "message": "Add the Instrument design (based on StarSi.ai system); per-design CSS and fonts load only when used"
  }
 ]
