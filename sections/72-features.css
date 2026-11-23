@@ -35,4 +35,4 @@
   .card:has(> .card-ic.electric) > h3 { grid-column: 2; grid-row: 1; margin: 0 0 14px; }
   .card:has(> .card-ic.electric) > h4, .card:has(> .card-ic.electric) > p, .card:has(> .card-ic.electric) > strong { grid-column: 1 / -1; }
   /* estimated value: small label, then the amount on its own line, big and gold */
-  .card strong .value { display: block; margin-top: 2px; font-family: var(--font-display); font-size: clamp(30px, 3vw, 40px); line-height: 1.1; color: var(--heading); }
+  .card strong .value { display: block; margin-top: 2px; font-family: var(--font-display); font-size: clamp(24px, 2.3vw, 30px); line-height: 1.1; color: var(--heading); }
