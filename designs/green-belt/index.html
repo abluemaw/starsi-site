@@ -71,6 +71,10 @@
   /* labels above headlines are left aligned on this page: bar before the text only (centered labels get both bars) */
   .eyebrow::after { display: none; }
   .center .eyebrow::after, .page-end .eyebrow::after { display: block; }
+  /* Silver (chrome) button: the second of two buttons side by side. Gold stays the main action. */
+  .btn.silver { color: var(--ink); }
+  .btn.silver::before { box-shadow: inset 0 -2px 0 var(--chrome-500), 0 3px 0 var(--chrome-700);
+    background-image: linear-gradient(105deg, transparent 42%, var(--button-sweep) 50%, transparent 58%), linear-gradient(180deg, var(--button-gloss), rgba(255,255,255,0) 50%), repeating-linear-gradient(90deg, rgba(255,255,255,.28) 0 1px, rgba(0,0,0,.04) 1px 2px), var(--chrome-metal); }
 /* GENERATED from DESIGN.md. Edit DESIGN.md, or edit a value here: the sync copies it back to DESIGN.md. */
 :root {
   /* colors */
@@ -380,7 +384,7 @@
 <!-- SECTION 1: WELCOME BANNER -->
 <section class="welcome" id="welcome" aria-label="Welcome to StarSI">
   <img class="welcome-art" src="../../images/welcome-art.webp" alt="StarSI welcome design: energetic martial artists, gold branding and growth dashboard" width="1536" height="495">
-  <div class="reference-actions"><a class="btn" href="#sales">Discover Your School’s Full Potential →</a><a class="btn" href="#enroll">Enroll Now →</a></div>
+  <div class="reference-actions"><a class="btn" href="#sales">Discover Your School’s Full Potential →</a><a class="btn silver" href="#enroll">Enroll Now →</a></div>
   <div class="benefit-ribbon">
     <div><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg#billing"/></svg><span>Increase Your Income</span></div>
     <div><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg#student"/></svg><span>Enroll More Students</span></div>
@@ -530,7 +534,7 @@
       <div class="eyebrow">POWER YOUR AMBITION</div>
       <h1>Nine Ways to Transform Your School</h1>
       <p class="lead">Discover the technology designed around the business of martial arts.</p>
-      <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn" href="#enroll">Start My Enrollment →</a>
+      <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
     </div>
     <img src="../../images/features-hero.webp" alt="Martial arts students and instructors practicing in a bright academy" width="1000" height="563" loading="lazy">
   </div>
@@ -554,7 +558,7 @@
 <section class="page-end">
   <div class="wrap">
     <h2>Make Your Next Move Your Best Move</h2>
-    <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn" href="#enroll">Start My Enrollment →</a>
+    <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
   </div>
 </section>
 
@@ -565,7 +569,7 @@
       <div class="eyebrow">BUILD THE BUSINESS YOU WANT</div>
       <h1>Grow Your Income Not Your Workload</h1>
       <p class="lead">Put your passion back at the center of your business. StarSI is designed to help you operate efficiently and grow.</p>
-      <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn" href="#enroll">Start My Enrollment →</a>
+      <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
     </div>
     <img src="../../images/benefits-hero.webp" alt="Instructors, families and students in a martial arts school" width="1000" height="667" loading="lazy">
   </div>
@@ -585,7 +589,7 @@
 <section class="page-end">
   <div class="wrap">
     <h2>Make Your Next Move Your Best Move</h2>
-    <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn" href="#enroll">Start My Enrollment →</a>
+    <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
   </div>
 </section>
 
@@ -596,7 +600,7 @@
       <div class="eyebrow">MORE VALUE FOR YOUR SCHOOL</div>
       <h1>Super Intelligence. Exceptional Value.</h1>
       <p class="lead">Explore the planned StarSI special offer and choose the services that fit your school.</p>
-      <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn" href="#enroll">Start My Enrollment →</a>
+      <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
     </div>
   </div>
 </section>
@@ -631,7 +635,7 @@
 <section class="page-end">
   <div class="wrap">
     <h2>Make Your Next Move Your Best Move</h2>
-    <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn" href="#enroll">Start My Enrollment →</a>
+    <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
   </div>
 </section>
 
@@ -642,7 +646,7 @@
       <div class="eyebrow">REAL SCHOOLS. REAL AMBITION.</div>
       <h1>Your Success Is the Next Chapter</h1>
       <p class="lead">Explore the opportunities StarSI is designed to support.</p>
-      <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn" href="#enroll">Start My Enrollment →</a>
+      <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
     </div>
     <img src="../../images/stories-hero.webp" alt="Martial arts instructors, parents and students at a school" width="1000" height="563" loading="lazy">
   </div>
@@ -661,7 +665,7 @@
 <section class="page-end">
   <div class="wrap">
     <h2>Make Your Next Move Your Best Move</h2>
-    <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn" href="#enroll">Start My Enrollment →</a>
+    <a class="btn" href="#pricing">Explore the $195 Offer →</a> <a class="btn silver" href="#enroll">Start My Enrollment →</a>
   </div>
 </section>
 
