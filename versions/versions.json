@@ -1,5 +1,12 @@
 [
  {
+  "sha": "a2900ae22c3576134eaee350fdea074943786572",
+  "short": "a2900ae",
+  "date": "2026-11-23T19:07:33Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "7444365d14eff34fd2045f4540f382c7d7e58643",
   "short": "7444365",
   "date": "2026-11-23T19:06:49Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T16:12:13-05:00",
   "author": "abluemaw",
   "message": "Eyebrows: plain blue text with gold bars, no pill"
- },
- {
-  "sha": "d6ddc5c55c9029f191d7e2dce27a789e9059198d",
-  "short": "d6ddc5c",
-  "date": "2026-11-20T16:10:46-05:00",
-  "author": "abluemaw",
-  "message": "Light mode: navy headlines; eyebrows become blue pills"
  }
 ]
