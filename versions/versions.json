@@ -1,5 +1,12 @@
 [
  {
+  "sha": "0ccbdb7541397e971d2e50530b19a334ec01a1fa",
+  "short": "0ccbdb7",
+  "date": "2026-11-23T19:24:19Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "bedfe811e0ed34adf4a252e9c58b817c2a7e1c2f",
   "short": "bedfe81",
   "date": "2026-11-23T19:21:43Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T20:06:57Z",
   "author": "MAWnews",
   "message": "Replace navbar text and icon with the StarSI AI logo (#6)"
- },
- {
-  "sha": "a813aff4dc077a5ccfab5854c2988e10a902e646",
-  "short": "a813aff",
-  "date": "2026-11-20T19:59:03Z",
-  "author": "erinams",
-  "message": "Refine skin texture and tones in the hero image (#4)"
  }
 ]
