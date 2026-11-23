@@ -1,5 +1,12 @@
 [
  {
+  "sha": "8b430dddc0a184d51f61a686ab9a3446a91548b9",
+  "short": "8b430dd",
+  "date": "2026-11-23T18:55:40Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "ba71b216f9fae98a5526e2f37a2a3814f2fef3b8",
   "short": "ba71b21",
   "date": "2026-11-23T18:53:27Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T15:56:09-05:00",
   "author": "abluemaw",
   "message": "Gold design system: DESIGN.md, two-way design sync, restyled sections, design page"
- },
- {
-  "sha": "21fdd7486357d5c58a9d47a06d42ba8b6c93c1d1",
-  "short": "21fdd74",
-  "date": "2026-11-20T15:12:01-05:00",
-  "author": "abluemaw",
-  "message": "Remove history test comment"
  }
 ]
