@@ -1,5 +1,12 @@
 [
  {
+  "sha": "e4f552f49c5815a9c983ba28f23f17decbb9a1c8",
+  "short": "e4f552f",
+  "date": "2026-11-23T19:36:22Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "68c480922a6d943502cb7a0a8aefb582888f1f68",
   "short": "68c4809",
   "date": "2026-11-23T19:34:33Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T20:31:13Z",
   "author": "MAWnews",
   "message": "Remove rolled-up belt from hero image (#10)"
- },
- {
-  "sha": "06c85dd4ff6340d861fa0f881b7213f946f137a2",
-  "short": "06c85dd",
-  "date": "2026-11-20T20:21:06Z",
-  "author": "erinams",
-  "message": "Soften pixel-like skin texture in the hero image (#9)"
  }
 ]
