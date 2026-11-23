@@ -1,5 +1,12 @@
 [
  {
+  "sha": "e79fd10a7e22fd57ce0d8ead0cc1c6ab2d86c357",
+  "short": "e79fd10",
+  "date": "2026-11-23T19:11:37Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "f9d30495f5ec2eecf8a54bcb819d05f11c5d024b",
   "short": "f9d3049",
   "date": "2026-11-23T19:11:12Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T16:45:53-05:00",
   "author": "abluemaw",
   "message": "Look picker: design variants in designs/, dropdown on site and design page, make-a-design-live button"
- },
- {
-  "sha": "623b2c600429d0545c49754cfd2b9bf353f22aa3",
-  "short": "623b2c6",
-  "date": "2026-11-20T16:20:27-05:00",
-  "author": "abluemaw",
-  "message": "Fix gold button gloss in light mode"
  }
 ]
