@@ -98,9 +98,12 @@
   @media (max-width: 760px) { .btn-row { flex-direction: column; } .btn-row .btn { font-size: clamp(14px, 3.9vw, 20px); } }
   .subhero .btn-row .btn, .page-end .btn-row .btn { margin: 0; }
 
-  /* Section break: the star and swoosh from the logo, sitting on the seam between two sections. Zero height so it never adds a band of its own colour. */
+  /* Section break: a gold metal line across the whole page with a gold metal star in the middle (same gold as the lettering, from the design's goldMetal). Zero height so it never adds a band of its own colour. */
   .section-break { position: relative; height: 0; z-index: 3; pointer-events: none; }
-  .section-break img { position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%); width: min(560px, 86vw); height: auto; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .35)); }
+  .section-break::before { content: ""; position: absolute; left: 0; right: 0; top: -2.5px; height: 5px; background: var(--gold-metal); box-shadow: 0 1px 0 #4d2a05, 0 0 12px rgba(255, 198, 26, .45); }
+  .sb-star { position: absolute; left: 50%; top: 0; width: 64px; height: 64px; transform: translate(-50%, -50%); background: var(--gold-metal);
+    -webkit-mask: url("images/section-break-star.svg") center / contain no-repeat; mask: url("images/section-break-star.svg") center / contain no-repeat;
+    filter: drop-shadow(0 2px 0 #4d2a05) drop-shadow(0 0 8px rgba(255, 198, 26, .5)); }
 /* GENERATED from DESIGN.md. Edit DESIGN.md, or edit a value here: the sync copies it back to DESIGN.md. */
 :root {
   /* colors */
@@ -500,7 +503,7 @@
   </div>
 </section>
 
-<div class="section-break" aria-hidden="true"><img src="images/section-break.svg" alt="" width="600" height="80" loading="lazy"></div>
+<div class="section-break" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION 2: HOME HERO -->
 <section class="sales" id="sales">
   <div class="wrap sales-grid">
@@ -534,7 +537,7 @@
   </div>
 </div>
 
-<div class="section-break" aria-hidden="true"><img src="images/section-break.svg" alt="" width="600" height="80" loading="lazy"></div>
+<div class="section-break" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION 3: GROW YOUR PROFITS -->
 <section class="alt photo-bg" id="growth">
   <div class="wrap">
@@ -559,7 +562,7 @@
   </div>
 </section>
 
-<div class="section-break" aria-hidden="true"><img src="images/section-break.svg" alt="" width="600" height="80" loading="lazy"></div>
+<div class="section-break" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION 4: INCOME CALCULATOR -->
 <section id="potential">
   <div class="wrap">
@@ -584,7 +587,7 @@
   </div>
 </section>
 
-<div class="section-break" aria-hidden="true"><img src="images/section-break.svg" alt="" width="600" height="80" loading="lazy"></div>
+<div class="section-break" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION 5: PASSION, NOT PAPERWORK -->
 <section class="alt" id="passion">
   <div class="wrap">
@@ -599,7 +602,7 @@
   </div>
 </section>
 
-<div class="section-break" aria-hidden="true"><img src="images/section-break.svg" alt="" width="600" height="80" loading="lazy"></div>
+<div class="section-break" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION 6: FAQ -->
 <section class="photo-bg" id="faq">
   <div class="wrap">
@@ -611,7 +614,7 @@
   </div>
 </section>
 
-<div class="section-break" aria-hidden="true"><img src="images/section-break.svg" alt="" width="600" height="80" loading="lazy"></div>
+<div class="section-break" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION 7: ENROLL (preview form: nothing is sent anywhere) -->
 <section class="alt" id="enroll">
   <div class="wrap">
@@ -638,7 +641,7 @@
   </div>
 </section>
 
-<div class="section-break" aria-hidden="true"><img src="images/section-break.svg" alt="" width="600" height="80" loading="lazy"></div>
+<div class="section-break" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION 8: FEATURES -->
 <section class="subhero" id="features">
   <div class="wrap subhero-grid flip">
@@ -674,7 +677,7 @@
   </div>
 </section>
 
-<div class="section-break" aria-hidden="true"><img src="images/section-break.svg" alt="" width="600" height="80" loading="lazy"></div>
+<div class="section-break" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION 9: BENEFITS -->
 <section class="subhero" id="benefits">
   <div class="wrap subhero-grid flip">
@@ -706,7 +709,7 @@
   </div>
 </section>
 
-<div class="section-break" aria-hidden="true"><img src="images/section-break.svg" alt="" width="600" height="80" loading="lazy"></div>
+<div class="section-break" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION 10: PRICING -->
 <section class="subhero" id="pricing">
   <div class="wrap subhero-grid">
@@ -753,7 +756,7 @@
   </div>
 </section>
 
-<div class="section-break" aria-hidden="true"><img src="images/section-break.svg" alt="" width="600" height="80" loading="lazy"></div>
+<div class="section-break" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION 11: SUCCESS STORIES -->
 <section class="subhero" id="stories">
   <div class="wrap subhero-grid flip">

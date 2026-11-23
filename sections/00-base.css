@@ -81,6 +81,9 @@
   @media (max-width: 760px) { .btn-row { flex-direction: column; } .btn-row .btn { font-size: clamp(14px, 3.9vw, 20px); } }
   .subhero .btn-row .btn, .page-end .btn-row .btn { margin: 0; }
 
-  /* Section break: the star and swoosh from the logo, sitting on the seam between two sections. Zero height so it never adds a band of its own colour. */
+  /* Section break: a gold metal line across the whole page with a gold metal star in the middle (same gold as the lettering, from the design's goldMetal). Zero height so it never adds a band of its own colour. */
   .section-break { position: relative; height: 0; z-index: 3; pointer-events: none; }
-  .section-break img { position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%); width: min(560px, 86vw); height: auto; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .35)); }
+  .section-break::before { content: ""; position: absolute; left: 0; right: 0; top: -2.5px; height: 5px; background: var(--gold-metal); box-shadow: 0 1px 0 #4d2a05, 0 0 12px rgba(255, 198, 26, .45); }
+  .sb-star { position: absolute; left: 50%; top: 0; width: 64px; height: 64px; transform: translate(-50%, -50%); background: var(--gold-metal);
+    -webkit-mask: url("images/section-break-star.svg") center / contain no-repeat; mask: url("images/section-break-star.svg") center / contain no-repeat;
+    filter: drop-shadow(0 2px 0 #4d2a05) drop-shadow(0 0 8px rgba(255, 198, 26, .5)); }
