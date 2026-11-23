@@ -138,6 +138,11 @@
   .foot-note { margin-bottom:18px; font-size:15px; }
   .foot-links { display:flex; flex-wrap:wrap; justify-content:center; gap:14px; }
   .foot-links a { display:inline-flex; align-items:center; justify-content:center; padding:14px 26px; min-height:48px; border-radius:var(--radius-md); font-weight:700; font-size:17px; text-decoration:none; color:var(--on-gold); background:var(--gold-metal); box-shadow:var(--bevel-gold); text-shadow:none; transition:filter .15s, transform .15s; }
+  /* each button is a different style from the design: gold, chrome, electric, chrome blue, ghost */
+  .foot-links a:nth-child(5n+2) { color:#0a1130; background:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 1px,rgba(0,0,0,.05) 1px 2px), var(--chrome-metal); box-shadow:inset 0 -2px 0 var(--chrome-500), 0 2px 0 var(--chrome-700); }
+  .foot-links a:nth-child(5n+3) { color:#fff; background:var(--electric-metal); box-shadow:var(--bevel-electric); text-shadow:0 1px 0 rgba(0,13,56,.6); }
+  .foot-links a:nth-child(5n+4) { color:var(--navy-900); background:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 1px,rgba(0,0,0,.05) 1px 2px), var(--chrome-blue-metal); box-shadow:inset 0 0 0 2px var(--electric-500), inset 0 -3px 0 var(--electric-700), 0 3px 0 var(--navy-900), 0 0 14px rgba(31,92,255,.55); }
+  .foot-links a:nth-child(5n+5) { color:var(--page-ink); background:transparent; box-shadow:inset 0 0 0 2px var(--border-strong); }
   .foot-links a:hover { filter:brightness(1.07); transform:translateY(-2px); }
   .foot-links a:focus-visible { outline:3px solid var(--electric-300); outline-offset:3px; }
   footer { padding:40px 0 64px; color:var(--page-muted); font-size:14px; text-align:center; border-top:1px solid var(--line-soft); }
