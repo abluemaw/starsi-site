@@ -433,6 +433,8 @@
   }
   #benefits { --half-photo: url("images/benefits-hero.webp"); }
   .half-photo .subhero-grid > div { text-shadow: 0 2px 14px rgba(3, 8, 36, .85); }
+  /* gold metal icon square at the top of a card */
+  .card-ic { box-sizing: content-box; display: block; width: 1em; height: 1em; font-size: 26px; padding: 12px; margin: 0 0 14px; border-radius: 16px; color: var(--on-gold); background: var(--gold-metal); box-shadow: var(--bevel-gold); }
   /* SECTION 10: PRICING */
   /* the offer box is always a light panel (white with dark text), in light and dark mode */
   .offer { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 32px; border: 2px solid var(--electric-500); border-radius: 24px; background: var(--surface); color: var(--ink); box-shadow: var(--card-shadow); }
@@ -710,12 +712,12 @@
 <section class="alt">
   <div class="wrap">
     <div class="grid g3">
-      <article class="card"><h3>Earn More</h3><p>Support income growth with convenient credit card payments and efficient school operations.</p></article>
-      <article class="card"><h3>Enroll More</h3><p>Build your brand with an AI website and make joining simple with online agreements.</p></article>
-      <article class="card"><h3>Work Less</h3><p>Simplify daily operations and use AI Concierge to find the right solutions.</p></article>
-      <article class="card"><h3>Stay Connected</h3><p>Use mobile apps to keep your school community connected.</p></article>
-      <article class="card"><h3>Take Control</h3><p>Manage your own billing with U-Bill where appropriate.</p></article>
-      <article class="card"><h3>Grow With Confidence</h3><p>Maintain quality across locations with HQ Function and manage professional tournaments when needed.</p></article>
+      <article class="card"><svg class="ic card-ic" aria-hidden="true"><use href="icons/sprite.svg?v=b062c847#billing"></use></svg><h3>Earn More</h3><p>Support income growth with convenient credit card payments and efficient school operations.</p></article>
+      <article class="card"><svg class="ic card-ic" aria-hidden="true"><use href="icons/sprite.svg?v=b062c847#website"></use></svg><h3>Enroll More</h3><p>Build your brand with an AI website and make joining simple with online agreements.</p></article>
+      <article class="card"><svg class="ic card-ic" aria-hidden="true"><use href="icons/sprite.svg?v=b062c847#attendance"></use></svg><h3>Work Less</h3><p>Simplify daily operations and use AI Concierge to find the right solutions.</p></article>
+      <article class="card"><svg class="ic card-ic" aria-hidden="true"><use href="icons/sprite.svg?v=b062c847#messages"></use></svg><h3>Stay Connected</h3><p>Use mobile apps to keep your school community connected.</p></article>
+      <article class="card"><svg class="ic card-ic" aria-hidden="true"><use href="icons/sprite.svg?v=b062c847#settings"></use></svg><h3>Take Control</h3><p>Manage your own billing with U-Bill where appropriate.</p></article>
+      <article class="card"><svg class="ic card-ic" aria-hidden="true"><use href="icons/sprite.svg?v=b062c847#medal"></use></svg><h3>Grow With Confidence</h3><p>Maintain quality across locations with HQ Function and manage professional tournaments when needed.</p></article>
     </div>
   </div>
 </section>

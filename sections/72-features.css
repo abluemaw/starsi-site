@@ -25,3 +25,5 @@
   }
   #benefits { --half-photo: url("images/benefits-hero.webp"); }
   .half-photo .subhero-grid > div { text-shadow: 0 2px 14px rgba(3, 8, 36, .85); }
+  /* gold metal icon square at the top of a card */
+  .card-ic { box-sizing: content-box; display: block; width: 1em; height: 1em; font-size: 26px; padding: 12px; margin: 0 0 14px; border-radius: 16px; color: var(--on-gold); background: var(--gold-metal); box-shadow: var(--bevel-gold); }
