@@ -1,5 +1,12 @@
 [
  {
+  "sha": "1ba24c6f00fcba2a32c0a6d3d6babd6f690360fb",
+  "short": "1ba24c6",
+  "date": "2026-11-23T19:31:22Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "6ef2e37a884c69ab289372fb197be27b24af179a",
   "short": "6ef2e37",
   "date": "2026-11-23T19:26:43Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T20:10:10Z",
   "author": "abluemaw",
   "message": "Test: history picture after merge (#7)"
- },
- {
-  "sha": "1bcf85705407508bc2191cd49da46dc0d9a1885c",
-  "short": "1bcf857",
-  "date": "2026-11-20T20:07:00Z",
-  "author": "MAWnews",
-  "message": "Replace navbar text and icon with the StarSI AI logo (#6)"
  }
 ]
