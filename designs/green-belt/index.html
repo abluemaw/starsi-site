@@ -340,6 +340,24 @@
   .growth-grid div { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 32px); font-weight: 700; text-align: center; color: var(--heading-on-dark); }
   .growth-grid small { display: block; font-family: var(--font-body); font-size: 15px; font-weight: 400; color: var(--ink-on-dark); }
   @media (max-width: 760px) { .sales-grid, .growth-grid { grid-template-columns: 1fr; } .growth-grid { gap: 15px; } }
+  /* SECTION: STARSI DEMO */
+  .demo-values { margin-top: var(--space-lg); }
+  .demo-value {
+    padding: var(--space-md) var(--space-lg);
+    border-inline-start: 3px solid var(--gold-400);
+    background: var(--page-bg);
+  }
+  .demo-value h3 { margin-bottom: var(--space-xs); }
+  .demo-value strong { font-size: clamp(22px, 3vw, 32px); }
+  .demo-value-note { margin: var(--space-sm) 0 var(--space-lg); color: var(--page-muted); }
+  .demo-scenarios { align-items: start; margin-top: var(--space-lg); }
+  .demo-scenarios details { padding: var(--space-lg); }
+  .demo-scenarios summary { color: var(--ink-on-dark); }
+  .demo-scenarios summary::marker, .demo-scenarios .ic { color: var(--gold-300); }
+  .demo-scenarios summary:focus-visible { outline: 2px solid var(--electric-300); outline-offset: 4px; }
+  .demo-actions { justify-content: flex-start; max-width: none; margin: var(--space-lg) 0 0; padding: 0; }
+  .demo-actions .btn { flex: none; white-space: normal; }
+
   /* SECTION 3: GROW YOUR PROFITS (also the shared story layout and alternate-section background) */
   .alt { background: var(--page-alt); }
   .story { display: grid; grid-template-columns: 1.15fr 1fr; gap: 44px; align-items: center; margin: 36px 0; }
@@ -553,6 +571,46 @@
 </div>
 
 <div class="section-break line-only" aria-hidden="true"><span class="sb-star"></span></div>
+<!-- SECTION: STARSI DEMO -->
+<section class="alt" id="demo" aria-labelledby="demo-title">
+  <div class="wrap">
+    <h2 id="demo-title">DEMO: StarSI</h2>
+    <p class="lead">Explore how StarSI can help your martial arts school enroll more students, manage tuition, and spend less time on office work.</p>
+    <div class="grid g2 demo-values">
+      <div class="demo-value">
+        <h3>Hire office manager</h3>
+        <strong>$5,000 value</strong>
+      </div>
+      <div class="demo-value">
+        <h3>Hire professional marketer and business advisor</h3>
+        <strong>$5,000 value</strong>
+      </div>
+    </div>
+    <p class="small demo-value-note">Illustrative comparisons. Actual staffing costs and savings vary.</p>
+
+    <h3>Key Benefits</h3>
+    <p class="lead">Open each scenario to see how it could work in your school.</p>
+    <div class="grid g3 demo-scenarios">
+      <details class="card" open>
+        <summary><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=b062c847#student"/></svg> More Students</summary>
+        <p>When a parent asks about classes, StarSI helps you follow up with the next step. An online agreement gives the family a simpler way to enroll when they’re ready.</p>
+      </details>
+      <details class="card">
+        <summary><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=b062c847#billing"/></svg> More Revenue</summary>
+        <p>When tuition is due, families can pay by credit card. Your team can see what’s been paid and focus follow-up on outstanding balances.</p>
+      </details>
+      <details class="card">
+        <summary><svg class="ic" aria-hidden="true"><use href="../../icons/sprite.svg?v=b062c847#messages"/></svg> A Stronger Reputation</summary>
+        <p>Keep families informed through the mobile app. Consistent communication helps your school stay connected with students and parents.</p>
+      </details>
+    </div>
+    <div class="reference-actions demo-actions">
+      <a class="btn" href="#potential">Explore Your Growth Potential</a>
+      <a class="btn silver" href="#faq">Read the FAQ</a>
+    </div>
+  </div>
+</section>
+
 <!-- SECTION 3: GROW YOUR PROFITS -->
 <section class="alt photo-bg" id="growth">
   <div class="wrap">
