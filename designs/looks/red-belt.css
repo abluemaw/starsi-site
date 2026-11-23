@@ -39,6 +39,7 @@
   --gold-metal: linear-gradient(180deg,#ff9a9a 0%,#ff4d4d 28%,#d10f1f 49%,#f0262f 52%,#ff7a7a 100%);
   --chrome-metal: linear-gradient(180deg,#ffffff 0%,#dfe4ec 45%,#9aa4b4 50%,#cfd6e0 52%,#f4f6fa 100%);
   --electric-metal: linear-gradient(180deg,#aecdff 0%,#1ec4fb 26%,#034cf5 48%,#002797 52%,#0042c8 78%,#2580df 100%);
+  --chrome-blue-metal: linear-gradient(180deg,#ffffff 0%,#cdd9f0 42%,#6f8fd6 50%,#b9cdf2 54%,#eef3fc 100%);
   --bevel-electric: inset 0 2px 0 #aecdff, inset 0 -3px 0 #001a6b, 0 3px 0 #000d38;
   --bevel-gold: inset 0 2px 0 #ffc2c2, inset 0 -3px 0 #7a0a14, 0 3px 0 #3d0509;
   --rim-chrome: conic-gradient(from 20deg,#f4f6fa,#aab4c6,#ffffff,#dfe4ec,#9aa4b4,#f4f6fa);

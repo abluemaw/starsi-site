@@ -51,6 +51,7 @@
   --gold-metal: linear-gradient(180deg,#d4fbe0 0%,#6fe3a0 28%,#1e9a57 49%,#2fbf71 52%,#9cf0bf 100%);
   --chrome-metal: linear-gradient(180deg,#ffffff 0%,#dfe4ec 45%,#9aa4b4 50%,#cfd6e0 52%,#f4f6fa 100%);
   --electric-metal: linear-gradient(180deg,#aecdff 0%,#1ec4fb 26%,#034cf5 48%,#002797 52%,#0042c8 78%,#2580df 100%);
+  --chrome-blue-metal: linear-gradient(180deg,#ffffff 0%,#cdd9f0 42%,#6f8fd6 50%,#b9cdf2 54%,#eef3fc 100%);
   --bevel-electric: inset 0 2px 0 #aecdff, inset 0 -3px 0 #001a6b, 0 3px 0 #000d38;
   --bevel-gold: inset 0 2px 0 #d8fbe5, inset 0 -3px 0 #0f6a39, 0 3px 0 #06331b;
   --rim-chrome: conic-gradient(from 20deg,#f4f6fa,#aab4c6,#ffffff,#dfe4ec,#9aa4b4,#f4f6fa);
@@ -208,6 +209,7 @@
   .electric { background:var(--electric-metal); color:#fff; box-shadow:var(--bevel-electric); text-shadow:0 1px 0 rgba(0,13,56,.6); }
   .electric::before { content:""; position:absolute; inset:0 0 50% 0; background:linear-gradient(180deg,var(--button-gloss),rgba(255,255,255,0)); z-index:-1; pointer-events:none; }
   .electric::after { content:""; position:absolute; top:-30%; bottom:-30%; left:-60%; width:36%; background:linear-gradient(105deg,transparent,var(--button-sweep),transparent); transform:skewX(-20deg); z-index:-1; pointer-events:none; animation:sweep 4.5s ease-in-out infinite; }
+  .chromeblue { background:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 1px,rgba(0,0,0,.05) 1px 2px), var(--chrome-blue-metal); color:var(--navy-900); box-shadow:inset 0 0 0 2px var(--electric-500), inset 0 -3px 0 var(--electric-700), 0 3px 0 var(--navy-900), 0 0 14px rgba(31,92,255,.55); }
   .ghost { background:transparent; color:var(--page-ink); box-shadow:inset 0 0 0 2px var(--border-strong); }
   .si-btn:disabled { opacity:.45; cursor:not-allowed; }
   .caption { font-size:13px; color:var(--page-muted); }
@@ -410,6 +412,7 @@
     <div class="btns">
       <button class="si-btn chrome md"><span>Chrome</span></button>
       <button class="si-btn electric md"><span>Electric</span></button>
+      <button class="si-btn chromeblue md"><span>Chrome blue</span></button>
       <button class="si-btn ghost md"><span>Ghost</span></button>
       <button class="si-btn gold md" disabled><span>Disabled</span></button>
     </div>
