@@ -1,5 +1,12 @@
 [
  {
+  "sha": "dd494928cfc11133056ca083be0eaf78264bbab2",
+  "short": "dd49492",
+  "date": "2026-11-23T21:51:41Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "02534a5286e53e706b3ac617d2f82d9b31cfbf39",
   "short": "02534a5",
   "date": "2026-11-23T21:46:02Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-23T14:58:23Z",
   "author": "github-actions[bot]",
   "message": "Sync design and rebuild index.html"
- },
- {
-  "sha": "cd5253d21411764d1d388c05ff7e6a5e014bb6cc",
-  "short": "cd5253d",
-  "date": "2026-11-23T09:58:14-05:00",
-  "author": "abluemaw",
-  "message": "Rebuild the page from the asset-package prototype (copy and layout) in the StarSI design system"
  }
 ]
