@@ -1,5 +1,12 @@
 [
  {
+  "sha": "22ee029e582cffff052db5da73e5fdfd2de00375",
+  "short": "22ee029",
+  "date": "2026-11-23T19:14:59Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "ef164088524bf616f25091a3e35690600c143c51",
   "short": "ef16408",
   "date": "2026-11-23T19:12:35Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T17:02:46-05:00",
   "author": "abluemaw",
   "message": "Add the Instrument design (based on StarSi.ai system); per-design CSS and fonts load only when used"
- },
- {
-  "sha": "1205eb9d1e7dc1de41a963370695e01edd66cd43",
-  "short": "1205eb9",
-  "date": "2026-11-20T16:50:14-05:00",
-  "author": "abluemaw",
-  "message": "Designs gallery and a full page for every design"
  }
 ]
