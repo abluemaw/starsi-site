@@ -281,8 +281,23 @@
   .welcome-copy h1 span { display: block; color: var(--gold-300); }
   .welcome-copy p { max-width: 34ch; }
   .welcome-lead { margin-top: var(--space-md); font-size: clamp(19px, 2vw, 25px); font-weight: 700; line-height: 1.28; }
-  .welcome-benefits { margin: var(--space-md) 0; padding-inline-start: var(--space-lg); font-weight: 700; }
-  .welcome-benefits li::marker { color: var(--gold-300); }
+  .welcome-benefits {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-xs);
+    margin: var(--space-md) 0;
+    list-style: none;
+    font-weight: 700;
+  }
+  .welcome-benefits li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--panel-light) 40%, var(--night));
+  }
+  .welcome-benefits .ic { color: var(--gold-300); font-size: 1.15em; }
   .welcome-copy .reference-actions { display: flex; justify-content: flex-start; align-items: flex-start; margin: var(--space-lg) 0 0; padding: 0; }
   .welcome-copy .reference-actions .btn { flex: none; text-align: left; width: auto; max-width: 100%; white-space: normal; }
   @media (max-width: 920px) {
@@ -450,10 +465,10 @@
     <div class="wrap welcome-copy">
       <h1>Welcome to <span>StarSI.AI</span></h1>
       <p class="welcome-lead">Super Intelligence for Martial Arts School Growth</p>
-      <ul class="welcome-benefits">
-        <li>More Students</li>
-        <li>More Income</li>
-        <li>Less Work</li>
+      <ul class="welcome-benefits" role="list">
+        <li><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg?v=b062c847#student"/></svg>More Students</li>
+        <li><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg?v=b062c847#billing"/></svg>More Income</li>
+        <li><svg class="ic" aria-hidden="true"><use href="icons/sprite.svg?v=b062c847#class-time"/></svg>Less Work</li>
       </ul>
       <p>Turn Your Martial Arts School Into a High-Enrollment, High-Income Business</p>
       <div class="reference-actions">
