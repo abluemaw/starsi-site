@@ -39,6 +39,8 @@
     background: color-mix(in srgb, var(--panel-light) 40%, var(--night));
   }
   .welcome-benefits .ic { color: var(--gold-300); font-size: 1.15em; }
+  .welcome-promise { font-size: clamp(18px, 1.5vw, 21px); font-weight: 700; line-height: 1.4; }
+  .welcome-promise strong { color: var(--gold-300); }
   .welcome-copy .reference-actions { display: flex; justify-content: flex-start; align-items: flex-start; margin: var(--space-lg) 0 0; padding: 0; }
   .welcome-copy .reference-actions .btn { flex: none; text-align: left; width: auto; max-width: 100%; white-space: normal; }
   @media (max-width: 920px) {
