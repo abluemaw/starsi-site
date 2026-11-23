@@ -1,5 +1,12 @@
 [
  {
+  "sha": "6ef2e37a884c69ab289372fb197be27b24af179a",
+  "short": "6ef2e37",
+  "date": "2026-11-23T19:26:43Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "0ccbdb7541397e971d2e50530b19a334ec01a1fa",
   "short": "0ccbdb7",
   "date": "2026-11-23T19:24:19Z",
@@ -549,13 +556,6 @@
   "sha": "1bcf85705407508bc2191cd49da46dc0d9a1885c",
   "short": "1bcf857",
   "date": "2026-11-20T20:07:00Z",
-  "author": "MAWnews",
-  "message": "Replace navbar text and icon with the StarSI AI logo (#6)"
- },
- {
-  "sha": "a2f34147ccbb36a6a319ce2c5791570e4c2a7a08",
-  "short": "a2f3414",
-  "date": "2026-11-20T20:06:57Z",
   "author": "MAWnews",
   "message": "Replace navbar text and icon with the StarSI AI logo (#6)"
  }
