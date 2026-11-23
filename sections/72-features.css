@@ -24,6 +24,15 @@
     .half-photo .subhero-grid > div { grid-column: 1; }
   }
   #benefits { --half-photo: url("images/benefits-hero.webp"); }
+  @media (width > 760px) {
+    #benefits.half-photo::before {
+      --benefits-photo-fade: linear-gradient(to right, var(--night) 44%, color-mix(in srgb, var(--night) 35%, transparent) 73%, transparent);
+      width: 68%;
+      background-size: cover;
+      -webkit-mask-image: var(--benefits-photo-fade);
+      mask-image: var(--benefits-photo-fade);
+    }
+  }
   .half-photo .subhero-grid > div { text-shadow: 0 2px 14px rgba(3, 8, 36, .85); }
   /* gold metal icon square at the top of a card */
   .card-ic { box-sizing: content-box; display: block; width: 1em; height: 1em; font-size: 36px; padding: 15px; margin: 0 0 14px; border-radius: 20px; color: var(--on-gold); background: var(--gold-metal); box-shadow: var(--bevel-gold); }
