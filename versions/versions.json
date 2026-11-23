@@ -7,6 +7,13 @@
   "message": "Sync design and rebuild index.html"
  },
  {
+  "sha": "cd5253d21411764d1d388c05ff7e6a5e014bb6cc",
+  "short": "cd5253d",
+  "date": "2026-11-23T09:58:14-05:00",
+  "author": "abluemaw",
+  "message": "Rebuild the page from the asset-package prototype (copy and layout) in the StarSI design system"
+ },
+ {
   "sha": "e0883777cccf7f655ee47930ef2e350853dbbba4",
   "short": "e088377",
   "date": "2026-11-20T22:32:23Z",
