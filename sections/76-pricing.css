@@ -4,8 +4,8 @@
   .offer h2, .offer h3 { color: var(--ink); background: none; -webkit-text-fill-color: currentColor; }
   .offer .eyebrow { color: var(--electric-700); }
   .offer p { color: var(--ink-muted); }
-  .price { font-family: var(--font-display); font-weight: 700; font-size: clamp(64px, 9vw, 120px); line-height: 1.05; margin: 12px 0; color: var(--gold-600);
-    background: linear-gradient(180deg, var(--gold-500) 0%, var(--gold-600) 52%, var(--gold-900) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 0 rgba(77, 42, 5, .25)); }
+  .price { font-family: var(--font-display); font-weight: 700; font-size: clamp(64px, 9vw, 120px); line-height: 1.05; margin: 12px 0; color: var(--electric-700);
+    background: linear-gradient(180deg, var(--electric-500) 0%, var(--electric-700) 55%, var(--navy-900) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 0 rgba(6, 13, 58, .22)); }
   .price small { font-size: 24px; -webkit-text-fill-color: var(--ink-muted); color: var(--ink-muted); }
   .offer > div:first-child .btn { display: block; width: 100%; text-align: center; margin-top: 18px; }
   table { width: 100%; border-collapse: collapse; background: var(--card-bg); color: var(--page-ink); margin: 14px 0; }
