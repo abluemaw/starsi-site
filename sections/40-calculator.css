@@ -9,3 +9,4 @@
   .calc-label { color: var(--ink-on-dark-muted); }
   .stat { font-family: var(--font-display); font-weight: 700; font-size: clamp(36px, 5vw, 62px); line-height: 1.1; margin-bottom: 12px; background: var(--gold-metal); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
   @media (max-width: 760px) { .calc { grid-template-columns: 1fr; } }
+  .calc .calc-btn { margin-top: 28px; }
