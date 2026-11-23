@@ -4,9 +4,9 @@ description: "Bold StarSI.AI look: deep navy night ground, gold metal buttons an
 # Show the "Look" dropdown in the site header? on / off
 lookPicker: "on"
 # Logo files (paths inside the repo). logoLight is optional: used on light pages. logoWidth is the header size in px on desktop.
-logo: "images/starsi-ai-logo.webp"
+logo: "images/starsi-navbar-star-logo.webp"
 logoLight: ""
-logoWidth: "220"
+logoWidth: "160"
 # Optional: a Google Fonts stylesheet link and a heading width (for example "125%")
 fontsUrl: ""
 headingStretch: ""
