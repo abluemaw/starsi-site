@@ -73,5 +73,3 @@
   /* lighter photo wash in light mode */
   @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .photo-bg::before { opacity: .3; } }
   :root[data-theme="light"] .photo-bg::before { opacity: .3; }
-  /* kick icon at the end of a button label (replaces the old arrow) */
-  .btn .btn-ic { font-size: 1.9em; margin: 0 0 0 8px; vertical-align: middle; flex-shrink: 0; }
