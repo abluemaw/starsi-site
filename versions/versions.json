@@ -1,5 +1,12 @@
 [
  {
+  "sha": "e7738f2476f4cc4c58ea016f5df408a11eb884fd",
+  "short": "e7738f2",
+  "date": "2026-11-23T19:02:25Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "e6eab560c825f6dfcc94bf427655ac1f7c0d24e3",
   "short": "e6eab56",
   "date": "2026-11-23T18:59:08Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T16:01:07-05:00",
   "author": "abluemaw",
   "message": "Add back-to-top button; link the design page and DESIGN.md for the team"
- },
- {
-  "sha": "c379b9a26c82a27301626c8dbf115d5d678dd825",
-  "short": "c379b9a",
-  "date": "2026-11-20T15:58:55-05:00",
-  "author": "abluemaw",
-  "message": "Add light and dark switch to the header"
  }
 ]
