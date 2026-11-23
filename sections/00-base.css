@@ -83,4 +83,4 @@
 
   /* Section break: the star and swoosh from the logo, sitting on the seam between two sections. Zero height so it never adds a band of its own colour. */
   .section-break { position: relative; height: 0; z-index: 3; pointer-events: none; }
-  .section-break img { position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%); width: min(300px, 62vw); height: auto; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .35)); }
+  .section-break img { position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%); width: min(560px, 86vw); height: auto; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .35)); }
