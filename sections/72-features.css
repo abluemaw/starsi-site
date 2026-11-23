@@ -29,3 +29,8 @@
   .card-ic { box-sizing: content-box; display: block; width: 1em; height: 1em; font-size: 26px; padding: 12px; margin: 0 0 14px; border-radius: 16px; color: var(--on-gold); background: var(--gold-metal); box-shadow: var(--bevel-gold); }
   /* electric blue metal variant of the card icon square (the blue from the SI in the logo) */
   .card-ic.electric { color: #fff; background: var(--electric-metal); box-shadow: var(--bevel-electric); }
+  /* feature cards: icon square with the title beside it, everything else full width below */
+  .card:has(> .card-ic.electric) { display: grid; grid-template-columns: auto 1fr; column-gap: 16px; align-items: center; align-content: start; }
+  .card:has(> .card-ic.electric) > .card-ic { margin: 0 0 14px; grid-column: 1; grid-row: 1; }
+  .card:has(> .card-ic.electric) > h3 { grid-column: 2; grid-row: 1; margin: 0 0 14px; }
+  .card:has(> .card-ic.electric) > h4, .card:has(> .card-ic.electric) > p, .card:has(> .card-ic.electric) > strong { grid-column: 1 / -1; }
