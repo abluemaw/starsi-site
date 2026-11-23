@@ -257,13 +257,27 @@ def load_icons():
             if m:
                 attrs = dict(re.findall(r'([\w-]+)="([^"]*)"', m.group(1)))
                 root = " ".join('%s="%s"' % (k, attrs[k]) for k in keep if k in attrs)
-                out.append((f[:-4], m.group(2).strip(), root))
+                inner = m.group(2).strip()
+                if "url(#" not in inner and "clip-path" not in inner:      # leftover Illustrator clip pieces
+                    inner = re.sub(r"<defs>.*?</defs>", "", inner, flags=re.S)
+                    inner = re.sub(r"<clipPath[^>]*>.*?</clipPath>", "", inner, flags=re.S)
+                inner = inner.replace("xlink:href", "href")
+                out.append((f[:-4], inner, root))
     return out
 
 
 def write_sprite(icons):
     syms = "".join('<symbol id="%s" %s>%s</symbol>' % (n, r, b) for n, b, r in icons)
-    write(os.path.join(ICONS, "sprite.svg"), '<svg xmlns="http://www.w3.org/2000/svg">%s</svg>\n' % syms)
+    sheet = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">%s</svg>\n' % syms
+    write(os.path.join(ICONS, "sprite.svg"), sheet)
+    # a browser stops reading a sprite at the first XML error, so check every icon and shout if one is broken
+    import xml.etree.ElementTree as ET
+    for n, b, r in icons:
+        try:
+            ET.fromstring('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol %s>%s</symbol></svg>' % (r, b))
+        except ET.ParseError as e:
+            print("WARNING: icon '%s' is not valid SVG and breaks the icon sheet: %s" % (n, e))
+            raise SystemExit(1)
 
 
 def icon_html(icons):
