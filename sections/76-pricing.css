@@ -1,11 +1,18 @@
   /* SECTION 10: PRICING */
-  .offer { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 32px; border: 2px solid var(--electric-500); border-radius: 24px; background: var(--card-bg); box-shadow: var(--card-shadow); }
-  .price { font-family: var(--font-display); font-weight: 700; font-size: clamp(64px, 9vw, 120px); line-height: 1; margin: 12px 0; color: var(--page-ink); }
-  .price small { font-size: 24px; color: var(--page-muted); }
+  /* the offer box is always a light panel (white with dark text), in light and dark mode */
+  .offer { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 32px; border: 2px solid var(--electric-500); border-radius: 24px; background: var(--surface); color: var(--ink); box-shadow: var(--card-shadow); }
+  .offer h2, .offer h3 { color: var(--ink); background: none; -webkit-text-fill-color: currentColor; }
+  .offer .eyebrow { color: var(--electric-700); }
+  .offer p { color: var(--ink-muted); }
+  .price { font-family: var(--font-display); font-weight: 700; font-size: clamp(64px, 9vw, 120px); line-height: 1; margin: 12px 0; color: var(--ink); }
+  .price small { font-size: 24px; color: var(--ink-muted); }
   table { width: 100%; border-collapse: collapse; background: var(--card-bg); color: var(--page-ink); margin: 14px 0; }
   td, th { text-align: left; padding: 12px; border-bottom: 1px solid var(--line-soft); }
   th { background: color-mix(in srgb, var(--page-ink) 7%, transparent); }
-  .offer .small { color: var(--page-muted); }
+  .offer table { background: transparent; color: var(--ink); }
+  .offer td, .offer th { border-bottom-color: var(--border); }
+  .offer th { background: var(--surface-soft); }
+  .offer .small { color: var(--ink-muted); }
   h2.spaced { margin-top: 44px; }
   @media (max-width: 760px) { .offer { grid-template-columns: 1fr; padding: 22px; gap: 22px; } td, th { padding: 8px; font-size: 13px; } }
   #specialized::before { background-image: url("images/bg-class.webp"); }
