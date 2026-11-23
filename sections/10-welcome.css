@@ -2,22 +2,24 @@
   .welcome { padding: 0; background: var(--night); }
   .welcome-banner {
     display: grid;
-    grid-template-columns: minmax(0, min(39%, 430px)) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, min(39%, 430px));
     align-items: center;
     gap: clamp(var(--space-lg), 3vw, var(--space-xxl));
     --welcome-inset: clamp(var(--space-lg), 4vw, var(--space-xxxl));
-    padding-inline-start: max(var(--welcome-inset), calc((100% - 1440px) / 2 + var(--welcome-inset)));
+    padding-inline-end: max(var(--welcome-inset), calc((100% - 1440px) / 2 + var(--welcome-inset)));
     color: var(--ink-on-dark);
   }
   .welcome-art {
+    grid-column: 1;
+    grid-row: 1;
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: right bottom;
-    mask-image: linear-gradient(to right, transparent, var(--night) 9%);
+    object-position: left bottom;
+    mask-image: linear-gradient(to left, transparent, var(--night) 9%);
   }
-  .welcome-copy { width: 100%; padding: var(--space-xl) 0; }
+  .welcome-copy { grid-column: 2; grid-row: 1; width: 100%; padding: var(--space-xl) 0; }
   .welcome-copy h1 { max-width: 9em; font-size: clamp(40px, 4.7vw, 76px); }
   .welcome-copy h1 span { display: block; color: var(--gold-300); }
   .welcome-copy p { max-width: 34ch; }
@@ -45,9 +47,9 @@
   .welcome-copy .reference-actions .btn { flex: none; text-align: left; width: auto; max-width: 100%; white-space: normal; }
   @media (max-width: 920px) {
     .welcome-banner { grid-template-columns: minmax(0, 1fr); gap: var(--space-lg); padding-inline: 0; }
-    .welcome-copy { padding: var(--space-xl) var(--welcome-inset) 0; }
+    .welcome-copy { grid-column: 1; grid-row: 1; padding: var(--space-xl) var(--welcome-inset) 0; }
     .welcome-copy p { max-width: 40ch; }
-    .welcome-art { height: auto; mask-image: none; }
+    .welcome-art { grid-column: 1; grid-row: 2; height: auto; mask-image: none; }
   }
   .benefit-ribbon { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; padding: 26px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
   .benefit-ribbon a { display: block; text-decoration: none; transition: transform .2s; }
