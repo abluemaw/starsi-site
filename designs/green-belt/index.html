@@ -355,8 +355,11 @@
   .demo-scenarios summary { color: var(--ink-on-dark); }
   .demo-scenarios summary::marker, .demo-scenarios .ic { color: var(--gold-300); }
   .demo-scenarios summary:focus-visible { outline: 2px solid var(--electric-300); outline-offset: 4px; }
-  .demo-actions { justify-content: flex-start; max-width: none; margin: var(--space-lg) 0 0; padding: 0; }
-  .demo-actions .btn { flex: none; white-space: normal; }
+  .demo-actions { flex-wrap: wrap; justify-content: flex-start; max-width: none; margin: var(--space-lg) 0 0; padding: 0; }
+  .demo-actions .btn { flex: 0 1 auto; width: auto; max-width: 100%; white-space: normal; }
+  @media (max-width: 760px) {
+    .demo-actions .btn { width: 100%; }
+  }
 
   /* SECTION 3: GROW YOUR PROFITS (also the shared story layout and alternate-section background) */
   .alt { background: var(--page-alt); }
