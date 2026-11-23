@@ -1,5 +1,12 @@
 [
  {
+  "sha": "d132893ad1ae9f3b251c8595e1ca69e6f6790649",
+  "short": "d132893",
+  "date": "2026-11-23T19:39:39Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "eaa0ff1b76cf8fa0b7b5075bfd54fd8b91d2c02e",
   "short": "eaa0ff1",
   "date": "2026-11-23T19:37:28Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T20:57:13Z",
   "author": "github-actions[bot]",
   "message": "Sync design and rebuild index.html"
- },
- {
-  "sha": "536a0cac8d9f90b43f8c1eda756bd50314b017ef",
-  "short": "536a0ca",
-  "date": "2026-11-20T20:54:26Z",
-  "author": "erinams",
-  "message": "Show a StarSI dashboard and emphasize the hero paragraph (#12)"
  }
 ]
