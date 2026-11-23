@@ -246,29 +246,32 @@ def css_to_md(md_text, css_text):
 
 # ---------- icons ----------
 def load_icons():
-    """Returns [(name, inner_svg)] from icons/*.svg (sorted)."""
+    """Returns [(name, inner_svg, root_attrs)] from icons/*.svg (sorted). root_attrs keeps each icon's own viewBox and fill/stroke settings."""
     out = []
     if not os.path.isdir(ICONS):
         return out
+    keep = ("viewBox", "fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin")
     for f in sorted(os.listdir(ICONS)):
         if f.endswith(".svg") and f != "sprite.svg":
-            m = re.search(r"<svg[^>]*>(.*)</svg>", read(os.path.join(ICONS, f)), re.S)
+            m = re.search(r"<svg([^>]*)>(.*)</svg>", read(os.path.join(ICONS, f)), re.S)
             if m:
-                out.append((f[:-4], m.group(1).strip()))
+                attrs = dict(re.findall(r'([\w-]+)="([^"]*)"', m.group(1)))
+                root = " ".join('%s="%s"' % (k, attrs[k]) for k in keep if k in attrs)
+                out.append((f[:-4], m.group(2).strip(), root))
     return out
 
 
 def write_sprite(icons):
-    syms = "".join('<symbol id="%s" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">%s</symbol>' % (n, b) for n, b in icons)
+    syms = "".join('<symbol id="%s" %s>%s</symbol>' % (n, r, b) for n, b, r in icons)
     write(os.path.join(ICONS, "sprite.svg"), '<svg xmlns="http://www.w3.org/2000/svg">%s</svg>\n' % syms)
 
 
 def icon_html(icons):
-    return "\n".join('      <div class="icon-tile"><svg class="ic"><use href="#icon-%s"/></svg><b>%s</b></div>' % (n, n.replace("-", " ")) for n, _ in icons)
+    return "\n".join('      <div class="icon-tile"><svg class="ic"><use href="#icon-%s"/></svg><b>%s</b></div>' % (n, n.replace("-", " ")) for n, _, _ in icons)
 
 
 def icon_sprite_inline(icons):
-    syms = "".join('<symbol id="icon-%s" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">%s</symbol>' % (n, b) for n, b in icons)
+    syms = "".join('<symbol id="icon-%s" %s>%s</symbol>' % (n, r, b) for n, b, r in icons)
     return '<svg width="0" height="0" style="position:absolute" aria-hidden="true">%s</svg>' % syms
 
 

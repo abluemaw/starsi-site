@@ -183,7 +183,7 @@ The values themselves are never repeated in this text, so there is only one plac
 
 ## Icons
 
-- **Style:** 24px grid, 2px rounded line, no fills, one colour (it follows the text colour, so it works in light and dark).
+- **Style:** bold rounded outlines (2.4px line on a 24px grid) with small dash-and-dot detail lines, one colour (it follows the text colour, so it works in light and dark). Five icons (belt, gi, kick, meditate, palm strike) come from the supplied exercise set; the rest are drawn to match it.
 - **Where they live:** one SVG per icon in the `icons` folder. `icons/sprite.svg` and the Icons section of the design page are generated from that folder, so adding a file adds an icon everywhere.
 - **Use:** gold (`gold400`) for the one icon you want noticed, ink or text colour for the rest. On gold buttons and chips use `onGold`. On blue glass use `gold300` or `inkOnDark`.
 - **First set:** belt, gi, fist, dojo gate, trophy, medal, star, glove, mat, gong, certificate, shield.

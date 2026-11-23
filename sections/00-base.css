@@ -63,7 +63,7 @@
   .photo-bg::before { content: ""; position: absolute; inset: -30px; z-index: -1; pointer-events: none; background-color: var(--photo-tint, var(--panel-light)); background-size: cover; background-position: center; background-repeat: no-repeat; background-blend-mode: multiply; filter: blur(8px) saturate(1.15); opacity: .5; }
   /* Every main button is full width of its column, bigger text that scales down so the label stays on one line.
      Small buttons (header, bottom bar) stay compact. */
-  .btn:not(.small) { display: block; width: 100%; text-align: center; white-space: nowrap; margin: 0; padding: 17px 12px; font-size: clamp(14px, 3.9vw, 20px); }
+  .btn:not(.small) { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 58px; text-align: center; white-space: nowrap; margin: 0; padding: 10px 12px; font-size: clamp(14px, 3.9vw, 20px); }
   .subhero .btn, .page-end .btn { margin-top: 14px; }
   .subhero .btn:first-of-type, .page-end h2 + .btn { margin-top: 18px; }
   .page-end .wrap { max-width: 620px; }
@@ -74,4 +74,4 @@
   @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .photo-bg::before { opacity: .3; } }
   :root[data-theme="light"] .photo-bg::before { opacity: .3; }
   /* kick icon at the end of a button label (replaces the old arrow) */
-  .btn .btn-ic { font-size: 1.3em; margin-left: 8px; vertical-align: -0.2em; }
+  .btn .btn-ic { font-size: 1.9em; margin: 0 0 0 8px; vertical-align: middle; flex-shrink: 0; }
