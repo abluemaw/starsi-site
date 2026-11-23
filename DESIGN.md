@@ -189,6 +189,7 @@ The values themselves are never repeated in this text, so there is only one plac
 - **First set:** belt, gi, fist, dojo gate, trophy, medal, star, glove, mat, gong, certificate, shield.
 - **Second set (class and school life):** attendance, family, calendar, pro shop, billing, check-in, trial lesson, student, instructor, message, report, location, class time, backpack, snack, lesson video, homework.
 - **From your own ATLAS icon files (backgrounds removed, recoloured):** 2020 program icons (after school, business, campaigns, social media, software, settings) and the 2023 app icons (account, address, call, email, home, last attended, map, membership, messages, password, sign out, students, website). The app icons are small and thin, so use them a size up.
+- **Lending (2021):** two students with a dollar coin and exchange arrows, for payments, tuition and billing transfers.
 - **From the 2021 icon tests (background removed):** scanner, kiosk, tablet agreement, megaphone, tap, checkbox, kick check. They are thinner than the bold set, so use them a size up.
 - **Rules:** keep to martial arts and school life (belts, ranks, classes, families). No weapons, no violence.
 
