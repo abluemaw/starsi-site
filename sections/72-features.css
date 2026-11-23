@@ -15,7 +15,7 @@
   @media (max-width: 760px) { .subhero-grid { grid-template-columns: 1fr; } .subhero-grid.flip img { order: 0; } }
   /* Full-resolution picture across the whole panel, fading smoothly to the dark panel colour so the text on the right half stays readable. */
   .half-photo { position: relative; padding: 0; overflow: hidden; }
-  .half-photo::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 100%; background: var(--half-photo) left center / auto 100% no-repeat; -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 36%, rgba(0,0,0,.7) 47%, rgba(0,0,0,.4) 57%, rgba(0,0,0,.12) 67%, transparent 70%); mask-image: linear-gradient(90deg, #000 0%, #000 36%, rgba(0,0,0,.7) 47%, rgba(0,0,0,.4) 57%, rgba(0,0,0,.12) 67%, transparent 70%); }
+  .half-photo::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 100%; background: var(--half-photo) left center / auto 100% no-repeat; -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 34%, rgba(0,0,0,.5) 45%, rgba(0,0,0,.16) 55%, rgba(0,0,0,.05) 64%, transparent 70%); mask-image: linear-gradient(90deg, #000 0%, #000 34%, rgba(0,0,0,.5) 45%, rgba(0,0,0,.16) 55%, rgba(0,0,0,.05) 64%, transparent 70%); }
   .half-photo .subhero-grid, .half-photo .subhero-grid:has(> div:only-child) { position: relative; grid-template-columns: 1fr 1fr; padding-block: 72px; min-height: 420px; align-items: center; }
   .half-photo .subhero-grid > div { grid-column: 2; }
   @media (max-width: 760px) {
@@ -24,3 +24,4 @@
     .half-photo .subhero-grid > div { grid-column: 1; }
   }
   #benefits { --half-photo: url("images/benefits-hero.webp"); }
+  .half-photo .subhero-grid > div { text-shadow: 0 2px 14px rgba(3, 8, 36, .85); }
