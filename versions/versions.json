@@ -1,5 +1,12 @@
 [
  {
+  "sha": "68c480922a6d943502cb7a0a8aefb582888f1f68",
+  "short": "68c4809",
+  "date": "2026-11-23T19:34:33Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "0d5f2a024eb197a902b6709931cd89629a93e2ae",
   "short": "0d5f2a0",
   "date": "2026-11-23T19:33:10Z",
@@ -551,12 +558,5 @@
   "date": "2026-11-20T20:21:06Z",
   "author": "erinams",
   "message": "Soften pixel-like skin texture in the hero image (#9)"
- },
- {
-  "sha": "37d35c6536b8e9bb42d26d1ead458dad25cfd470",
-  "short": "37d35c6",
-  "date": "2026-11-20T20:15:17Z",
-  "author": "MAWnews",
-  "message": "Add headline periods and break before Less Office Work (#8)"
  }
 ]
