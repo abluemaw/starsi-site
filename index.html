@@ -421,7 +421,17 @@
   .card .eyebrow { color: var(--electric-300); margin-bottom: 8px; }
   .subhero-grid.flip img { order: -1; }
   @media (max-width: 760px) { .subhero-grid { grid-template-columns: 1fr; } .subhero-grid.flip img { order: 0; } }
-  #benefits::before { background-image: url("images/benefits-hero.webp"); }
+  /* Full-resolution picture filling the left half of the panel; the text sits on the other half. */
+  .half-photo { position: relative; padding: 0; overflow: hidden; }
+  .half-photo::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 50%; background: var(--half-photo) center / cover no-repeat; -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent); mask-image: linear-gradient(90deg, #000 82%, transparent); }
+  .half-photo .subhero-grid, .half-photo .subhero-grid:has(> div:only-child) { position: relative; grid-template-columns: 1fr 1fr; padding-block: 72px; min-height: 420px; align-items: center; }
+  .half-photo .subhero-grid > div { grid-column: 2; }
+  @media (max-width: 760px) {
+    .half-photo::before { position: relative; display: block; width: 100%; height: 260px; -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent); mask-image: linear-gradient(180deg, #000 80%, transparent); }
+    .half-photo .subhero-grid, .half-photo .subhero-grid:has(> div:only-child) { grid-template-columns: 1fr; padding-block: 24px 48px; min-height: 0; }
+    .half-photo .subhero-grid > div { grid-column: 1; }
+  }
+  #benefits { --half-photo: url("images/benefits-hero.webp"); }
   /* SECTION 10: PRICING */
   /* the offer box is always a light panel (white with dark text), in light and dark mode */
   .offer { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 32px; border: 2px solid var(--electric-500); border-radius: 24px; background: var(--surface); color: var(--ink); box-shadow: var(--card-shadow); }
@@ -684,7 +694,7 @@
 </section>
 
 <!-- SECTION 9: BENEFITS -->
-<section class="subhero photo-bg" id="benefits">
+<section class="subhero half-photo" id="benefits">
   <div class="wrap subhero-grid">
     <div>
       <div class="eyebrow">BUILD THE BUSINESS YOU WANT</div>
