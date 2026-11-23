@@ -379,6 +379,8 @@
   .story h3 { font-size: clamp(26px, 3vw, 38px); }
   @media (max-width: 760px) { .story { grid-template-columns: 1fr; gap: 18px; } }
   #growth::before { background-image: url("../../images/bg-growth.webp"); }
+  /* one big gold line; it only wraps (balanced) on narrow screens */
+  .big-title { font-size: clamp(26px, 4.6vw, 60px); line-height: 1.1; text-wrap: balance; color: var(--heading); }
   /* SECTION 4: INCOME CALCULATOR (form field look is shared with the enrollment form) */
   .calc { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 28px 0 30px; align-items: start; }
   label { display: block; font-weight: 700; margin: 14px 0 6px; }
@@ -552,7 +554,7 @@
 <section class="alt photo-bg" id="growth">
   <div class="wrap">
     <div class="eyebrow">Built around your business</div>
-    <h2>Grow Your Profits<br>Not Your Workload</h2>
+    <h2 class="big-title">Grow Your Profits Not Your Workload</h2>
     <div class="story">
       <img class="story-photo" src="../../images/story-highfive.webp" alt="Excited new student high-fiving her instructor with proud parents" width="1280" height="418" loading="lazy">
       <div>

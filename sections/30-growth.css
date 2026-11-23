@@ -6,3 +6,5 @@
   .story h3 { font-size: clamp(26px, 3vw, 38px); }
   @media (max-width: 760px) { .story { grid-template-columns: 1fr; gap: 18px; } }
   #growth::before { background-image: url("images/bg-growth.webp"); }
+  /* one big gold line; it only wraps (balanced) on narrow screens */
+  .big-title { font-size: clamp(26px, 4.6vw, 60px); line-height: 1.1; text-wrap: balance; color: var(--heading); }
