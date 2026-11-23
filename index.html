@@ -90,6 +90,12 @@
   /* lighter photo wash in light mode */
   @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .photo-bg::before { opacity: .3; } }
   :root[data-theme="light"] .photo-bg::before { opacity: .3; }
+  /* two buttons side by side on one row (stacked on phones) */
+  .btn-row { display: flex; gap: 14px; max-width: 640px; margin-top: 18px; }
+  .page-end .btn-row { margin: 18px auto 0; }
+  .btn-row .btn { flex: 1; min-width: 0; margin: 0; font-size: clamp(13px, 1.35vw, 18px); }
+  @media (max-width: 760px) { .btn-row { flex-direction: column; } .btn-row .btn { font-size: clamp(14px, 3.9vw, 20px); } }
+  .subhero .btn-row .btn, .page-end .btn-row .btn { margin: 0; }
 /* GENERATED from DESIGN.md. Edit DESIGN.md, or edit a value here: the sync copies it back to DESIGN.md. */
 :root {
   /* colors */
@@ -626,7 +632,7 @@
       <div class="eyebrow">POWER YOUR AMBITION</div>
       <h1>Nine Ways to Transform Your School</h1>
       <p class="lead">Discover the technology designed around the business of martial arts.</p>
-      <a class="btn" href="#pricing">Explore the $195 Offer</a> <a class="btn silver" href="#enroll">Start My Enrollment</a>
+      <div class="btn-row"><a class="btn" href="#pricing">Explore the $195 Offer</a><a class="btn silver" href="#enroll">Start My Enrollment</a></div>
     </div>
     <img src="images/features-hero.webp" alt="A martial arts student launching a flying kick in a busy dojo" width="1000" height="563" loading="lazy">
   </div>
@@ -650,7 +656,7 @@
 <section class="page-end">
   <div class="wrap">
     <h2>Make Your Next Move Your Best Move</h2>
-    <a class="btn" href="#pricing">Explore the $195 Offer</a> <a class="btn silver" href="#enroll">Start My Enrollment</a>
+    <div class="btn-row"><a class="btn" href="#pricing">Explore the $195 Offer</a><a class="btn silver" href="#enroll">Start My Enrollment</a></div>
   </div>
 </section>
 
@@ -661,7 +667,7 @@
       <div class="eyebrow">BUILD THE BUSINESS YOU WANT</div>
       <h1>Grow Your Income Not Your Workload</h1>
       <p class="lead">Put your passion back at the center of your business. StarSI is designed to help you operate efficiently and grow.</p>
-      <a class="btn" href="#pricing">Explore the $195 Offer</a> <a class="btn silver" href="#enroll">Start My Enrollment</a>
+      <div class="btn-row"><a class="btn" href="#pricing">Explore the $195 Offer</a><a class="btn silver" href="#enroll">Start My Enrollment</a></div>
     </div>
     <img src="images/benefits-hero.webp" alt="Students of every age punching together in a bright dojo" width="1000" height="563" loading="lazy">
   </div>
@@ -681,7 +687,7 @@
 <section class="page-end">
   <div class="wrap">
     <h2>Make Your Next Move Your Best Move</h2>
-    <a class="btn" href="#pricing">Explore the $195 Offer</a> <a class="btn silver" href="#enroll">Start My Enrollment</a>
+    <div class="btn-row"><a class="btn" href="#pricing">Explore the $195 Offer</a><a class="btn silver" href="#enroll">Start My Enrollment</a></div>
   </div>
 </section>
 
@@ -692,7 +698,7 @@
       <div class="eyebrow">MORE VALUE FOR YOUR SCHOOL</div>
       <h1>Super Intelligence. Exceptional Value.</h1>
       <p class="lead">Explore the planned StarSI special offer and choose the services that fit your school.</p>
-      <a class="btn" href="#pricing">Explore the $195 Offer</a> <a class="btn silver" href="#enroll">Start My Enrollment</a>
+      <div class="btn-row"><a class="btn" href="#pricing">Explore the $195 Offer</a><a class="btn silver" href="#enroll">Start My Enrollment</a></div>
     </div>
   </div>
 </section>
@@ -727,7 +733,7 @@
 <section class="page-end">
   <div class="wrap">
     <h2>Make Your Next Move Your Best Move</h2>
-    <a class="btn" href="#pricing">Explore the $195 Offer</a> <a class="btn silver" href="#enroll">Start My Enrollment</a>
+    <div class="btn-row"><a class="btn" href="#pricing">Explore the $195 Offer</a><a class="btn silver" href="#enroll">Start My Enrollment</a></div>
   </div>
 </section>
 
@@ -738,7 +744,7 @@
       <div class="eyebrow">REAL SCHOOLS. REAL AMBITION.</div>
       <h1>Your Success Is the Next Chapter</h1>
       <p class="lead">Explore the opportunities StarSI is designed to support.</p>
-      <a class="btn" href="#pricing">Explore the $195 Offer</a> <a class="btn silver" href="#enroll">Start My Enrollment</a>
+      <div class="btn-row"><a class="btn" href="#pricing">Explore the $195 Offer</a><a class="btn silver" href="#enroll">Start My Enrollment</a></div>
     </div>
     <img src="images/stories-hero.webp" alt="Two martial artists throwing focused punches with classmates behind them" width="1000" height="563" loading="lazy">
   </div>
@@ -757,7 +763,7 @@
 <section class="page-end">
   <div class="wrap">
     <h2>Make Your Next Move Your Best Move</h2>
-    <a class="btn" href="#pricing">Explore the $195 Offer</a> <a class="btn silver" href="#enroll">Start My Enrollment</a>
+    <div class="btn-row"><a class="btn" href="#pricing">Explore the $195 Offer</a><a class="btn silver" href="#enroll">Start My Enrollment</a></div>
   </div>
 </section>
 

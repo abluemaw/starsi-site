@@ -73,3 +73,9 @@
   /* lighter photo wash in light mode */
   @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .photo-bg::before { opacity: .3; } }
   :root[data-theme="light"] .photo-bg::before { opacity: .3; }
+  /* two buttons side by side on one row (stacked on phones) */
+  .btn-row { display: flex; gap: 14px; max-width: 640px; margin-top: 18px; }
+  .page-end .btn-row { margin: 18px auto 0; }
+  .btn-row .btn { flex: 1; min-width: 0; margin: 0; font-size: clamp(13px, 1.35vw, 18px); }
+  @media (max-width: 760px) { .btn-row { flex-direction: column; } .btn-row .btn { font-size: clamp(14px, 3.9vw, 20px); } }
+  .subhero .btn-row .btn, .page-end .btn-row .btn { margin: 0; }
