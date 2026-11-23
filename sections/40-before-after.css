@@ -1,5 +1,0 @@
-  /* SECTION 4: BEFORE VS AFTER */
-  .ba .label { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 10px; }
-  .before .label { color: var(--danger-bright); }
-  .after .label { color: var(--success-bright); }
-  .ba p { font-size: 17px; }

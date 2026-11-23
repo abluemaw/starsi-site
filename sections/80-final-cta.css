@@ -1,4 +1,0 @@
-  /* SECTION 8: FINAL CTA (always dark) */
-  #contact { background: radial-gradient(ellipse at 50% 0%, var(--panel-light), var(--navy-900) 75%); color: var(--ink-on-dark); text-align: center; }
-  #contact .lead { color: var(--ink-on-dark-muted); margin: 18px auto 30px; }
-  #contact .phone { display: block; margin-top: 22px; font-size: 20px; font-weight: 700; color: var(--gold-300); }

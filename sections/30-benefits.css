@@ -1,4 +1,0 @@
-  /* SECTION 3: BENEFITS (ghosted dojo picture behind the cards: the picture is faded into the page colour; no faces in it) */
-  #benefits { background-color: var(--page-alt);
-    background-image: linear-gradient(color-mix(in srgb, var(--page-alt) 72%, transparent), color-mix(in srgb, var(--page-alt) 72%, transparent)), url("images/benefits-bg.webp");
-    background-size: cover; background-position: center; background-repeat: no-repeat; }

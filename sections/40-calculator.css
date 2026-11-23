@@ -1,0 +1,11 @@
+  /* SECTION 4: INCOME CALCULATOR (form field look is shared with the enrollment form) */
+  .calc { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 28px 0 30px; align-items: start; }
+  label { display: block; font-weight: 700; margin: 14px 0 6px; }
+  input, textarea { width: 100%; padding: 12px; border: 2px solid var(--border-strong); border-radius: var(--radius-md); font: inherit; background: var(--surface-soft); color: var(--ink); }
+  input:focus-visible, textarea:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 2px; }
+  input[type=checkbox] { width: auto; }
+  input[type=range] { padding: 0; accent-color: var(--gold-500); }
+  .calc .panel { padding: 26px 28px; }
+  .calc-label { color: var(--ink-on-dark-muted); }
+  .stat { font-family: var(--font-display); font-weight: 700; font-size: clamp(36px, 5vw, 62px); line-height: 1.1; margin-bottom: 12px; background: var(--gold-metal); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+  @media (max-width: 760px) { .calc { grid-template-columns: 1fr; } }

@@ -37,9 +37,9 @@ You never have to do Part 1 again.
 1. Open Codex and make sure `starsi-site` is selected.
 2. Type what you want, in plain words. Good examples:
    - "Change the headline at the top to: Fill Your Mats Every Week"
-   - "In the testimonials section, change Mike Bugg's title to Grandmaster"
+   - "On the Pricing page, change the special offer from $195 to $175 a month"
    - "Make the 'Book My Free Demo' buttons green"
-   - "Add a new benefit card called 'Easy Setup' with this text: ..."
+   - "Add a new card called 'Easy Setup' to the six cards under Grow Your Profits, with this text: ..."
 3. Wait for it to finish. It will show you what it changed.
 4. Click **Create PR** (or **Open pull request**).
 5. Wait about one minute. The change is merged and published for you, with no one approving it.
@@ -107,7 +107,7 @@ Still stuck? Message Amen. Nothing is ever lost, because every version is saved.
 ## Plan B: if Codex isn't available (copy and paste)
 
 1. Open the sections folder: https://github.com/abluemaw/starsi-site/tree/main/sections
-   Each section of the page is its own file (for example `30-benefits.html` is the Benefits cards). Click the one you want. Do not use `index.html`: it is built automatically and your change would be lost.
+   Each section of the page is its own file (for example `76-pricing.html` is the Pricing page and `40-calculator.html` is the income calculator). Click the one you want. Do not use `index.html`: it is built automatically and your change would be lost.
 2. Click the **pencil icon** (top right of the file) to edit.
 3. Press **Ctrl+F** (or **Cmd+F** on a Mac) and search for a few words from the part you want to change.
 4. Change the words, or paste in new text from ChatGPT. Only change the words, not the symbols like `<` and `>`.

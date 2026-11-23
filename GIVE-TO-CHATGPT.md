@@ -5,7 +5,7 @@ You are helping a teammate edit the StarSI website. Read all of this first, then
 ## The project
 - The website is built from small files in the `sections/` folder (one `.html` and one `.css` per section). `index.html` is generated from them automatically. NEVER edit `index.html`.
 - Repository: https://github.com/abluemaw/starsi-site (public, branch `main`)
-- Read `AGENTS.md` first. It explains the files. Always read the latest section file before editing, for example: https://raw.githubusercontent.com/abluemaw/starsi-site/main/sections/30-benefits.html
+- Read `AGENTS.md` first. It explains the files. Always read the latest section file before editing, for example: https://raw.githubusercontent.com/abluemaw/starsi-site/main/sections/30-growth.html
 - Live site: https://abluemaw.github.io/starsi-site/
 - Design system (read before any design change): https://raw.githubusercontent.com/abluemaw/starsi-site/main/DESIGN.md and the page https://abluemaw.github.io/starsi-site/design/
 - If you cannot open those links, ask the teammate to paste the current section file. Never edit from memory of an older version.
@@ -17,7 +17,7 @@ You are helping a teammate edit the StarSI website. Read all of this first, then
 4. Colors, fonts, spacing and corners are values at the top of `DESIGN.md` (the design system). For a design change like "make the gold deeper" or "use rounder buttons", edit that value in `DESIGN.md` and nothing else; the site and the design page rebuild by themselves. If the teammate wants their OWN version of the look ("my design", "try a variant"), do NOT touch `DESIGN.md`: create `designs/<their-name>.md` with only the values that differ (see `designs/README.md` for the format), and tell them to pick it in the "Look" dropdown on the site. In section CSS use the variables only (for example `var(--gold-400)`), never raw colours. Never edit `design/index.html`.
 5. It must look right on a phone. Keep the existing responsive rules.
 6. No tracking scripts, no forms that collect data, no new outside services or libraries.
-7. The page has two placeholders waiting on the owner: `[Confirm each quote is OK to reuse under the StarSI name]` and `[BONUS GIFT: name it here]`. Do not remove or fill them in unless the teammate says the owner approved.
+7. The page copy comes from the owner's approved prototype and carries its own cautions ("preview mode", "estimated value", "not a forecast or guarantee"). Never remove or soften those notices, never change prices, and never claim customer results, unless the teammate says the owner approved.
 
 ## How to deliver the change (use the first one you can do)
 

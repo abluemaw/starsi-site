@@ -3,7 +3,7 @@
 This is a plain static website. The page is built from small files in the `sections/` folder. There is no framework.
 
 ## Where things are
-- `sections/NN-name.html`: the words and layout of one section (`10-hero`, `20-pain`, `30-benefits`, `40-before-after`, `50-testimonials`, `60-proof`, `70-demo`, `80-final-cta`, plus `01-header` and `90-footer`).
+- `sections/NN-name.html`: the words and layout of one section (`10-welcome`, `20-sales`, `30-growth`, `40-calculator`, `50-passion`, `60-faq`, `70-enroll`, `72-features`, `74-benefits`, `76-pricing`, `78-stories`, plus `01-header`, `90-footer` and `96-sticky-cta`). Some sections also have a `.js` file (calculator, enrollment preview, welcome banner).
 - `sections/NN-name.css`: the styling for that same section.
 - `sections/00-head.html`: page title and description. `sections/00-base.css`: colours, fonts and spacing variables (`:root { ... }`).
 - `DESIGN.md`: the design system (colours, fonts, spacing, corners, light and dark). It is kept in step with `sections/00-tokens.css` automatically in both directions, and the page `design/index.html` is generated from it.
@@ -15,7 +15,7 @@ This is a plain static website. The page is built from small files in the `secti
 ## Rules
 1. Edit only the section file(s) the change needs. Leave everything else exactly as it is.
 2. Use the copy the owner gives you exactly. Do not rewrite, "improve" or shorten wording unless asked.
-3. Keep the section comment at the top of each `.html` file (`SECTION 3: BENEFITS` etc.) and the existing class names.
+3. Keep the section comment at the top of each `.html` file (`SECTION 3: GROW YOUR PROFITS` etc.) and the existing class names.
 4. Design changes (a colour, a font, spacing, corner roundness, light or dark values): change the value in the list at the top of `DESIGN.md`. The site follows after the merge. Section CSS must use the variables (`var(--gold-400)`, `var(--page-bg)`), never raw colours. Never edit `design/index.html` or `index.html`.
 5. The page must work on phones. Check narrow widths.
 6. Do not add tracking scripts, forms that collect data, or external services without asking.

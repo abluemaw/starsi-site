@@ -1,0 +1,15 @@
+  /* SECTIONS 8-11: THE FOUR PAGES (Features, Benefits, Pricing, Success stories) share these */
+  .subhero { background: var(--hero-bg); padding: 64px 0; }
+  .subhero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
+  .subhero-grid:has(> div:only-child) { grid-template-columns: 1fr; }
+  .subhero h1 { font-size: clamp(36px, 5vw, 68px); margin: 12px 0 14px; }
+  .subhero .lead { margin-bottom: 20px; }
+  .subhero img { display: block; width: 100%; height: auto; border-radius: 22px; box-shadow: var(--card-shadow); }
+  .subhero .btn { margin: 8px 6px 0 0; }
+  .page-end { text-align: center; background: var(--page-alt); }
+  .page-end .btn { margin: 14px 6px 0; }
+  .card h4 { font-size: 18px; margin-bottom: 8px; color: var(--ink-on-dark); }
+  .card strong { display: block; margin-top: 12px; color: var(--gold-300); }
+  .card .eyebrow { color: var(--electric-300); margin-bottom: 8px; }
+  .card .eyebrow::before, .card .eyebrow::after { display: none; }
+  @media (max-width: 760px) { .subhero-grid { grid-template-columns: 1fr; } }

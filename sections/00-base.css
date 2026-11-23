@@ -49,3 +49,8 @@
   .btn.small { padding: 10px 20px; font-size: 14px; }
   @keyframes btn-sweep { 0%, 55% { background-position: 130% 0, 0 0, 0 0; } 100% { background-position: -30% 0, 0 0, 0 0; } }
   @media (prefers-reduced-motion: reduce) { .btn::before { animation: none; } html { scroll-behavior: auto; } }
+  /* icons from icons/sprite.svg: size follows the text size, colour follows the text colour */
+  .ic { width: 1em; height: 1em; display: inline-block; vertical-align: middle; stroke: currentColor; fill: none; flex-shrink: 0; }
+  /* labels above headlines are left aligned on this page: bar before the text only (centered labels get both bars) */
+  .eyebrow::after { display: none; }
+  .center .eyebrow::after, .page-end .eyebrow::after { display: block; }
