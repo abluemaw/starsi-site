@@ -448,14 +448,12 @@
   /* SECTION: WHAT COULD SUCCESS LOOK LIKE */
   .success-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--space-md); margin-bottom: var(--space-lg); }
   .success-head h2 { margin: 0; }
-  .success-lang { display: flex; gap: 8px; }
-  .success-chip, .success-tab { font: inherit; font-weight: 700; cursor: pointer; border: 2px solid var(--chrome-300); color: var(--ink-on-dark); background: linear-gradient(180deg, var(--panel-light), var(--panel)); transition: filter .15s, transform .15s; }
-  .success-chip { padding: 9px 16px; border-radius: 999px; font-size: 15px; }
-  .success-tab { flex: 1 1 0; padding: 16px 18px; border-radius: 16px; font-size: clamp(16px, 1.8vw, 22px); }
-  .success-chip:hover, .success-tab:hover { filter: brightness(1.12); }
-  .success-chip.is-on, .success-tab.is-on { border-color: transparent; color: var(--on-gold); background: var(--gold-metal); box-shadow: var(--bevel-gold); }
-  .success-chip:focus-visible, .success-tab:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 3px; }
-  .success-tabs { display: flex; gap: 12px; margin-bottom: var(--space-lg); }
+  /* school sizes are plain text; the chosen one is gold with an underline */
+  .success-tab { flex: 0 0 auto; padding: 6px 2px 10px; font: inherit; font-weight: 700; font-size: clamp(18px, 2.2vw, 26px); cursor: pointer; border: 0; border-bottom: 3px solid transparent; border-radius: 0; background: none; color: var(--ink-on-dark); opacity: .7; transition: color .15s, opacity .15s, border-color .15s; }
+  .success-tab:hover { opacity: 1; }
+  .success-tab.is-on { opacity: 1; color: var(--gold-300); border-bottom-color: var(--gold-400); }
+  .success-tab:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 3px; }
+  .success-tabs { display: flex; flex-wrap: wrap; gap: clamp(20px, 4vw, 48px); margin-bottom: var(--space-lg); }
   .success-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-lg); align-items: stretch; }
   .success-panel[hidden] { display: none; }
   .success-video, .success-photo { position: relative; margin: 0; overflow: hidden; border-radius: 22px; box-shadow: var(--card-shadow); aspect-ratio: 16 / 9; background: var(--night); }
@@ -468,7 +466,6 @@
   .success-soon { position: absolute; left: 16px; right: 16px; bottom: 14px; z-index: 1; text-align: center; font-weight: 700; color: var(--ink-on-dark); text-shadow: 0 2px 10px rgba(0, 0, 0, .7); }
   @media (max-width: 860px) {
     .success-panel { grid-template-columns: minmax(0, 1fr); }
-    .success-tabs { flex-direction: column; }
   }
   /* SECTION 3: GROW YOUR PROFITS (also the shared story layout and alternate-section background) */
   .alt { background: var(--page-alt); }
@@ -736,11 +733,6 @@
   <div class="wrap">
     <div class="success-head">
       <h2 id="success-title" data-i18n="title">성공은 어떤 모습일까요?</h2>
-      <div class="success-lang" role="group" aria-label="언어">
-        <button type="button" class="success-chip is-on" data-lang="en" aria-pressed="true">English</button>
-        <button type="button" class="success-chip" data-lang="es" aria-pressed="false">Español</button>
-        <button type="button" class="success-chip" data-lang="ko" aria-pressed="false">한국어</button>
-      </div>
     </div>
 
     <div class="success-tabs" role="tablist" aria-label="도장 규모">
@@ -1039,7 +1031,7 @@
   apply();
   if (q.addEventListener) q.addEventListener("change", apply);
 })();
-/* What could success look like: school size tabs, English / Español / 한국어, video boxes.
+/* What could success look like: school size tabs, video boxes. The language follows the page (English, Español or 한국어).
    To add a video, put the file in the video folder and write its path in VIDEOS below (one per size and language).
    Leave "" to show the "coming soon" box. The words in TEXT are translations to be reviewed by a native speaker. */
 (function () {
@@ -1106,9 +1098,6 @@
     var t = TEXT[lang];
     root.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = t[el.getAttribute("data-i18n")]; });
     root.querySelectorAll("[data-i18n-alt]").forEach(function (el) { el.setAttribute("alt", t[el.getAttribute("data-i18n-alt")]); });
-    root.querySelectorAll(".success-chip").forEach(function (c) {
-      var on = c.getAttribute("data-lang") === lang; c.classList.toggle("is-on", on); c.setAttribute("aria-pressed", on ? "true" : "false");
-    });
     ["small", "mid", "big"].forEach(renderVideo);
   }
 
@@ -1122,12 +1111,6 @@
     root.querySelectorAll(".success-panel").forEach(function (p) { p.hidden = p.getAttribute("data-size") !== size; });
   }
 
-  root.querySelectorAll(".success-chip").forEach(function (c) {
-    c.addEventListener("click", function () {
-      lang = c.getAttribute("data-lang"); try { localStorage.setItem("starsi-success-lang", lang); } catch (e) {}
-      applyLang();
-    });
-  });
   var order = ["small", "mid", "big"];
   root.querySelectorAll(".success-tab").forEach(function (t) {
     t.addEventListener("click", function () { applySize(t.getAttribute("data-size")); });

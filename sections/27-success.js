@@ -1,4 +1,4 @@
-/* What could success look like: school size tabs, English / Español / 한국어, video boxes.
+/* What could success look like: school size tabs, video boxes. The language follows the page (English, Español or 한국어).
    To add a video, put the file in the video folder and write its path in VIDEOS below (one per size and language).
    Leave "" to show the "coming soon" box. The words in TEXT are translations to be reviewed by a native speaker. */
 (function () {
@@ -65,9 +65,6 @@
     var t = TEXT[lang];
     root.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = t[el.getAttribute("data-i18n")]; });
     root.querySelectorAll("[data-i18n-alt]").forEach(function (el) { el.setAttribute("alt", t[el.getAttribute("data-i18n-alt")]); });
-    root.querySelectorAll(".success-chip").forEach(function (c) {
-      var on = c.getAttribute("data-lang") === lang; c.classList.toggle("is-on", on); c.setAttribute("aria-pressed", on ? "true" : "false");
-    });
     ["small", "mid", "big"].forEach(renderVideo);
   }
 
@@ -81,12 +78,6 @@
     root.querySelectorAll(".success-panel").forEach(function (p) { p.hidden = p.getAttribute("data-size") !== size; });
   }
 
-  root.querySelectorAll(".success-chip").forEach(function (c) {
-    c.addEventListener("click", function () {
-      lang = c.getAttribute("data-lang"); try { localStorage.setItem("starsi-success-lang", lang); } catch (e) {}
-      applyLang();
-    });
-  });
   var order = ["small", "mid", "big"];
   root.querySelectorAll(".success-tab").forEach(function (t) {
     t.addEventListener("click", function () { applySize(t.getAttribute("data-size")); });
