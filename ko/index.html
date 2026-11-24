@@ -705,6 +705,8 @@
   .card strong .value { display: block; margin-top: 2px; font-family: var(--font-display); font-size: clamp(24px, 2.3vw, 30px); line-height: 1.1; color: var(--heading); }
   /* the cards continue straight out of the Features header: same background where the header fades out, and less gap between them */
   #features + section.alt { background: var(--page-bg); padding-top: 0; }
+  /* and the closing call to action continues the same background, so header, cards and button read as one thought */
+  #features + section.alt + section.page-end { background: var(--page-bg); padding-top: 8px; }
   /* SECTION 10: PRICING */
   /* the offer box is always a light panel (white with dark text), in light and dark mode */
   .offer { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 32px; border: 2px solid var(--electric-500); border-radius: 24px; background: var(--surface); color: var(--ink); box-shadow: var(--card-shadow); }

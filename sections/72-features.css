@@ -47,3 +47,5 @@
   .card strong .value { display: block; margin-top: 2px; font-family: var(--font-display); font-size: clamp(24px, 2.3vw, 30px); line-height: 1.1; color: var(--heading); }
   /* the cards continue straight out of the Features header: same background where the header fades out, and less gap between them */
   #features + section.alt { background: var(--page-bg); padding-top: 0; }
+  /* and the closing call to action continues the same background, so header, cards and button read as one thought */
+  #features + section.alt + section.page-end { background: var(--page-bg); padding-top: 8px; }
