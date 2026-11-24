@@ -49,3 +49,5 @@
   #features + section.alt { background: var(--page-bg); padding-top: 0; }
   /* and the closing call to action continues the same background, so header, cards and button read as one thought */
   #features + section.alt + section.page-end { background: var(--page-bg); padding-top: 8px; }
+  h2 .white-line { color: var(--page-ink); }
+  h2 .gold-line { color: var(--heading); }

@@ -703,6 +703,8 @@
   #features + section.alt { background: var(--page-bg); padding-top: 0; }
   /* and the closing call to action continues the same background, so header, cards and button read as one thought */
   #features + section.alt + section.page-end { background: var(--page-bg); padding-top: 8px; }
+  h2 .white-line { color: var(--page-ink); }
+  h2 .gold-line { color: var(--heading); }
   /* SECTION 10: PRICING */
   /* the offer box is always a light panel (white with dark text), in light and dark mode */
   .offer { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 32px; border: 2px solid var(--electric-500); border-radius: 24px; background: var(--surface); color: var(--ink); box-shadow: var(--card-shadow); }
@@ -1033,7 +1035,7 @@
 </section>
 <section class="alt">
   <div class="wrap">
-    <h2>Herramientas potentes. Ventajas prácticas.</h2>
+    <h2><span class="gold-line">Herramientas potentes.</span> <span class="white-line">Ventajas prácticas.</span></h2>
     <div class="grid g3">
       <article class="card"><svg class="ic card-ic electric" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#software"></use></svg><h3>Software StarSI.AI</h3><h4>Dirija su escuela con más inteligencia</h4><p>Reúna las operaciones diarias de la escuela y dedique más tiempo a hacer crecer su negocio.</p><strong>Valor estimado: <span class="value">$1,000/mes</span></strong></article>
       <article class="card"><svg class="ic card-ic electric" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#website"></use></svg><h3>AI Website</h3><h4>Convierta la atención en inscripciones</h4><p>Construya una marca en línea más sólida y ofrezca a los futuros estudiantes un camino claro para unirse.</p><strong>Valor estimado: <span class="value">$500/mes</span></strong></article>

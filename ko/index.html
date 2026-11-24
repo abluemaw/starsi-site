@@ -707,6 +707,8 @@
   #features + section.alt { background: var(--page-bg); padding-top: 0; }
   /* and the closing call to action continues the same background, so header, cards and button read as one thought */
   #features + section.alt + section.page-end { background: var(--page-bg); padding-top: 8px; }
+  h2 .white-line { color: var(--page-ink); }
+  h2 .gold-line { color: var(--heading); }
   /* SECTION 10: PRICING */
   /* the offer box is always a light panel (white with dark text), in light and dark mode */
   .offer { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 32px; border: 2px solid var(--electric-500); border-radius: 24px; background: var(--surface); color: var(--ink); box-shadow: var(--card-shadow); }
@@ -1037,7 +1039,7 @@
 </section>
 <section class="alt">
   <div class="wrap">
-    <h2>강력한 도구. 실용적인 장점.</h2>
+    <h2><span class="gold-line">강력한 도구.</span> <span class="white-line">실용적인 장점.</span></h2>
     <div class="grid g3">
       <article class="card"><svg class="ic card-ic electric" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#software"></use></svg><h3>StarSI.AI 소프트웨어</h3><h4>도장을 더 똑똑하게 운영하세요</h4><p>일상적인 도장 운영을 한곳에 모아 사업을 키우는 데 더 많은 시간을 쓰세요.</p><strong>예상 가치: <span class="value">월 $1,000</span></strong></article>
       <article class="card"><svg class="ic card-ic electric" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#website"></use></svg><h3>AI Website</h3><h4>관심을 등록으로</h4><p>더 강한 온라인 브랜드를 만들고 예비 수련생에게 가입으로 가는 분명한 길을 열어 주세요.</p><strong>예상 가치: <span class="value">월 $500</span></strong></article>
