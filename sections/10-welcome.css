@@ -122,3 +122,11 @@
 @media (prefers-reduced-motion: reduce) {
   .welcome-banner .welcome-art { transition: none !important; }
 }
+
+  /* silver metal lettering for the tagline and the three benefits (the chrome gradient from the design) */
+  .welcome-lead, .welcome-benefits .silver-text {
+    background: linear-gradient(180deg, #ffffff 0%, #e9eef6 26%, #aab6ca 46%, #7d8aa3 52%, #dfe6f1 60%, #ffffff 78%, #c4cddc 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    filter: drop-shadow(0 2px 0 rgba(0, 8, 40, .55)) drop-shadow(0 0 10px rgba(180, 205, 255, .22));
+  }
