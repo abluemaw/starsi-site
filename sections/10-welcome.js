@@ -34,7 +34,7 @@
     if (still.complete && still.naturalWidth) swap();
     else still.addEventListener("load", swap, { once: true });
   }
-  still.src = "images/Martial%20Artist%20at%20StarSI.AI%20Command%20Center.png";
+  still.src = "images/StarSI.AI%20Business%20Command%20Center.png";
   if (still.decode) still.decode().catch(function () {});
   v.addEventListener("ended", finish, { once: true });
   v.addEventListener("error", finish, { once: true });
