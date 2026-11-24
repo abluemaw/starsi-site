@@ -615,6 +615,8 @@
     .bento { grid-auto-rows: auto; }
     .success-label { font-size: 16px; } .t-phone .success-label { font-size: 12px; }
   }
+  /* its own background, different from the DEMO panel above: a soft electric blue spotlight from the top on the page colour */
+  #success { background: radial-gradient(ellipse 75% 70% at 50% 0%, color-mix(in srgb, var(--electric-500) 34%, transparent) 0%, color-mix(in srgb, var(--electric-700) 16%, transparent) 45%, transparent 75%), var(--page-bg); }
   /* SECTION 3: GROW YOUR PROFITS (also the shared story layout and alternate-section background) */
   .alt { background: var(--page-alt); }
   .story { display: grid; grid-template-columns: 1.15fr 1fr; gap: 44px; align-items: center; margin: 36px 0; }
@@ -877,7 +879,7 @@
 </section>
 
 <!-- SECTION: WHAT COULD SUCCESS LOOK LIKE (three school sizes x three languages, each with a video box and a picture) -->
-<section class="alt" id="success" aria-labelledby="success-title" lang="en" data-lang="en">
+<section id="success" aria-labelledby="success-title" lang="en" data-lang="en">
   <div class="wrap">
     <div class="success-head">
       <h2 id="success-title" data-i18n="title">¿Cómo podría verse el éxito?</h2>

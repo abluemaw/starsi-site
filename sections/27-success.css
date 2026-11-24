@@ -38,3 +38,5 @@
     .bento { grid-auto-rows: auto; }
     .success-label { font-size: 16px; } .t-phone .success-label { font-size: 12px; }
   }
+  /* its own background, different from the DEMO panel above: a soft electric blue spotlight from the top on the page colour */
+  #success { background: radial-gradient(ellipse 75% 70% at 50% 0%, color-mix(in srgb, var(--electric-500) 34%, transparent) 0%, color-mix(in srgb, var(--electric-700) 16%, transparent) 45%, transparent 75%), var(--page-bg); }
