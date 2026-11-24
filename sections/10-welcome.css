@@ -222,3 +222,8 @@
   .welcome-benefits .gold-star { flex: none; width: 1em; height: 1em; background: var(--gold-metal);
     -webkit-mask: url("images/section-break-star.svg") center / contain no-repeat; mask: url("images/section-break-star.svg") center / contain no-repeat;
     filter: drop-shadow(0 2px 0 #4d2a05) drop-shadow(0 0 7px rgba(255, 198, 26, .55)); }
+
+/* Shift the entire welcome copy column slightly right on desktop. */
+@media (min-width: 921px) {
+  .welcome-banner { padding-inline-end: max(12px, calc(max(var(--welcome-inset), calc((100% - 1440px) / 2 + var(--welcome-inset))) - 24px)); }
+}
