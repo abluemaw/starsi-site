@@ -485,10 +485,13 @@
   .t-phone { grid-column: span 1; grid-row: span 2; }
   .t-a { grid-column: 1 / span 3; grid-row: 1 / span 2; }
   .t-phone:nth-of-type(2) { grid-column: 4; grid-row: 1 / span 2; }
-  .t-phone:nth-of-type(3) { grid-column: 5; grid-row: 1 / span 2; }
-  .t-phone:nth-of-type(4) { grid-column: 6; grid-row: 1 / span 2; }
+  .t-phone:nth-of-type(3) { grid-column: 4; grid-row: 3 / span 2; }
+  /* the big school's phone video is the feature tile: double size (2 columns by 4 rows), still 9:16 */
+  .t-phone:nth-of-type(4) { grid-column: 5 / span 2; grid-row: 1 / span 4; }
   .t-b { grid-column: 1 / span 3; grid-row: 3 / span 2; }
-  .t-c { grid-column: 4 / span 3; grid-row: 3 / span 2; }
+  .t-c { grid-column: 1 / span 6; grid-row: 5 / span 3; }
+  .t-phone:nth-of-type(4) .success-label { font-size: clamp(16px, 2vw, 26px); }
+  .t-phone:nth-of-type(4) .success-play { width: clamp(52px, 7vw, 92px); }
   .success-video { position: absolute; inset: 0; background: var(--night); }
   .success-video video, .success-video .success-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .success-poster { background-size: cover; background-position: center; }
@@ -504,6 +507,7 @@
   @media (max-width: 760px) {
     .bento { grid-template-columns: repeat(6, minmax(0, 1fr)); }
     .t-land, .t-a, .t-b, .t-c { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16 / 9; }
+    .t-phone:nth-of-type(4) .success-label { font-size: 12px; } .t-phone:nth-of-type(4) .success-play { width: clamp(40px, 5vw, 64px); }
     .t-phone, .t-phone:nth-of-type(2), .t-phone:nth-of-type(3), .t-phone:nth-of-type(4) { grid-column: span 2; grid-row: auto; aspect-ratio: 9 / 16; }
     .t-a { order: 1; } .t-phone:nth-of-type(2) { order: 2; } .t-phone:nth-of-type(3) { order: 3; } .t-phone:nth-of-type(4) { order: 4; } .t-b { order: 5; } .t-c { order: 6; }
     .bento { grid-auto-rows: auto; }
@@ -666,11 +670,11 @@
   <div class="welcome-banner">
     <div class="wrap welcome-copy">
       <h1><span class="welcome-heading-intro">환영합니다</span> <img class="welcome-heading-logo" src="../images/starsi-navbar-star-logo.webp" alt="StarSI.AI" width="650" height="219"></h1>
-      <p class="welcome-lead" style="color: #fff;">Transcendent Software For Limitless Success</p>
+      <p class="welcome-lead" style="color: #fff;">한계 없는 성공을 위한 초월적인 소프트웨어</p>
       <ul class="welcome-benefits" role="list">
         <li><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#sparring"/></svg>더 많은 수련생</li>
         <li><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#billing"/></svg>더 높은 수익</li>
-        <li><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#instructor"/></svg>More Freedom</li>
+        <li><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#instructor"/></svg>더 많은 자유</li>
       </ul>
       <p class="welcome-promise">무술 도장을 이렇게 바꿔 보세요:<br><strong>높은 등록률, 높은 수익의 비즈니스</strong></p>
       <div class="reference-actions">
