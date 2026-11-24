@@ -431,6 +431,31 @@
     .demo-actions .btn { width: 100%; }
   }
 
+  /* SECTION: WHAT COULD SUCCESS LOOK LIKE */
+  .success-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--space-md); margin-bottom: var(--space-lg); }
+  .success-head h2 { margin: 0; }
+  .success-lang { display: flex; gap: 8px; }
+  .success-chip, .success-tab { font: inherit; font-weight: 700; cursor: pointer; border: 2px solid var(--chrome-300); color: var(--ink-on-dark); background: linear-gradient(180deg, var(--panel-light), var(--panel)); transition: filter .15s, transform .15s; }
+  .success-chip { padding: 9px 16px; border-radius: 999px; font-size: 15px; }
+  .success-tab { flex: 1 1 0; padding: 16px 18px; border-radius: 16px; font-size: clamp(16px, 1.8vw, 22px); }
+  .success-chip:hover, .success-tab:hover { filter: brightness(1.12); }
+  .success-chip.is-on, .success-tab.is-on { border-color: transparent; color: var(--on-gold); background: var(--gold-metal); box-shadow: var(--bevel-gold); }
+  .success-chip:focus-visible, .success-tab:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 3px; }
+  .success-tabs { display: flex; gap: 12px; margin-bottom: var(--space-lg); }
+  .success-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-lg); align-items: stretch; }
+  .success-panel[hidden] { display: none; }
+  .success-video, .success-photo { position: relative; margin: 0; overflow: hidden; border-radius: 22px; box-shadow: var(--card-shadow); aspect-ratio: 16 / 9; background: var(--night); }
+  .success-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .success-video video, .success-video .success-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .success-poster { background-size: cover; background-position: center; }
+  .success-poster::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, color-mix(in srgb, var(--night) 82%, transparent), color-mix(in srgb, var(--night) 25%, transparent)); }
+  .success-play { position: absolute; left: 50%; top: 46%; z-index: 1; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: var(--gold-metal); box-shadow: var(--bevel-gold), 0 0 28px rgba(255, 198, 26, .45); }
+  .success-play::before { content: ""; position: absolute; left: 50%; top: 50%; margin: -17px 0 0 -11px; border-style: solid; border-width: 17px 0 17px 28px; border-color: transparent transparent transparent var(--on-gold); }
+  .success-soon { position: absolute; left: 16px; right: 16px; bottom: 14px; z-index: 1; text-align: center; font-weight: 700; color: var(--ink-on-dark); text-shadow: 0 2px 10px rgba(0, 0, 0, .7); }
+  @media (max-width: 860px) {
+    .success-panel { grid-template-columns: minmax(0, 1fr); }
+    .success-tabs { flex-direction: column; }
+  }
   /* SECTION 3: GROW YOUR PROFITS (also the shared story layout and alternate-section background) */
   .alt { background: var(--page-alt); }
   .story { display: grid; grid-template-columns: 1.15fr 1fr; gap: 44px; align-items: center; margin: 36px 0; }
@@ -686,6 +711,38 @@
   </div>
 </section>
 
+<!-- SECTION: WHAT COULD SUCCESS LOOK LIKE (three school sizes x three languages, each with a video box and a picture) -->
+<section class="alt" id="success" aria-labelledby="success-title" lang="en" data-lang="en">
+  <div class="wrap">
+    <div class="success-head">
+      <h2 id="success-title" data-i18n="title">What could success look like?</h2>
+      <div class="success-lang" role="group" aria-label="Language">
+        <button type="button" class="success-chip is-on" data-lang="en" aria-pressed="true">English</button>
+        <button type="button" class="success-chip" data-lang="es" aria-pressed="false">Español</button>
+        <button type="button" class="success-chip" data-lang="ko" aria-pressed="false">한국어</button>
+      </div>
+    </div>
+
+    <div class="success-tabs" role="tablist" aria-label="School size">
+      <button type="button" role="tab" class="success-tab is-on" id="tab-small" data-size="small" aria-selected="true" aria-controls="panel-small" data-i18n="small">Small school</button>
+      <button type="button" role="tab" class="success-tab" id="tab-mid" data-size="mid" aria-selected="false" aria-controls="panel-mid" tabindex="-1" data-i18n="mid">Midsize school</button>
+      <button type="button" role="tab" class="success-tab" id="tab-big" data-size="big" aria-selected="false" aria-controls="panel-big" tabindex="-1" data-i18n="big">Big school</button>
+    </div>
+
+    <div class="success-panel" role="tabpanel" id="panel-small" aria-labelledby="tab-small" data-size="small">
+      <div class="success-video" data-size="small"></div>
+      <figure class="success-photo"><img src="../../images/success-small.webp" alt="" data-i18n-alt="alt-small" width="1344" height="768" loading="lazy"></figure>
+    </div>
+    <div class="success-panel" role="tabpanel" id="panel-mid" aria-labelledby="tab-mid" data-size="mid" hidden>
+      <div class="success-video" data-size="mid"></div>
+      <figure class="success-photo"><img src="../../images/success-mid.webp" alt="" data-i18n-alt="alt-mid" width="1344" height="768" loading="lazy"></figure>
+    </div>
+    <div class="success-panel" role="tabpanel" id="panel-big" aria-labelledby="tab-big" data-size="big" hidden>
+      <div class="success-video" data-size="big"></div>
+      <figure class="success-photo"><img src="../../images/success-big.webp" alt="" data-i18n-alt="alt-big" width="1344" height="768" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
 <!-- SECTION 3: GROW YOUR PROFITS -->
 <section class="alt photo-bg" id="growth">
   <div class="wrap">
@@ -960,6 +1017,106 @@
   function apply() { if (q.matches) { v.removeAttribute("autoplay"); v.pause(); } else { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }
   apply();
   if (q.addEventListener) q.addEventListener("change", apply);
+})();
+/* What could success look like: school size tabs, English / Español / 한국어, video boxes.
+   To add a video, put the file in the video folder and write its path in VIDEOS below (one per size and language).
+   Leave "" to show the "coming soon" box. The words in TEXT are translations to be reviewed by a native speaker. */
+(function () {
+  var root = document.getElementById("success");
+  if (!root) return;
+
+  var VIDEOS = {
+    small: { en: "", es: "", ko: "" },
+    mid:   { en: "", es: "", ko: "" },
+    big:   { en: "", es: "", ko: "" }
+  };
+
+  var TEXT = {
+    en: {
+      title: "What could success look like?",
+      small: "Small school", mid: "Midsize school", big: "Big school",
+      soon: "Success story video coming soon",
+      "alt-small": "A small martial arts school with students training together",
+      "alt-mid": "A midsize martial arts school with a full class training",
+      "alt-big": "A big martial arts academy with a huge class training in unison"
+    },
+    es: {
+      title: "¿Cómo podría verse el éxito?",
+      small: "Escuela pequeña", mid: "Escuela mediana", big: "Escuela grande",
+      soon: "Video de historia de éxito próximamente",
+      "alt-small": "Una escuela pequeña de artes marciales con alumnos entrenando juntos",
+      "alt-mid": "Una escuela mediana de artes marciales con una clase completa entrenando",
+      "alt-big": "Una gran academia de artes marciales con una clase enorme entrenando al unísono"
+    },
+    ko: {
+      title: "성공은 어떤 모습일까요?",
+      small: "소규모 도장", mid: "중간 규모 도장", big: "대규모 도장",
+      soon: "성공 사례 영상 준비 중",
+      "alt-small": "수련생들이 함께 훈련하는 소규모 무술 도장",
+      "alt-mid": "한 반 가득 훈련하는 중간 규모 무술 도장",
+      "alt-big": "대규모 수련생이 한 몸처럼 훈련하는 대형 무술 아카데미"
+    }
+  };
+
+  var lang = "en", size = "small";
+  try { var saved = localStorage.getItem("starsi-success-lang"); if (saved && TEXT[saved]) lang = saved; } catch (e) {}
+
+  function box(sz) { return root.querySelector('.success-video[data-size="' + sz + '"]'); }
+  function poster(sz) { var i = root.querySelector('.success-panel[data-size="' + sz + '"] img'); return i ? i.getAttribute("src") : ""; }
+
+  function renderVideo(sz) {
+    var b = box(sz), url = VIDEOS[sz][lang];
+    b.textContent = "";
+    if (url) {
+      var v = document.createElement("video");
+      v.controls = true; v.preload = "none"; v.playsInline = true; v.poster = poster(sz); v.src = url;
+      b.appendChild(v);
+    } else {
+      var p = document.createElement("div"); p.className = "success-poster"; p.style.backgroundImage = 'url("' + poster(sz) + '")';
+      var play = document.createElement("span"); play.className = "success-play"; play.setAttribute("aria-hidden", "true");
+      var soon = document.createElement("div"); soon.className = "success-soon"; soon.textContent = TEXT[lang].soon;
+      b.appendChild(p); b.appendChild(play); b.appendChild(soon);
+    }
+  }
+
+  function applyLang() {
+    root.setAttribute("lang", lang); root.setAttribute("data-lang", lang);
+    var t = TEXT[lang];
+    root.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = t[el.getAttribute("data-i18n")]; });
+    root.querySelectorAll("[data-i18n-alt]").forEach(function (el) { el.setAttribute("alt", t[el.getAttribute("data-i18n-alt")]); });
+    root.querySelectorAll(".success-chip").forEach(function (c) {
+      var on = c.getAttribute("data-lang") === lang; c.classList.toggle("is-on", on); c.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    ["small", "mid", "big"].forEach(renderVideo);
+  }
+
+  function applySize(next, focus) {
+    size = next;
+    root.querySelectorAll(".success-tab").forEach(function (t) {
+      var on = t.getAttribute("data-size") === size;
+      t.classList.toggle("is-on", on); t.setAttribute("aria-selected", on ? "true" : "false"); t.tabIndex = on ? 0 : -1;
+      if (on && focus) t.focus();
+    });
+    root.querySelectorAll(".success-panel").forEach(function (p) { p.hidden = p.getAttribute("data-size") !== size; });
+  }
+
+  root.querySelectorAll(".success-chip").forEach(function (c) {
+    c.addEventListener("click", function () {
+      lang = c.getAttribute("data-lang"); try { localStorage.setItem("starsi-success-lang", lang); } catch (e) {}
+      applyLang();
+    });
+  });
+  var order = ["small", "mid", "big"];
+  root.querySelectorAll(".success-tab").forEach(function (t) {
+    t.addEventListener("click", function () { applySize(t.getAttribute("data-size")); });
+    t.addEventListener("keydown", function (e) {
+      var i = order.indexOf(size);
+      if (e.key === "ArrowRight") { e.preventDefault(); applySize(order[(i + 1) % 3], true); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); applySize(order[(i + 2) % 3], true); }
+    });
+  });
+
+  applyLang(); applySize("small");
 })();
 /* Income calculator: students x tuition, per month and per year */
 (function () {
