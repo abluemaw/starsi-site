@@ -1,4 +1,4 @@
-/* What could success look like: school size tabs, video boxes. The language follows the page (English, Español or 한국어).
+/* What could success look like: three video boxes across (small, midsize, big school). The language follows the page (English, Español or 한국어).
    To add a video, put the file in the video folder and write its path in VIDEOS below (one per size and language).
    Leave "" to show the "coming soon" box. The words in TEXT are translations to be reviewed by a native speaker. */
 (function () {
@@ -43,7 +43,7 @@
   if (TEXT[pageLang]) lang = pageLang;
 
   function box(sz) { return root.querySelector('.success-video[data-size="' + sz + '"]'); }
-  function poster(sz) { var i = root.querySelector('.success-panel[data-size="' + sz + '"] img'); return i ? i.getAttribute("src") : ""; }
+  function poster(sz) { return box(sz).getAttribute("data-poster") || ""; }
 
   function renderVideo(sz) {
     var b = box(sz), url = VIDEOS[sz][lang];
@@ -64,29 +64,9 @@
     root.setAttribute("lang", lang); root.setAttribute("data-lang", lang);
     var t = TEXT[lang];
     root.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = t[el.getAttribute("data-i18n")]; });
-    root.querySelectorAll("[data-i18n-alt]").forEach(function (el) { el.setAttribute("alt", t[el.getAttribute("data-i18n-alt")]); });
+    root.querySelectorAll("[data-i18n-alt]").forEach(function (el) { el.setAttribute("aria-label", t[el.getAttribute("data-i18n-alt")]); });
     ["small", "mid", "big"].forEach(renderVideo);
   }
 
-  function applySize(next, focus) {
-    size = next;
-    root.querySelectorAll(".success-tab").forEach(function (t) {
-      var on = t.getAttribute("data-size") === size;
-      t.classList.toggle("is-on", on); t.setAttribute("aria-selected", on ? "true" : "false"); t.tabIndex = on ? 0 : -1;
-      if (on && focus) t.focus();
-    });
-    root.querySelectorAll(".success-panel").forEach(function (p) { p.hidden = p.getAttribute("data-size") !== size; });
-  }
-
-  var order = ["small", "mid", "big"];
-  root.querySelectorAll(".success-tab").forEach(function (t) {
-    t.addEventListener("click", function () { applySize(t.getAttribute("data-size")); });
-    t.addEventListener("keydown", function (e) {
-      var i = order.indexOf(size);
-      if (e.key === "ArrowRight") { e.preventDefault(); applySize(order[(i + 1) % 3], true); }
-      if (e.key === "ArrowLeft") { e.preventDefault(); applySize(order[(i + 2) % 3], true); }
-    });
-  });
-
-  applyLang(); applySize("small");
+  applyLang();
 })();

@@ -477,24 +477,18 @@
   /* SECTION: WHAT COULD SUCCESS LOOK LIKE */
   .success-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--space-md); margin-bottom: var(--space-lg); }
   .success-head h2 { margin: 0; }
-  /* school sizes are plain text; the chosen one is gold with an underline */
-  .success-tab { flex: 0 0 auto; padding: 6px 2px 10px; font: inherit; font-weight: 700; font-size: clamp(18px, 2.2vw, 26px); cursor: pointer; border: 0; border-bottom: 3px solid transparent; border-radius: 0; background: none; color: var(--ink-on-dark); opacity: .7; transition: color .15s, opacity .15s, border-color .15s; }
-  .success-tab:hover { opacity: 1; }
-  .success-tab.is-on { opacity: 1; color: var(--gold-300); border-bottom-color: var(--gold-400); }
-  .success-tab:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 3px; }
-  .success-tabs { display: flex; flex-wrap: wrap; gap: clamp(20px, 4vw, 48px); margin-bottom: var(--space-lg); }
-  .success-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-lg); align-items: stretch; }
-  .success-panel[hidden] { display: none; }
-  .success-video, .success-photo { position: relative; margin: 0; overflow: hidden; border-radius: 22px; box-shadow: var(--card-shadow); aspect-ratio: 16 / 9; background: var(--night); }
-  .success-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  /* three video boxes across, each with its school size as plain text above it */
+  .success-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 32px); }
+  .success-label { margin: 0 0 12px; font-size: clamp(18px, 2vw, 24px); color: var(--gold-300); }
+  .success-video { position: relative; margin: 0; overflow: hidden; border-radius: 22px; box-shadow: var(--card-shadow); aspect-ratio: 16 / 9; background: var(--night); }
   .success-video video, .success-video .success-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .success-poster { background-size: cover; background-position: center; }
   .success-poster::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, color-mix(in srgb, var(--night) 82%, transparent), color-mix(in srgb, var(--night) 25%, transparent)); }
-  .success-play { position: absolute; left: 50%; top: 46%; z-index: 1; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: var(--gold-metal); box-shadow: var(--bevel-gold), 0 0 28px rgba(255, 198, 26, .45); }
+  .success-play { position: absolute; left: 50%; top: 46%; z-index: 1; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; background: var(--gold-metal); box-shadow: var(--bevel-gold), 0 0 28px rgba(255, 198, 26, .45); }
   .success-play::before { content: ""; position: absolute; left: 50%; top: 50%; margin: -17px 0 0 -11px; border-style: solid; border-width: 17px 0 17px 28px; border-color: transparent transparent transparent var(--on-gold); }
   .success-soon { position: absolute; left: 16px; right: 16px; bottom: 14px; z-index: 1; text-align: center; font-weight: 700; color: var(--ink-on-dark); text-shadow: 0 2px 10px rgba(0, 0, 0, .7); }
   @media (max-width: 860px) {
-    .success-panel { grid-template-columns: minmax(0, 1fr); }
+    .success-grid { grid-template-columns: minmax(0, 1fr); }
   }
   /* SECTION 3: GROW YOUR PROFITS (also the shared story layout and alternate-section background) */
   .alt { background: var(--page-alt); }
@@ -764,23 +758,19 @@
       <h2 id="success-title" data-i18n="title">성공은 어떤 모습일까요?</h2>
     </div>
 
-    <div class="success-tabs" role="tablist" aria-label="도장 규모">
-      <button type="button" role="tab" class="success-tab is-on" id="tab-small" data-size="small" aria-selected="true" aria-controls="panel-small" data-i18n="small">소규모 도장</button>
-      <button type="button" role="tab" class="success-tab" id="tab-mid" data-size="mid" aria-selected="false" aria-controls="panel-mid" tabindex="-1" data-i18n="mid">중간 규모 도장</button>
-      <button type="button" role="tab" class="success-tab" id="tab-big" data-size="big" aria-selected="false" aria-controls="panel-big" tabindex="-1" data-i18n="big">대규모 도장</button>
-    </div>
-
-    <div class="success-panel" role="tabpanel" id="panel-small" aria-labelledby="tab-small" data-size="small">
-      <div class="success-video" data-size="small"></div>
-      <figure class="success-photo"><img src="../images/success-small.webp" alt="" data-i18n-alt="alt-small" width="1344" height="768" loading="lazy"></figure>
-    </div>
-    <div class="success-panel" role="tabpanel" id="panel-mid" aria-labelledby="tab-mid" data-size="mid" hidden>
-      <div class="success-video" data-size="mid"></div>
-      <figure class="success-photo"><img src="../images/success-mid.webp" alt="" data-i18n-alt="alt-mid" width="1344" height="768" loading="lazy"></figure>
-    </div>
-    <div class="success-panel" role="tabpanel" id="panel-big" aria-labelledby="tab-big" data-size="big" hidden>
-      <div class="success-video" data-size="big"></div>
-      <figure class="success-photo"><img src="../images/success-big.webp" alt="" data-i18n-alt="alt-big" width="1344" height="768" loading="lazy"></figure>
+    <div class="success-grid">
+      <div class="success-item" data-size="small">
+        <h3 class="success-label" data-i18n="small">소규모 도장</h3>
+        <div class="success-video" data-size="small" data-poster="../images/success-small.webp" role="group" data-i18n-alt="alt-small" aria-label="A small martial arts school with students training together"></div>
+      </div>
+      <div class="success-item" data-size="mid">
+        <h3 class="success-label" data-i18n="mid">중간 규모 도장</h3>
+        <div class="success-video" data-size="mid" data-poster="../images/success-mid.webp" role="group" data-i18n-alt="alt-mid" aria-label="A midsize martial arts school with a full class training"></div>
+      </div>
+      <div class="success-item" data-size="big">
+        <h3 class="success-label" data-i18n="big">대규모 도장</h3>
+        <div class="success-video" data-size="big" data-poster="../images/success-big.webp" role="group" data-i18n-alt="alt-big" aria-label="A big martial arts academy with a huge class training in unison"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1091,7 +1081,7 @@
   }
   if (q && q.addEventListener) q.addEventListener("change", function () { if (q.matches) finish(); });
 })();
-/* What could success look like: school size tabs, video boxes. The language follows the page (English, Español or 한국어).
+/* What could success look like: three video boxes across (small, midsize, big school). The language follows the page (English, Español or 한국어).
    To add a video, put the file in the video folder and write its path in VIDEOS below (one per size and language).
    Leave "" to show the "coming soon" box. The words in TEXT are translations to be reviewed by a native speaker. */
 (function () {
@@ -1136,7 +1126,7 @@
   if (TEXT[pageLang]) lang = pageLang;
 
   function box(sz) { return root.querySelector('.success-video[data-size="' + sz + '"]'); }
-  function poster(sz) { var i = root.querySelector('.success-panel[data-size="' + sz + '"] img'); return i ? i.getAttribute("src") : ""; }
+  function poster(sz) { return box(sz).getAttribute("data-poster") || ""; }
 
   function renderVideo(sz) {
     var b = box(sz), url = VIDEOS[sz][lang];
@@ -1157,31 +1147,11 @@
     root.setAttribute("lang", lang); root.setAttribute("data-lang", lang);
     var t = TEXT[lang];
     root.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = t[el.getAttribute("data-i18n")]; });
-    root.querySelectorAll("[data-i18n-alt]").forEach(function (el) { el.setAttribute("alt", t[el.getAttribute("data-i18n-alt")]); });
+    root.querySelectorAll("[data-i18n-alt]").forEach(function (el) { el.setAttribute("aria-label", t[el.getAttribute("data-i18n-alt")]); });
     ["small", "mid", "big"].forEach(renderVideo);
   }
 
-  function applySize(next, focus) {
-    size = next;
-    root.querySelectorAll(".success-tab").forEach(function (t) {
-      var on = t.getAttribute("data-size") === size;
-      t.classList.toggle("is-on", on); t.setAttribute("aria-selected", on ? "true" : "false"); t.tabIndex = on ? 0 : -1;
-      if (on && focus) t.focus();
-    });
-    root.querySelectorAll(".success-panel").forEach(function (p) { p.hidden = p.getAttribute("data-size") !== size; });
-  }
-
-  var order = ["small", "mid", "big"];
-  root.querySelectorAll(".success-tab").forEach(function (t) {
-    t.addEventListener("click", function () { applySize(t.getAttribute("data-size")); });
-    t.addEventListener("keydown", function (e) {
-      var i = order.indexOf(size);
-      if (e.key === "ArrowRight") { e.preventDefault(); applySize(order[(i + 1) % 3], true); }
-      if (e.key === "ArrowLeft") { e.preventDefault(); applySize(order[(i + 2) % 3], true); }
-    });
-  });
-
-  applyLang(); applySize("small");
+  applyLang();
 })();
 /* Income calculator: students x tuition, per month and per year */
 (function () {

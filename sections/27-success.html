@@ -5,23 +5,19 @@
       <h2 id="success-title" data-i18n="title">What could success look like?</h2>
     </div>
 
-    <div class="success-tabs" role="tablist" aria-label="School size">
-      <button type="button" role="tab" class="success-tab is-on" id="tab-small" data-size="small" aria-selected="true" aria-controls="panel-small" data-i18n="small">Small school</button>
-      <button type="button" role="tab" class="success-tab" id="tab-mid" data-size="mid" aria-selected="false" aria-controls="panel-mid" tabindex="-1" data-i18n="mid">Midsize school</button>
-      <button type="button" role="tab" class="success-tab" id="tab-big" data-size="big" aria-selected="false" aria-controls="panel-big" tabindex="-1" data-i18n="big">Big school</button>
-    </div>
-
-    <div class="success-panel" role="tabpanel" id="panel-small" aria-labelledby="tab-small" data-size="small">
-      <div class="success-video" data-size="small"></div>
-      <figure class="success-photo"><img src="images/success-small.webp" alt="" data-i18n-alt="alt-small" width="1344" height="768" loading="lazy"></figure>
-    </div>
-    <div class="success-panel" role="tabpanel" id="panel-mid" aria-labelledby="tab-mid" data-size="mid" hidden>
-      <div class="success-video" data-size="mid"></div>
-      <figure class="success-photo"><img src="images/success-mid.webp" alt="" data-i18n-alt="alt-mid" width="1344" height="768" loading="lazy"></figure>
-    </div>
-    <div class="success-panel" role="tabpanel" id="panel-big" aria-labelledby="tab-big" data-size="big" hidden>
-      <div class="success-video" data-size="big"></div>
-      <figure class="success-photo"><img src="images/success-big.webp" alt="" data-i18n-alt="alt-big" width="1344" height="768" loading="lazy"></figure>
+    <div class="success-grid">
+      <div class="success-item" data-size="small">
+        <h3 class="success-label" data-i18n="small">Small school</h3>
+        <div class="success-video" data-size="small" data-poster="images/success-small.webp" role="group" data-i18n-alt="alt-small" aria-label="A small martial arts school with students training together"></div>
+      </div>
+      <div class="success-item" data-size="mid">
+        <h3 class="success-label" data-i18n="mid">Midsize school</h3>
+        <div class="success-video" data-size="mid" data-poster="images/success-mid.webp" role="group" data-i18n-alt="alt-mid" aria-label="A midsize martial arts school with a full class training"></div>
+      </div>
+      <div class="success-item" data-size="big">
+        <h3 class="success-label" data-i18n="big">Big school</h3>
+        <div class="success-video" data-size="big" data-poster="images/success-big.webp" role="group" data-i18n-alt="alt-big" aria-label="A big martial arts academy with a huge class training in unison"></div>
+      </div>
     </div>
   </div>
 </section>
