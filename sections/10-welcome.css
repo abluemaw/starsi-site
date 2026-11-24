@@ -94,13 +94,13 @@
   .benefit-ribbon span { font-weight: 700; font-size: clamp(12px, 1.4vw, 18px); line-height: 1.25; display: block; }
   @media (max-width: 760px) { .benefit-ribbon { grid-template-columns: repeat(3, 1fr); } }
 
-/* Keep the final still uncropped and blend its right edge into the copy area. */
+/* Fill the hero vertically, anchor the instructor's head at the top and blend into the copy. */
 @media (min-width: 921px) {
   img.welcome-art {
     width: 72%;
     height: 100%;
-    object-fit: contain;
-    object-position: left center;
+    object-fit: cover;
+    object-position: left top;
     mask-image: linear-gradient(to right, #000 0%, #000 78%, transparent 100%);
   }
   .welcome-banner.welcome-final-visible::before {
@@ -117,7 +117,7 @@
 .welcome-banner.welcome-final-visible .welcome-final { opacity: 1; }
 .welcome-banner.welcome-final-visible video.welcome-art { opacity: 0; }
 @media (max-width: 920px) {
-  .welcome-banner .welcome-final { align-self: center; }
+  .welcome-banner .welcome-final { align-self: stretch; height: 100%; object-fit: cover; object-position: left top; }
 }
 @media (prefers-reduced-motion: reduce) {
   .welcome-banner .welcome-art { transition: none !important; }
