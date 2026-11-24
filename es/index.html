@@ -470,21 +470,40 @@
     .demo-actions .btn { width: 100%; }
   }
 
-  /* SECTION: WHAT COULD SUCCESS LOOK LIKE */
+  /* SECTION: WHAT COULD SUCCESS LOOK LIKE (bento grid: wide story videos and phone-size short videos) */
   .success-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--space-md); margin-bottom: var(--space-lg); }
   .success-head h2 { margin: 0; }
-  /* three video boxes across, each with its school size as plain text above it */
-  .success-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 32px); }
-  .success-label { margin: 0 0 12px; font-size: clamp(18px, 2vw, 24px); color: var(--gold-300); }
-  .success-video { position: relative; margin: 0; overflow: hidden; border-radius: 22px; box-shadow: var(--card-shadow); aspect-ratio: 16 / 9; background: var(--night); }
+  /* six equal columns; a wide tile is 3 columns by 2 rows (16:9) and a phone tile is 1 column by 2 rows (9:16) */
+  .bento-wrap { container-type: inline-size; }
+  .bento { --gap: clamp(10px, 1.6vw, 20px); display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: calc((100cqw - 5 * var(--gap)) / 6 * .89); gap: var(--gap); }
+  .success-tile { position: relative; overflow: hidden; border-radius: 22px; background: var(--night); box-shadow: var(--card-shadow); border: 1px solid color-mix(in srgb, var(--chrome-300) 45%, transparent); }
+  .t-land { grid-column: span 3; grid-row: span 2; }
+  .t-phone { grid-column: span 1; grid-row: span 2; }
+  .t-a { grid-column: 1 / span 3; grid-row: 1 / span 2; }
+  .t-phone:nth-of-type(2) { grid-column: 4; grid-row: 1 / span 2; }
+  .t-phone:nth-of-type(3) { grid-column: 5; grid-row: 1 / span 2; }
+  .t-phone:nth-of-type(4) { grid-column: 6; grid-row: 1 / span 2; }
+  .t-b { grid-column: 1 / span 3; grid-row: 3 / span 2; }
+  .t-c { grid-column: 4 / span 3; grid-row: 3 / span 2; }
+  .success-video { position: absolute; inset: 0; background: var(--night); }
   .success-video video, .success-video .success-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .success-poster { background-size: cover; background-position: center; }
-  .success-poster::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, color-mix(in srgb, var(--night) 82%, transparent), color-mix(in srgb, var(--night) 25%, transparent)); }
-  .success-play { position: absolute; left: 50%; top: 46%; z-index: 1; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; background: var(--gold-metal); box-shadow: var(--bevel-gold), 0 0 28px rgba(255, 198, 26, .45); }
-  .success-play::before { content: ""; position: absolute; left: 50%; top: 50%; margin: -17px 0 0 -11px; border-style: solid; border-width: 17px 0 17px 28px; border-color: transparent transparent transparent var(--on-gold); }
-  .success-soon { position: absolute; left: 16px; right: 16px; bottom: 14px; z-index: 1; text-align: center; font-weight: 700; color: var(--ink-on-dark); text-shadow: 0 2px 10px rgba(0, 0, 0, .7); }
-  @media (max-width: 860px) {
-    .success-grid { grid-template-columns: minmax(0, 1fr); }
+  .success-poster::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, color-mix(in srgb, var(--night) 85%, transparent), color-mix(in srgb, var(--night) 12%, transparent) 55%); }
+  .success-play { position: absolute; left: 50%; top: 44%; z-index: 1; width: clamp(40px, 5vw, 64px); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: var(--gold-metal); box-shadow: var(--bevel-gold), 0 0 24px rgba(255, 198, 26, .45); }
+  .success-play::before { content: ""; position: absolute; left: 53%; top: 50%; transform: translate(-50%, -50%); border-style: solid; border-width: 9px 0 9px 15px; border-color: transparent transparent transparent var(--on-gold); }
+  .success-cap { position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; pointer-events: none; }
+  .success-label { margin: 0; font-size: clamp(14px, 1.7vw, 22px); line-height: 1.15; color: var(--gold-300); text-shadow: 0 2px 10px rgba(0, 0, 0, .8); }
+  .success-chip { padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--on-gold); background: var(--gold-metal); }
+  .success-soon { position: absolute; right: 14px; bottom: 14px; z-index: 2; max-width: 46%; text-align: right; font-weight: 700; font-size: clamp(10px, 1.05vw, 13px); line-height: 1.2; color: var(--ink-on-dark); text-shadow: 0 2px 10px rgba(0, 0, 0, .85); }
+  .t-phone .success-soon { display: none; }
+  .t-phone .success-label { font-size: clamp(11px, 1.3vw, 16px); }
+  @media (max-width: 760px) {
+    .bento { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .t-land, .t-a, .t-b, .t-c { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16 / 9; }
+    .t-phone, .t-phone:nth-of-type(2), .t-phone:nth-of-type(3), .t-phone:nth-of-type(4) { grid-column: span 2; grid-row: auto; aspect-ratio: 9 / 16; }
+    .t-a { order: 1; } .t-phone:nth-of-type(2) { order: 2; } .t-phone:nth-of-type(3) { order: 3; } .t-phone:nth-of-type(4) { order: 4; } .t-b { order: 5; } .t-c { order: 6; }
+    .bento { grid-auto-rows: auto; }
+    .success-label { font-size: 16px; } .t-phone .success-label { font-size: 12px; }
   }
   /* SECTION 3: GROW YOUR PROFITS (also the shared story layout and alternate-section background) */
   .alt { background: var(--page-alt); }
@@ -754,19 +773,33 @@
       <h2 id="success-title" data-i18n="title">¿Cómo podría verse el éxito?</h2>
     </div>
 
-    <div class="success-grid">
-      <div class="success-item" data-size="small">
-        <h3 class="success-label" data-i18n="small">Escuela pequeña</h3>
-        <div class="success-video" data-size="small" data-poster="../images/success-small.webp" role="group" data-i18n-alt="alt-small" aria-label="A small martial arts school with students training together"></div>
+    <div class="bento-wrap">
+    <div class="bento">
+      <div class="success-tile t-land t-a" data-size="small" data-kind="land">
+        <div class="success-video" data-size="small" data-kind="land" data-poster="../images/success-small.webp" role="group" data-i18n-alt="alt-small"></div>
+        <div class="success-cap"><h3 class="success-label" data-i18n="small">Escuela pequeña</h3></div>
       </div>
-      <div class="success-item" data-size="mid">
-        <h3 class="success-label" data-i18n="mid">Escuela mediana</h3>
-        <div class="success-video" data-size="mid" data-poster="../images/success-mid.webp" role="group" data-i18n-alt="alt-mid" aria-label="A midsize martial arts school with a full class training"></div>
+      <div class="success-tile t-phone" data-size="small" data-kind="phone">
+        <div class="success-video" data-size="small" data-kind="phone" data-poster="../images/success-small.webp" role="group" data-i18n-alt="alt-small"></div>
+        <div class="success-cap"><span class="success-chip" data-i18n="short">Video corto</span><h3 class="success-label" data-i18n="small">Escuela pequeña</h3></div>
       </div>
-      <div class="success-item" data-size="big">
-        <h3 class="success-label" data-i18n="big">Escuela grande</h3>
-        <div class="success-video" data-size="big" data-poster="../images/success-big.webp" role="group" data-i18n-alt="alt-big" aria-label="A big martial arts academy with a huge class training in unison"></div>
+      <div class="success-tile t-phone" data-size="mid" data-kind="phone">
+        <div class="success-video" data-size="mid" data-kind="phone" data-poster="../images/success-mid.webp" role="group" data-i18n-alt="alt-mid"></div>
+        <div class="success-cap"><span class="success-chip" data-i18n="short">Video corto</span><h3 class="success-label" data-i18n="mid">Escuela mediana</h3></div>
       </div>
+      <div class="success-tile t-phone" data-size="big" data-kind="phone">
+        <div class="success-video" data-size="big" data-kind="phone" data-poster="../images/success-big.webp" role="group" data-i18n-alt="alt-big"></div>
+        <div class="success-cap"><span class="success-chip" data-i18n="short">Video corto</span><h3 class="success-label" data-i18n="big">Escuela grande</h3></div>
+      </div>
+      <div class="success-tile t-land t-b" data-size="mid" data-kind="land">
+        <div class="success-video" data-size="mid" data-kind="land" data-poster="../images/success-mid.webp" role="group" data-i18n-alt="alt-mid"></div>
+        <div class="success-cap"><h3 class="success-label" data-i18n="mid">Escuela mediana</h3></div>
+      </div>
+      <div class="success-tile t-land t-c" data-size="big" data-kind="land">
+        <div class="success-video" data-size="big" data-kind="land" data-poster="../images/success-big.webp" role="group" data-i18n-alt="alt-big"></div>
+        <div class="success-cap"><h3 class="success-label" data-i18n="big">Escuela grande</h3></div>
+      </div>
+    </div>
     </div>
   </div>
 </section>
@@ -1084,7 +1117,12 @@
   var root = document.getElementById("success");
   if (!root) return;
 
-  var VIDEOS = {
+  var VIDEOS = {                       // wide story videos
+    small: { en: "", es: "", ko: "" },
+    mid:   { en: "", es: "", ko: "" },
+    big:   { en: "", es: "", ko: "" }
+  };
+  var PHONE_VIDEOS = {                 // phone-size (vertical) short videos
     small: { en: "", es: "", ko: "" },
     mid:   { en: "", es: "", ko: "" },
     big:   { en: "", es: "", ko: "" }
@@ -1094,7 +1132,7 @@
     en: {
       title: "What could success look like?",
       small: "Small school", mid: "Midsize school", big: "Big school",
-      soon: "Success story video coming soon",
+      soon: "Success story video coming soon", short: "Short video",
       "alt-small": "A small martial arts school with students training together",
       "alt-mid": "A midsize martial arts school with a full class training",
       "alt-big": "A big martial arts academy with a huge class training in unison"
@@ -1102,7 +1140,7 @@
     es: {
       title: "¿Cómo podría verse el éxito?",
       small: "Escuela pequeña", mid: "Escuela mediana", big: "Escuela grande",
-      soon: "Video de historia de éxito próximamente",
+      soon: "Video de historia de éxito próximamente", short: "Video corto",
       "alt-small": "Una escuela pequeña de artes marciales con alumnos entrenando juntos",
       "alt-mid": "Una escuela mediana de artes marciales con una clase completa entrenando",
       "alt-big": "Una gran academia de artes marciales con una clase enorme entrenando al unísono"
@@ -1110,7 +1148,7 @@
     ko: {
       title: "성공은 어떤 모습일까요?",
       small: "소규모 도장", mid: "중간 규모 도장", big: "대규모 도장",
-      soon: "성공 사례 영상 준비 중",
+      soon: "성공 사례 영상 준비 중", short: "숏폼 영상",
       "alt-small": "수련생들이 함께 훈련하는 소규모 무술 도장",
       "alt-mid": "한 반 가득 훈련하는 중간 규모 무술 도장",
       "alt-big": "대규모 수련생이 한 몸처럼 훈련하는 대형 무술 아카데미"
@@ -1121,18 +1159,18 @@
   var pageLang = (document.documentElement.getAttribute("lang") || "en").slice(0, 2);
   if (TEXT[pageLang]) lang = pageLang;
 
-  function box(sz) { return root.querySelector('.success-video[data-size="' + sz + '"]'); }
-  function poster(sz) { return box(sz).getAttribute("data-poster") || ""; }
+  function boxes() { return [].slice.call(root.querySelectorAll(".success-video")); }
 
-  function renderVideo(sz) {
-    var b = box(sz), url = VIDEOS[sz][lang];
+  function renderVideo(b) {
+    var sz = b.getAttribute("data-size"), kind = b.getAttribute("data-kind");
+    var url = ((kind === "phone" ? PHONE_VIDEOS : VIDEOS)[sz] || {})[lang], pic = b.getAttribute("data-poster") || "";
     b.textContent = "";
     if (url) {
       var v = document.createElement("video");
-      v.controls = true; v.preload = "none"; v.playsInline = true; v.poster = poster(sz); v.src = url;
+      v.controls = true; v.preload = "none"; v.playsInline = true; v.poster = pic; v.src = url;
       b.appendChild(v);
     } else {
-      var p = document.createElement("div"); p.className = "success-poster"; p.style.backgroundImage = 'url("' + poster(sz) + '")';
+      var p = document.createElement("div"); p.className = "success-poster"; p.style.backgroundImage = 'url("' + pic + '")';
       var play = document.createElement("span"); play.className = "success-play"; play.setAttribute("aria-hidden", "true");
       var soon = document.createElement("div"); soon.className = "success-soon"; soon.textContent = TEXT[lang].soon;
       b.appendChild(p); b.appendChild(play); b.appendChild(soon);
@@ -1144,7 +1182,7 @@
     var t = TEXT[lang];
     root.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = t[el.getAttribute("data-i18n")]; });
     root.querySelectorAll("[data-i18n-alt]").forEach(function (el) { el.setAttribute("aria-label", t[el.getAttribute("data-i18n-alt")]); });
-    ["small", "mid", "big"].forEach(renderVideo);
+    boxes().forEach(renderVideo);
   }
 
   applyLang();

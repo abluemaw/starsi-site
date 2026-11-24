@@ -5,7 +5,12 @@
   var root = document.getElementById("success");
   if (!root) return;
 
-  var VIDEOS = {
+  var VIDEOS = {                       // wide story videos
+    small: { en: "", es: "", ko: "" },
+    mid:   { en: "", es: "", ko: "" },
+    big:   { en: "", es: "", ko: "" }
+  };
+  var PHONE_VIDEOS = {                 // phone-size (vertical) short videos
     small: { en: "", es: "", ko: "" },
     mid:   { en: "", es: "", ko: "" },
     big:   { en: "", es: "", ko: "" }
@@ -15,7 +20,7 @@
     en: {
       title: "What could success look like?",
       small: "Small school", mid: "Midsize school", big: "Big school",
-      soon: "Success story video coming soon",
+      soon: "Success story video coming soon", short: "Short video",
       "alt-small": "A small martial arts school with students training together",
       "alt-mid": "A midsize martial arts school with a full class training",
       "alt-big": "A big martial arts academy with a huge class training in unison"
@@ -23,7 +28,7 @@
     es: {
       title: "¿Cómo podría verse el éxito?",
       small: "Escuela pequeña", mid: "Escuela mediana", big: "Escuela grande",
-      soon: "Video de historia de éxito próximamente",
+      soon: "Video de historia de éxito próximamente", short: "Video corto",
       "alt-small": "Una escuela pequeña de artes marciales con alumnos entrenando juntos",
       "alt-mid": "Una escuela mediana de artes marciales con una clase completa entrenando",
       "alt-big": "Una gran academia de artes marciales con una clase enorme entrenando al unísono"
@@ -31,7 +36,7 @@
     ko: {
       title: "성공은 어떤 모습일까요?",
       small: "소규모 도장", mid: "중간 규모 도장", big: "대규모 도장",
-      soon: "성공 사례 영상 준비 중",
+      soon: "성공 사례 영상 준비 중", short: "숏폼 영상",
       "alt-small": "수련생들이 함께 훈련하는 소규모 무술 도장",
       "alt-mid": "한 반 가득 훈련하는 중간 규모 무술 도장",
       "alt-big": "대규모 수련생이 한 몸처럼 훈련하는 대형 무술 아카데미"
@@ -42,18 +47,18 @@
   var pageLang = (document.documentElement.getAttribute("lang") || "en").slice(0, 2);
   if (TEXT[pageLang]) lang = pageLang;
 
-  function box(sz) { return root.querySelector('.success-video[data-size="' + sz + '"]'); }
-  function poster(sz) { return box(sz).getAttribute("data-poster") || ""; }
+  function boxes() { return [].slice.call(root.querySelectorAll(".success-video")); }
 
-  function renderVideo(sz) {
-    var b = box(sz), url = VIDEOS[sz][lang];
+  function renderVideo(b) {
+    var sz = b.getAttribute("data-size"), kind = b.getAttribute("data-kind");
+    var url = ((kind === "phone" ? PHONE_VIDEOS : VIDEOS)[sz] || {})[lang], pic = b.getAttribute("data-poster") || "";
     b.textContent = "";
     if (url) {
       var v = document.createElement("video");
-      v.controls = true; v.preload = "none"; v.playsInline = true; v.poster = poster(sz); v.src = url;
+      v.controls = true; v.preload = "none"; v.playsInline = true; v.poster = pic; v.src = url;
       b.appendChild(v);
     } else {
-      var p = document.createElement("div"); p.className = "success-poster"; p.style.backgroundImage = 'url("' + poster(sz) + '")';
+      var p = document.createElement("div"); p.className = "success-poster"; p.style.backgroundImage = 'url("' + pic + '")';
       var play = document.createElement("span"); play.className = "success-play"; play.setAttribute("aria-hidden", "true");
       var soon = document.createElement("div"); soon.className = "success-soon"; soon.textContent = TEXT[lang].soon;
       b.appendChild(p); b.appendChild(play); b.appendChild(soon);
@@ -65,7 +70,7 @@
     var t = TEXT[lang];
     root.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = t[el.getAttribute("data-i18n")]; });
     root.querySelectorAll("[data-i18n-alt]").forEach(function (el) { el.setAttribute("aria-label", t[el.getAttribute("data-i18n-alt")]); });
-    ["small", "mid", "big"].forEach(renderVideo);
+    boxes().forEach(renderVideo);
   }
 
   applyLang();
