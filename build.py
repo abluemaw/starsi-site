@@ -89,12 +89,59 @@ def build():
     return out
 
 
+LANGS = {
+    "en": {"name": "English", "flag": "us", "dir": ""},
+    "es": {"name": "Español", "flag": "es", "dir": "es"},
+    "ko": {"name": "한국어", "flag": "kr", "dir": "ko"},
+}
+
+
+def localise(out, code):
+    """Fill the language menu for one page and (for es / ko) swap in the translated lines."""
+    import json
+    info = LANGS[code]
+    root = "" if code == "en" else "../"
+    out = out.replace("{{ROOT}}", root).replace("{{FLAG}}", info["flag"]).replace("{{LANGNAME}}", info["name"])
+    for c in LANGS:
+        out = out.replace("{{CUR_%s}}" % c.upper(), ' aria-current="true"' if c == code else "")
+    if code == "en":
+        return out, []
+    out = out.replace('<html lang="en"', '<html lang="%s" data-root="../"' % code, 1)
+    path = os.path.join(HERE, "i18n", code + ".json")
+    stale = []
+    if os.path.exists(path):
+        # translate only the page body text, never the style or script blocks
+        head, sep, rest = out.partition("</style>")
+        body, sep2, tail = rest.partition("<script>")
+        for en, tr in json.load(open(path, encoding="utf-8")).items():
+            n = body.count(">" + en + "<")
+            if n == 0:
+                stale.append(en)
+            body = body.replace(">" + en + "<", ">" + tr + "<")
+        out = head + sep + body + sep2 + tail
+    # the page lives one folder down, so asset addresses need to climb back up
+    out = re.sub(r'((?:src|href|poster)=")(images|video|icons|designs|fonts)/', r"\1../\2/", out)
+    out = re.sub(r'(url\(["\']?)(images|video|icons|fonts)/', r"\1../\2/", out)
+    out = re.sub(r'(["\'])(images|video|icons)/', r"\1../\2/", out) if False else out
+    return out, stale
+
+
 if __name__ == "__main__":
     out = build()
+    page_en, _ = localise(out, "en")
     target = os.path.join(HERE, "index.html")
     with open(target, "w", encoding="utf-8") as f:
-        f.write(out)
-    print("Built index.html (%d bytes)" % len(out.encode("utf-8")))
+        f.write(page_en)
+    print("Built index.html (%d bytes)" % len(page_en.encode("utf-8")))
+    for code in ("es", "ko"):
+        page, stale = localise(out, code)
+        d = os.path.join(HERE, LANGS[code]["dir"])
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
+            f.write(page)
+        print("Built %s/index.html (%s)" % (LANGS[code]["dir"], LANGS[code]["name"]))
+        for en in stale:
+            print("  warning: the English line below changed or is gone, so its %s translation is not used:\n    %s" % (LANGS[code]["name"], en))
     sys.path.insert(0, os.path.join(HERE, "tools"))
     try:
         import design_sync

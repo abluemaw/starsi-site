@@ -12,6 +12,7 @@ on:
       - "tools/design_sync.py"
       - "design/template.html"
       - "images/**"
+      - "i18n/**"
 
 permissions:
   contents: write

@@ -10,6 +10,14 @@
       <a class="plain" href="#benefits">Benefits</a>
       <a class="plain" href="#pricing">Pricing</a>
       <a class="plain" href="#stories">Success Stories</a>
+      <details class="lang-menu">
+        <summary class="lang-current" aria-label="Choose a language"><img src="images/flags/{{FLAG}}.svg" alt="" width="22" height="15"><span>{{LANGNAME}}</span></summary>
+        <div class="lang-list" role="menu">
+          <a role="menuitem" href="{{ROOT}}"{{CUR_EN}} hreflang="en" lang="en"><img src="images/flags/us.svg" alt="" width="22" height="15">English</a>
+          <a role="menuitem" href="{{ROOT}}es/"{{CUR_ES}} hreflang="es" lang="es"><img src="images/flags/es.svg" alt="" width="22" height="15">Español</a>
+          <a role="menuitem" href="{{ROOT}}ko/"{{CUR_KO}} hreflang="ko" lang="ko"><img src="images/flags/kr.svg" alt="" width="22" height="15">한국어</a>
+        </div>
+      </details>
       <select class="look-picker" id="look-picker" aria-label="Choose a look" hidden></select>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark mode"></button>
       <a class="btn small" href="#enroll">Enroll Now</a>

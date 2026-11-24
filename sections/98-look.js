@@ -3,10 +3,10 @@
   var sel = document.getElementById("look-picker");
   if (!sel) return;
   var root = document.documentElement;
-  fetch("designs/variants.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+  fetch((document.documentElement.getAttribute("data-root") || "") + "designs/variants.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d || d.picker === false || !d.variants || !d.variants.length) return;
     var darkImg = document.querySelector(".logo-dark"), lightImg = document.querySelector(".logo-light");
-    var base = window.SITE_ROOT || "";
+    var base = window.SITE_ROOT || document.documentElement.getAttribute("data-root") || "";
     var liveLogo = (d.live && d.live.logo) || (darkImg && darkImg.getAttribute("src"));
     function setLogo(slug) {
       if (!darkImg) return;
@@ -28,7 +28,7 @@
       var link = document.getElementById("look-css");
       if (sel.value) {
         if (!link) { link = document.createElement("link"); link.rel = "stylesheet"; link.id = "look-css"; document.head.appendChild(link); }
-        link.href = "designs/looks/" + sel.value + ".css";
+        link.href = (document.documentElement.getAttribute("data-root") || "") + "designs/looks/" + sel.value + ".css";
         root.setAttribute("data-look", sel.value);
       } else {
         root.removeAttribute("data-look");

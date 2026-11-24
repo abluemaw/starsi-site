@@ -276,6 +276,19 @@
   .nav .btn.small { white-space: nowrap; }
   @media (max-width: 600px) { .nav { height: auto; min-height: 66px; padding-top: 8px; padding-bottom: 8px; } .links { flex-wrap: wrap; justify-content: flex-end; row-gap: 8px; min-width: 0; } .look-picker { order: 3; flex: 1 0 100%; max-width: none; padding: 7px 10px; font-size: 13px; } }
   .links a { white-space: nowrap; }
+
+  /* language menu: a flag and the language name; opens a small list of the other languages */
+  .lang-menu { position: relative; flex-shrink: 0; }
+  .lang-menu summary { list-style: none; display: flex; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid var(--line-soft); border-radius: var(--radius-md); font: 600 13px var(--font-body); color: var(--page-ink); cursor: pointer; white-space: nowrap; }
+  .lang-menu summary::-webkit-details-marker { display: none; }
+  .lang-menu summary::after { content: "\25BE"; font-size: 11px; opacity: .7; }
+  .lang-menu summary:hover { border-color: var(--page-muted); }
+  .lang-menu summary:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 3px; }
+  .lang-menu img { display: block; width: 22px; height: 15px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .25); }
+  .lang-list { position: absolute; right: 0; top: calc(100% + 8px); z-index: 30; min-width: 170px; padding: 6px; border: 1px solid var(--line-soft); border-radius: var(--radius-md); background: var(--nav-bg); backdrop-filter: blur(10px); box-shadow: var(--card-shadow); }
+  .lang-list a { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; font-weight: 600; font-size: 15px; color: var(--page-ink); text-decoration: none; }
+  .lang-list a:hover, .lang-list a[aria-current="true"] { background: color-mix(in srgb, var(--electric-500) 22%, transparent); }
+  @media (max-width: 600px) { .lang-menu summary span { display: none; } }
   /* SECTION 1: WELCOME BANNER */
   /* hero + icon strip together fill the screen under the sticky header; the video stops at the star line above the strip */
   .welcome { display: flex; flex-direction: column; min-height: calc(100vh - var(--header-h, 67px)); min-height: calc(100svh - var(--header-h, 67px)); padding: 0; background: var(--night); }
@@ -593,6 +606,14 @@
       <a class="plain" href="#benefits">Benefits</a>
       <a class="plain" href="#pricing">Pricing</a>
       <a class="plain" href="#stories">Success Stories</a>
+      <details class="lang-menu">
+        <summary class="lang-current" aria-label="Choose a language"><img src="../../images/flags/us.svg" alt="" width="22" height="15"><span>English</span></summary>
+        <div class="lang-list" role="menu">
+          <a role="menuitem" href="" aria-current="true" hreflang="en" lang="en"><img src="../../images/flags/us.svg" alt="" width="22" height="15">English</a>
+          <a role="menuitem" href="es/" hreflang="es" lang="es"><img src="../../images/flags/es.svg" alt="" width="22" height="15">Español</a>
+          <a role="menuitem" href="ko/" hreflang="ko" lang="ko"><img src="../../images/flags/kr.svg" alt="" width="22" height="15">한국어</a>
+        </div>
+      </details>
       <select class="look-picker" id="look-picker" aria-label="Choose a look" hidden></select>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark mode"></button>
       <a class="btn small" href="#enroll">Enroll Now</a>
@@ -1158,10 +1179,10 @@
   var sel = document.getElementById("look-picker");
   if (!sel) return;
   var root = document.documentElement;
-  fetch("../../designs/variants.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+  fetch((document.documentElement.getAttribute("data-root") || "") + "../../designs/variants.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
     if (!d || d.picker === false || !d.variants || !d.variants.length) return;
     var darkImg = document.querySelector(".logo-dark"), lightImg = document.querySelector(".logo-light");
-    var base = window.SITE_ROOT || "";
+    var base = window.SITE_ROOT || document.documentElement.getAttribute("data-root") || "";
     var liveLogo = (d.live && d.live.logo) || (darkImg && darkImg.getAttribute("src"));
     function setLogo(slug) {
       if (!darkImg) return;
@@ -1183,7 +1204,7 @@
       var link = document.getElementById("look-css");
       if (sel.value) {
         if (!link) { link = document.createElement("link"); link.rel = "stylesheet"; link.id = "look-css"; document.head.appendChild(link); }
-        link.href = "../../designs/looks/" + sel.value + ".css";
+        link.href = (document.documentElement.getAttribute("data-root") || "") + "../../designs/looks/" + sel.value + ".css";
         root.setAttribute("data-look", sel.value);
       } else {
         root.removeAttribute("data-look");
