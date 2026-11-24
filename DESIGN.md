@@ -78,6 +78,7 @@ typography:
     fontFamily: "'IBM Plex Mono', ui-monospace, monospace"
     note: "Small data and code only."
 spacing:
+  heroBenefitsGap: "10px"
   xs: "4px"
   sm: "8px"
   md: "16px"
