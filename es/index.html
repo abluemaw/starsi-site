@@ -493,8 +493,8 @@
   .welcome-benefits li { padding: 2px 0; border: 0; border-radius: 0; background: none; gap: 12px; font-size: clamp(26px, 2.9vw, 40px); font-weight: 800; letter-spacing: .01em; }
   .welcome-benefits .blue-text {
     /* the electric blue metal from DESIGN.md */
-    /* the full gradient is squeezed into the height of the lowercase letters (x-height); capitals just continue the top colour above it. Mostly silver chrome with blue at the top and bottom, like the SI in the logo */
-    background: linear-gradient(180deg, #4f9bff 0%, #cfe0f7 24%, #ffffff 38%, #8f9db8 52%, #d6e0f0 68%, #8ec2ff 86%, #3a86f0 100%) 0 .4em / 100% .54em no-repeat, linear-gradient(#4f9bff, #4f9bff) 0 0 / 100% .41em no-repeat;
+    /* the full gradient is squeezed into the height of the lowercase letters (x-height); capitals just continue the top colour above it. The design's electric blue (--electric-500 and --electric-300) at the top and bottom with a silver chrome middle, like the SI in the logo */
+    background: linear-gradient(180deg, var(--electric-500) 0%, var(--electric-300) 20%, #ffffff 40%, #8f9db8 53%, var(--electric-300) 74%, var(--electric-500) 100%) 0 .4em / 100% .54em no-repeat, linear-gradient(var(--electric-500), var(--electric-500)) 0 0 / 100% .41em no-repeat;
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent; color: transparent;
     filter: drop-shadow(0 2px 0 rgba(0, 6, 50, .75)) drop-shadow(0 0 10px rgba(30, 140, 255, .4));
