@@ -1,0 +1,9 @@
+STARSI.AI COMPLETE ASSET PACKAGE
+
+Extract the ZIP, then open 01-Current-Website/index.html in a web browser.
+
+02 contains original artwork and generated promotional photographs.
+03 contains the supplied four-page pricing/features PDF and page images.
+04 contains earlier HTML and ZIP versions.
+
+The current website is a continuous-scroll front-end prototype. Live hosting, browser testing, approved agreements, e-signature and payment integration remain outstanding. Enrollment is nonbinding. Earlier versions may have navigation issues.

@@ -295,11 +295,11 @@
     inset: 0 auto 0 0;
     z-index: -1;
     display: block;
-    width: 70%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: right center;
-    mask-image: linear-gradient(to right, var(--night) 52%, color-mix(in srgb, var(--night) 36%, transparent) 75%, transparent 91%);
+    object-position: left center;
+    mask-image: linear-gradient(to right, var(--night) 40%, color-mix(in srgb, var(--night) 45%, transparent) 55%, color-mix(in srgb, var(--night) 12%, transparent) 66%, transparent 74%);
   }
   .welcome-copy { grid-column: 2; grid-row: 1; width: 100%; padding: var(--space-xl) 0; padding-inline-start: clamp(var(--space-sm), 1.5vw, var(--space-lg)); }
   .welcome-copy h1 { max-width: 9em; font-size: clamp(40px, 4.7vw, 76px); }
@@ -569,7 +569,7 @@
         <a class="btn" href="#sales">Discover Your School’s Full Potential</a>
       </div>
     </div>
-    <img class="welcome-art" src="../../images/dojo-command-dashboard.webp" alt="Martial arts school owner viewing the StarSI.AI business command center while students train" width="1672" height="941" fetchpriority="high">
+    <video class="welcome-art" src="video/hero.mp4" poster="../../images/hero-poster.webp" autoplay muted loop playsinline preload="auto" aria-label="StarSI.AI dashboard, a martial arts school owner celebrating, and a full class training" width="1470" height="630"></video>
   </div>
   <div class="section-break" aria-hidden="true"><span class="sb-star"></span></div>
   <div class="benefit-ribbon">
@@ -922,6 +922,16 @@
   var el = document.getElementById("welcome");
   if (!el || !("IntersectionObserver" in window)) return;
   new IntersectionObserver(function (e) { document.body.classList.toggle("welcome-active", e[0].isIntersecting); }, { threshold: 0.25 }).observe(el);
+})();
+
+/* Respect "reduce motion": show the still poster instead of the looping hero video */
+(function () {
+  var v = document.querySelector("video.welcome-art");
+  if (!v || !window.matchMedia) return;
+  var q = window.matchMedia("(prefers-reduced-motion: reduce)");
+  function apply() { if (q.matches) { v.removeAttribute("autoplay"); v.pause(); } else { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }
+  apply();
+  if (q.addEventListener) q.addEventListener("change", apply);
 })();
 /* Income calculator: students x tuition, per month and per year */
 (function () {
