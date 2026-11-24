@@ -25,3 +25,4 @@
     .demo-actions .btn { width: 100%; }
   }
 
+  .demo-right .btn.demo-faq { margin: var(--space-md) 0 0; width: 100%; }
