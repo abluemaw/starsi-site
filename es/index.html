@@ -499,6 +499,14 @@
     -webkit-text-fill-color: transparent; color: transparent;
     filter: drop-shadow(0 2px 0 rgba(0, 6, 50, .75)) drop-shadow(0 0 10px rgba(30, 140, 255, .4));
   }
+  .welcome-benefits .gold-text {
+    /* the design's gold metal, sized to the lowercase letters like the blue */
+    background: var(--gold-metal) 0 .4em / 100% .54em no-repeat, linear-gradient(#fff3b0, #fff3b0) 0 0 / 100% .41em no-repeat;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    filter: drop-shadow(0 2px 0 #4d2a05) drop-shadow(0 0 10px rgba(255, 198, 26, .4));
+  }
+  .welcome-benefits .benefit-words { white-space: nowrap; }
   .welcome-benefits .gold-star { flex: none; width: 1em; height: 1em; background: var(--gold-metal);
     -webkit-mask: url("../images/section-break-star.svg") center / contain no-repeat; mask: url("../images/section-break-star.svg") center / contain no-repeat;
     filter: drop-shadow(0 2px 0 #4d2a05) drop-shadow(0 0 7px rgba(255, 198, 26, .55)); }
@@ -760,9 +768,9 @@
       <h1><span class="welcome-heading-intro">Bienvenido a</span> <img class="welcome-heading-logo" src="../images/starsi-navbar-star-logo.webp" alt="StarSI.AI" width="650" height="219"></h1>
       <p class="welcome-lead"><span class="silver-text">Software trascendente<br>para un éxito sin límites</span></p>
       <ul class="welcome-benefits" role="list">
-        <li><span class="gold-star" aria-hidden="true"></span><span class="blue-text">Más estudiantes</span></li>
-        <li><span class="gold-star" aria-hidden="true"></span><span class="blue-text">Más ingresos</span></li>
-        <li><span class="gold-star" aria-hidden="true"></span><span class="blue-text">Más libertad</span></li>
+        <li><span class="gold-star" aria-hidden="true"></span><span class="benefit-words"><span class="blue-text">Más</span> <span class="gold-text">estudiantes</span></span></li>
+        <li><span class="gold-star" aria-hidden="true"></span><span class="benefit-words"><span class="blue-text">Más</span> <span class="gold-text">ingresos</span></span></li>
+        <li><span class="gold-star" aria-hidden="true"></span><span class="benefit-words"><span class="blue-text">Más</span> <span class="gold-text">libertad</span></span></li>
       </ul>
       <p class="welcome-promise">Convierta su escuela de artes marciales en un negocio de<br><strong>alta inscripción y altos ingresos</strong></p>
       <div class="reference-actions">
