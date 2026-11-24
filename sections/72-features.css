@@ -51,3 +51,7 @@
   #features + section.alt + section.page-end { background: var(--page-bg); padding-top: 8px; }
   h2 .white-line { color: var(--page-ink); }
   h2 .gold-line { color: var(--heading); }
+  /* the Features picture is taller: it fills the full height of the text beside it (at least 420px) and crops to keep the kick in view */
+  #features .subhero-grid { align-items: stretch; }
+  #features .subhero-grid img { height: 100%; min-height: 420px; object-fit: cover; object-position: 38% center; }
+  @media (max-width: 760px) { #features .subhero-grid img { height: auto; min-height: 0; aspect-ratio: 4 / 5; } }
