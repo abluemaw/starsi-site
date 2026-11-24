@@ -395,12 +395,24 @@
     object-position: left center;
     mask-image: linear-gradient(to right, #000 0%, #000 78%, transparent 100%);
   }
-  .welcome-banner:has(img.welcome-art)::before {
+  .welcome-banner.welcome-final-visible::before {
     background: linear-gradient(to right, transparent 0%, transparent 48%, color-mix(in srgb, var(--night) 18%, transparent) 57%, color-mix(in srgb, var(--night) 70%, transparent) 67%, var(--night) 76%);
   }
 }
 @media (max-width: 920px) {
   img.welcome-art { object-fit: contain; height: auto; }
+}
+
+/* Crossfade the complete final composition over the held video frame. */
+.welcome-banner .welcome-final { opacity: 0; transition: opacity 1.2s ease-in-out; }
+.welcome-banner video.welcome-art { transition: opacity 1.2s ease-in-out; }
+.welcome-banner.welcome-final-visible .welcome-final { opacity: 1; }
+.welcome-banner.welcome-final-visible video.welcome-art { opacity: 0; }
+@media (max-width: 920px) {
+  .welcome-banner .welcome-final { align-self: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .welcome-banner .welcome-art { transition: none !important; }
 }
   .grid { display: grid; gap: 20px; margin-top: 40px; }
   .g2 { grid-template-columns: repeat(2, 1fr); }
@@ -1039,29 +1051,39 @@
   new IntersectionObserver(function (e) { document.body.classList.toggle("welcome-active", e[0].isIntersecting); }, { threshold: 0.25 }).observe(el);
 })();
 
-/* Play the welcome video once, then display the uploaded still. */
+/* Preload the final still and crossfade over the video's last frame. */
 (function () {
   var v = document.querySelector("video.welcome-art");
   if (!v) return;
   v.loop = false;
   var still = new Image();
-  still.className = v.className;
+  still.className = "welcome-art welcome-final";
   still.alt = "Martial arts school owner using the StarSI.AI command center";
-  still.width = v.width;
-  still.height = v.height;
+  still.width = 1648;
+  still.height = 928;
   var finished = false;
+  var q = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
   function finish() {
     if (finished) return;
     finished = true;
     v.pause();
-    function swap() { if (v.parentNode) v.parentNode.replaceChild(still, v); }
+    function swap() {
+      if (!v.parentNode) return;
+      var parent = v.parentNode;
+      parent.insertBefore(still, v.nextSibling);
+      still.getBoundingClientRect();
+      parent.classList.add("welcome-final-visible");
+      var remove = function () { v.style.visibility = "hidden"; v.setAttribute("aria-hidden", "true"); };
+      if (q && q.matches) remove();
+      else setTimeout(remove, 1250);
+    }
     if (still.complete && still.naturalWidth) swap();
     else still.addEventListener("load", swap, { once: true });
   }
-  still.src = "images/StarSI.AI%20Martial%20Arts%20Command%20Center.png";
+  still.src = "images/Martial%20Artist%20at%20StarSI.AI%20Command%20Center.png";
+  if (still.decode) still.decode().catch(function () {});
   v.addEventListener("ended", finish, { once: true });
   v.addEventListener("error", finish, { once: true });
-  var q = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
   if (q && q.matches || v.ended || v.error) finish();
   else {
     var p = v.play();
