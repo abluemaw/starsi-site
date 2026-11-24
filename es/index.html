@@ -411,12 +411,23 @@
   .welcome-banner .welcome-art { transition: none !important; }
 }
 
-  /* silver metal lettering for the tagline and the three benefits (the chrome gradient from the design) */
-  .welcome-lead, .welcome-benefits .silver-text {
+  /* silver metal lettering for the tagline */
+  .welcome-lead {
     background: linear-gradient(180deg, #ffffff 0%, #e9eef6 26%, #aab6ca 46%, #7d8aa3 52%, #dfe6f1 60%, #ffffff 78%, #c4cddc 100%);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent; color: transparent;
     filter: drop-shadow(0 2px 0 rgba(0, 8, 40, .55)) drop-shadow(0 0 10px rgba(180, 205, 255, .22));
+  }
+  /* the three benefits: plain lettering (no pill, no icon) in electric blue metal, the blues from the SI in the logo */
+  .welcome-benefits li { padding: 2px 0; border: 0; border-radius: 0; background: none; gap: 0; font-size: clamp(26px, 2.9vw, 40px); font-weight: 800; letter-spacing: .01em; }
+  .welcome-benefits .blue-text {
+    /* like the SI in the logo: glossy electric blue face with a bright silver rim and a deep blue glow */
+    background: linear-gradient(180deg, #8fd2ff 0%, #2f8cff 30%, #0b3df0 48%, #001f9e 54%, #1668ff 70%, #3fc1ff 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    -webkit-text-stroke: 1.4px #e3efff;
+    paint-order: stroke fill;
+    filter: drop-shadow(0 2px 0 rgba(0, 6, 50, .8)) drop-shadow(0 0 14px rgba(40, 130, 255, .6));
   }
   .grid { display: grid; gap: 20px; margin-top: 40px; }
   .g2 { grid-template-columns: repeat(2, 1fr); }
@@ -676,9 +687,9 @@
       <h1><span class="welcome-heading-intro">Bienvenido a</span> <img class="welcome-heading-logo" src="../images/starsi-navbar-star-logo.webp" alt="StarSI.AI" width="650" height="219"></h1>
       <p class="welcome-lead">Software trascendente para un éxito sin límites</p>
       <ul class="welcome-benefits" role="list">
-        <li><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#sparring"/></svg><span class="silver-text">Más estudiantes</span></li>
-        <li><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#billing"/></svg><span class="silver-text">Más ingresos</span></li>
-        <li><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#instructor"/></svg><span class="silver-text">Más libertad</span></li>
+        <li><span class="blue-text">Más estudiantes</span></li>
+        <li><span class="blue-text">Más ingresos</span></li>
+        <li><span class="blue-text">Más libertad</span></li>
       </ul>
       <p class="welcome-promise">Convierta su escuela de artes marciales en un negocio de<br><strong>alta inscripción y altos ingresos</strong></p>
       <div class="reference-actions">
