@@ -110,19 +110,52 @@ def localise(out, code):
     path = os.path.join(HERE, "i18n", code + ".json")
     stale = []
     if os.path.exists(path):
-        # translate only the page body text, never the style or script blocks
-        head, sep, rest = out.partition("</style>")
-        body, sep2, tail = rest.partition("<script>")
-        for en, tr in json.load(open(path, encoding="utf-8")).items():
-            n = body.count(">" + en + "<")
-            if n == 0:
-                stale.append(en)
-            body = body.replace(">" + en + "<", ">" + tr + "<")
-        out = head + sep + body + sep2 + tail
+        tr = json.load(open(path, encoding="utf-8"))
+        used = set()
+
+        def swap_text(m):
+            t = " ".join(m.group(1).split())
+            if t in tr:
+                used.add(t)
+                lead = m.group(1)[: len(m.group(1)) - len(m.group(1).lstrip())]
+                trail = m.group(1)[len(m.group(1).rstrip()):]
+                return ">" + lead + tr[t] + trail + "<"
+            return m.group(0)
+
+        def swap_attr(m):
+            t = m.group(2).strip()
+            if t in tr:
+                used.add(t)
+                return '%s="%s"' % (m.group(1), tr[t].replace('"', "&quot;"))
+            return m.group(0)
+
+        def swap_meta(m):
+            t = m.group(2).strip()
+            if t in tr:
+                used.add(t)
+                return '%s"%s"' % (m.group(1), tr[t].replace('"', "&quot;"))
+            return m.group(0)
+
+        # head (title and description), then body text and attributes; never the style or script blocks
+        pre, s1, _rest = out.partition("<style>")
+        pre = re.sub(r"(<title>)([^<]*)(?=</title>)", lambda m: m.group(1) + tr.get(m.group(2).strip(), m.group(2)), pre)
+        for k in list(tr):
+            if "<title>" + k + "</title>" in out:
+                used.add(k)
+        pre = re.sub(r'(<meta (?:name|property)="(?:description|og:description|og:title|twitter:description|twitter:title)" content=)"([^"]*)"', swap_meta, pre)
+        css = out.partition("</style>")[0][len(pre) + len(s1):]
+        e1 = "</style>"
+        body_all = out.partition("</style>")[2]
+        body, s3, tail = body_all.partition("<script>")
+        body = re.sub(r">([^<>]+)<", swap_text, body)
+        body = re.sub(r'\b(alt|aria-label|placeholder|title)="([^"]*)"', swap_attr, body)
+        i18n_js = {k: tr[k] for k in ("Your draft was prepared for download. Nothing has been submitted or signed.", "Nonbinding enrollment draft") if k in tr}
+        inject = "<script>window.STARSI_I18N = %s;</script>\n" % json.dumps(i18n_js, ensure_ascii=False)
+        out = pre + s1 + css + e1 + body + inject + s3 + tail
+        stale = [k for k in tr if k not in used and k not in i18n_js]
     # the page lives one folder down, so asset addresses need to climb back up
     out = re.sub(r'((?:src|href|poster)=")(images|video|icons|designs|fonts)/', r"\1../\2/", out)
     out = re.sub(r'(url\(["\']?)(images|video|icons|fonts)/', r"\1../\2/", out)
-    out = re.sub(r'(["\'])(images|video|icons)/', r"\1../\2/", out) if False else out
     return out, stale
 
 

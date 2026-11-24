@@ -79,6 +79,12 @@ The look of the site lives in one design file, **DESIGN.md**. The site, the desi
 
 ---
 
+## Languages
+
+The site also exists in Spanish and Korean (use the flag menu at the top). When you ask ChatGPT to change wording, add: "and update the Spanish and Korean translations too". The translations are first drafts until a native speaker has reviewed them.
+
+---
+
 ## Pictures
 
 - Pictures are files in the **images** folder, never pasted into the page as text. Ask ChatGPT: "Add the picture I attached to the Benefits section" and it saves it in `images/` and links it.

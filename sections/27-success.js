@@ -39,7 +39,8 @@
   };
 
   var lang = "en", size = "small";
-  try { var saved = localStorage.getItem("starsi-success-lang"); if (saved && TEXT[saved]) lang = saved; } catch (e) {}
+  var pageLang = (document.documentElement.getAttribute("lang") || "en").slice(0, 2);
+  if (TEXT[pageLang]) lang = pageLang;
 
   function box(sz) { return root.querySelector('.success-video[data-size="' + sz + '"]'); }
   function poster(sz) { var i = root.querySelector('.success-panel[data-size="' + sz + '"] img'); return i ? i.getAttribute("src") : ""; }

@@ -1080,7 +1080,8 @@
   };
 
   var lang = "en", size = "small";
-  try { var saved = localStorage.getItem("starsi-success-lang"); if (saved && TEXT[saved]) lang = saved; } catch (e) {}
+  var pageLang = (document.documentElement.getAttribute("lang") || "en").slice(0, 2);
+  if (TEXT[pageLang]) lang = pageLang;
 
   function box(sz) { return root.querySelector('.success-video[data-size="' + sz + '"]'); }
   function poster(sz) { var i = root.querySelector('.success-panel[data-size="' + sz + '"] img'); return i ? i.getAttribute("src") : ""; }
@@ -1159,11 +1160,11 @@
   f.addEventListener("submit", function (e) {
     e.preventDefault();
     var data = {}; new FormData(f).forEach(function (v, k) { data[k] = v; });
-    var draft = Object.assign({ status: "Nonbinding enrollment draft" }, data);
+    var draft = Object.assign({ status: (window.STARSI_I18N || {})["Nonbinding enrollment draft"] || "Nonbinding enrollment draft" }, data);
     var url = URL.createObjectURL(new Blob([JSON.stringify(draft, null, 2)], { type: "application/json" }));
     var a = document.createElement("a"); a.href = url; a.download = "starsi-enrollment-draft.json"; a.click();
     setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
-    document.getElementById("result").textContent = "Your draft was prepared for download. Nothing has been submitted or signed.";
+    document.getElementById("result").textContent = (window.STARSI_I18N || {})["Your draft was prepared for download. Nothing has been submitted or signed."] || "Your draft was prepared for download. Nothing has been submitted or signed.";
   });
 })();
 /* Back to top: shows after scrolling one screen down */

@@ -25,3 +25,11 @@ This is a plain static website. The page is built from small files in the `secti
 ## How changes go live
 Open a pull request against `main` from a branch in this repository. Pull requests are merged automatically within about a minute, with no review. GitHub then rebuilds `index.html` and publishes the site by itself. Always start from the latest `main` so you do not overwrite a teammate's change.
 Undo a mistake: open a pull request that reverts the bad commit, or use the "Restore the site" button in the Actions tab.
+
+## Languages (English, Spanish, Korean)
+- The English page is `index.html`. The Spanish and Korean pages (`/es/`, `/ko/`) are built from it by `build.py`; never edit them by hand.
+- Every translated line lives in `i18n/es.json` and `i18n/ko.json` as `"exact English text": "translation"`.
+- When you change English wording in `sections/`, also update the same line in both i18n files, or the page shows the old English there. The build prints a warning for any translation line that no longer matches.
+- Product names (AI Website, AI Concierge, U-Bill, HQ Function and so on) stay in English on purpose.
+- The first drafts of the translations need review by a native speaker before they count as final.
+- The language menu is in `sections/01-header.html`; the "What could success look like?" section has its own words in `sections/27-success.js`.
