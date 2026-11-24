@@ -415,9 +415,9 @@
 }
 
   /* silver metal lettering for the tagline. The gradient is sized to the height of the capital letters
-     (about 0.72em, starting 0.2em below the top of the text box) and repeated on every line, so the shine sits on the letters themselves. */
+     (squeezed into the lowercase height, so small letters get the whole shine) and repeated on every line, so the shine sits on the letters themselves. */
   .welcome-lead .silver-text {
-    background: linear-gradient(180deg, #ffffff 0%, #e9eef6 26%, #aab6ca 46%, #7d8aa3 52%, #dfe6f1 60%, #ffffff 78%, #c4cddc 100%) 0 .2em / 100% .74em no-repeat;
+    background: linear-gradient(180deg, #ffffff 0%, #e9eef6 26%, #aab6ca 46%, #7d8aa3 52%, #dfe6f1 60%, #ffffff 78%, #c4cddc 100%) 0 .4em / 100% .54em no-repeat, linear-gradient(#ffffff, #ffffff) 0 0 / 100% .41em no-repeat;
     -webkit-box-decoration-break: clone; box-decoration-break: clone;
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent; color: transparent;
@@ -496,7 +496,8 @@
   .welcome-benefits li { padding: 2px 0; border: 0; border-radius: 0; background: none; gap: 12px; font-size: clamp(26px, 2.9vw, 40px); font-weight: 800; letter-spacing: .01em; }
   .welcome-benefits .blue-text {
     /* the electric blue metal from DESIGN.md */
-    background: var(--electric-metal) 0 .2em / 100% .74em no-repeat;
+    /* the full gradient is squeezed into the height of the lowercase letters (x-height); capitals just continue the pale top colour above it */
+    background: var(--electric-metal) 0 .4em / 100% .54em no-repeat, linear-gradient(#aecdff, #aecdff) 0 0 / 100% .41em no-repeat;
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent; color: transparent;
     filter: drop-shadow(0 2px 0 rgba(0, 6, 50, .75)) drop-shadow(0 0 10px rgba(30, 140, 255, .4));
