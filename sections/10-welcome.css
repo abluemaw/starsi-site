@@ -1,11 +1,11 @@
   /* SECTION 1: WELCOME BANNER */
-  .welcome { padding: 0; background: var(--night); }
+  /* hero + icon strip together fill the screen under the sticky header; the video stops at the star line above the strip */
+  .welcome { display: flex; flex-direction: column; min-height: calc(100vh - var(--header-h, 67px)); min-height: calc(100svh - var(--header-h, 67px)); padding: 0; background: var(--night); }
   .welcome-banner {
     position: relative;
     isolation: isolate;
-    /* the whole hero fills the screen under the sticky header; the video stops at the star line below it */
-    min-height: max(540px, calc(100vh - var(--header-h, 67px)));
-    min-height: max(540px, calc(100svh - var(--header-h, 67px)));
+    flex: 1 1 auto;
+    min-height: 440px;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, min(39%, 430px));
     align-items: center;
@@ -57,6 +57,7 @@
   .welcome-copy .reference-actions { display: flex; justify-content: flex-start; align-items: flex-start; margin: var(--space-lg) 0 0; padding: 0; }
   .welcome-copy .reference-actions .btn { flex: none; text-align: left; width: auto; max-width: 100%; white-space: normal; }
   @media (max-width: 920px) {
+    .welcome { display: block; min-height: 0; }
     .welcome-banner { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); min-height: 0; padding-inline: 0; }
     .welcome-copy { grid-column: 1; grid-row: 1; padding: var(--space-xl) var(--welcome-inset) 0; }
     .welcome-copy p { max-width: 40ch; }
