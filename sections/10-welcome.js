@@ -5,12 +5,35 @@
   new IntersectionObserver(function (e) { document.body.classList.toggle("welcome-active", e[0].isIntersecting); }, { threshold: 0.25 }).observe(el);
 })();
 
-/* Respect "reduce motion": show the still poster instead of the looping hero video */
+/* Play the hero once, then show the still in the same position. */
 (function () {
-  var v = document.querySelector("video.welcome-art");
-  if (!v || !window.matchMedia) return;
-  var q = window.matchMedia("(prefers-reduced-motion: reduce)");
-  function apply() { if (q.matches) { v.removeAttribute("autoplay"); v.pause(); } else { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }
-  apply();
-  if (q.addEventListener) q.addEventListener("change", apply);
+  var video = document.querySelector("video.welcome-art");
+  if (!video) return;
+
+  var still = new Image(video.width, video.height);
+  still.className = video.className;
+  still.alt = "";
+  still.src = video.poster;
+
+  function showStill() {
+    video.pause();
+    if (still.complete && still.naturalWidth) {
+      video.replaceWith(still);
+    } else {
+      still.addEventListener("load", function () { video.replaceWith(still); }, { once: true });
+    }
+  }
+
+  video.addEventListener("ended", showStill, { once: true });
+
+  var motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (motion.matches) {
+    showStill();
+    return;
+  }
+
+  motion.addEventListener("change", function (event) {
+    if (event.matches && video.isConnected) showStill();
+  });
+  video.play().catch(showStill);
 })();
