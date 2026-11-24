@@ -26,3 +26,6 @@
   }
 
   .demo-right .btn.demo-faq { margin: var(--space-md) 0 0; width: 100%; }
+  /* the intro sentence is a gold headline above Key Benefits, in the same lettering as the DEMO heading */
+  .demo-intro { margin: 0 0 var(--space-lg); font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 2.7vw, 38px); line-height: 1.18; color: var(--heading); }
+  .demo-right > h3 { margin-top: 0; }
