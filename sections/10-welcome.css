@@ -1,8 +1,11 @@
   /* SECTION 1: WELCOME BANNER */
-  .welcome { position: relative; padding: 0; background: var(--night); }
+  .welcome { padding: 0; background: var(--night); }
   .welcome-banner {
+    position: relative;
     isolation: isolate;
-    min-height: clamp(540px, 44vw, 760px);
+    /* the whole hero fills the screen under the sticky header; the video stops at the star line below it */
+    min-height: max(540px, calc(100vh - var(--header-h, 67px)));
+    min-height: max(540px, calc(100svh - var(--header-h, 67px)));
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, min(39%, 430px));
     align-items: center;
@@ -59,7 +62,7 @@
     .welcome-copy p { max-width: 40ch; }
     .welcome-art { position: static; grid-column: 1; grid-row: 2; width: 100%; height: auto; mask-image: none; }
   }
-  .benefit-ribbon { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; padding: 26px 3%; background: linear-gradient(to top, color-mix(in srgb, var(--night) 92%, transparent), color-mix(in srgb, var(--night) 62%, transparent)); color: var(--ink-on-dark); text-align: center; }
+  .benefit-ribbon { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; padding: 26px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
   .benefit-ribbon a { display: block; text-decoration: none; transition: transform .2s; }
   .benefit-ribbon a:hover { transform: translateY(-3px); }
   .benefit-ribbon a:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 4px; border-radius: 16px; }
