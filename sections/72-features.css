@@ -45,3 +45,5 @@
   .card:has(> .card-ic.electric) > h4, .card:has(> .card-ic.electric) > p, .card:has(> .card-ic.electric) > strong { grid-column: 1 / -1; }
   /* estimated value: small label, then the amount on its own line, big and gold */
   .card strong .value { display: block; margin-top: 2px; font-family: var(--font-display); font-size: clamp(24px, 2.3vw, 30px); line-height: 1.1; color: var(--heading); }
+  /* the cards continue straight out of the Features header: same background where the header fades out, and less gap between them */
+  #features + section.alt { background: var(--page-bg); padding-top: 0; }
