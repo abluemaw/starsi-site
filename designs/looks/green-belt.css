@@ -52,6 +52,7 @@
   --font-body: Roboto, system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   /* spacing */
+  --space-heroBenefitsGap: 10px;
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
