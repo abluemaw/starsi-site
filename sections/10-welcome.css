@@ -7,36 +7,55 @@
     flex: 1 1 auto;
     min-height: 440px;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, min(39%, 430px));
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
+    justify-items: center;
     gap: clamp(var(--space-lg), 3vw, var(--space-xxl));
     --welcome-inset: clamp(var(--space-lg), 4vw, var(--space-xxxl));
-    padding-inline-end: max(var(--welcome-inset), calc((100% - 1440px) / 2 + var(--welcome-inset)));
+    padding-inline: var(--welcome-inset);
     color: var(--ink-on-dark);
+  }
+  /* smooth dark glow behind the centred text; the sides of the video stay bright */
+  .welcome-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 46% 64% at 50% 50%,
+        color-mix(in srgb, var(--night) 90%, transparent) 0%,
+        color-mix(in srgb, var(--night) 84%, transparent) 22%,
+        color-mix(in srgb, var(--night) 70%, transparent) 40%,
+        color-mix(in srgb, var(--night) 50%, transparent) 56%,
+        color-mix(in srgb, var(--night) 28%, transparent) 72%,
+        color-mix(in srgb, var(--night) 10%, transparent) 88%,
+        transparent 100%),
+      linear-gradient(to bottom, color-mix(in srgb, var(--night) 35%, transparent), transparent 22%, transparent 78%, color-mix(in srgb, var(--night) 35%, transparent));
   }
   .welcome-art {
     position: absolute;
     inset: 0 auto 0 0;
-    z-index: -1;
+    z-index: -2;
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: left center;
-    mask-image: linear-gradient(to right, var(--night) 40%, color-mix(in srgb, var(--night) 45%, transparent) 55%, color-mix(in srgb, var(--night) 12%, transparent) 66%, transparent 74%);
+    object-position: center center;
   }
-  .welcome-copy { grid-column: 2; grid-row: 1; width: 100%; padding: var(--space-xl) 0; padding-inline-start: clamp(var(--space-sm), 1.5vw, var(--space-lg)); }
-  .welcome-copy h1 { max-width: 9em; font-size: clamp(40px, 4.7vw, 76px); }
+  .welcome-copy { grid-column: 1; grid-row: 1; width: 100%; max-width: 640px; padding: var(--space-xl) 0; text-align: center; }
+  .welcome-copy h1 { max-width: none; font-size: clamp(40px, 4.7vw, 76px); }
   .welcome-heading-intro { font-size: clamp(22px, 2.6vw, 34px); }
-  .welcome-heading-logo { display: block; width: 100%; height: auto; margin-top: var(--space-sm); }
-  .welcome-copy p { max-width: 34ch; }
+  .welcome-heading-logo { display: block; width: min(100%, 520px); height: auto; margin: var(--space-sm) auto 0; }
+  .welcome-copy p { max-width: 34ch; margin-inline: auto; }
   .welcome-lead { margin-top: var(--space-md); font-size: clamp(19px, 2vw, 25px); font-weight: 700; line-height: 1.28; }
   .welcome-benefits {
     display: grid;
     width: fit-content;
     max-width: 100%;
     gap: var(--space-heroBenefitsGap);
-    margin: var(--space-md) 0;
+    margin: var(--space-md) auto;
+    text-align: left;
     list-style: none;
     font-size: clamp(21px, 2.2vw, 28px);
     font-weight: 700;
@@ -54,13 +73,14 @@
   .welcome-benefits .ic { color: var(--gold-300); font-size: 1.15em; }
   .welcome-promise { font-size: clamp(18px, 1.5vw, 21px); font-weight: 700; line-height: 1.4; }
   .welcome-promise strong { color: var(--gold-300); }
-  .welcome-copy .reference-actions { display: flex; justify-content: flex-start; align-items: flex-start; margin: var(--space-lg) 0 0; padding: 0; }
-  .welcome-copy .reference-actions .btn { flex: none; text-align: left; width: auto; max-width: 100%; white-space: normal; }
+  .welcome-copy .reference-actions { display: flex; justify-content: center; align-items: center; margin: var(--space-lg) 0 0; padding: 0; }
+  .welcome-copy .reference-actions .btn { flex: none; text-align: center; width: auto; max-width: 100%; white-space: normal; }
   @media (max-width: 920px) {
     .welcome { display: block; min-height: 0; }
     .welcome-banner { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); min-height: 0; padding-inline: 0; }
     .welcome-copy { grid-column: 1; grid-row: 1; padding: var(--space-xl) var(--welcome-inset) 0; }
     .welcome-copy p { max-width: 40ch; }
+    .welcome-banner::before { display: none; }
     .welcome-art { position: static; grid-column: 1; grid-row: 2; width: 100%; height: auto; mask-image: none; }
   }
   .benefit-ribbon { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; padding: 26px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
