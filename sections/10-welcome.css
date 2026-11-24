@@ -23,14 +23,15 @@
     pointer-events: none;
     background: linear-gradient(to right,
       transparent 0%,
-      transparent 42%,
-      color-mix(in srgb, var(--night) 6%, transparent) 48%,
-      color-mix(in srgb, var(--night) 16%, transparent) 54%,
-      color-mix(in srgb, var(--night) 32%, transparent) 60%,
-      color-mix(in srgb, var(--night) 52%, transparent) 66%,
-      color-mix(in srgb, var(--night) 72%, transparent) 72%,
-      color-mix(in srgb, var(--night) 88%, transparent) 78%,
-      color-mix(in srgb, var(--night) 96%, transparent) 86%,
+      transparent 30%,
+      color-mix(in srgb, var(--night) 8%, transparent) 36%,
+      color-mix(in srgb, var(--night) 20%, transparent) 42%,
+      color-mix(in srgb, var(--night) 36%, transparent) 48%,
+      color-mix(in srgb, var(--night) 55%, transparent) 54%,
+      color-mix(in srgb, var(--night) 72%, transparent) 60%,
+      color-mix(in srgb, var(--night) 86%, transparent) 66%,
+      color-mix(in srgb, var(--night) 94%, transparent) 74%,
+      color-mix(in srgb, var(--night) 98%, transparent) 86%,
       var(--night) 100%);
   }
   .welcome-art {
