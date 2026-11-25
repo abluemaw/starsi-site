@@ -94,6 +94,34 @@
   .benefit-ribbon span { font-weight: 700; font-size: clamp(12px, 1.4vw, 18px); line-height: 1.25; display: block; }
   @media (max-width: 760px) { .benefit-ribbon { grid-template-columns: repeat(3, 1fr); } }
 
+/* Fill the hero vertically, anchor the instructor's head at the top and blend into the copy. */
+@media (min-width: 921px) {
+  img.welcome-art {
+    width: 72%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left top;
+    mask-image: linear-gradient(to right, #000 0%, #000 78%, transparent 100%);
+  }
+  .welcome-banner.welcome-final-visible::before {
+    background: linear-gradient(to right, transparent 0%, transparent 48%, color-mix(in srgb, var(--night) 18%, transparent) 57%, color-mix(in srgb, var(--night) 70%, transparent) 67%, var(--night) 76%);
+  }
+}
+@media (max-width: 920px) {
+  img.welcome-art { object-fit: contain; height: auto; }
+}
+
+/* Crossfade the complete final composition over the held video frame. */
+.welcome-banner .welcome-final { opacity: 0; transition: opacity 1.2s ease-in-out; }
+.welcome-banner video.welcome-art { transition: opacity 1.2s ease-in-out; }
+.welcome-banner.welcome-final-visible .welcome-final { opacity: 1; }
+.welcome-banner.welcome-final-visible video.welcome-art { opacity: 0; }
+@media (max-width: 920px) {
+  .welcome-banner .welcome-final { align-self: stretch; height: 100%; object-fit: cover; object-position: left top; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .welcome-banner .welcome-art { transition: none !important; }
+}
 
   /* silver metal lettering for the tagline. The gradient is sized to the height of the capital letters
      (squeezed into the lowercase height, so small letters get the whole shine) and repeated on every line, so the shine sits on the letters themselves. */
@@ -137,6 +165,34 @@
   .benefit-ribbon span { font-weight: 700; font-size: clamp(12px, 1.4vw, 18px); line-height: 1.25; display: block; }
   @media (max-width: 760px) { .benefit-ribbon { grid-template-columns: repeat(3, 1fr); } }
 
+/* Fill the hero vertically, anchor the instructor's head at the top and blend into the copy. */
+@media (min-width: 921px) {
+  img.welcome-art {
+    width: 72%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left top;
+    mask-image: linear-gradient(to right, #000 0%, #000 78%, transparent 100%);
+  }
+  .welcome-banner.welcome-final-visible::before {
+    background: linear-gradient(to right, transparent 0%, transparent 48%, color-mix(in srgb, var(--night) 18%, transparent) 57%, color-mix(in srgb, var(--night) 70%, transparent) 67%, var(--night) 76%);
+  }
+}
+@media (max-width: 920px) {
+  img.welcome-art { object-fit: contain; height: auto; }
+}
+
+/* Crossfade the complete final composition over the held video frame. */
+.welcome-banner .welcome-final { opacity: 0; transition: opacity 1.2s ease-in-out; }
+.welcome-banner video.welcome-art { transition: opacity 1.2s ease-in-out; }
+.welcome-banner.welcome-final-visible .welcome-final { opacity: 1; }
+.welcome-banner.welcome-final-visible video.welcome-art { opacity: 0; }
+@media (max-width: 920px) {
+  .welcome-banner .welcome-final { align-self: stretch; height: 100%; object-fit: cover; object-position: left top; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .welcome-banner .welcome-art { transition: none !important; }
+}
 
   /* silver metal lettering for the tagline */
   .welcome-lead {
@@ -187,16 +243,3 @@
     42%, 100% { transform: translate(-50%, -50%); }
   }
   @media (prefers-reduced-motion: reduce) { .scroll-cue { animation: none; } }
-
-  /* HERO = one finished picture (images/hero-banner.webp) that already carries the headline, the logo and the three promises.
-     The picture fills the hero; the real words stay in the page for screen readers and search, and the button sits under it. */
-  .welcome-banner { display: block; padding: 0; min-height: 0; background: #050a2a; }
-  .welcome-banner::before { display: none; }
-  .welcome-banner .welcome-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; mask-image: none; z-index: 0; }
-  .welcome-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-  .welcome-cta { padding: 14px 20px 22px; background: #050a2a; }
-  .welcome-cta .reference-actions { max-width: 620px; margin: 0 auto; padding: 0; }
-  @media (max-width: 920px) {
-    .welcome-banner { position: relative; aspect-ratio: 1670 / 942; }
-    .welcome-banner .welcome-art { position: absolute; }
-  }
