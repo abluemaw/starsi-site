@@ -598,10 +598,27 @@
   .growth-grid small { display: block; font-family: var(--font-body); font-size: 15px; font-weight: 400; color: var(--ink-on-dark); }
   @media (max-width: 760px) { .sales-grid, .growth-grid { grid-template-columns: 1fr; } .growth-grid { gap: 15px; } }
   /* SECTION: STARSI DEMO */
-  /* two equal halves: copy and values on the left, the three scenarios stacked on the right */
-  .demo-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(var(--space-lg), 4vw, var(--space-xxl)); align-items: start; }
-  .demo-right > h2 { margin: 0 0 var(--space-sm); }
-  .demo-right > h3 { margin-top: var(--space-md); }
+  #demo-title { margin: 0 0 var(--space-lg); }
+  .demo-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: clamp(var(--space-lg), 4vw, var(--space-xxl));
+    align-items: start;
+  }
+  .demo-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-md);
+    background: var(--night);
+  }
+  .demo-transcript { margin-top: var(--space-md); }
+  .demo-transcript summary { color: var(--link-page); }
+  .demo-transcript summary:focus-visible { outline: 2px solid var(--electric-300); outline-offset: 4px; }
+  .demo-transcript dt { margin-top: var(--space-md); font-weight: 700; }
+  .demo-transcript dd { margin: var(--space-xs) 0; color: var(--page-muted); }
+  .demo-right > h3 { margin-top: var(--space-lg); }
   .demo-values { display: grid; gap: var(--space-md); margin-top: var(--space-lg); }
   .demo-value {
     padding: var(--space-md) var(--space-lg);
@@ -625,10 +642,9 @@
     .demo-actions .btn { width: 100%; }
   }
 
-  .demo-right .btn.demo-faq { margin: var(--space-md) 0 0; width: 100%; }
+  .demo-right .btn.demo-faq { margin: var(--space-md) 0 0; width: 100%; white-space: normal; }
   /* the intro sentence is a big gold headline at the top of the left column, in the same lettering as the DEMO heading */
   .demo-intro { margin: 0 0 var(--space-sm); font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 2.7vw, 38px); line-height: 1.18; color: var(--heading); }
-  .demo-right > h3 { margin-top: 0; }
   /* SECTION: WHAT COULD SUCCESS LOOK LIKE (bento grid: wide story videos and phone-size short videos) */
   .success-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; text-align: center; gap: var(--space-md); margin-bottom: var(--space-lg); }
   .success-head h2 { margin: 0; font-size: clamp(34px, 5.6vw, 76px); line-height: 1.08; text-wrap: balance; }
@@ -897,49 +913,73 @@
 <div class="section-break line-only" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION: STARSI DEMO -->
 <section class="alt" id="demo" aria-labelledby="demo-title">
-  <div class="wrap demo-split">
-    <div class="demo-left">
-    <p class="demo-intro">Hire StarSI As Your Assistant to help your Martial Arts School to</p>
-    <p class="lead">a inscribir más estudiantes, gestionar las mensualidades y dedicar menos tiempo al trabajo de oficina.</p>
-    <div class="demo-values">
-      <div class="demo-value">
-        <h3>Contratar a un administrador de oficina</h3>
-        <strong>Valor de $5,000</strong>
+  <div class="wrap">
+    <h2 id="demo-title">StarSI: preguntas frecuentes en video</h2>
+    <div class="demo-split">
+      <div class="demo-left">
+        <video class="demo-video" controls playsinline preload="none" poster="../images/starsi-video-faq-poster.webp" aria-label="StarSI: preguntas frecuentes en video">
+          <source src="../video/starsi-video-faq.mp4" type="video/mp4">
+          <track kind="captions" src="../video/starsi-video-faq-en.vtt" srclang="en" label="English">
+          <track kind="subtitles" src="../video/starsi-video-faq-es.vtt" srclang="es" label="Español">
+          <track kind="subtitles" src="../video/starsi-video-faq-ko.vtt" srclang="ko" label="한국어">
+          <a href="../video/starsi-video-faq.mp4">Descargar el video de preguntas frecuentes</a>
+        </video>
+        <details class="demo-transcript">
+          <summary>Leer la transcripción del video</summary>
+          <dl>
+            <dt>¿Qué puede hacer StarSI por tu escuela?</dt>
+            <dd>Reúne la inscripción, el cobro de mensualidades y las tareas administrativas para que puedas dedicar más tiempo a enseñar.</dd>
+            <dt>¿Cómo puedo inscribir a más estudiantes?</dt>
+            <dd>Haz seguimiento a las familias interesadas y envíales un acuerdo en línea cuando estén listas para inscribirse.</dd>
+            <dt>¿Cómo ayuda StarSI con las mensualidades y la administración?</dt>
+            <dd>Las familias pueden pagar con tarjeta. Consulta los saldos pendientes, automatiza recordatorios y mantén informadas a las familias desde la app móvil.</dd>
+            <dt>¿Cómo se compara StarSI con contratar personal?</dt>
+            <dd>Piensa en el valor de un gerente de oficina por $5,000 y de un profesional de marketing y asesor empresarial por otros $5,000.</dd>
+            <dd>Son comparaciones ilustrativas. Los costos de personal y el ahorro reales varían.</dd>
+            <dt>¿Qué reúne StarSI?</dt>
+            <dd>StarSI te ayuda a gestionar la oficina, dar seguimiento a posibles estudiantes y usar los datos de tu escuela para tomar decisiones, todo en un solo lugar.</dd>
+          </dl>
+        </details>
+        <div class="demo-values">
+          <div class="demo-value">
+            <h3>Contratar a un administrador de oficina</h3>
+            <strong>Valor de $5,000</strong>
+          </div>
+          <div class="demo-value">
+            <h3>Contratar a un profesional de marketing y asesor de negocios</h3>
+            <strong>Valor de $5,000</strong>
+          </div>
+        </div>
+        <p class="small demo-value-note">Comparaciones ilustrativas. Los costos de personal y los ahorros reales varían.</p>
+        <div class="reference-actions demo-actions">
+          <a class="btn" href="#potential">Explore su potencial de crecimiento</a>
+        </div>
       </div>
-      <div class="demo-value">
-        <h3>Contratar a un profesional de marketing y asesor de negocios</h3>
-        <strong>Valor de $5,000</strong>
-      </div>
-    </div>
-    <p class="small demo-value-note">Comparaciones ilustrativas. Los costos de personal y los ahorros reales varían.</p>
-    <div class="reference-actions demo-actions">
-      <a class="btn" href="#potential">Explore su potencial de crecimiento</a>
-    </div>
-    </div>
 
-    <div class="demo-right">
-    <h2 id="demo-title">DEMO: StarSI</h2>
-    <h3>Beneficios clave</h3>
-    <p class="lead">Abra cada escenario para ver cómo podría funcionar en su escuela.</p>
-    <div class="demo-scenarios">
-      <details class="card">
-        <summary><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#student"/></svg> Más estudiantes</summary>
-        <p>Cuando un padre pregunta por las clases, StarSI le ayuda a dar el siguiente paso. Un acuerdo en línea ofrece a la familia una forma más sencilla de inscribirse cuando esté lista.</p>
-      </details>
-      <details class="card">
-        <summary><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#billing"/></svg> Más ingresos</summary>
-        <p>Cuando vence la mensualidad, las familias pueden pagar con tarjeta de crédito. Su equipo puede ver qué se ha pagado y centrar el seguimiento en los saldos pendientes.</p>
-      </details>
-      <details class="card">
-        <summary><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#messages"/></svg> Una reputación más sólida</summary>
-        <p>Mantenga informadas a las familias con la aplicación móvil. Una comunicación constante ayuda a su escuela a mantenerse cerca de estudiantes y padres.</p>
-      </details>
-    </div>
-    <a class="btn silver demo-faq" href="#faq">Lea las preguntas frecuentes</a>
+      <div class="demo-right">
+        <p class="demo-intro">Contrata a StarSI como asistente para ayudar a tu escuela de artes marciales</p>
+        <p class="lead">a inscribir más estudiantes, gestionar las mensualidades y dedicar menos tiempo al trabajo de oficina.</p>
+        <h3>Beneficios clave</h3>
+        <p class="lead">Abra cada escenario para ver cómo podría funcionar en su escuela.</p>
+        <div class="demo-scenarios">
+          <details class="card">
+            <summary><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#student"/></svg> Más estudiantes</summary>
+            <p>Cuando un padre pregunta por las clases, StarSI le ayuda a dar el siguiente paso. Un acuerdo en línea ofrece a la familia una forma más sencilla de inscribirse cuando esté lista.</p>
+          </details>
+          <details class="card">
+            <summary><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#billing"/></svg> Más ingresos</summary>
+            <p>Cuando vence la mensualidad, las familias pueden pagar con tarjeta de crédito. Su equipo puede ver qué se ha pagado y centrar el seguimiento en los saldos pendientes.</p>
+          </details>
+          <details class="card">
+            <summary><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#messages"/></svg> Una reputación más sólida</summary>
+            <p>Mantenga informadas a las familias con la aplicación móvil. Una comunicación constante ayuda a su escuela a mantenerse cerca de estudiantes y padres.</p>
+          </details>
+        </div>
+        <a class="btn silver demo-faq" href="#faq">Lea las preguntas frecuentes</a>
+      </div>
     </div>
   </div>
 </section>
-
 <!-- SECTION: WHAT COULD SUCCESS LOOK LIKE (three school sizes x three languages, each with a video box and a picture) -->
 <section id="success" aria-labelledby="success-title" lang="en" data-lang="en">
   <div class="wrap">
