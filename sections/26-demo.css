@@ -1,48 +1,10 @@
   /* SECTION: STARSI DEMO */
-  #demo-title { margin: 0 0 var(--space-lg); }
-  .demo-split {
-    display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    gap: clamp(var(--space-lg), 4vw, var(--space-xxl));
-    align-items: start;
-  }
   .demo-video {
     display: block;
     width: 100%;
+    height: auto;
     aspect-ratio: 16 / 9;
     border: 1px solid var(--line-soft);
     border-radius: var(--radius-md);
     background: var(--night);
   }
-  .demo-transcript { margin-top: var(--space-md); }
-  .demo-transcript summary { color: var(--link-page); }
-  .demo-transcript summary:focus-visible { outline: 2px solid var(--electric-300); outline-offset: 4px; }
-  .demo-transcript dt { margin-top: var(--space-md); font-weight: 700; }
-  .demo-transcript dd { margin: var(--space-xs) 0; color: var(--page-muted); }
-  .demo-right > h3 { margin-top: var(--space-lg); }
-  .demo-values { display: grid; gap: var(--space-md); margin-top: var(--space-lg); }
-  .demo-value {
-    padding: var(--space-md) var(--space-lg);
-    border-inline-start: 3px solid var(--gold-400);
-    background: var(--page-bg);
-  }
-  .demo-value h3 { margin-bottom: var(--space-xs); }
-  .demo-value strong { font-size: clamp(22px, 3vw, 32px); }
-  .demo-value-note { margin: var(--space-sm) 0 var(--space-lg); color: var(--page-muted); }
-  .demo-scenarios { display: grid; gap: var(--space-md); margin-top: var(--space-lg); }
-  .demo-scenarios details { padding: var(--space-lg); }
-  .demo-scenarios summary { color: var(--ink-on-dark); }
-  .demo-scenarios summary::marker, .demo-scenarios .ic { color: var(--gold-300); }
-  .demo-scenarios summary:focus-visible { outline: 2px solid var(--electric-300); outline-offset: 4px; }
-  .demo-actions { flex-wrap: wrap; justify-content: flex-start; max-width: none; margin: var(--space-lg) 0 0; padding: 0; }
-  .demo-actions .btn { flex: 1 1 100%; width: 100%; max-width: 100%; white-space: normal; }
-  @media (max-width: 860px) {
-    .demo-split { grid-template-columns: minmax(0, 1fr); }
-  }
-  @media (max-width: 760px) {
-    .demo-actions .btn { width: 100%; }
-  }
-
-  .demo-right .btn.demo-faq { margin: var(--space-md) 0 0; width: 100%; white-space: normal; }
-  /* the intro sentence is a big gold headline at the top of the left column, in the same lettering as the DEMO heading */
-  .demo-intro { margin: 0 0 var(--space-sm); font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 2.7vw, 38px); line-height: 1.18; color: var(--heading); }
