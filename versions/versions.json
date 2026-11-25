@@ -1,5 +1,12 @@
 [
  {
+  "sha": "ef91c9659cc5feb7fdfab8b24641932fe1fa4052",
+  "short": "ef91c96",
+  "date": "2026-11-25T14:58:28Z",
+  "author": "github-actions[bot]",
+  "message": "Sync design and rebuild index.html"
+ },
+ {
   "sha": "4a024ebb8c4468fb600f083d75df15a3b25c84c5",
   "short": "4a024eb",
   "date": "2026-11-25T14:55:33Z",
@@ -549,13 +556,6 @@
   "sha": "07d97699cedcdaa142c42a757186962809afc032",
   "short": "07d9769",
   "date": "2026-11-23T22:25:24Z",
-  "author": "github-actions[bot]",
-  "message": "Sync design and rebuild index.html"
- },
- {
-  "sha": "476a390e0c79e64c10aef971f4481dad46438270",
-  "short": "476a390",
-  "date": "2026-11-23T22:20:27Z",
   "author": "github-actions[bot]",
   "message": "Sync design and rebuild index.html"
  }
