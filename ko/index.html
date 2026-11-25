@@ -602,53 +602,15 @@
   .growth-grid small { display: block; font-family: var(--font-body); font-size: 15px; font-weight: 400; color: var(--ink-on-dark); }
   @media (max-width: 760px) { .sales-grid, .growth-grid { grid-template-columns: 1fr; } .growth-grid { gap: 15px; } }
   /* SECTION: STARSI DEMO */
-  #demo-title { margin: 0 0 var(--space-lg); }
-  .demo-split {
-    display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    gap: clamp(var(--space-lg), 4vw, var(--space-xxl));
-    align-items: start;
-  }
   .demo-video {
     display: block;
     width: 100%;
+    height: auto;
     aspect-ratio: 16 / 9;
     border: 1px solid var(--line-soft);
     border-radius: var(--radius-md);
     background: var(--night);
   }
-  .demo-transcript { margin-top: var(--space-md); }
-  .demo-transcript summary { color: var(--link-page); }
-  .demo-transcript summary:focus-visible { outline: 2px solid var(--electric-300); outline-offset: 4px; }
-  .demo-transcript dt { margin-top: var(--space-md); font-weight: 700; }
-  .demo-transcript dd { margin: var(--space-xs) 0; color: var(--page-muted); }
-  .demo-right > h3 { margin-top: var(--space-lg); }
-  .demo-values { display: grid; gap: var(--space-md); margin-top: var(--space-lg); }
-  .demo-value {
-    padding: var(--space-md) var(--space-lg);
-    border-inline-start: 3px solid var(--gold-400);
-    background: var(--page-bg);
-  }
-  .demo-value h3 { margin-bottom: var(--space-xs); }
-  .demo-value strong { font-size: clamp(22px, 3vw, 32px); }
-  .demo-value-note { margin: var(--space-sm) 0 var(--space-lg); color: var(--page-muted); }
-  .demo-scenarios { display: grid; gap: var(--space-md); margin-top: var(--space-lg); }
-  .demo-scenarios details { padding: var(--space-lg); }
-  .demo-scenarios summary { color: var(--ink-on-dark); }
-  .demo-scenarios summary::marker, .demo-scenarios .ic { color: var(--gold-300); }
-  .demo-scenarios summary:focus-visible { outline: 2px solid var(--electric-300); outline-offset: 4px; }
-  .demo-actions { flex-wrap: wrap; justify-content: flex-start; max-width: none; margin: var(--space-lg) 0 0; padding: 0; }
-  .demo-actions .btn { flex: 1 1 100%; width: 100%; max-width: 100%; white-space: normal; }
-  @media (max-width: 860px) {
-    .demo-split { grid-template-columns: minmax(0, 1fr); }
-  }
-  @media (max-width: 760px) {
-    .demo-actions .btn { width: 100%; }
-  }
-
-  .demo-right .btn.demo-faq { margin: var(--space-md) 0 0; width: 100%; white-space: normal; }
-  /* the intro sentence is a big gold headline at the top of the left column, in the same lettering as the DEMO heading */
-  .demo-intro { margin: 0 0 var(--space-sm); font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 2.7vw, 38px); line-height: 1.18; color: var(--heading); }
   /* SECTION: WHAT COULD SUCCESS LOOK LIKE (bento grid: wide story videos and phone-size short videos) */
   .success-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; text-align: center; gap: var(--space-md); margin-bottom: var(--space-lg); }
   .success-head h2 { margin: 0; font-size: clamp(34px, 5.6vw, 76px); line-height: 1.08; text-wrap: balance; }
@@ -916,71 +878,16 @@
 
 <div class="section-break line-only" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION: STARSI DEMO -->
-<section class="alt" id="demo" aria-labelledby="demo-title">
-  <div class="wrap">
-    <h2 id="demo-title">StarSI 동영상 FAQ</h2>
-    <div class="demo-split">
-      <div class="demo-left">
-        <video class="demo-video" controls playsinline preload="none" poster="../images/starsi-video-faq-poster.webp" aria-label="StarSI 동영상 FAQ">
-          <source src="../video/starsi-video-faq.mp4" type="video/mp4">
-          <track kind="captions" src="../video/starsi-video-faq-en.vtt" srclang="en" label="English">
-          <track kind="subtitles" src="../video/starsi-video-faq-es.vtt" srclang="es" label="Español">
-          <track kind="subtitles" src="../video/starsi-video-faq-ko.vtt" srclang="ko" label="한국어">
-          <a href="../video/starsi-video-faq.mp4">FAQ 동영상 다운로드</a>
-        </video>
-        <details class="demo-transcript">
-          <summary>동영상 대본 읽기</summary>
-          <dl>
-            <dt>StarSI는 도장 운영에 어떤 도움이 되나요?</dt>
-            <dd>등록, 수강료 관리, 일상적인 행정 업무를 한곳에 모아 지도에 더 많은 시간을 쓸 수 있게 도와줍니다.</dd>
-            <dt>어떻게 더 많은 수련생을 등록시킬 수 있나요?</dt>
-            <dd>관심을 보인 가족에게 후속 연락을 하고, 등록할 준비가 되면 온라인 계약서를 보내세요.</dd>
-            <dt>StarSI는 수강료와 행정 업무를 어떻게 돕나요?</dt>
-            <dd>가족은 신용카드로 결제할 수 있습니다. 미납액을 확인하고, 정기 알림을 자동화하며, 모바일 앱으로 가족에게 소식을 전하세요.</dd>
-            <dt>StarSI는 직원을 채용하는 것과 어떻게 비교되나요?</dt>
-            <dd>사무 관리자에게 5,000달러, 전문 마케터 겸 사업 자문가에게 추가로 5,000달러의 가치를 예로 들어 보세요.</dd>
-            <dd>이 금액은 이해를 돕는 예시입니다. 실제 인건비와 절감액은 달라질 수 있습니다.</dd>
-            <dt>StarSI는 어떤 기능을 한곳에 모아 주나요?</dt>
-            <dd>StarSI는 행정 업무, 예비 수련생 후속 연락, 도장 데이터를 활용한 경영 의사결정을 한곳에서 지원합니다.</dd>
-          </dl>
-        </details>
-        <div class="demo-values">
-          <div class="demo-value">
-            <h3>사무 관리자 채용</h3>
-            <strong>$5,000 상당</strong>
-          </div>
-          <div class="demo-value">
-            <h3>전문 마케터 및 경영 컨설턴트 채용</h3>
-            <strong>$5,000 상당</strong>
-          </div>
-        </div>
-        <p class="small demo-value-note">예시 비교입니다. 실제 인건비와 절감액은 다를 수 있습니다.</p>
-        <div class="reference-actions demo-actions">
-          <a class="btn" href="#potential">성장 잠재력 알아보기</a>
-        </div>
-      </div>
-
-      <div class="demo-right">
-        <p class="demo-intro">StarSI를 도장 운영 도우미로 활용해</p>
-        <p class="lead">수련생 등록은 늘리고, 수강료는 관리하고, 사무 업무 시간은 줄이세요.</p>
-        <h3>주요 혜택</h3>
-        <p class="lead">각 시나리오를 열어 내 도장에서는 어떻게 활용될 수 있는지 확인해 보세요.</p>
-        <div class="demo-scenarios">
-          <details class="card">
-            <summary><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#student"/></svg> 더 많은 수련생</summary>
-            <p>학부모가 수업을 문의하면 StarSI가 다음 단계로 이어지도록 도와드립니다. 온라인 계약서로 가족이 준비되었을 때 더 간편하게 등록할 수 있습니다.</p>
-          </details>
-          <details class="card">
-            <summary><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#billing"/></svg> 더 높은 수익</summary>
-            <p>수강료 납부일이 되면 가족이 신용카드로 결제할 수 있습니다. 직원은 납부 내역을 확인하고 미납 잔액 관리에 집중할 수 있습니다.</p>
-          </details>
-          <details class="card">
-            <summary><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#messages"/></svg> 더 탄탄한 평판</summary>
-            <p>모바일 앱으로 가족에게 소식을 전하세요. 꾸준한 소통이 도장과 수련생, 학부모를 더욱 가깝게 이어 줍니다.</p>
-          </details>
-        </div>
-        <a class="btn silver demo-faq" href="#faq">자주 묻는 질문 보기</a>
-      </div>
+<section class="alt" id="demo" aria-label="StarSI 동영상 FAQ">
+  <div class="wrap demo-split">
+    <div class="demo-left">
+      <video class="demo-video" controls playsinline preload="none" poster="../images/starsi-video-faq-poster.webp?v=2" aria-label="StarSI 동영상 FAQ">
+        <source src="../video/starsi-video-faq.mp4?v=2" type="video/mp4">
+        <track kind="captions" src="../video/starsi-video-faq-en.vtt?v=2" srclang="en" label="English">
+        <track kind="subtitles" src="../video/starsi-video-faq-es.vtt?v=2" srclang="es" label="Español">
+        <track kind="subtitles" src="../video/starsi-video-faq-ko.vtt?v=2" srclang="ko" label="한국어">
+        <a href="../video/starsi-video-faq.mp4?v=2">FAQ 동영상 다운로드</a>
+      </video>
     </div>
   </div>
 </section>

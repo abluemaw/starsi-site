@@ -598,53 +598,15 @@
   .growth-grid small { display: block; font-family: var(--font-body); font-size: 15px; font-weight: 400; color: var(--ink-on-dark); }
   @media (max-width: 760px) { .sales-grid, .growth-grid { grid-template-columns: 1fr; } .growth-grid { gap: 15px; } }
   /* SECTION: STARSI DEMO */
-  #demo-title { margin: 0 0 var(--space-lg); }
-  .demo-split {
-    display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    gap: clamp(var(--space-lg), 4vw, var(--space-xxl));
-    align-items: start;
-  }
   .demo-video {
     display: block;
     width: 100%;
+    height: auto;
     aspect-ratio: 16 / 9;
     border: 1px solid var(--line-soft);
     border-radius: var(--radius-md);
     background: var(--night);
   }
-  .demo-transcript { margin-top: var(--space-md); }
-  .demo-transcript summary { color: var(--link-page); }
-  .demo-transcript summary:focus-visible { outline: 2px solid var(--electric-300); outline-offset: 4px; }
-  .demo-transcript dt { margin-top: var(--space-md); font-weight: 700; }
-  .demo-transcript dd { margin: var(--space-xs) 0; color: var(--page-muted); }
-  .demo-right > h3 { margin-top: var(--space-lg); }
-  .demo-values { display: grid; gap: var(--space-md); margin-top: var(--space-lg); }
-  .demo-value {
-    padding: var(--space-md) var(--space-lg);
-    border-inline-start: 3px solid var(--gold-400);
-    background: var(--page-bg);
-  }
-  .demo-value h3 { margin-bottom: var(--space-xs); }
-  .demo-value strong { font-size: clamp(22px, 3vw, 32px); }
-  .demo-value-note { margin: var(--space-sm) 0 var(--space-lg); color: var(--page-muted); }
-  .demo-scenarios { display: grid; gap: var(--space-md); margin-top: var(--space-lg); }
-  .demo-scenarios details { padding: var(--space-lg); }
-  .demo-scenarios summary { color: var(--ink-on-dark); }
-  .demo-scenarios summary::marker, .demo-scenarios .ic { color: var(--gold-300); }
-  .demo-scenarios summary:focus-visible { outline: 2px solid var(--electric-300); outline-offset: 4px; }
-  .demo-actions { flex-wrap: wrap; justify-content: flex-start; max-width: none; margin: var(--space-lg) 0 0; padding: 0; }
-  .demo-actions .btn { flex: 1 1 100%; width: 100%; max-width: 100%; white-space: normal; }
-  @media (max-width: 860px) {
-    .demo-split { grid-template-columns: minmax(0, 1fr); }
-  }
-  @media (max-width: 760px) {
-    .demo-actions .btn { width: 100%; }
-  }
-
-  .demo-right .btn.demo-faq { margin: var(--space-md) 0 0; width: 100%; white-space: normal; }
-  /* the intro sentence is a big gold headline at the top of the left column, in the same lettering as the DEMO heading */
-  .demo-intro { margin: 0 0 var(--space-sm); font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 2.7vw, 38px); line-height: 1.18; color: var(--heading); }
   /* SECTION: WHAT COULD SUCCESS LOOK LIKE (bento grid: wide story videos and phone-size short videos) */
   .success-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; text-align: center; gap: var(--space-md); margin-bottom: var(--space-lg); }
   .success-head h2 { margin: 0; font-size: clamp(34px, 5.6vw, 76px); line-height: 1.08; text-wrap: balance; }
@@ -912,71 +874,16 @@
 
 <div class="section-break line-only" aria-hidden="true"><span class="sb-star"></span></div>
 <!-- SECTION: STARSI DEMO -->
-<section class="alt" id="demo" aria-labelledby="demo-title">
-  <div class="wrap">
-    <h2 id="demo-title">StarSI: preguntas frecuentes en video</h2>
-    <div class="demo-split">
-      <div class="demo-left">
-        <video class="demo-video" controls playsinline preload="none" poster="../images/starsi-video-faq-poster.webp" aria-label="StarSI: preguntas frecuentes en video">
-          <source src="../video/starsi-video-faq.mp4" type="video/mp4">
-          <track kind="captions" src="../video/starsi-video-faq-en.vtt" srclang="en" label="English">
-          <track kind="subtitles" src="../video/starsi-video-faq-es.vtt" srclang="es" label="Español">
-          <track kind="subtitles" src="../video/starsi-video-faq-ko.vtt" srclang="ko" label="한국어">
-          <a href="../video/starsi-video-faq.mp4">Descargar el video de preguntas frecuentes</a>
-        </video>
-        <details class="demo-transcript">
-          <summary>Leer la transcripción del video</summary>
-          <dl>
-            <dt>¿Qué puede hacer StarSI por tu escuela?</dt>
-            <dd>Reúne la inscripción, el cobro de mensualidades y las tareas administrativas para que puedas dedicar más tiempo a enseñar.</dd>
-            <dt>¿Cómo puedo inscribir a más estudiantes?</dt>
-            <dd>Haz seguimiento a las familias interesadas y envíales un acuerdo en línea cuando estén listas para inscribirse.</dd>
-            <dt>¿Cómo ayuda StarSI con las mensualidades y la administración?</dt>
-            <dd>Las familias pueden pagar con tarjeta. Consulta los saldos pendientes, automatiza recordatorios y mantén informadas a las familias desde la app móvil.</dd>
-            <dt>¿Cómo se compara StarSI con contratar personal?</dt>
-            <dd>Piensa en el valor de un gerente de oficina por $5,000 y de un profesional de marketing y asesor empresarial por otros $5,000.</dd>
-            <dd>Son comparaciones ilustrativas. Los costos de personal y el ahorro reales varían.</dd>
-            <dt>¿Qué reúne StarSI?</dt>
-            <dd>StarSI te ayuda a gestionar la oficina, dar seguimiento a posibles estudiantes y usar los datos de tu escuela para tomar decisiones, todo en un solo lugar.</dd>
-          </dl>
-        </details>
-        <div class="demo-values">
-          <div class="demo-value">
-            <h3>Contratar a un administrador de oficina</h3>
-            <strong>Valor de $5,000</strong>
-          </div>
-          <div class="demo-value">
-            <h3>Contratar a un profesional de marketing y asesor de negocios</h3>
-            <strong>Valor de $5,000</strong>
-          </div>
-        </div>
-        <p class="small demo-value-note">Comparaciones ilustrativas. Los costos de personal y los ahorros reales varían.</p>
-        <div class="reference-actions demo-actions">
-          <a class="btn" href="#potential">Explore su potencial de crecimiento</a>
-        </div>
-      </div>
-
-      <div class="demo-right">
-        <p class="demo-intro">Contrata a StarSI como asistente para ayudar a tu escuela de artes marciales</p>
-        <p class="lead">a inscribir más estudiantes, gestionar las mensualidades y dedicar menos tiempo al trabajo de oficina.</p>
-        <h3>Beneficios clave</h3>
-        <p class="lead">Abra cada escenario para ver cómo podría funcionar en su escuela.</p>
-        <div class="demo-scenarios">
-          <details class="card">
-            <summary><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#student"/></svg> Más estudiantes</summary>
-            <p>Cuando un padre pregunta por las clases, StarSI le ayuda a dar el siguiente paso. Un acuerdo en línea ofrece a la familia una forma más sencilla de inscribirse cuando esté lista.</p>
-          </details>
-          <details class="card">
-            <summary><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#billing"/></svg> Más ingresos</summary>
-            <p>Cuando vence la mensualidad, las familias pueden pagar con tarjeta de crédito. Su equipo puede ver qué se ha pagado y centrar el seguimiento en los saldos pendientes.</p>
-          </details>
-          <details class="card">
-            <summary><svg class="ic" aria-hidden="true"><use href="../icons/sprite.svg?v=b062c847#messages"/></svg> Una reputación más sólida</summary>
-            <p>Mantenga informadas a las familias con la aplicación móvil. Una comunicación constante ayuda a su escuela a mantenerse cerca de estudiantes y padres.</p>
-          </details>
-        </div>
-        <a class="btn silver demo-faq" href="#faq">Lea las preguntas frecuentes</a>
-      </div>
+<section class="alt" id="demo" aria-label="StarSI: preguntas frecuentes en video">
+  <div class="wrap demo-split">
+    <div class="demo-left">
+      <video class="demo-video" controls playsinline preload="none" poster="../images/starsi-video-faq-poster.webp?v=2" aria-label="StarSI: preguntas frecuentes en video">
+        <source src="../video/starsi-video-faq.mp4?v=2" type="video/mp4">
+        <track kind="captions" src="../video/starsi-video-faq-en.vtt?v=2" srclang="en" label="English">
+        <track kind="subtitles" src="../video/starsi-video-faq-es.vtt?v=2" srclang="es" label="Español">
+        <track kind="subtitles" src="../video/starsi-video-faq-ko.vtt?v=2" srclang="ko" label="한국어">
+        <a href="../video/starsi-video-faq.mp4?v=2">Descargar el video de preguntas frecuentes</a>
+      </video>
     </div>
   </div>
 </section>
