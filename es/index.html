@@ -374,24 +374,58 @@
   }
   .welcome-benefits li:not(:last-child)::after { content: ","; }
   .welcome-benefits li:last-child { color: var(--gold-300); }
-  .welcome-classroom::after {
-    content: "";
+  .welcome-classroom {
+    container-type: size;
+    background: radial-gradient(ellipse at center, var(--panel) 0%, var(--night) 78%);
+  }
+  .welcome-classroom-frame {
     position: absolute;
-    inset: 50% 0 0;
-    background: linear-gradient(transparent, color-mix(in srgb, var(--night) 87%, transparent));
+    top: 50%;
+    left: 50%;
+    width: min(100cqw, 210cqh);
+    aspect-ratio: 16 / 9;
+    transform: translate(-50%, -50%);
+  }
+  /* Match the active display in welcome-classroom-facing-screen.webp. */
+  .welcome-classroom-screen {
+    position: absolute;
+    inset: 53.9% 58.3% 11.4% 4.35%;
+    container-type: inline-size;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.7cqw;
+    color: var(--ink-on-dark);
+    text-align: center;
+  }
+  .welcome-classroom-benefits {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.4cqw 3cqw;
+    width: 85%;
+  }
+  .welcome-classroom-screen .welcome-heading-logo { width: min(100%, 44cqw); justify-self: end; }
+  .welcome-classroom-screen .welcome-lead { font-size: clamp(9px, 4.2cqw, 28px); line-height: 1.12; }
+  .welcome-classroom-screen .welcome-benefits {
+    grid-column: 1 / -1;
+    display: grid;
+    justify-content: center;
+    gap: .45cqw;
+    margin: 0;
+    font-size: clamp(9px, 4.8cqw, 31px);
+    line-height: 1.09;
   }
   .welcome-promise {
-    position: absolute;
-    z-index: 1;
-    inset: auto var(--space-md) clamp(54px, 10%, 85px);
     margin: 0;
-    color: var(--ink-on-dark);
+    padding-top: 1.2cqw;
+    border-top: 1px solid color-mix(in srgb, var(--electric-300) 60%, transparent);
+    color: var(--gold-300);
     font-family: var(--font-display);
-    font-size: clamp(34px, 7vw, 92px);
+    font-size: clamp(9px, 4.5cqw, 30px);
     font-weight: 800;
-    line-height: 1;
-    text-align: center;
-    text-shadow: 0 3px 12px var(--night);
+    line-height: 1.05;
   }
   .welcome-motion-control {
     position: absolute;
@@ -415,6 +449,11 @@
   }
   @media (max-width: 640px) {
     .welcome-benefits { display: grid; }
+    .welcome-classroom-frame {
+      left: 0;
+      width: min(125cqw, 210cqh);
+      transform: translateY(-50%);
+    }
     .welcome-motion-control { inset-inline-end: var(--space-sm); }
   }
   @media (scripting: none) {
@@ -720,8 +759,21 @@
       </div>
     </div>
     <div class="welcome-shot welcome-classroom">
-      <img class="welcome-art" src="../images/welcome-full-classroom.webp" alt="El instructor detrás de su computadora, con una clase de artes marciales llena" width="1536" height="864" fetchpriority="high">
-      <p class="welcome-promise">Aprovecha al máximo el sistema de IA</p>
+      <div class="welcome-classroom-frame">
+        <img class="welcome-art" src="../images/welcome-classroom-facing-screen.webp" alt="El instructor detrás de su computadora, con una clase de artes marciales llena" width="1536" height="864" fetchpriority="high">
+        <div class="welcome-classroom-screen">
+          <div class="welcome-classroom-benefits" aria-hidden="true">
+            <img class="welcome-heading-logo" src="../images/starsi-navbar-star-logo.webp" alt="" width="650" height="219">
+            <p class="welcome-lead">Contrata a StarSI.AI:</p>
+            <ul class="welcome-benefits" role="list">
+              <li>Más estudiantes</li>
+              <li>Más ingresos</li>
+              <li>Una reputación sólida.</li>
+            </ul>
+          </div>
+          <p class="welcome-promise">Aprovecha al máximo el sistema de IA</p>
+        </div>
+      </div>
     </div>
     <button type="button" class="welcome-motion-control" hidden>
       <span data-welcome-control="pause">Pausar animación</span>
