@@ -383,18 +383,19 @@
     63%, 100% { opacity: 1; }
   }
   @keyframes welcome-camera-reveal {
-    0%, 54% { transform: scale(5.4) translate(0, -18.7%); animation-timing-function: cubic-bezier(.4, .02, .22, 1); }
-    83%, 100% { transform: scale(1); }
+    0%, 54% { transform: scale(5.5) translate(0, -19.4%); animation-timing-function: cubic-bezier(.4, .02, .22, 1); }
+    72% { transform: scale(1.26) translate(0, -3%); animation-timing-function: ease-out; }
+    91%, 100% { transform: scale(1); }
   }
   @keyframes welcome-screen-copy {
     0%, 69% { opacity: 0; }
-    80%, 100% { opacity: 1; }
+    77%, 100% { opacity: 1; }
   }
 
-  /* Match the screen opening in welcome-classroom-front-row.webp. */
+  /* Match the screen opening in welcome-classroom-standard-monitor.webp. */
   .welcome-classroom-screen {
     position: absolute;
-    inset: 50.7% 18% 13.3% 18%;
+    inset: 52.1% 30.4% 13.3% 30.4%;
     container-type: inline-size;
     display: flex;
     flex-direction: column;
@@ -457,7 +458,9 @@
     .welcome-classroom-frame { width: min(110cqw, 197cqh); }
   }
   @media (max-width: 640px) {
+    .welcome-classroom-frame { width: min(125cqw, 197cqh); }
     .welcome-benefits { column-gap: 3cqw; }
+    .welcome-lead, .welcome-benefits, .welcome-promise { font-size: clamp(10px, 5.4cqw, 13px); }
     .welcome-motion-control { inset-inline-end: var(--space-sm); }
   }
   @media (scripting: none) {
@@ -757,7 +760,7 @@
     </div>
     <div class="welcome-shot welcome-classroom">
       <div class="welcome-classroom-frame">
-        <img class="welcome-art" src="../images/welcome-classroom-front-row.webp" alt="El instructor y sus alumnos practican artes marciales mirando de frente detrás de un monitor grande" width="1536" height="864" fetchpriority="high">
+        <img class="welcome-art" src="../images/welcome-classroom-standard-monitor.webp" alt="El instructor y sus alumnos practican artes marciales mirando de frente detrás de un monitor grande" width="1536" height="864" fetchpriority="high">
         <div class="welcome-copy welcome-classroom-screen">
           <div class="welcome-classroom-benefits">
             <img class="welcome-heading-logo" src="../images/starsi-navbar-star-logo.webp" alt="StarSI.AI" width="650" height="219">
