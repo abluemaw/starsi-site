@@ -111,17 +111,6 @@
   img.welcome-art { object-fit: contain; height: auto; }
 }
 
-/* Crossfade the complete final composition over the held video frame. */
-.welcome-banner .welcome-final { opacity: 0; transition: opacity 1.2s ease-in-out; }
-.welcome-banner video.welcome-art { transition: opacity 1.2s ease-in-out; }
-.welcome-banner.welcome-final-visible .welcome-final { opacity: 1; }
-.welcome-banner.welcome-final-visible video.welcome-art { opacity: 0; }
-@media (max-width: 920px) {
-  .welcome-banner .welcome-final { align-self: stretch; height: 100%; object-fit: cover; object-position: left top; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .welcome-banner .welcome-art { transition: none !important; }
-}
 
   /* silver metal lettering for the tagline. The gradient is sized to the height of the capital letters
      (squeezed into the lowercase height, so small letters get the whole shine) and repeated on every line, so the shine sits on the letters themselves. */
@@ -182,17 +171,6 @@
   img.welcome-art { object-fit: contain; height: auto; }
 }
 
-/* Crossfade the complete final composition over the held video frame. */
-.welcome-banner .welcome-final { opacity: 0; transition: opacity 1.2s ease-in-out; }
-.welcome-banner video.welcome-art { transition: opacity 1.2s ease-in-out; }
-.welcome-banner.welcome-final-visible .welcome-final { opacity: 1; }
-.welcome-banner.welcome-final-visible video.welcome-art { opacity: 0; }
-@media (max-width: 920px) {
-  .welcome-banner .welcome-final { align-self: stretch; height: 100%; object-fit: cover; object-position: left top; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .welcome-banner .welcome-art { transition: none !important; }
-}
 
   /* silver metal lettering for the tagline */
   .welcome-lead {

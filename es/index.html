@@ -399,17 +399,6 @@
   img.welcome-art { object-fit: contain; height: auto; }
 }
 
-/* Crossfade the complete final composition over the held video frame. */
-.welcome-banner .welcome-final { opacity: 0; transition: opacity 1.2s ease-in-out; }
-.welcome-banner video.welcome-art { transition: opacity 1.2s ease-in-out; }
-.welcome-banner.welcome-final-visible .welcome-final { opacity: 1; }
-.welcome-banner.welcome-final-visible video.welcome-art { opacity: 0; }
-@media (max-width: 920px) {
-  .welcome-banner .welcome-final { align-self: stretch; height: 100%; object-fit: cover; object-position: left top; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .welcome-banner .welcome-art { transition: none !important; }
-}
 
   /* silver metal lettering for the tagline. The gradient is sized to the height of the capital letters
      (squeezed into the lowercase height, so small letters get the whole shine) and repeated on every line, so the shine sits on the letters themselves. */
@@ -470,17 +459,6 @@
   img.welcome-art { object-fit: contain; height: auto; }
 }
 
-/* Crossfade the complete final composition over the held video frame. */
-.welcome-banner .welcome-final { opacity: 0; transition: opacity 1.2s ease-in-out; }
-.welcome-banner video.welcome-art { transition: opacity 1.2s ease-in-out; }
-.welcome-banner.welcome-final-visible .welcome-final { opacity: 1; }
-.welcome-banner.welcome-final-visible video.welcome-art { opacity: 0; }
-@media (max-width: 920px) {
-  .welcome-banner .welcome-final { align-self: stretch; height: 100%; object-fit: cover; object-position: left top; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .welcome-banner .welcome-art { transition: none !important; }
-}
 
   /* silver metal lettering for the tagline */
   .welcome-lead {
@@ -803,7 +781,7 @@
 
 <!-- SECTION 1: WELCOME BANNER -->
 <section class="welcome" id="welcome" aria-label="Bienvenido a StarSI">
-  <div class="welcome-banner">
+  <div class="welcome-banner welcome-final-visible">
     <div class="wrap welcome-copy">
       <h1><span class="welcome-heading-intro">Bienvenido a</span> <img class="welcome-heading-logo" src="../images/starsi-navbar-star-logo.webp" alt="StarSI.AI" width="650" height="219"></h1>
       <p class="welcome-lead"><span class="silver-text">Software trascendente<br>para un éxito sin límites</span></p>
@@ -817,7 +795,7 @@
         <a class="btn" href="#sales">Descubra todo el potencial de su escuela</a>
       </div>
     </div>
-    <video class="welcome-art" src="../video/hero.mp4" poster="../images/hero-poster.webp" autoplay muted playsinline preload="auto" aria-label="Panel de StarSI.AI, un dueño de escuela de artes marciales celebrando y una clase completa entrenando" width="1470" height="630"></video>
+    <img class="welcome-art" src="../images/AI-Powered%20Martial%20Arts%20Dojo%20Growth.png" alt="Dueño de una escuela de artes marciales usando el centro de mando de StarSI.AI mientras los estudiantes entrenan" width="1648" height="928" fetchpriority="high">
   </div>
   <div class="section-break scroll-cue-wrap"><span class="sb-halo" aria-hidden="true"></span><a class="sb-star scroll-cue" href="#sales" aria-label="Desplazarse hacia abajo"></a></div>
   <div class="benefit-ribbon">
@@ -1213,47 +1191,6 @@
   var el = document.getElementById("welcome");
   if (!el || !("IntersectionObserver" in window)) return;
   new IntersectionObserver(function (e) { document.body.classList.toggle("welcome-active", e[0].isIntersecting); }, { threshold: 0.25 }).observe(el);
-})();
-
-/* Preload the final still and crossfade over the video's last frame. */
-(function () {
-  var v = document.querySelector("video.welcome-art");
-  if (!v) return;
-  v.loop = false;
-  var still = new Image();
-  still.className = "welcome-art welcome-final";
-  still.alt = "Martial arts school owner using the StarSI.AI command center";
-  still.width = 1648;
-  still.height = 928;
-  var finished = false;
-  var q = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
-  function finish() {
-    if (finished) return;
-    finished = true;
-    v.pause();
-    function swap() {
-      if (!v.parentNode) return;
-      var parent = v.parentNode;
-      parent.insertBefore(still, v.nextSibling);
-      still.getBoundingClientRect();
-      parent.classList.add("welcome-final-visible");
-      var remove = function () { v.style.visibility = "hidden"; v.setAttribute("aria-hidden", "true"); };
-      if (q && q.matches) remove();
-      else setTimeout(remove, 1250);
-    }
-    if (still.complete && still.naturalWidth) swap();
-    else still.addEventListener("load", swap, { once: true });
-  }
-  still.src = "images/AI-Powered%20Martial%20Arts%20Dojo%20Growth.png";
-  if (still.decode) still.decode().catch(function () {});
-  v.addEventListener("ended", finish, { once: true });
-  v.addEventListener("error", finish, { once: true });
-  if (q && q.matches || v.ended || v.error) finish();
-  else {
-    var p = v.play();
-    if (p && p.catch) p.catch(finish);
-  }
-  if (q && q.addEventListener) q.addEventListener("change", function () { if (q.matches) finish(); });
 })();
 /* What could success look like: three video boxes across (small, midsize, big school). The language follows the page (English, Español or 한국어).
    To add a video, put the file in the video folder and write its path in VIDEOS below (one per size and language).
