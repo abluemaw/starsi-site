@@ -243,7 +243,7 @@
   .welcome-heading-intro { display: flex; align-items: center; justify-content: center; gap: clamp(12px, 2vw, 28px); width: min(100%, 640px); font-size: clamp(24px, 2.8vw, 42px); font-style: italic; font-weight: 800; color: #fff; }
   .welcome-heading-intro::before, .welcome-heading-intro::after { content: ""; flex: 1; height: 2px; background: linear-gradient(90deg, transparent, var(--gold-400)); }
   .welcome-heading-intro::after { background: linear-gradient(270deg, transparent, var(--gold-400)); }
-  .welcome-heading-logo { width: min(80vw, 520px); margin: 0 auto; }
+  .welcome-heading-logo { width: min(86vw, 680px); margin: 0 auto; }
   .welcome-lead { margin: 0; max-width: none; }
   .welcome-lead .silver-text { display: block; background: none; -webkit-text-fill-color: #fff; color: #fff; filter: none; font-style: italic; font-weight: 600; font-size: clamp(16px, 1.8vw, 26px); }
   .welcome-lead .silver-text br { display: none; }
