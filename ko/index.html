@@ -527,6 +527,31 @@
   .welcome-copy .reference-actions .btn { text-align: center; }
   /* a soft dark panel behind the centred words keeps them readable over the picture (no fade) */
   .welcome-copy { background: rgba(3, 8, 36, .62); border-radius: 24px; padding: var(--space-lg) var(--space-xl); width: auto; max-width: 600px; }
+
+  /* LAYOUT LIKE THE REFERENCE PICTURE (real text): "Welcome to" with gold rules, the logo and the tagline centred at the top;
+     one big italic line of promises along the bottom with the last one in gold. No panel, no fade. */
+  .welcome-copy { background: none; border-radius: 0; padding: clamp(18px, 3vw, 40px) 0 clamp(14px, 2vw, 28px); width: 100%; max-width: none; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; text-shadow: 0 2px 4px rgba(0, 4, 30, .9), 0 0 22px rgba(0, 6, 40, .85); }
+  .welcome-copy h1 { display: flex; flex-direction: column; align-items: center; width: 100%; margin: 0; }
+  .welcome-heading-intro { display: flex; align-items: center; justify-content: center; gap: clamp(12px, 2vw, 28px); width: min(100%, 640px); font-size: clamp(24px, 2.8vw, 42px); font-style: italic; font-weight: 800; color: #fff; }
+  .welcome-heading-intro::before, .welcome-heading-intro::after { content: ""; flex: 1; height: 2px; background: linear-gradient(90deg, transparent, var(--gold-400)); }
+  .welcome-heading-intro::after { background: linear-gradient(270deg, transparent, var(--gold-400)); }
+  .welcome-heading-logo { width: min(80vw, 520px); margin: 0 auto; }
+  .welcome-lead { margin: 0; max-width: none; }
+  .welcome-lead .silver-text { display: block; background: none; -webkit-text-fill-color: #fff; color: #fff; filter: none; font-style: italic; font-weight: 600; font-size: clamp(16px, 1.8vw, 26px); }
+  .welcome-lead .silver-text br { display: none; }
+  .welcome-top { display: flex; flex-direction: column; align-items: center; gap: var(--space-xs); width: 100%; }
+  .welcome-bottom { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); width: 100%; }
+  .welcome-benefits { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .45em; margin: 0; width: auto; max-width: 100%; }
+  .welcome-benefits li { display: inline-flex; padding: 0; font-style: italic; font-weight: 800; font-size: clamp(28px, 4.6vw, 70px); line-height: 1.1; letter-spacing: -.005em; }
+  .welcome-benefits .gold-star { display: none; }
+  .welcome-benefits .benefit-words::after { content: "."; }
+  .welcome-benefits .blue-text, .welcome-benefits li:not(:last-child) .gold-text { background: none; -webkit-text-fill-color: #fff; color: #fff; filter: none; }
+  .welcome-benefits li:last-child .blue-text, .welcome-benefits li:last-child .gold-text, .welcome-benefits li:last-child .benefit-words::after { background: none; -webkit-text-fill-color: var(--gold-400); color: var(--gold-400); filter: none; }
+  .welcome-promise { margin: 0; font-size: clamp(15px, 1.5vw, 21px); text-align: center; max-width: none; }
+  .welcome-copy .reference-actions { margin: var(--space-xs) 0 0; justify-content: center; }
+  .welcome-banner { padding-inline: var(--welcome-inset); }
+  .welcome-banner { align-items: stretch; }
+  .welcome-copy .welcome-lead, .welcome-copy .welcome-promise { max-width: none; }
   .grid { display: grid; gap: 20px; margin-top: 40px; }
   .g2 { grid-template-columns: repeat(2, 1fr); }
   .g3 { grid-template-columns: repeat(3, 1fr); }
@@ -801,8 +826,10 @@
 <section class="welcome" id="welcome" aria-label="StarSI에 오신 것을 환영합니다">
   <div class="welcome-banner welcome-final-visible">
     <div class="wrap welcome-copy">
+      <div class="welcome-top">
       <h1><span class="welcome-heading-intro">환영합니다</span> <img class="welcome-heading-logo" src="../images/starsi-navbar-star-logo.webp" alt="StarSI.AI" width="650" height="219"></h1>
-      <p class="welcome-lead"><span class="silver-text">초월적인 소프트웨어<br>한계 없는 성공을 위해</span></p>
+      <p class="welcome-lead"><span class="silver-text">초월적인 소프트웨어<br> 한계 없는 성공을 위해</span></p>      </div>
+      <div class="welcome-bottom">
       <ul class="welcome-benefits" role="list">
         <li><span class="gold-star" aria-hidden="true"></span><span class="benefit-words"><span class="blue-text">더 많은</span> <span class="gold-text">수련생</span></span></li>
         <li><span class="gold-star" aria-hidden="true"></span><span class="benefit-words"><span class="blue-text">더 많은</span> <span class="gold-text">수익</span></span></li>
@@ -811,6 +838,7 @@
       <p class="welcome-promise">무술 도장을 이렇게 바꿔 보세요:<br><strong>높은 등록률, 높은 수익의 비즈니스</strong></p>
       <div class="reference-actions">
         <a class="btn" href="#sales">내 도장의 모든 가능성을 발견하세요</a>
+      </div>
       </div>
     </div>
     <img class="welcome-art" src="../images/AI-Powered%20Martial%20Arts%20Dojo%20Growth.png" alt="학생들이 훈련하는 동안 StarSI.AI 관제 센터를 사용하는 무술 도장 관장" width="1648" height="928" fetchpriority="high">
