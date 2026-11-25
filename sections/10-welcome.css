@@ -1,88 +1,142 @@
   /* SECTION 1: WELCOME BANNER */
-  /* hero + icon strip together fill the screen under the sticky header; the video stops at the star line above the strip */
-  .welcome { display: flex; flex-direction: column; min-height: calc(100vh - var(--header-h, 67px)); min-height: calc(100svh - var(--header-h, 67px)); padding: 0; background: var(--night); }
+  .welcome { padding: 0; background: var(--night); }
   .welcome-banner {
     position: relative;
     isolation: isolate;
-    flex: 1 1 auto;
-    min-height: 440px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, min(36%, 460px));
-    align-items: center;
-    gap: clamp(var(--space-lg), 3vw, var(--space-xxl));
-    --welcome-inset: clamp(var(--space-lg), 4vw, var(--space-xxxl));
-    padding-inline-end: max(var(--welcome-inset), calc((100% - 1440px) / 2 + var(--welcome-inset)));
+    overflow: hidden;
+    height: max(440px, calc(100vh - var(--header-h, 67px) - 24px));
+    height: max(440px, calc(100svh - var(--header-h, 67px) - 24px));
     color: var(--ink-on-dark);
   }
-  /* the video fills about three quarters of the hero and melts smoothly into the dark where the text sits */
-  .welcome-banner::before {
-    content: "";
+  .welcome-shot {
     position: absolute;
     inset: 0;
-    z-index: -1;
+    display: grid;
+    place-items: center;
+    opacity: 0;
     pointer-events: none;
-    background: linear-gradient(to right,
-      transparent 0%,
-      transparent 30%,
-      color-mix(in srgb, var(--night) 8%, transparent) 36%,
-      color-mix(in srgb, var(--night) 20%, transparent) 42%,
-      color-mix(in srgb, var(--night) 36%, transparent) 48%,
-      color-mix(in srgb, var(--night) 55%, transparent) 54%,
-      color-mix(in srgb, var(--night) 72%, transparent) 60%,
-      color-mix(in srgb, var(--night) 86%, transparent) 66%,
-      color-mix(in srgb, var(--night) 94%, transparent) 74%,
-      color-mix(in srgb, var(--night) 98%, transparent) 86%,
-      var(--night) 100%);
+    transition: opacity .5s ease;
+  }
+  .welcome-banner[data-welcome-step="welcome"] .welcome-opening,
+  .welcome-banner:is([data-welcome-step="master"], [data-welcome-step="zoom"]) .welcome-master,
+  .welcome-banner[data-welcome-step="monitor"] .welcome-monitor,
+  .welcome-banner[data-welcome-step="classroom"] .welcome-classroom { opacity: 1; }
+  .welcome-opening {
+    background: radial-gradient(ellipse at center, var(--panel) 0%, var(--night) 68%);
+    z-index: 2;
+  }
+  .welcome-heading-intro {
+    margin: 0;
+    color: var(--gold-400);
+    font-size: clamp(58px, 12vw, 168px);
+    line-height: 1;
+    text-align: center;
+    text-shadow: 0 0 1em color-mix(in srgb, var(--gold-400) 42%, transparent);
   }
   .welcome-art {
     position: absolute;
-    inset: 0 auto 0 0;
-    z-index: -2;
+    inset: 0;
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: left center;
+    object-position: center;
   }
-  .welcome-copy { grid-column: 2; grid-row: 1; width: 100%; padding: var(--space-xl) 0; padding-inline-start: clamp(var(--space-sm), 1.5vw, var(--space-lg)); }
-  .welcome-copy h1 { max-width: 9em; font-size: clamp(40px, 4.7vw, 76px); }
-  .welcome-heading-intro { font-size: clamp(22px, 2.6vw, 34px); }
-  .welcome-heading-logo { display: block; width: 100%; height: auto; margin-top: var(--space-sm); }
-  .welcome-copy p { max-width: 34ch; }
-  .welcome-lead { margin-top: var(--space-md); font-size: clamp(19px, 2vw, 25px); font-weight: 700; line-height: 1.28; }
-  .welcome-benefits {
+  .welcome-master { background: var(--night); }
+  .welcome-master .welcome-art {
+    transform-origin: 77% 42%;
+    transition: transform 1.15s cubic-bezier(.45, 0, .15, 1);
+  }
+  .welcome-banner:is([data-welcome-step="zoom"], [data-welcome-step="monitor"]) .welcome-master .welcome-art {
+    transform: scale(2.15);
+  }
+  .welcome-monitor {
+    z-index: 1;
+    padding: var(--space-lg);
+    background: radial-gradient(ellipse at 70% 24%, var(--panel) 0%, var(--night) 70%);
+  }
+  .welcome-copy {
     display: grid;
-    width: fit-content;
-    max-width: 100%;
-    gap: var(--space-heroBenefitsGap);
-    margin: var(--space-md) 0;
+    justify-items: center;
+    align-content: center;
+    gap: var(--space-sm);
+    width: min(100%, 800px);
+    min-height: min(100%, 375px);
+    padding: var(--space-lg);
+    border: 4px solid var(--chrome-700);
+    border-bottom-width: 12px;
+    border-radius: var(--radius-lg);
+    background: radial-gradient(ellipse at 50% 35%, var(--panel) 0%, var(--night) 82%);
+    box-shadow: 0 0 0 1px var(--electric-300), 0 0 48px color-mix(in srgb, var(--electric-500) 42%, transparent);
+    text-align: center;
+  }
+  .welcome-lead { margin: 0; font-size: clamp(22px, 3.1vw, 36px); font-weight: 700; color: var(--gold-300); }
+  .welcome-heading-logo { display: block; width: min(62%, 345px); height: auto; }
+  .welcome-benefits {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-md);
+    padding: 0;
+    margin: var(--space-xs) 0 0;
     list-style: none;
-    font-size: clamp(21px, 2.2vw, 28px);
-    font-weight: 700;
+    font-size: clamp(19px, 2.75vw, 34px);
+    font-weight: 800;
     line-height: 1.2;
   }
-  .welcome-benefits li {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-xs) var(--space-md);
-    border-inline-start: 3px solid var(--gold-400);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--panel-light) 60%, var(--night));
+  .welcome-benefits li:not(:last-child)::after { content: ","; }
+  .welcome-benefits li:last-child { color: var(--gold-300); }
+  .welcome-classroom::after {
+    content: "";
+    position: absolute;
+    inset: 50% 0 0;
+    background: linear-gradient(transparent, color-mix(in srgb, var(--night) 87%, transparent));
   }
-  .welcome-benefits .ic { color: var(--gold-300); font-size: 1.15em; }
-  .welcome-promise { font-size: clamp(18px, 1.5vw, 21px); font-weight: 700; line-height: 1.4; }
-  .welcome-promise strong { color: var(--gold-300); }
-  .welcome-copy .reference-actions { display: flex; justify-content: flex-start; align-items: flex-start; margin: var(--space-lg) 0 0; padding: 0; }
-  .welcome-copy .reference-actions .btn { flex: none; text-align: left; width: auto; max-width: 100%; white-space: normal; }
+  .welcome-promise {
+    position: absolute;
+    z-index: 1;
+    inset: auto var(--space-md) clamp(54px, 10%, 85px);
+    margin: 0;
+    color: var(--ink-on-dark);
+    font-family: var(--font-display);
+    font-size: clamp(34px, 7vw, 92px);
+    font-weight: 800;
+    line-height: 1;
+    text-align: center;
+    text-shadow: 0 3px 12px var(--night);
+  }
+  .welcome-motion-control {
+    position: absolute;
+    z-index: 3;
+    inset: auto var(--space-md) var(--space-md) auto;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--electric-300);
+    border-radius: var(--radius-sm);
+    background: var(--night);
+    color: var(--ink-on-dark);
+    font: inherit;
+    font-size: .875rem;
+    cursor: pointer;
+  }
+  .welcome-motion-control:focus-visible { outline: 3px solid var(--gold-400); outline-offset: 3px; }
   @media (max-width: 920px) {
-    .welcome { display: block; min-height: 0; }
-    .welcome-banner { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); min-height: 0; padding-inline: 0; }
-    .welcome-copy { grid-column: 1; grid-row: 1; padding: var(--space-xl) var(--welcome-inset) 0; }
-    .welcome-copy p { max-width: 40ch; }
-    .welcome-banner::before { display: none; }
-    .welcome-art { position: static; grid-column: 1; grid-row: 2; width: 100%; height: auto; mask-image: none; }
+    .welcome-banner { height: clamp(365px, 62vw, 540px); }
+    .welcome-shot .welcome-art { object-fit: contain; }
+    .welcome-master .welcome-art { transform-origin: 75% 46%; }
+    .welcome-copy { min-height: auto; }
   }
+  @media (max-width: 640px) {
+    .welcome-benefits { display: grid; }
+    .welcome-motion-control { inset-inline-end: var(--space-sm); }
+  }
+  @media (scripting: none) {
+    .welcome-banner[data-welcome-step="welcome"] .welcome-opening { opacity: 0; }
+    .welcome-banner[data-welcome-step="welcome"] .welcome-classroom { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .welcome-shot, .welcome-master .welcome-art { transition: none; }
+  }
+
   .benefit-ribbon { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 26px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
   .benefit-ribbon a { display: block; text-decoration: none; transition: transform .2s; }
   .benefit-ribbon a:hover { transform: translateY(-3px); }
@@ -93,118 +147,6 @@
   .benefit-ribbon a:hover .ic { filter: brightness(1.08); }
   .benefit-ribbon span { font-weight: 700; font-size: clamp(12px, 1.4vw, 18px); line-height: 1.25; display: block; }
   @media (max-width: 760px) { .benefit-ribbon { grid-template-columns: repeat(3, 1fr); } }
-
-/* Fill the hero vertically, anchor the instructor's head at the top and blend into the copy. */
-@media (min-width: 921px) {
-  img.welcome-art {
-    width: 72%;
-    height: 100%;
-    object-fit: cover;
-    object-position: left top;
-    mask-image: linear-gradient(to right, #000 0%, #000 78%, transparent 100%);
-  }
-  .welcome-banner.welcome-final-visible::before {
-    background: linear-gradient(to right, transparent 0%, transparent 48%, color-mix(in srgb, var(--night) 18%, transparent) 57%, color-mix(in srgb, var(--night) 70%, transparent) 67%, var(--night) 76%);
-  }
-}
-@media (max-width: 920px) {
-  img.welcome-art { object-fit: contain; height: auto; }
-}
-
-
-  /* silver metal lettering for the tagline. The gradient is sized to the height of the capital letters
-     (squeezed into the lowercase height, so small letters get the whole shine) and repeated on every line, so the shine sits on the letters themselves. */
-  .welcome-lead .silver-text {
-    background: linear-gradient(0deg, #ffffff 0%, #e9eef6 26%, #aab6ca 46%, #7d8aa3 52%, #dfe6f1 60%, #ffffff 78%, #c4cddc 100%) 0 .4em / 100% .54em no-repeat, linear-gradient(#c4cddc, #c4cddc) 0 0 / 100% .41em no-repeat;
-    -webkit-box-decoration-break: clone; box-decoration-break: clone;
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; color: transparent;
-    filter: drop-shadow(0 2px 0 rgba(0, 8, 40, .55)) drop-shadow(0 0 10px rgba(180, 205, 255, .22));
-  }
-  .welcome-benefits li {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-xs) var(--space-md);
-    border-inline-start: 3px solid var(--gold-400);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--panel-light) 60%, var(--night));
-  }
-  .welcome-benefits .ic { color: var(--gold-300); font-size: 1.15em; }
-  .welcome-promise { font-size: clamp(18px, 1.5vw, 21px); font-weight: 700; line-height: 1.4; }
-  .welcome-promise strong { color: var(--gold-300); }
-  .welcome-copy .reference-actions { display: flex; justify-content: flex-start; align-items: flex-start; margin: var(--space-lg) 0 0; padding: 0; }
-  .welcome-copy .reference-actions .btn { flex: none; text-align: left; width: auto; max-width: 100%; white-space: normal; }
-  @media (max-width: 920px) {
-    .welcome { display: block; min-height: 0; }
-    .welcome-banner { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); min-height: 0; padding-inline: 0; }
-    .welcome-copy { grid-column: 1; grid-row: 1; padding: var(--space-xl) var(--welcome-inset) 0; }
-    .welcome-copy p { max-width: 40ch; }
-    .welcome-banner::before { display: none; }
-    .welcome-art { position: static; grid-column: 1; grid-row: 2; width: 100%; height: auto; mask-image: none; }
-  }
-  .benefit-ribbon { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 26px 3%; background: var(--page-alt); color: var(--page-ink); text-align: center; }
-  .benefit-ribbon a { display: block; text-decoration: none; transition: transform .2s; }
-  .benefit-ribbon a:hover { transform: translateY(-3px); }
-  .benefit-ribbon a:focus-visible { outline: 3px solid var(--electric-300); outline-offset: 4px; border-radius: 16px; }
-  /* the icon sits in a gold metal square with a dark line icon */
-  .benefit-ribbon .ic { box-sizing: content-box; display: block; margin: 0 auto 10px; width: 1em; height: 1em; font-size: 30px; padding: 16px; border-radius: 22px; color: var(--on-gold);
-    background: var(--gold-metal); border: 0; box-shadow: var(--bevel-gold); }
-  .benefit-ribbon a:hover .ic { filter: brightness(1.08); }
-  .benefit-ribbon span { font-weight: 700; font-size: clamp(12px, 1.4vw, 18px); line-height: 1.25; display: block; }
-  @media (max-width: 760px) { .benefit-ribbon { grid-template-columns: repeat(3, 1fr); } }
-
-/* Fill the hero vertically, anchor the instructor's head at the top and blend into the copy. */
-@media (min-width: 921px) {
-  img.welcome-art {
-    width: 72%;
-    height: 100%;
-    object-fit: cover;
-    object-position: left top;
-    mask-image: linear-gradient(to right, #000 0%, #000 78%, transparent 100%);
-  }
-  .welcome-banner.welcome-final-visible::before {
-    background: linear-gradient(to right, transparent 0%, transparent 48%, color-mix(in srgb, var(--night) 18%, transparent) 57%, color-mix(in srgb, var(--night) 70%, transparent) 67%, var(--night) 76%);
-  }
-}
-@media (max-width: 920px) {
-  img.welcome-art { object-fit: contain; height: auto; }
-}
-
-
-  /* silver metal lettering for the tagline */
-  .welcome-lead {
-    background: linear-gradient(180deg, #ffffff 0%, #e9eef6 26%, #aab6ca 46%, #7d8aa3 52%, #dfe6f1 60%, #ffffff 78%, #c4cddc 100%);
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; color: transparent;
-    filter: drop-shadow(0 2px 0 rgba(0, 8, 40, .55)) drop-shadow(0 0 10px rgba(180, 205, 255, .22));
-  }
-  /* the three benefits: plain lettering (no pill, no icon) in electric blue metal, the blues from the SI in the logo */
-  .welcome-benefits li { padding: 2px 0; border: 0; border-radius: 0; background: none; gap: 12px; font-size: clamp(26px, 2.9vw, 40px); font-weight: 800; letter-spacing: .01em; }
-  .welcome-benefits .blue-text {
-    /* the electric blue metal from DESIGN.md */
-    /* the full gradient is squeezed into the height of the lowercase letters (x-height); capitals just continue the top colour above it. Mostly silver chrome with blue at the top and bottom, like the SI in the logo */
-    background: linear-gradient(180deg, #4f9bff 0%, #cfe0f7 24%, #ffffff 38%, #8f9db8 52%, #d6e0f0 68%, #8ec2ff 86%, #3a86f0 100%) 0 .4em / 100% .54em no-repeat, linear-gradient(#4f9bff, #4f9bff) 0 0 / 100% .41em no-repeat;
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; color: transparent;
-    filter: drop-shadow(0 2px 0 rgba(0, 6, 50, .75)) drop-shadow(0 0 10px rgba(30, 140, 255, .4));
-  }
-  .welcome-benefits .gold-text {
-    /* the design's gold metal, sized to the lowercase letters like the blue */
-    background: var(--gold-metal) 0 .4em / 100% .54em no-repeat, linear-gradient(#fff3b0, #fff3b0) 0 0 / 100% .41em no-repeat;
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; color: transparent;
-    filter: drop-shadow(0 2px 0 #4d2a05) drop-shadow(0 0 10px rgba(255, 198, 26, .4));
-  }
-  .welcome-benefits .benefit-words { white-space: nowrap; }
-  .welcome-benefits .gold-star { flex: none; width: 1em; height: 1em; background: var(--gold-metal);
-    -webkit-mask: url("images/section-break-star.svg") center / contain no-repeat; mask: url("images/section-break-star.svg") center / contain no-repeat;
-    filter: drop-shadow(0 2px 0 #4d2a05) drop-shadow(0 0 7px rgba(255, 198, 26, .55)); }
-
-/* Shift the entire welcome copy column slightly right on desktop. */
-@media (min-width: 921px) {
-  .welcome-banner { padding-inline-end: max(12px, calc(max(var(--welcome-inset), calc((100% - 1440px) / 2 + var(--welcome-inset))) - 24px)); }
-}
 
   /* the star on the hero's bottom line is a scroll cue: a dark blue glow keeps it from getting lost in the picture, and it bounces */
   .scroll-cue-wrap .sb-halo { position: absolute; left: 50%; top: 0; width: 96px; height: 64px; transform: translate(-50%, -50%); z-index: -1; pointer-events: none;
@@ -221,58 +163,3 @@
     42%, 100% { transform: translate(-50%, -50%); }
   }
   @media (prefers-reduced-motion: reduce) { .scroll-cue { animation: none; } }
-
-  /* picture full width with no fade; the words are centred over it */
-  .welcome-banner { grid-template-columns: minmax(0, 1fr); justify-items: center; padding-inline: var(--welcome-inset); }
-  .welcome-banner::before { display: none !important; }
-  .welcome-banner .welcome-art, img.welcome-art { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; mask-image: none; -webkit-mask-image: none; }
-  .welcome-copy { grid-column: 1; grid-row: 1; max-width: 640px; text-align: center; padding-inline-start: 0; text-shadow: 0 2px 14px rgba(2, 6, 30, .75); }
-  .welcome-copy h1 { max-width: none; }
-  .welcome-heading-logo { width: min(100%, 460px); margin-inline: auto; }
-  .welcome-copy p { margin-inline: auto; }
-  .welcome-benefits { margin-inline: auto; text-align: left; }
-  .welcome-copy .reference-actions { justify-content: center; }
-  .welcome-copy .reference-actions .btn { text-align: center; }
-  /* a soft dark panel behind the centred words keeps them readable over the picture (no fade) */
-  .welcome-copy { background: rgba(3, 8, 36, .62); border-radius: 24px; padding: var(--space-lg) var(--space-xl); width: auto; max-width: 600px; }
-
-  /* LAYOUT LIKE THE REFERENCE PICTURE (real text): "Welcome to" with gold rules, the logo and the tagline centred at the top;
-     one big italic line of promises along the bottom with the last one in gold. No panel, no fade. */
-  .welcome-copy { background: none; border-radius: 0; padding: clamp(18px, 3vw, 40px) 0 clamp(14px, 2vw, 28px); width: 100%; max-width: none; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; text-shadow: 0 2px 4px rgba(0, 4, 30, .9), 0 0 22px rgba(0, 6, 40, .85); }
-  .welcome-copy h1 { display: flex; flex-direction: column; align-items: center; width: 100%; margin: 0; }
-  .welcome-heading-intro { display: flex; align-items: center; justify-content: center; gap: clamp(12px, 2vw, 28px); width: min(100%, 640px); font-size: clamp(24px, 2.8vw, 42px); font-style: italic; font-weight: 800; color: #fff; }
-  .welcome-heading-intro::before, .welcome-heading-intro::after { content: ""; flex: 1; height: 2px; background: linear-gradient(90deg, transparent, var(--gold-400)); }
-  .welcome-heading-intro::after { background: linear-gradient(270deg, transparent, var(--gold-400)); }
-  .welcome-heading-logo { width: min(86vw, 680px); margin: 0 auto; }
-  .welcome-lead { margin: 0; max-width: none; }
-  .welcome-lead .silver-text { display: block; background: none; -webkit-text-fill-color: #fff; color: #fff; filter: none; font-style: italic; font-weight: 600; font-size: clamp(16px, 1.8vw, 26px); }
-  .welcome-lead .silver-text br { display: none; }
-  .welcome-top { display: flex; flex-direction: column; align-items: center; gap: var(--space-xs); width: 100%; }
-  .welcome-bottom { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); width: 100%; }
-  .welcome-benefits { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .45em; margin: 0; width: auto; max-width: 100%; }
-  .welcome-benefits li { display: inline-flex; padding: 0; font-style: italic; font-weight: 800; font-size: clamp(28px, 4.6vw, 70px); line-height: 1.1; letter-spacing: -.005em; }
-  .welcome-benefits .gold-star { display: none; }
-  .welcome-benefits .benefit-words::after { content: "."; }
-  .welcome-benefits .blue-text, .welcome-benefits li:not(:last-child) .gold-text { background: none; -webkit-text-fill-color: #fff; color: #fff; filter: none; }
-  .welcome-benefits li:last-child .blue-text, .welcome-benefits li:last-child .gold-text, .welcome-benefits li:last-child .benefit-words::after { background: none; -webkit-text-fill-color: var(--gold-400); color: var(--gold-400); filter: none; }
-  .welcome-promise { margin: 0; font-size: clamp(15px, 1.5vw, 21px); text-align: center; max-width: none; }
-  .welcome-copy .reference-actions { margin: var(--space-xs) 0 0; justify-content: center; }
-  .welcome-banner { padding-inline: var(--welcome-inset); }
-  .welcome-banner { align-items: stretch; }
-  .welcome-copy .welcome-lead, .welcome-copy .welcome-promise { max-width: none; }
-
-  /* PHONES AND TABLETS: the words first, then the picture edge to edge (no black bars at the sides) ending on the gold line */
-  @media (max-width: 920px) {
-    .welcome-banner { display: flex; flex-direction: column; align-items: stretch; padding: 0; min-height: 0; aspect-ratio: auto; }
-    .welcome-copy { height: auto; padding: var(--space-lg) var(--welcome-inset) var(--space-md); gap: var(--space-md); }
-    .welcome-banner .welcome-art, img.welcome-art { position: static; display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center bottom; }
-  }
-
-  /* heavier drop shadow on the three promises so they stand out from the picture */
-  .welcome-benefits li { text-shadow: 0 3px 0 rgba(0, 4, 28, .95), 0 6px 10px rgba(0, 4, 28, .95), 0 0 30px rgba(0, 6, 40, .95), 0 0 60px rgba(0, 6, 40, .8); }
-
-  /* DESKTOP: the hero is exactly one screen tall, so the gold line with the star is the bottom edge of the first screen and the icon strip starts below it */
-  @media (min-width: 921px) {
-    .welcome { display: block; min-height: 0; }
-    .welcome-banner { flex: none; height: max(440px, calc(100vh - var(--header-h, 67px) - 24px)); height: max(440px, calc(100svh - var(--header-h, 67px) - 24px)); }
-  }
