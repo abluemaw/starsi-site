@@ -385,34 +385,6 @@
   .benefit-ribbon span { font-weight: 700; font-size: clamp(12px, 1.4vw, 18px); line-height: 1.25; display: block; }
   @media (max-width: 760px) { .benefit-ribbon { grid-template-columns: repeat(3, 1fr); } }
 
-/* Fill the hero vertically, anchor the instructor's head at the top and blend into the copy. */
-@media (min-width: 921px) {
-  img.welcome-art {
-    width: 72%;
-    height: 100%;
-    object-fit: cover;
-    object-position: left top;
-    mask-image: linear-gradient(to right, #000 0%, #000 78%, transparent 100%);
-  }
-  .welcome-banner.welcome-final-visible::before {
-    background: linear-gradient(to right, transparent 0%, transparent 48%, color-mix(in srgb, var(--night) 18%, transparent) 57%, color-mix(in srgb, var(--night) 70%, transparent) 67%, var(--night) 76%);
-  }
-}
-@media (max-width: 920px) {
-  img.welcome-art { object-fit: contain; height: auto; }
-}
-
-/* Crossfade the complete final composition over the held video frame. */
-.welcome-banner .welcome-final { opacity: 0; transition: opacity 1.2s ease-in-out; }
-.welcome-banner video.welcome-art { transition: opacity 1.2s ease-in-out; }
-.welcome-banner.welcome-final-visible .welcome-final { opacity: 1; }
-.welcome-banner.welcome-final-visible video.welcome-art { opacity: 0; }
-@media (max-width: 920px) {
-  .welcome-banner .welcome-final { align-self: stretch; height: 100%; object-fit: cover; object-position: left top; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .welcome-banner .welcome-art { transition: none !important; }
-}
 
   /* silver metal lettering for the tagline. The gradient is sized to the height of the capital letters
      (squeezed into the lowercase height, so small letters get the whole shine) and repeated on every line, so the shine sits on the letters themselves. */
@@ -456,34 +428,6 @@
   .benefit-ribbon span { font-weight: 700; font-size: clamp(12px, 1.4vw, 18px); line-height: 1.25; display: block; }
   @media (max-width: 760px) { .benefit-ribbon { grid-template-columns: repeat(3, 1fr); } }
 
-/* Fill the hero vertically, anchor the instructor's head at the top and blend into the copy. */
-@media (min-width: 921px) {
-  img.welcome-art {
-    width: 72%;
-    height: 100%;
-    object-fit: cover;
-    object-position: left top;
-    mask-image: linear-gradient(to right, #000 0%, #000 78%, transparent 100%);
-  }
-  .welcome-banner.welcome-final-visible::before {
-    background: linear-gradient(to right, transparent 0%, transparent 48%, color-mix(in srgb, var(--night) 18%, transparent) 57%, color-mix(in srgb, var(--night) 70%, transparent) 67%, var(--night) 76%);
-  }
-}
-@media (max-width: 920px) {
-  img.welcome-art { object-fit: contain; height: auto; }
-}
-
-/* Crossfade the complete final composition over the held video frame. */
-.welcome-banner .welcome-final { opacity: 0; transition: opacity 1.2s ease-in-out; }
-.welcome-banner video.welcome-art { transition: opacity 1.2s ease-in-out; }
-.welcome-banner.welcome-final-visible .welcome-final { opacity: 1; }
-.welcome-banner.welcome-final-visible video.welcome-art { opacity: 0; }
-@media (max-width: 920px) {
-  .welcome-banner .welcome-final { align-self: stretch; height: 100%; object-fit: cover; object-position: left top; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .welcome-banner .welcome-art { transition: none !important; }
-}
 
   /* silver metal lettering for the tagline */
   .welcome-lead {
@@ -534,6 +478,19 @@
     42%, 100% { transform: translate(-50%, -50%); }
   }
   @media (prefers-reduced-motion: reduce) { .scroll-cue { animation: none; } }
+
+  /* HERO = one finished picture (../../images/hero-banner.webp) that already carries the headline, the logo and the three promises.
+     The picture fills the hero; the real words stay in the page for screen readers and search, and the button sits under it. */
+  .welcome-banner { display: block; padding: 0; min-height: 0; background: #050a2a; }
+  .welcome-banner::before { display: none; }
+  .welcome-banner .welcome-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; mask-image: none; z-index: 0; }
+  .welcome-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .welcome-cta { padding: 14px 20px 22px; background: #050a2a; }
+  .welcome-cta .reference-actions { max-width: 620px; margin: 0 auto; padding: 0; }
+  @media (max-width: 920px) {
+    .welcome-banner { position: relative; aspect-ratio: 1670 / 942; }
+    .welcome-banner .welcome-art { position: absolute; }
+  }
   .grid { display: grid; gap: 20px; margin-top: 40px; }
   .g2 { grid-template-columns: repeat(2, 1fr); }
   .g3 { grid-template-columns: repeat(3, 1fr); }
@@ -809,20 +766,18 @@
 <!-- SECTION 1: WELCOME BANNER -->
 <section class="welcome" id="welcome" aria-label="Welcome to StarSI">
   <div class="welcome-banner">
-    <div class="wrap welcome-copy">
-      <h1><span class="welcome-heading-intro">Welcome to</span> <img class="welcome-heading-logo" src="../../images/starsi-navbar-star-logo.webp" alt="StarSI.AI" width="650" height="219"></h1>
-      <p class="welcome-lead"><span class="silver-text">Transcendent Software<br>For Limitless Success</span></p>
-      <ul class="welcome-benefits" role="list">
-        <li><span class="gold-star" aria-hidden="true"></span><span class="benefit-words"><span class="blue-text">More</span> <span class="gold-text">Students</span></span></li>
-        <li><span class="gold-star" aria-hidden="true"></span><span class="benefit-words"><span class="blue-text">More</span> <span class="gold-text">Revenue</span></span></li>
-        <li><span class="gold-star" aria-hidden="true"></span><span class="benefit-words"><span class="blue-text">More</span> <span class="gold-text">Freedom</span></span></li>
-      </ul>
-      <p class="welcome-promise">Turn Your Martial Arts School Into a<br><strong>High-Enrollment, High-Income Business</strong></p>
-      <div class="reference-actions">
-        <a class="btn" href="#sales">Discover Your School’s Full Potential</a>
-      </div>
+    <img class="welcome-art" src="../../images/hero-banner.webp" alt="Welcome to StarSI.AI: Transcendent Software for Unlimited Success. A martial arts school owner smiles at the StarSI.AI dashboard (AI Enrollment, AI Concierge, AI Secretary, Fee Saver) while a class trains behind him. More Students. More Revenue. More Freedom." width="1670" height="942" fetchpriority="high">
+    <div class="welcome-sr">
+      <h1>Welcome to StarSI.AI</h1>
+      <p>Transcendent Software For Limitless Success</p>
+      <ul><li>More Students</li><li>More Revenue</li><li>More Freedom</li></ul>
+      <p>Turn Your Martial Arts School Into a High-Enrollment, High-Income Business</p>
     </div>
-    <video class="welcome-art" src="video/hero.mp4" poster="../../images/hero-poster.webp" autoplay muted playsinline preload="auto" aria-label="StarSI.AI dashboard, a martial arts school owner celebrating, and a full class training" width="1470" height="630"></video>
+  </div>
+  <div class="welcome-cta">
+    <div class="reference-actions">
+      <a class="btn" href="#sales">Discover Your School’s Full Potential</a>
+    </div>
   </div>
   <div class="section-break scroll-cue-wrap"><span class="sb-halo" aria-hidden="true"></span><a class="sb-star scroll-cue" href="#sales" aria-label="Scroll down"></a></div>
   <div class="benefit-ribbon">
@@ -1217,47 +1172,6 @@
   var el = document.getElementById("welcome");
   if (!el || !("IntersectionObserver" in window)) return;
   new IntersectionObserver(function (e) { document.body.classList.toggle("welcome-active", e[0].isIntersecting); }, { threshold: 0.25 }).observe(el);
-})();
-
-/* Preload the final still and crossfade over the video's last frame. */
-(function () {
-  var v = document.querySelector("video.welcome-art");
-  if (!v) return;
-  v.loop = false;
-  var still = new Image();
-  still.className = "welcome-art welcome-final";
-  still.alt = "Martial arts school owner using the StarSI.AI command center";
-  still.width = 1648;
-  still.height = 928;
-  var finished = false;
-  var q = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
-  function finish() {
-    if (finished) return;
-    finished = true;
-    v.pause();
-    function swap() {
-      if (!v.parentNode) return;
-      var parent = v.parentNode;
-      parent.insertBefore(still, v.nextSibling);
-      still.getBoundingClientRect();
-      parent.classList.add("welcome-final-visible");
-      var remove = function () { v.style.visibility = "hidden"; v.setAttribute("aria-hidden", "true"); };
-      if (q && q.matches) remove();
-      else setTimeout(remove, 1250);
-    }
-    if (still.complete && still.naturalWidth) swap();
-    else still.addEventListener("load", swap, { once: true });
-  }
-  still.src = "../../images/AI-Powered%20Martial%20Arts%20Dojo%20Growth.png";
-  if (still.decode) still.decode().catch(function () {});
-  v.addEventListener("ended", finish, { once: true });
-  v.addEventListener("error", finish, { once: true });
-  if (q && q.matches || v.ended || v.error) finish();
-  else {
-    var p = v.play();
-    if (p && p.catch) p.catch(finish);
-  }
-  if (q && q.addEventListener) q.addEventListener("change", function () { if (q.matches) finish(); });
 })();
 /* What could success look like: three video boxes across (small, midsize, big school). The language follows the page (English, Español or 한국어).
    To add a video, put the file in the video folder and write its path in VIDEOS below (one per size and language).
