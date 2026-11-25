@@ -558,6 +558,12 @@
 
   /* heavier drop shadow on the three promises so they stand out from the picture */
   .welcome-benefits li { text-shadow: 0 3px 0 rgba(0, 4, 28, .95), 0 6px 10px rgba(0, 4, 28, .95), 0 0 30px rgba(0, 6, 40, .95), 0 0 60px rgba(0, 6, 40, .8); }
+
+  /* DESKTOP: the hero is exactly one screen tall, so the gold line with the star is the bottom edge of the first screen and the icon strip starts below it */
+  @media (min-width: 921px) {
+    .welcome { display: block; min-height: 0; }
+    .welcome-banner { flex: none; height: max(440px, calc(100vh - var(--header-h, 67px) - 24px)); height: max(440px, calc(100svh - var(--header-h, 67px) - 24px)); }
+  }
   .grid { display: grid; gap: 20px; margin-top: 40px; }
   .g2 { grid-template-columns: repeat(2, 1fr); }
   .g3 { grid-template-columns: repeat(3, 1fr); }
@@ -865,7 +871,7 @@
       <h1>Libere todo el<br><span class="accent">potencial de ingresos de su escuela</span></h1>
       <p class="lead">Meet the super intelligence designed to fill your classes, protect your income and take the business of running your school to an extraordinary new level.</p>
       <a class="btn" href="#enroll">Que StarSI trabaje para mí</a>
-      <p class="small muted-text">Creado para dueños de escuelas de artes marciales. Comience su inscripción en línea.</p>
+      <p class="small muted-text">Powerful Business Intelligence. One Exceptional Monthly Price.</p>
     </div>
     <div class="hero-visual">
       <img class="hero-photo" src="../images/hero-owner-practice.webp" alt="Dueño de escuela sonriente usando una tableta mientras los estudiantes practican artes marciales en una academia luminosa" width="1200" height="800">

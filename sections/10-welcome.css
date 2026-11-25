@@ -270,3 +270,9 @@
 
   /* heavier drop shadow on the three promises so they stand out from the picture */
   .welcome-benefits li { text-shadow: 0 3px 0 rgba(0, 4, 28, .95), 0 6px 10px rgba(0, 4, 28, .95), 0 0 30px rgba(0, 6, 40, .95), 0 0 60px rgba(0, 6, 40, .8); }
+
+  /* DESKTOP: the hero is exactly one screen tall, so the gold line with the star is the bottom edge of the first screen and the icon strip starts below it */
+  @media (min-width: 921px) {
+    .welcome { display: block; min-height: 0; }
+    .welcome-banner { flex: none; height: max(440px, calc(100vh - var(--header-h, 67px) - 24px)); height: max(440px, calc(100svh - var(--header-h, 67px) - 24px)); }
+  }
