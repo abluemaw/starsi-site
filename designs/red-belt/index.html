@@ -377,8 +377,8 @@
     64%, 100% { opacity: 0; }
   }
   @keyframes welcome-camera-push {
-    0%, 16% { transform: scale(1); }
-    33% { transform: scale(1.045) translate(-1%, 0); animation-timing-function: cubic-bezier(.45, .02, .3, 1); }
+    0%, 16% { transform: scale(1.72) translate(17%, 21%); }
+    33% { transform: scale(1.78) translate(16%, 21%); animation-timing-function: cubic-bezier(.45, .02, .3, 1); }
     56%, 100% { transform: scale(5.2) translate(-26%, 12%); }
   }
   @keyframes welcome-classroom-dissolve {
@@ -404,41 +404,44 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: .7%;
     color: var(--ink-on-dark);
     text-align: center;
   }
   .welcome-classroom-benefits {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    width: 90%;
-    gap: .8cqw 2.8cqw;
+    justify-items: center;
+    width: 92%;
+    gap: 1.45cqw;
   }
-  .welcome-heading-logo { display: block; width: min(100%, 34cqw); height: auto; justify-self: end; }
-  .welcome-lead { margin: 0; color: var(--gold-300); font-size: clamp(12px, 4.1cqw, 37px); font-weight: 700; }
+  .welcome-heading-logo { display: block; width: min(37cqw, 240px); height: auto; }
+  .welcome-lead {
+    margin: 0;
+    color: var(--gold-300);
+    font-family: var(--font-display);
+    font-size: clamp(12px, 5cqw, 39px);
+    font-weight: 800;
+    line-height: 1.05;
+  }
   .welcome-benefits {
-    grid-column: 1 / -1;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: .35cqw 2cqw;
+    gap: .6cqw 2.5cqw;
     margin: 0;
     padding: 0;
     list-style: none;
-    font-size: clamp(12px, 4.15cqw, 37px);
+    font-size: clamp(11px, 3.6cqw, 27px);
     font-weight: 800;
     line-height: 1.14;
   }
-  .welcome-benefits li:not(:last-child)::after { content: ","; }
-  .welcome-benefits li:last-child { color: var(--gold-300); }
+  .welcome-benefits li { white-space: nowrap; }
   .welcome-promise {
-    margin: 1.1cqw 0 0;
-    padding-top: 1.1cqw;
+    margin: 1.7cqw 0 0;
+    padding-top: 1.4cqw;
     border-top: 1px solid color-mix(in srgb, var(--electric-300) 60%, transparent);
-    color: var(--ink-on-dark);
+    color: var(--gold-300);
     font-family: var(--font-display);
-    font-size: clamp(12px, 4.4cqw, 39px);
+    font-size: clamp(11px, 3.8cqw, 30px);
     font-weight: 800;
     line-height: 1.05;
   }
@@ -463,7 +466,8 @@
   @media (max-width: 640px) {
     .welcome-classroom-frame { width: min(125cqw, 197cqh); }
     .welcome-benefits { column-gap: 3cqw; }
-    .welcome-lead, .welcome-benefits, .welcome-promise { font-size: clamp(10px, 5.4cqw, 13px); }
+    .welcome-lead { font-size: clamp(11px, 5.4cqw, 15px); }
+    .welcome-benefits, .welcome-promise { font-size: clamp(9px, 4.4cqw, 12px); }
     .welcome-motion-control { inset-inline-end: var(--space-sm); }
   }
   @media (scripting: none) {
@@ -769,7 +773,7 @@
         <div class="welcome-copy welcome-classroom-screen">
           <div class="welcome-classroom-benefits">
             <img class="welcome-heading-logo" src="../../images/starsi-navbar-star-logo.webp" alt="StarSI.AI" width="650" height="219">
-            <p class="welcome-lead">Hire StarSI.AI :</p>
+            <p class="welcome-lead">Hire StarSI.AI</p>
             <ul class="welcome-benefits" role="list">
               <li>More Students</li>
               <li>More Revenue</li>
